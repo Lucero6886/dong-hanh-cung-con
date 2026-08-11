@@ -1,0 +1,30 @@
+# Kết quả build
+dist/
+.astro/
+.output/
+
+# Phụ thuộc
+node_modules/
+.pnpm-store/
+
+# Nhật ký & bộ nhớ đệm
+*.log
+npm-debug.log*
+.cache/
+.vite/
+
+# Biến môi trường
+.env
+.env.production
+.env.local
+
+# Hệ điều hành / trình soạn thảo
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# File tạm của Microsoft Word (khi bạn để bản nháp .docx trong repo)
+~$*.docx

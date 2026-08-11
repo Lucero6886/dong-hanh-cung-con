@@ -1,0 +1,65 @@
+---
+import type { EnrichedArticle } from '../utils/articles';
+import { articleUrl, categoryUrl, assetUrl } from '../utils/url';
+import { formatDateShort, isoDate } from '../utils/date';
+
+interface Props {
+  article: EnrichedArticle;
+  /** Cấp tiêu đề để giữ đúng thứ bậc heading trên từng trang. */
+  headingLevel?: 2 | 3;
+}
+
+const { article, headingLevel = 3 } = Astro.props as Props;
+const Heading = `h${headingLevel}` as 'h2' | 'h3';
+---
+
+<article class="card">
+  <div class="card-media">
+    {
+      article.coverImage ? (
+        <img
+          src={assetUrl(article.coverImage)}
+          alt={article.coverAlt ?? ''}
+          width="800"
+          height="450"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <span class="placeholder">{article.category}</span>
+      )
+    }
+  </div>
+
+  <div class="card-body">
+    <a class="card-cat" href={categoryUrl(article.categorySlug)}>{article.category}</a>
+
+    <Heading class="card-title">
+      <a href={articleUrl(article.slug)}>{article.title}</a>
+    </Heading>
+
+    <p>{article.description}</p>
+
+    <div class="card-foot">
+      <time datetime={isoDate(article.date)}>{formatDateShort(article.date)}</time>
+      <span class="dot">{article.readingTime} phút đọc</span>
+      {article.ageGroups.length > 0 && <span class="dot">{article.ageGroups.join(', ')} tuổi</span>}
+    </div>
+  </div>
+</article>
+
+<style>
+  .card-title {
+    margin: 0;
+    font-size: var(--step-1);
+    line-height: 1.35;
+  }
+  .card-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .card-title a:hover {
+    color: var(--brand-ink);
+    text-decoration: underline;
+  }
+</style>

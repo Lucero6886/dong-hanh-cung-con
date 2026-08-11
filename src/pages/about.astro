@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE } from '../config/site';
+import { withBase } from '../utils/url';
+import '../styles/article.css';
+---
+
+<BaseLayout
+  title="Giới thiệu"
+  description="Về dự án Đồng hành cùng con: mục đích, quan điểm biên tập, cách phân biệt nguyên tắc giáo dục với quan điểm cá nhân, và giới hạn của nội dung trên website."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Trang chủ', href: '/' }, { label: 'Giới thiệu' }]} />
+
+    <article class="article-main">
+      <div class="page-head">
+        <h1>Về dự án này</h1>
+        <p>{SITE.tagline}</p>
+      </div>
+
+      <div class="prose">
+        <p>
+          <strong>{SITE.title}</strong> là một thư viện bài viết dành cho cha mẹ, được xây dựng dần
+          theo thời gian. Mục tiêu không phải là đưa ra lời khuyên nhanh, mà là giúp người đọc nhìn
+          rõ hơn vấn đề mình đang gặp và có một vài điều cụ thể để thử.
+        </p>
+
+        <h2>Dành cho ai</h2>
+        <p>
+          Cha mẹ có con trong độ tuổi khoảng 5–18, cùng với thầy cô, người hướng dẫn và những người
+          lớn đang đồng hành với trẻ trong quá trình học tập và trưởng thành.
+        </p>
+
+        <h2>Cách chúng tôi viết</h2>
+        <p>Bốn loại nội dung dưới đây được phân biệt rõ ràng trong từng bài:</p>
+        <ul>
+          <li>
+            <strong>Nguyên tắc giáo dục</strong> — những cách hiểu tương đối ổn định, đã được nhiều
+            người làm giáo dục chia sẻ.
+          </li>
+          <li>
+            <strong>Quan sát và suy ngẫm cá nhân</strong> — trải nghiệm của người viết. Đây là góc
+            nhìn, không phải kết luận phổ quát.
+          </li>
+          <li>
+            <strong>Kết quả nghiên cứu</strong> — chỉ nêu khi có nguồn kiểm chứng được, và luôn kèm
+            trích dẫn ở cuối bài.
+          </li>
+          <li>
+            <strong>Gợi ý thực hành</strong> — những điều cụ thể cha mẹ có thể thử, kèm lưu ý rằng
+            mỗi đứa trẻ một khác.
+          </li>
+        </ul>
+
+        <p>
+          Chúng tôi cố gắng viết “cha mẹ <em>có thể cân nhắc</em>” thay vì “cha mẹ <em>phải</em>”.
+          Không có một công thức đúng cho mọi gia đình, và việc nuôi dạy một đứa trẻ vốn đã đủ khó mà
+          không cần thêm cảm giác có lỗi.
+        </p>
+
+        <h2>Điều website này không làm</h2>
+        <ul>
+          <li>Không chẩn đoán bất kỳ vấn đề nào của trẻ.</li>
+          <li>Không thay thế tư vấn y tế, tâm lý hoặc giáo dục chuyên môn.</li>
+          <li>Không đưa ra thống kê, nghiên cứu hay trích dẫn nếu không kiểm chứng được nguồn.</li>
+          <li>Không dùng nỗi sợ hoặc cảm giác tội lỗi để thuyết phục người đọc.</li>
+        </ul>
+        <p>
+          Nếu bạn lo lắng về sức khoẻ thể chất, tinh thần hoặc sự phát triển của con, hãy trao đổi
+          với bác sĩ, chuyên gia tâm lý hoặc giáo viên của con — những người có thể tìm hiểu trực
+          tiếp trường hợp cụ thể của gia đình bạn.
+        </p>
+
+        <h2>Về nguồn nội dung</h2>
+        <p>
+          Nhiều bài bắt đầu từ ghi chép và trao đổi thực tế, sau đó được biên tập lại cho dễ đọc.
+          Trong quá trình biên tập, luận điểm gốc của tác giả được giữ nguyên; phần mở rộng của người
+          biên tập được ghi rõ ở cuối bài trong mục <em>Ghi chú biên tập</em>.
+        </p>
+
+        <h2>Liên hệ</h2>
+        <p>
+          Bài viết do <strong>{SITE.author}</strong> biên soạn.
+          {SITE.email ? <>Góp ý xin gửi về <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</> : null}
+        </p>
+
+        <p>
+          <a href={withBase('/articles/')}>Xem tất cả bài viết →</a>
+        </p>
+      </div>
+    </article>
+  </div>
+</BaseLayout>

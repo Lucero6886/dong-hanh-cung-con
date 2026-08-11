@@ -1,0 +1,209 @@
+---
+/**
+ * Search — tìm kiếm phía trình duyệt, không cần máy chủ, không dùng dịch vụ trả phí.
+ *
+ * Cách hoạt động:
+ *  1. Khi build, /search-index.json được tạo sẵn (tiêu đề, mô tả, chủ đề, thẻ,
+ *     và ~1500 ký tự đầu của nội dung mỗi bài).
+ *  2. Trình duyệt tải tệp đó MỘT LẦN khi người dùng bắt đầu gõ, rồi lọc tại chỗ.
+ *  3. Không có JavaScript: biểu mẫu vẫn hiện, và toàn bộ danh sách bài viết đã
+ *     được kết xuất sẵn bên dưới để người đọc tự duyệt.
+ *
+ * Bỏ dấu tiếng Việt khi so khớp → gõ "dong luc" vẫn tìm ra "động lực".
+ */
+import type { EnrichedArticle } from '../utils/articles';
+import { withBase, articleUrl } from '../utils/url';
+import { formatDateShort } from '../utils/date';
+
+interface Props {
+  articles: EnrichedArticle[];
+}
+
+const { articles } = Astro.props as Props;
+const indexUrl = withBase('/search-index.json');
+---
+
+<form class="search-form" role="search" action={withBase('/search/')} method="get">
+  <label class="visually-hidden" for="q">Từ khoá tìm kiếm</label>
+  <input
+    id="q"
+    name="q"
+    type="search"
+    placeholder="Ví dụ: động lực, tuổi teen, tự giác…"
+    autocomplete="off"
+    enterkeyhint="search"
+  />
+  <button class="btn btn-primary" type="submit">Tìm</button>
+</form>
+
+<p id="search-status" class="text-muted" role="status" aria-live="polite"></p>
+
+<div id="search-results" hidden></div>
+
+<div id="search-fallback">
+  <h2 class="visually-hidden">Tất cả bài viết</h2>
+  <ul class="list">
+    {
+      articles.map((a) => (
+        <li class="list-item">
+          <h3>
+            <a href={articleUrl(a.slug)}>{a.title}</a>
+          </h3>
+          <p>{a.description}</p>
+          <div class="meta-row">
+            <span>{a.category}</span>
+            <span class="dot">{formatDateShort(a.date)}</span>
+            <span class="dot">{a.readingTime} phút đọc</span>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+  {articles.length === 0 && <div class="empty"><p>Chưa có bài viết nào.</p></div>}
+</div>
+
+<style>
+  .search-form {
+    display: flex;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-3);
+  }
+  .search-form input {
+    flex: 1;
+    min-width: 0;
+    min-height: 46px;
+    padding: 0.55rem 0.95rem;
+    font: inherit;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-sm);
+  }
+  .search-form input:focus-visible {
+    border-color: var(--brand);
+  }
+  #search-status:empty {
+    display: none;
+  }
+  .hit mark {
+    background: var(--accent-soft);
+    color: var(--accent-ink);
+    padding: 0 0.15em;
+    border-radius: 3px;
+  }
+</style>
+
+{/* is:inline vì script cần nhận biến indexUrl dựng lúc build (qua define:vars). */}
+<script is:inline define:vars={{ indexUrl }}>
+  (function () {
+    const input = document.getElementById('q');
+    const results = document.getElementById('search-results');
+    const fallback = document.getElementById('search-fallback');
+    const status = document.getElementById('search-status');
+    if (!input || !results || !fallback || !status) return;
+
+    /** Bỏ dấu tiếng Việt để so khớp không phân biệt dấu. */
+    const norm = (s) =>
+      (s || '')
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/Đ/g, 'D')
+        .toLowerCase();
+
+    let index = null;
+    let loading = null;
+
+    function loadIndex() {
+      if (index) return Promise.resolve(index);
+      if (!loading) {
+        loading = fetch(indexUrl)
+          .then((r) => r.json())
+          .then((data) => {
+            index = data.map((d) => ({
+              ...d,
+              _hay: norm([d.t, d.d, d.c, (d.g || []).join(' '), d.b].join(' ')),
+            }));
+            return index;
+          })
+          .catch(() => {
+            status.textContent =
+              'Không tải được dữ liệu tìm kiếm. Bạn vẫn có thể duyệt danh sách bài viết bên dưới.';
+            return [];
+          });
+      }
+      return loading;
+    }
+
+    const esc = (s) =>
+      String(s).replace(/[&<>"']/g, (c) =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]
+      );
+
+    function render(hits, query) {
+      if (!query) {
+        results.hidden = true;
+        fallback.hidden = false;
+        status.textContent = '';
+        return;
+      }
+      fallback.hidden = true;
+      results.hidden = false;
+      status.textContent = hits.length
+        ? `${hits.length} kết quả cho “${query}”`
+        : `Không tìm thấy kết quả cho “${query}”. Thử từ khoá ngắn hơn, ví dụ “động lực”.`;
+
+      results.innerHTML = hits.length
+        ? '<ul class="list">' +
+          hits
+            .map(
+              (h) => `
+          <li class="list-item hit">
+            <h3><a href="${esc(h.u)}">${esc(h.t)}</a></h3>
+            <p>${esc(h.d)}</p>
+            <div class="meta-row">
+              <span>${esc(h.c)}</span>
+              <span class="dot">${esc(h.x)}</span>
+              <span class="dot">${h.r} phút đọc</span>
+            </div>
+          </li>`
+            )
+            .join('') +
+          '</ul>'
+        : '<div class="empty"><p>Chưa có bài viết nào khớp với từ khoá này.</p></div>';
+    }
+
+    async function run(query) {
+      const q = (query || '').trim();
+      if (!q) return render([], '');
+      const data = await loadIndex();
+      const terms = norm(q).split(/\s+/).filter(Boolean);
+      const hits = data.filter((d) => terms.every((t) => d._hay.includes(t)));
+      render(hits, q);
+    }
+
+    let timer;
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => run(input.value), 150);
+    });
+    input.addEventListener('focus', loadIndex, { once: true });
+
+    /* Cho phép chia sẻ đường dẫn dạng /search/?q=... */
+    const initial = new URLSearchParams(location.search).get('q');
+    if (initial) {
+      input.value = initial;
+      run(initial);
+    }
+
+    /* Chặn tải lại trang khi bấm Tìm — lọc ngay tại chỗ. */
+    input.form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      run(input.value);
+      const url = new URL(location.href);
+      if (input.value.trim()) url.searchParams.set('q', input.value.trim());
+      else url.searchParams.delete('q');
+      history.replaceState(null, '', url);
+    });
+  })();
+</script>

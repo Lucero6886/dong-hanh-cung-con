@@ -1,0 +1,209 @@
+---
+/**
+ * ArticleLayout — khung của một trang bài viết.
+ *
+ * Trang src/pages/articles/[...slug].astro chỉ việc truyền dữ liệu vào đây và
+ * đặt nội dung bài (<Content />) vào slot mặc định.
+ */
+import type { MarkdownHeading } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import ShareButtons from '../components/ShareButtons.astro';
+import Tag from '../components/Tag.astro';
+import type { EnrichedArticle } from '../utils/articles';
+import { articleUrl, categoryUrl, absoluteUrl, assetUrl } from '../utils/url';
+import { formatDate, isoDate } from '../utils/date';
+import { SITE, DEPLOY, DEFAULT_OG_IMAGE } from '../config/site';
+import '../styles/article.css';
+
+interface Props {
+  article: EnrichedArticle;
+  headings: MarkdownHeading[];
+  related: EnrichedArticle[];
+  newer?: EnrichedArticle;
+  older?: EnrichedArticle;
+}
+
+const { article, headings, related, newer, older } = Astro.props as Props;
+const d = article.entry.data;
+
+const url = absoluteUrl(`/articles/${article.slug}/`);
+const ogImage = article.coverImage ?? DEFAULT_OG_IMAGE;
+
+const SOURCE_LABEL: Record<EnrichedArticle['sourceType'], string> = {
+  'ghi-chep-goc': 'Biên tập từ ghi chép và trao đổi gốc của tác giả.',
+  'bien-tap-mo-rong':
+    'Bài viết mới, mở rộng từ các nguyên tắc giáo dục; phần diễn giải là quan điểm của tác giả.',
+  'tong-hop': 'Tổng hợp có dẫn nguồn; xem mục Nguồn tham khảo ở cuối bài.',
+};
+
+/* Schema.org — giúp Google hiểu đây là một bài viết, ai viết, khi nào. */
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: article.title,
+  description: article.description,
+  datePublished: isoDate(article.date),
+  dateModified: isoDate(article.updated ?? article.date),
+  author: { '@type': 'Person', name: article.author },
+  publisher: { '@type': 'Organization', name: SITE.title },
+  inLanguage: SITE.language,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  image: new URL(assetUrl(ogImage), DEPLOY.siteUrl).href,
+  keywords: article.tags.join(', '),
+  articleSection: article.category,
+};
+---
+
+<BaseLayout
+  title={article.title}
+  description={article.description}
+  ogType="article"
+  image={ogImage}
+  imageAlt={article.coverAlt ?? article.title}
+  publishedTime={isoDate(article.date)}
+  modifiedTime={article.updated ? isoDate(article.updated) : undefined}
+  author={article.author}
+  tags={article.tags}
+>
+  <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(jsonLd)} />
+  <ReadingProgress slot="before-header" />
+
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Trang chủ', href: '/' },
+        { label: 'Bài viết', href: '/articles/' },
+        { label: article.category, href: `/categories/${article.categorySlug}/` },
+        { label: article.title },
+      ]}
+    />
+
+    <div class="article-layout">
+      <div class="article-main">
+        <header class="article-header">
+          <h1>{article.title}</h1>
+          {article.subtitle && <p class="article-subtitle">{article.subtitle}</p>}
+          <p class="article-desc">{article.description}</p>
+
+          <div class="article-meta">
+            <span>{article.author}</span>
+            <span class="dot">
+              <time datetime={isoDate(article.date)}>{formatDate(article.date)}</time>
+            </span>
+            {
+              article.updated && (
+                <span class="dot">
+                  Cập nhật <time datetime={isoDate(article.updated)}>{formatDate(article.updated)}</time>
+                </span>
+              )
+            }
+            <span class="dot">{article.readingTime} phút đọc</span>
+            <span class="dot">
+              <a href={categoryUrl(article.categorySlug)}>{article.category}</a>
+            </span>
+            {article.ageGroups.length > 0 && <span class="dot">Phù hợp: {article.ageGroups.join(', ')} tuổi</span>}
+          </div>
+
+          {
+            article.coverImage && (
+              <figure class="article-cover">
+                <img
+                  src={assetUrl(article.coverImage)}
+                  alt={article.coverAlt ?? ''}
+                  width="1200"
+                  height="630"
+                  loading="eager"
+                  decoding="async"
+                />
+              </figure>
+            )
+          }
+        </header>
+
+        <details class="toc-mobile">
+          <summary>Nội dung bài viết</summary>
+          <TableOfContents headings={headings} compact />
+        </details>
+
+        <div class="prose">
+          <slot />
+        </div>
+      </div>
+
+      <aside class="toc-desktop">
+        <TableOfContents headings={headings} />
+      </aside>
+    </div>
+
+    <div class="article-footer">
+      {
+        article.tags.length > 0 && (
+          <section class="article-tags">
+            <h2>Thẻ</h2>
+            <div class="taglist">
+              {article.tags.map((t) => (
+                <Tag name={t} />
+              ))}
+            </div>
+          </section>
+        )
+      }
+
+      {
+        d.references.length > 0 && (
+          <section class="references" aria-labelledby="refs-heading">
+            <h2 id="refs-heading">Nguồn tham khảo</h2>
+            <ol>
+              {d.references.map((r) => (
+                <li>
+                  {r.url ? (
+                    <a href={r.url} rel="noopener noreferrer" target="_blank">
+                      {r.label}
+                    </a>
+                  ) : (
+                    <span>{r.label}</span>
+                  )}
+                  {r.note && <span class="text-muted"> — {r.note}</span>}
+                </li>
+              ))}
+            </ol>
+          </section>
+        )
+      }
+
+      <p class="source-note">
+        <strong>Ghi chú biên tập:</strong> {d.editorNote ?? SOURCE_LABEL[article.sourceType]}
+        {' '}Nội dung mang tính chia sẻ giáo dục, không thay thế tư vấn chuyên môn dành riêng cho từng trẻ.
+      </p>
+
+      <ShareButtons url={url} title={article.title} />
+
+      {
+        (newer || older) && (
+          <nav class="adjacent" aria-label="Bài trước và bài sau">
+            {older ? (
+              <a href={articleUrl(older.slug)}>
+                <span class="dir">← Bài trước đó</span>
+                <span class="t">{older.title}</span>
+              </a>
+            ) : (
+              <span />
+            )}
+            {newer && (
+              <a class="next" href={articleUrl(newer.slug)}>
+                <span class="dir">Bài mới hơn →</span>
+                <span class="t">{newer.title}</span>
+              </a>
+            )}
+          </nav>
+        )
+      }
+
+      <RelatedArticles articles={related} />
+    </div>
+  </div>
+</BaseLayout>

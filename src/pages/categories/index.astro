@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { withBase } from '../../utils/url';
+import { getCategoriesWithArticles } from '../../utils/articles';
+
+/* Danh sách chủ đề được suy ra từ chính các bài viết, không phải từ danh sách cứng. */
+const categories = await getCategoriesWithArticles();
+---
+
+<BaseLayout
+  title="Chủ đề"
+  description="Các chủ đề của thư viện: đồng hành cùng con, động lực và thói quen, học tập, giao tiếp, cảm xúc, kỷ luật tích cực, tự lập, công nghệ và tuổi teen."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Trang chủ', href: '/' }, { label: 'Chủ đề' }]} />
+
+    <div class="page-head">
+      <h1>Chủ đề</h1>
+      <p>
+        Chủ đề được tạo tự động từ nội dung các bài viết. Một chủ đề chỉ xuất hiện khi đã có ít nhất
+        một bài thuộc về nó.
+      </p>
+    </div>
+
+    {
+      categories.length > 0 ? (
+        <div class="grid grid-2">
+          {categories.map((c) => (
+            <CategoryCard
+              href={withBase(`/categories/${c.slug}/`)}
+              title={c.name}
+              description={c.description}
+              count={c.articles.length}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="empty">
+          <p>Chưa có chủ đề nào, vì chưa có bài viết nào được xuất bản.</p>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

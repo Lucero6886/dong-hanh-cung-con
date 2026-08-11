@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Tag from '../../components/Tag.astro';
+import { getTagsWithArticles } from '../../utils/articles';
+
+const tags = await getTagsWithArticles();
+---
+
+<BaseLayout
+  title="Thẻ"
+  description="Duyệt bài viết theo thẻ: động lực, phần thưởng, tự giác, trách nhiệm, thói quen, giao tiếp, cảm xúc, kỷ luật, tuổi teen…"
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Trang chủ', href: '/' }, { label: 'Thẻ' }]} />
+
+    <div class="page-head">
+      <h1>Thẻ</h1>
+      <p>
+        Thẻ là cách tìm ngang qua các chủ đề. Số bên cạnh mỗi thẻ là số bài viết đang mang thẻ đó.
+      </p>
+    </div>
+
+    {
+      tags.length > 0 ? (
+        <div class="taglist">
+          {tags.map((t) => (
+            <Tag name={t.name} count={t.articles.length} />
+          ))}
+        </div>
+      ) : (
+        <div class="empty">
+          <p>Chưa có thẻ nào, vì chưa có bài viết nào được xuất bản.</p>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

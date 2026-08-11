@@ -1,0 +1,17 @@
+---
+import { tagUrl } from '../utils/url';
+import { slugify } from '../utils/slugify';
+
+interface Props {
+  name: string;
+  /** Số bài mang thẻ này (tuỳ chọn). */
+  count?: number;
+}
+
+const { name, count } = Astro.props as Props;
+---
+
+<a class="tag" href={tagUrl(slugify(name))}>
+  <span>#{name}</span>
+  {typeof count === 'number' && <span class="n" aria-label={`${count} bài viết`}>{count}</span>}
+</a>

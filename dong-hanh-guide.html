@@ -1,0 +1,1284 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đồng hành cùng hệ thống</title>
+<meta name="description" content="Tài liệu giúp hiểu bản chất hệ thống website Đồng hành cùng con, nắm được các thay đổi, và luôn làm chủ dự án.">
+<style>
+:root{
+  --paper:#fbfaf6; --surface:#fff; --surface-2:#f4f1ea;
+  --ink:#1d2b2a; --ink-2:#3c4c4a; --ink-muted:#5b6b69;
+  --line:#e4dfd3; --line-strong:#cec7b7;
+  --brand:#2e6f60; --brand-ink:#1e5348; --brand-soft:#e8f1ee;
+  --accent:#b0603a; --accent-ink:#8f4b2b; --accent-soft:#fbeee4;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Roboto,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#101618; --surface:#16201f; --surface-2:#1d2827;
+    --ink:#e9efec; --ink-2:#c6d2cf; --ink-muted:#97a8a5;
+    --line:#2a3837; --line-strong:#3b4d4b;
+    --brand:#6cbca7; --brand-ink:#8ed4bf; --brand-soft:#16302b;
+    --accent:#dd9161; --accent-ink:#e8a97f; --accent-soft:#2f2118;
+    color-scheme:dark;
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);
+  font-size:17px;line-height:1.72;overflow-wrap:break-word;
+}
+.masthead{
+  background:linear-gradient(160deg,var(--brand-soft),transparent 70%);
+  border-bottom:1px solid var(--line);padding:44px 0 34px;
+}
+.wrap{width:min(100% - 2.2rem,1180px);margin-inline:auto}
+.badge{
+  display:inline-block;font-size:12px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--brand-ink);background:var(--surface);
+  border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;margin-bottom:14px;
+}
+.masthead h1{font-size:clamp(30px,5vw,46px);line-height:1.12;letter-spacing:-.03em;margin:0 0 10px}
+.masthead p{margin:0;color:var(--ink-2);font-size:clamp(16px,2vw,19px);max-width:60ch}
+.meta{margin-top:16px;font-size:14px;color:var(--ink-muted)}
+.meta code{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:34px;padding:36px 0 80px}
+@media (min-width:1024px){.layout{grid-template-columns:262px minmax(0,1fr);gap:52px}}
+
+nav#TOC{font-size:14px;order:-1}
+@media (min-width:1024px){
+  nav#TOC{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto;
+    border-right:1px solid var(--line);padding-right:20px}
+}
+@media (max-width:1023px){
+  nav#TOC{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+}
+nav#TOC::before{
+  content:"Mục lục";display:block;font-size:12px;font-weight:800;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-muted);margin-bottom:10px;
+}
+nav#TOC ul{list-style:none;margin:0;padding:0}
+nav#TOC ul ul{padding-left:12px}
+nav#TOC li{margin:1px 0}
+nav#TOC a{display:block;padding:5px 0;color:var(--ink-muted);text-decoration:none;line-height:1.4}
+nav#TOC a:hover{color:var(--brand-ink)}
+
+main{min-width:0;max-width:50rem}
+main > h1:first-child{
+  font-size:clamp(26px,4vw,34px);letter-spacing:-.02em;margin:0 0 18px;
+  padding-bottom:14px;border-bottom:1px solid var(--line);
+}
+h2{
+  font-size:clamp(21px,3vw,27px);line-height:1.25;letter-spacing:-.02em;
+  margin:52px 0 14px;padding-top:22px;border-top:1px solid var(--line);scroll-margin-top:20px;
+}
+h3{font-size:19px;line-height:1.3;margin:34px 0 10px;color:var(--brand-ink);scroll-margin-top:20px}
+h4{font-size:16px;margin:22px 0 8px;scroll-margin-top:20px}
+p{margin:0 0 16px}
+a{color:var(--brand-ink);text-underline-offset:.18em}
+a:hover{color:var(--accent-ink)}
+strong{color:var(--ink);font-weight:700}
+ul,ol{padding-left:1.35em;margin:0 0 16px}
+li{margin:.34em 0}
+hr{border:0;border-top:1px solid var(--line);margin:44px 0}
+
+blockquote{
+  margin:26px 0;padding:16px 20px;border-left:4px solid var(--brand);
+  background:var(--brand-soft);border-radius:0 12px 12px 0;color:var(--ink-2);
+}
+blockquote > :first-child{margin-top:0}
+blockquote > :last-child{margin-bottom:0}
+blockquote strong{color:var(--brand-ink)}
+
+code{font-family:var(--mono);font-size:.88em}
+:not(pre) > code{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:5px;
+  padding:.1em .38em;color:var(--accent-ink);
+}
+pre{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.62;margin:0 0 18px;
+}
+pre code{color:var(--ink-2);background:none;border:0;padding:0;font-size:inherit}
+
+table{
+  width:100%;border-collapse:collapse;font-size:15px;margin:0 0 20px;
+  display:block;overflow-x:auto;
+}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--surface-2);font-weight:700;white-space:nowrap}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--surface-2) 45%,transparent)}
+
+/* Ô đánh dấu trong danh sách kiểm tra */
+input[type=checkbox]{margin-right:.5em;accent-color:var(--brand)}
+ul:has(> li > input[type=checkbox]){list-style:none;padding-left:.2em}
+
+/* Bản .md có sẵn một mục lục viết tay (để đọc tốt trên GitHub và trong trình
+   soạn thảo). Bản HTML đã có mục lục ở cột bên, nên ẩn bản viết tay đi. */
+main > h2#mục-lục,
+main > h2#mục-lục + ul,
+main > h2#mục-lục + ul + hr{display:none}
+nav#TOC li:has(> a[href="#mục-lục"]){display:none}
+
+small{font-size:13.5px;color:var(--ink-muted)}
+footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;font-size:13.5px;color:var(--ink-muted)}
+
+@media print{
+  nav#TOC{display:none}
+  .layout{display:block;padding-top:0}
+  .masthead{background:none;padding:0 0 18px}
+  body{font-size:10.5pt;background:#fff;color:#000}
+  h2{break-after:avoid}
+  pre,table,blockquote{break-inside:avoid}
+  a{color:#000}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <span class="badge">Tài liệu đồng hành · v1.0.0</span>
+    <h1>Đồng hành cùng hệ thống</h1>
+    <p>Tài liệu giúp bạn hiểu bản chất, nắm được thay đổi, và luôn làm
+chủ dự án này</p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-11 · Bản gốc: <code>dong-hanh-guide.md</code></p>
+  </div>
+</header>
+
+<div class="wrap layout">
+<nav id="TOC" role="doc-toc" aria-label="Mục lục tài liệu">
+<ul>
+<li><a href="#đồng-hành-cùng-hệ-thống"
+id="toc-đồng-hành-cùng-hệ-thống">Đồng hành cùng hệ thống</a>
+<ul>
+<li><a href="#mục-lục" id="toc-mục-lục">Mục lục</a></li>
+<li><a href="#phần-1-bản-chất-hệ-thống-trong-một-câu"
+id="toc-phần-1-bản-chất-hệ-thống-trong-một-câu">Phần 1 — Bản chất hệ
+thống trong một câu</a></li>
+<li><a href="#phần-2-chuyện-gì-xảy-ra-khi-bạn-bấm-push"
+id="toc-phần-2-chuyện-gì-xảy-ra-khi-bạn-bấm-push">Phần 2 — Chuyện gì xảy
+ra khi bạn bấm “push”</a></li>
+<li><a href="#phần-3-bốn-tầng-của-hệ-thống"
+id="toc-phần-3-bốn-tầng-của-hệ-thống">Phần 3 — Bốn tầng của hệ
+thống</a></li>
+<li><a href="#phần-4-bản-đồ-muốn-đổi-x-thì-sửa-ở-đâu"
+id="toc-phần-4-bản-đồ-muốn-đổi-x-thì-sửa-ở-đâu">Phần 4 — Bản đồ: muốn
+đổi X thì sửa ở đâu</a></li>
+<li><a href="#phần-5-danh-sách-những-gì-tự-động"
+id="toc-phần-5-danh-sách-những-gì-tự-động">Phần 5 — Danh sách những gì
+TỰ ĐỘNG</a></li>
+<li><a href="#phần-6-vì-sao-lại-làm-như-vậy-các-quyết-định-kiến-trúc"
+id="toc-phần-6-vì-sao-lại-làm-như-vậy-các-quyết-định-kiến-trúc">Phần 6 —
+Vì sao lại làm như vậy: các quyết định kiến trúc</a></li>
+<li><a href="#phần-7-vòng-đời-một-bài-viết"
+id="toc-phần-7-vòng-đời-một-bài-viết">Phần 7 — Vòng đời một bài
+viết</a></li>
+<li><a href="#phần-8-ba-điều-dễ-làm-hỏng-hệ-thống"
+id="toc-phần-8-ba-điều-dễ-làm-hỏng-hệ-thống">Phần 8 — Ba điều dễ làm
+hỏng hệ thống</a></li>
+<li><a href="#phần-9-tự-chẩn-đoán-khi-có-sự-cố"
+id="toc-phần-9-tự-chẩn-đoán-khi-có-sự-cố">Phần 9 — Tự chẩn đoán khi có
+sự cố</a></li>
+<li><a href="#phần-10-kiểm-tra-sức-khoẻ-định-kỳ"
+id="toc-phần-10-kiểm-tra-sức-khoẻ-định-kỳ">Phần 10 — Kiểm tra sức khoẻ
+định kỳ</a></li>
+<li><a href="#phần-11-nhật-ký-thay-đổi"
+id="toc-phần-11-nhật-ký-thay-đổi">Phần 11 — Nhật ký thay đổi</a></li>
+<li><a href="#phần-12-những-hướng-mở-rộng-đã-được-tính-sẵn"
+id="toc-phần-12-những-hướng-mở-rộng-đã-được-tính-sẵn">Phần 12 — Những
+hướng mở rộng đã được tính sẵn</a></li>
+<li><a href="#lời-cuối" id="toc-lời-cuối">Lời cuối</a></li>
+</ul></li>
+</ul>
+</nav>
+  <main>
+<h1 id="đồng-hành-cùng-hệ-thống">Đồng hành cùng hệ thống</h1>
+<blockquote>
+<p><strong>Tài liệu này khác với README.</strong> README trả lời câu hỏi
+<em>“làm thế nào”</em>. Tài liệu này trả lời câu hỏi <em>“vì sao”</em>
+và <em>“cái gì đang thực sự diễn ra”</em>.</p>
+<p>Đọc hết mất khoảng 15–20 phút. Sau đó bạn sẽ hiểu hệ thống đủ để tự
+sửa, tự mở rộng, và tự chẩn đoán khi có gì đó không như ý — mà không cần
+hỏi ai.</p>
+</blockquote>
+<hr />
+<h2 id="mục-lục">Mục lục</h2>
+<ul>
+<li><a href="#phần-1--bản-chất-hệ-thống-trong-một-câu">Phần 1 — Bản chất
+hệ thống trong một câu</a></li>
+<li><a href="#phần-2--chuyện-gì-xảy-ra-khi-bạn-bấm-push">Phần 2 — Chuyện
+gì xảy ra khi bạn bấm “push”</a></li>
+<li><a href="#phần-3--bốn-tầng-của-hệ-thống">Phần 3 — Bốn tầng của hệ
+thống</a></li>
+<li><a href="#phần-4--bản-đồ-muốn-đổi-x-thì-sửa-ở-đâu">Phần 4 — Bản đồ:
+muốn đổi X thì sửa ở đâu</a></li>
+<li><a href="#phần-5--danh-sách-những-gì-tự-động">Phần 5 — Danh sách
+những gì TỰ ĐỘNG</a></li>
+<li><a
+href="#phần-6--vì-sao-lại-làm-như-vậy-các-quyết-định-kiến-trúc">Phần 6 —
+Vì sao lại làm như vậy: các quyết định kiến trúc</a></li>
+<li><a href="#phần-7--vòng-đời-một-bài-viết">Phần 7 — Vòng đời một bài
+viết</a></li>
+<li><a href="#phần-8--ba-điều-dễ-làm-hỏng-hệ-thống">Phần 8 — Ba điều dễ
+làm hỏng hệ thống</a></li>
+<li><a href="#phần-9--tự-chẩn-đoán-khi-có-sự-cố">Phần 9 — Tự chẩn đoán
+khi có sự cố</a></li>
+<li><a href="#phần-10--kiểm-tra-sức-khoẻ-định-kỳ">Phần 10 — Kiểm tra sức
+khoẻ định kỳ</a></li>
+<li><a href="#phần-11--nhật-ký-thay-đổi">Phần 11 — Nhật ký thay
+đổi</a></li>
+<li><a href="#phần-12--những-hướng-mở-rộng-đã-được-tính-sẵn">Phần 12 —
+Những hướng mở rộng đã được tính sẵn</a></li>
+</ul>
+<hr />
+<h2 id="phần-1-bản-chất-hệ-thống-trong-một-câu">Phần 1 — Bản chất hệ
+thống trong một câu</h2>
+<blockquote>
+<p><strong>Website này là một cái máy biến thư mục văn bản thành
+website, chạy lại mỗi lần bạn đẩy code lên GitHub.</strong></p>
+</blockquote>
+<p>Đọc lại câu trên một lần nữa, vì mọi thứ còn lại chỉ là chi tiết của
+nó.</p>
+<p>Cụ thể hơn:</p>
+<ul>
+<li><strong>Đầu vào</strong>: một thư mục chứa các file <code>.md</code>
+/ <code>.mdx</code> (<code>src/content/articles/</code>)</li>
+<li><strong>Cái máy</strong>: Astro — chạy trên máy GitHub, không chạy
+trên máy người đọc</li>
+<li><strong>Đầu ra</strong>: một đống file HTML tĩnh, nằm im trên máy
+chủ của GitHub</li>
+<li><strong>Người đọc</strong>: tải file HTML về, đọc. Không có gì
+“chạy” phía sau cả.</li>
+</ul>
+<h3 id="vì-sao-điều-này-quan-trọng">Vì sao điều này quan trọng</h3>
+<p>Vì nó quyết định <strong>những gì hệ thống làm được và những gì
+không</strong>:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Làm được</th>
+<th>Không làm được (theo thiết kế)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Rất nhanh, không sập, không tốn tiền</td>
+<td>Bình luận của người đọc</td>
+</tr>
+<tr class="even">
+<td>Không cần bảo trì máy chủ</td>
+<td>Đăng nhập / tài khoản</td>
+</tr>
+<tr class="odd">
+<td>Nội dung sống lâu hơn giao diện</td>
+<td>Nội dung thay đổi theo từng người đọc</td>
+</tr>
+<tr class="even">
+<td>Sao lưu = copy thư mục</td>
+<td>Sửa bài trực tiếp trên web</td>
+</tr>
+</tbody>
+</table>
+<p>Những thứ ở cột phải <strong>không phải là thiếu sót</strong>. Chúng
+là cái giá phải trả — và đã được trả một cách có chủ ý — để đổi lấy cột
+trái.</p>
+<hr />
+<h2 id="phần-2-chuyện-gì-xảy-ra-khi-bạn-bấm-push">Phần 2 — Chuyện gì xảy
+ra khi bạn bấm “push”</h2>
+<p>Đây là chuỗi sự kiện đầy đủ. Hiểu được nó thì mọi lỗi đều tự chẩn
+đoán được.</p>
+<pre><code>   MÁY CỦA BẠN
+   ┌────────────────────────────────────────────┐
+   │ 1. Bạn thêm file bai-viet-moi.md           │
+   │ 2. git add . &amp;&amp; git commit &amp;&amp; git push     │
+   └───────────────────┬────────────────────────┘
+                       │ (mã nguồn được gửi lên)
+                       ▼
+   GITHUB
+   ┌────────────────────────────────────────────┐
+   │ 3. Nhận push vào nhánh main                │
+   │ 4. Kích hoạt .github/workflows/deploy.yml  │
+   └───────────────────┬────────────────────────┘
+                       ▼
+   MÁY ẢO CỦA GITHUB (mượn 2 phút, xong là trả)
+   ┌────────────────────────────────────────────┐
+   │ 5. Tải mã nguồn về                         │
+   │ 6. Cài Node.js 22                          │
+   │ 7. npm ci        ← cài thư viện            │
+   │ 8. npm run build ← ⭐ CÁI MÁY CHẠY Ở ĐÂY   │
+   │                                            │
+   │    Bên trong bước 8:                       │
+   │    · Quét src/content/articles/            │
+   │    · Kiểm tra frontmatter từng file        │
+   │      → sai là DỪNG, báo lỗi, không đăng    │
+   │    · Tính thời gian đọc từng bài           │
+   │    · Gom chủ đề, gom thẻ, gom hành trình   │
+   │    · Tính bài liên quan cho từng bài       │
+   │    · Sinh HTML cho mọi trang               │
+   │    · Sinh rss.xml, sitemap, robots.txt     │
+   │    · Sinh search-index.json                │
+   │    · Nén CSS, băm tên file để cache tốt    │
+   │                                            │
+   │ 9. Gói thư mục dist/ lại                   │
+   └───────────────────┬────────────────────────┘
+                       ▼
+   GITHUB PAGES
+   ┌────────────────────────────────────────────┐
+   │ 10. Nhận gói, trải ra máy chủ toàn cầu     │
+   │ 11. Website mới hoạt động (~1–2 phút)      │
+   └────────────────────────────────────────────┘</code></pre>
+<h3 id="ba-điều-rút-ra-từ-sơ-đồ-này">Ba điều rút ra từ sơ đồ này</h3>
+<p><strong>1. Bước 8 chạy y hệt trên máy bạn và trên GitHub.</strong>
+Nên <code>npm run build</code> chạy được ở nhà thì trên GitHub cũng chạy
+được. Nếu Actions đỏ mà máy bạn xanh, gần như chắc chắn là bạn
+<strong>quên đẩy một file lên</strong> (hay gặp nhất:
+<code>package-lock.json</code>).</p>
+<p><strong>2. Frontmatter sai thì website KHÔNG bị đăng đè.</strong>
+Bước 8 dừng lại, bước 10 không xảy ra, bản cũ vẫn nguyên. Đây là một
+tính năng, không phải lỗi — bạn không bao giờ vô tình đăng một website
+hỏng.</p>
+<p><strong>3. Không có gì “chạy” sau khi website đã lên.</strong> Người
+đọc chỉ tải file tĩnh. Nên website không thể sập vì quá tải, và không có
+gì để bị tấn công.</p>
+<hr />
+<h2 id="phần-3-bốn-tầng-của-hệ-thống">Phần 3 — Bốn tầng của hệ
+thống</h2>
+<p>Toàn bộ dự án chia làm bốn tầng. Xếp theo mức độ bạn sẽ đụng tới, từ
+nhiều nhất đến ít nhất.</p>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│  TẦNG 1 — NỘI DUNG          Đụng tới: hằng tuần         │
+│  src/content/articles/*.md                              │
+│  public/images/articles/                                │
+│  → Đây là tài sản thật của dự án                        │
+├─────────────────────────────────────────────────────────┤
+│  TẦNG 2 — CẤU HÌNH          Đụng tới: vài tháng một lần │
+│  src/config/site.ts        tên site, tên miền, menu     │
+│  src/config/taxonomy.ts    mô tả chủ đề, hành trình     │
+│  → Sửa dữ liệu, không sửa logic                         │
+├─────────────────────────────────────────────────────────┤
+│  TẦNG 3 — GIAO DIỆN         Đụng tới: khi muốn đổi form │
+│  src/styles/    src/components/    src/layouts/         │
+│  src/pages/                                             │
+│  → Đổi cả tầng này, Tầng 1 vẫn nguyên vẹn               │
+├─────────────────────────────────────────────────────────┤
+│  TẦNG 4 — HẠ TẦNG           Đụng tới: gần như không bao │
+│  astro.config.mjs    package.json                       │
+│  .github/workflows/deploy.yml    src/utils/             │
+│  → Dựng một lần, chạy mãi                               │
+└─────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="quy-tắc-vàng">Quy tắc vàng</h3>
+<blockquote>
+<p><strong>Tầng trên không được biết gì về tầng dưới.</strong></p>
+</blockquote>
+<p>Một file bài viết không hề biết website trông như thế nào. Nó chỉ
+khai báo mình có tiêu đề gì, thuộc chủ đề nào. Nhờ vậy:</p>
+<ul>
+<li>Bạn <strong>đổi toàn bộ giao diện</strong> (Tầng 3) mà không phải
+sửa một chữ nào trong bài viết.</li>
+<li>Bạn <strong>đổi tên miền</strong> (Tầng 2) mà không phải sửa một
+dòng nào ở Tầng 3.</li>
+<li>Sau này muốn bỏ Astro dùng công cụ khác, các file <code>.md</code>
+vẫn dùng lại được nguyên vẹn.</li>
+</ul>
+<p>Đây chính là điều được nhắc tới khi nói <em>“nội dung tách rời khỏi
+hình thức”</em>.</p>
+<hr />
+<h2 id="phần-4-bản-đồ-muốn-đổi-x-thì-sửa-ở-đâu">Phần 4 — Bản đồ: muốn
+đổi X thì sửa ở đâu</h2>
+<p>Tra bảng này thay vì đi tìm trong code.</p>
+<h3 id="nội-dung">Nội dung</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Muốn làm</th>
+<th>Sửa ở</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thêm bài viết</td>
+<td>Tạo file mới trong <code>src/content/articles/</code></td>
+</tr>
+<tr class="even">
+<td>Sửa bài đã đăng</td>
+<td>Sửa file <code>.md</code> tương ứng, thêm <code>updated:</code></td>
+</tr>
+<tr class="odd">
+<td>Gỡ bài xuống</td>
+<td>Đặt <code>draft: true</code> (đừng xoá file — mất lịch sử)</td>
+</tr>
+<tr class="even">
+<td>Đổi bài nổi bật trang chủ</td>
+<td><code>featured: true</code> / <code>false</code> trong
+frontmatter</td>
+</tr>
+<tr class="odd">
+<td>Thêm ảnh</td>
+<td>Bỏ vào <code>public/images/articles/</code>, khai
+<code>coverImage</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="danh-tính-website">Danh tính website</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Muốn làm</th>
+<th>Sửa ở</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Đổi tên website, khẩu hiệu</td>
+<td><code>src/config/site.ts</code> → <code>SITE</code></td>
+</tr>
+<tr class="even">
+<td>Đổi tác giả mặc định</td>
+<td><code>src/config/site.ts</code> → <code>SITE.author</code></td>
+</tr>
+<tr class="odd">
+<td>Đổi tên miền / thư mục con</td>
+<td><code>src/config/site.ts</code> → <code>DEPLOY</code></td>
+</tr>
+<tr class="even">
+<td>Đổi dòng bản quyền</td>
+<td><code>src/config/site.ts</code> → <code>COPYRIGHT</code></td>
+</tr>
+<tr class="odd">
+<td>Thêm/bớt mục menu</td>
+<td><code>src/config/site.ts</code> → <code>NAV</code></td>
+</tr>
+<tr class="even">
+<td>Thêm link mạng xã hội</td>
+<td><code>src/config/site.ts</code> → <code>SOCIAL_LINKS</code></td>
+</tr>
+<tr class="odd">
+<td>Đổi số bài trên trang chủ</td>
+<td><code>src/config/site.ts</code> → <code>featuredLimit</code>,
+<code>latestLimit</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="phân-loại-nội-dung">Phân loại nội dung</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Muốn làm</th>
+<th>Sửa ở</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thêm chủ đề mới</td>
+<td><strong>Không cần sửa gì</strong> — cứ viết <code>category:</code>
+mới trong bài</td>
+</tr>
+<tr class="even">
+<td>Thêm mô tả cho chủ đề</td>
+<td><code>src/config/taxonomy.ts</code> → <code>CATEGORIES</code></td>
+</tr>
+<tr class="odd">
+<td>Đổi đường dẫn một chủ đề</td>
+<td><code>src/config/taxonomy.ts</code> → thêm <code>slug:</code> cho
+chủ đề đó</td>
+</tr>
+<tr class="even">
+<td>Thêm thẻ mới</td>
+<td><strong>Không cần sửa gì</strong> — cứ viết trong
+<code>tags:</code></td>
+</tr>
+<tr class="odd">
+<td>Thêm “hành trình” mới</td>
+<td><code>src/config/taxonomy.ts</code> → <code>JOURNEYS</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="giao-diện">Giao diện</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Muốn làm</th>
+<th>Sửa ở</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Đổi màu chủ đạo</td>
+<td><code>src/styles/global.css</code> → khối <code>:root</code> (và
+khối <code>[data-theme='dark']</code>)</td>
+</tr>
+<tr class="even">
+<td>Đổi cỡ chữ</td>
+<td><code>src/styles/global.css</code> → các biến
+<code>--step-*</code></td>
+</tr>
+<tr class="odd">
+<td>Đổi độ rộng cột chữ khi đọc</td>
+<td><code>src/styles/global.css</code> → <code>--measure</code></td>
+</tr>
+<tr class="even">
+<td>Sửa cách hiển thị bài viết</td>
+<td><code>src/layouts/ArticleLayout.astro</code></td>
+</tr>
+<tr class="odd">
+<td>Sửa thẻ bài viết</td>
+<td><code>src/components/ArticleCard.astro</code></td>
+</tr>
+<tr class="even">
+<td>Sửa trang chủ</td>
+<td><code>src/pages/index.astro</code></td>
+</tr>
+<tr class="odd">
+<td>Thêm kiểu hộp Callout mới</td>
+<td><code>src/components/Callout.astro</code> +
+<code>src/styles/article.css</code></td>
+</tr>
+<tr class="even">
+<td>Thêm một trang mới (vd <code>/lien-he/</code>)</td>
+<td>Tạo <code>src/pages/lien-he.astro</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="kỹ-thuật">Kỹ thuật</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Muốn làm</th>
+<th>Sửa ở</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thêm trường frontmatter mới</td>
+<td><code>src/content.config.ts</code> → <code>schema</code></td>
+</tr>
+<tr class="even">
+<td>Đổi cách tính thời gian đọc</td>
+<td><code>src/config/site.ts</code> →
+<code>SITE.wordsPerMinute</code></td>
+</tr>
+<tr class="odd">
+<td>Đổi cách chọn bài liên quan</td>
+<td><code>src/utils/articles.ts</code> →
+<code>getRelatedArticles</code></td>
+</tr>
+<tr class="even">
+<td>Sửa quy trình đăng</td>
+<td><code>.github/workflows/deploy.yml</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phần-5-danh-sách-những-gì-tự-động">Phần 5 — Danh sách những gì
+TỰ ĐỘNG</h2>
+<p>Đây là lời hứa cốt lõi của hệ thống. Khi bạn thêm
+<strong>một</strong> file Markdown, tất cả những thứ dưới đây cập nhật
+mà bạn <strong>không phải làm gì</strong>:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Tự động cập nhật</th>
+<th>Ở đâu</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Trang riêng của bài viết</td>
+<td><code>/articles/ten-bai/</code></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Danh sách tất cả bài viết</td>
+<td><code>/articles/</code></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Khối “Bài viết mới nhất” trang chủ</td>
+<td><code>/</code></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Khối “Bài viết nổi bật” (nếu <code>featured: true</code>)</td>
+<td><code>/</code></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Trang chủ đề tương ứng</td>
+<td><code>/categories/xxx/</code></td>
+</tr>
+<tr class="even">
+<td>6</td>
+<td><strong>Tạo mới</strong> trang chủ đề nếu chủ đề chưa từng có</td>
+<td><code>/categories/moi/</code></td>
+</tr>
+<tr class="odd">
+<td>7</td>
+<td>Danh sách chủ đề + số bài mỗi chủ đề</td>
+<td><code>/categories/</code></td>
+</tr>
+<tr class="even">
+<td>8</td>
+<td>Trang từng thẻ</td>
+<td><code>/tags/xxx/</code></td>
+</tr>
+<tr class="odd">
+<td>9</td>
+<td><strong>Tạo mới</strong> trang thẻ nếu thẻ chưa từng có</td>
+<td><code>/tags/moi/</code></td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>Danh sách thẻ + số bài mỗi thẻ</td>
+<td><code>/tags/</code></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>Các trang hành trình khớp tag/chủ đề</td>
+<td><code>/journeys/xxx/</code></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>Mục “Bài viết liên quan” ở <strong>các bài khác</strong></td>
+<td>mọi bài</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>Điều hướng bài trước / bài sau</td>
+<td>mọi bài</td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>Nguồn cấp RSS</td>
+<td><code>/rss.xml</code></td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>Sitemap cho Google</td>
+<td><code>/sitemap-index.xml</code></td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>Chỉ mục tìm kiếm</td>
+<td><code>/search-index.json</code></td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>Thời gian đọc ước lượng</td>
+<td>tính từ số từ</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>Mục lục trong bài</td>
+<td>tính từ các <code>##</code></td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>Thẻ Open Graph để chia sẻ Facebook/Zalo</td>
+<td><code>&lt;head&gt;</code> của bài</td>
+</tr>
+<tr class="even">
+<td>20</td>
+<td>Dữ liệu có cấu trúc Schema.org</td>
+<td><code>&lt;head&gt;</code> của bài</td>
+</tr>
+<tr class="odd">
+<td>21</td>
+<td>Danh sách chủ đề ở chân trang</td>
+<td>mọi trang</td>
+</tr>
+<tr class="even">
+<td>22</td>
+<td><code>robots.txt</code> trỏ đúng sitemap</td>
+<td><code>/robots.txt</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nếu có ngày nào bạn thấy mình phải sửa tay một trong 22 mục
+trên khi đăng bài — hệ thống đã bị hỏng ở đâu đó.</strong> Hãy quay lại
+đọc Phần 8.</p>
+</blockquote>
+<hr />
+<h2 id="phần-6-vì-sao-lại-làm-như-vậy-các-quyết-định-kiến-trúc">Phần 6 —
+Vì sao lại làm như vậy: các quyết định kiến trúc</h2>
+<p>Phần này giải thích các lựa chọn quan trọng, để sau này bạn (hoặc
+người khác) không vô tình phá bỏ chúng vì tưởng là tuỳ tiện.</p>
+<h3 id="vì-sao-là-website-tĩnh-không-có-cơ-sở-dữ-liệu">6.1 — Vì sao là
+website tĩnh, không có cơ sở dữ liệu</h3>
+<p><strong>Lựa chọn:</strong> sinh HTML sẵn khi build, không có máy chủ
+động, không có CSDL.</p>
+<p><strong>Vì sao:</strong> dự án này nhắm tới việc tồn tại
+<strong>nhiều năm</strong>, do <strong>một người</strong> duy trì. Cơ sở
+dữ liệu cần sao lưu, cần nâng cấp, cần bảo mật, cần trả tiền. Một thư
+mục file <code>.md</code> trong Git thì không cần gì cả — và có thể mở
+bằng Notepad sau 10 năm.</p>
+<p><strong>Đánh đổi:</strong> không có bình luận, không có tài khoản.
+Chấp nhận được với một thư viện bài đọc.</p>
+<h3
+id="vì-sao-chủ-đề-do-nội-dung-quyết-định-không-do-danh-sách-cứng">6.2 —
+Vì sao chủ đề do nội dung quyết định, không do danh sách cứng</h3>
+<p><strong>Lựa chọn:</strong> chủ đề được gom lại <strong>từ frontmatter
+các bài viết</strong>. File <code>taxonomy.ts</code> chỉ bổ sung mô
+tả.</p>
+<p><strong>Vì sao:</strong> nếu danh sách chủ đề nằm cứng trong code,
+thì mỗi lần muốn thêm chủ đề bạn phải sửa code — và đó chính là lúc
+người ta bỏ cuộc. Với cách hiện tại, viết
+<code>category: "Chủ đề chưa từng có"</code> là trang chủ đề mới tự xuất
+hiện.</p>
+<p><strong>Cách kiểm chứng:</strong> mở
+<code>src/utils/articles.ts</code>, hàm
+<code>getCategoriesWithArticles()</code> — nó duyệt bài viết rồi mới
+dựng danh sách, chứ không đọc từ một mảng cố định.</p>
+<p><strong>Cái giá:</strong> viết sai chính tả tên chủ đề sẽ tạo ra một
+chủ đề mới thay vì báo lỗi. Hãy copy-paste tên chủ đề giữa các bài.</p>
+<h3 id="vì-sao-chỉ-có-một-nơi-khai-báo-tên-miền">6.3 — Vì sao chỉ có MỘT
+nơi khai báo tên miền</h3>
+<p><strong>Lựa chọn:</strong> <code>src/config/site.ts</code> là nguồn
+duy nhất. <code>astro.config.mjs</code> <strong>import</strong> từ
+đó.</p>
+<p><strong>Vì sao:</strong> lỗi phổ biến nhất khi deploy Astro lên
+GitHub Pages là <code>base</code> bị khai hai nơi và lệch nhau, khiến
+website mất sạch CSS. Bằng cách để <code>astro.config.mjs</code> đọc từ
+<code>site.ts</code>, tình huống đó <strong>không thể xảy
+ra</strong>.</p>
+<p><strong>Hệ quả:</strong> đổi tên miền = sửa đúng 2 dòng, ở đúng 1
+file.</p>
+<h3 id="vì-sao-mọi-liên-kết-đều-đi-qua-hàm-withbase">6.4 — Vì sao mọi
+liên kết đều đi qua hàm <code>withBase()</code></h3>
+<p><strong>Lựa chọn:</strong> không viết <code>href="/articles/"</code>
+trực tiếp ở bất kỳ đâu. Luôn viết
+<code>href={withBase('/articles/')}</code>.</p>
+<p><strong>Vì sao:</strong> khi website nằm trong thư mục con
+(<code>/dong-hanh-cung-con/</code>), đường dẫn <code>/articles/</code>
+trỏ ra ngoài gốc tên miền và bị 404. Hàm <code>withBase()</code> trong
+<code>src/utils/url.ts</code> tự gắn tiền tố.</p>
+<blockquote>
+<p>⚠️ <strong>Đây là quy tắc dễ vi phạm nhất khi thêm trang
+mới.</strong> Nếu bạn thêm một liên kết mà quên <code>withBase()</code>,
+trên máy bạn (<code>npm run dev</code>) nó vẫn chạy, nhưng lên GitHub
+Pages sẽ hỏng. Hãy kiểm tra bằng <code>npm run preview</code> chứ không
+chỉ <code>npm run dev</code>.</p>
+</blockquote>
+<h3 id="vì-sao-javascript-chỉ-là-gia-vị-không-phải-nguyên-liệu">6.5 — Vì
+sao JavaScript chỉ là “gia vị”, không phải “nguyên liệu”</h3>
+<p><strong>Lựa chọn:</strong> tắt JavaScript thì website vẫn đọc được
+gần như đầy đủ.</p>
+<p>Cụ thể:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Tính năng</th>
+<th>Không có JavaScript thì sao</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Đọc bài viết</td>
+<td>Bình thường</td>
+</tr>
+<tr class="even">
+<td>Menu di động</td>
+<td>Vẫn mở được (dùng thẻ <code>&lt;details&gt;</code> của HTML)</td>
+</tr>
+<tr class="odd">
+<td>Mục lục</td>
+<td>Bình thường</td>
+</tr>
+<tr class="even">
+<td>Thanh tiến độ đọc</td>
+<td>Đứng yên (làm bằng CSS thuần)</td>
+</tr>
+<tr class="odd">
+<td>Chế độ tối</td>
+<td>Vẫn theo cài đặt hệ điều hành, chỉ mất nút bấm tay</td>
+</tr>
+<tr class="even">
+<td>Trang tìm kiếm</td>
+<td>Hiện toàn bộ danh sách bài để tự duyệt</td>
+</tr>
+<tr class="odd">
+<td>Nút chia sẻ</td>
+<td>Facebook/X/LinkedIn vẫn chạy; mất nút “sao chép”</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Vì sao:</strong> người đọc chủ yếu dùng điện thoại, mạng có
+lúc chập chờn. Nội dung không nên phụ thuộc vào việc một file
+<code>.js</code> tải xong.</p>
+<h3 id="vì-sao-thanh-tiến-độ-đọc-làm-bằng-css">6.6 — Vì sao thanh tiến
+độ đọc làm bằng CSS</h3>
+<p><strong>Lựa chọn:</strong> dùng
+<code>animation-timeline: scroll()</code> thay vì bắt sự kiện cuộn bằng
+JavaScript.</p>
+<p><strong>Vì sao:</strong> bắt sự kiện cuộn bằng JavaScript làm giật
+trang trên điện thoại yếu. CSS chạy trên luồng đồ hoạ, không giật. Trình
+duyệt chưa hỗ trợ thì thanh đứng yên — không ai mất gì.</p>
+<h3 id="vì-sao-tìm-kiếm-không-dùng-dịch-vụ-ngoài">6.7 — Vì sao tìm kiếm
+không dùng dịch vụ ngoài</h3>
+<p><strong>Lựa chọn:</strong> sinh sẵn <code>search-index.json</code>
+khi build, trình duyệt tải một lần rồi lọc tại chỗ.</p>
+<p><strong>Vì sao:</strong> các dịch vụ tìm kiếm bên ngoài cần đăng ký,
+cần khoá API, có giới hạn miễn phí, và có thể ngừng hoạt động. Với quy
+mô vài trăm bài viết, tệp JSON chỉ vài trăm KB — lọc trong trình duyệt
+là quá đủ và nhanh hơn.</p>
+<p><strong>Điểm cộng:</strong> từ khoá bạn gõ không được gửi đi đâu
+cả.</p>
+<p><strong>Khi nào cần đổi:</strong> nếu thư viện vượt khoảng
+<strong>500 bài</strong>, tệp chỉ mục sẽ nặng. Lúc đó hãy giảm độ dài
+đoạn trích trong <code>buildSearchIndex()</code>
+(<code>src/utils/articles.ts</code>) từ 1500 xuống 400 ký tự trước khi
+nghĩ tới dịch vụ ngoài.</p>
+<h3 id="vì-sao-gõ-không-dấu-vẫn-tìm-ra">6.8 — Vì sao gõ không dấu vẫn
+tìm ra</h3>
+<p>Cả phía build và phía trình duyệt đều chuẩn hoá chữ bằng cách tách
+dấu (<code>normalize('NFD')</code>) rồi xoá dấu, và xử lý riêng chữ
+<code>đ</code>. Nhờ vậy <code>dong luc</code> khớp với
+<code>động lực</code>. Cùng một thuật toán được dùng để sinh đường dẫn —
+nên <code>/tags/dong-luc/</code> luôn khớp với thẻ
+<code>động lực</code>.</p>
+<h3 id="vì-sao-frontmatter-được-kiểm-tra-nghiêm-ngặt">6.9 — Vì sao
+frontmatter được kiểm tra nghiêm ngặt</h3>
+<p><strong>Lựa chọn:</strong> <code>src/content.config.ts</code> mô tả
+chính xác các trường hợp lệ. Sai là build dừng.</p>
+<p><strong>Vì sao:</strong> một bài viết thiếu <code>description</code>
+sẽ hiển thị xấu trên Google và khi chia sẻ — nhưng bạn sẽ không nhận ra
+cho tới khi ai đó nói. Dừng ngay lúc build là cách rẻ nhất để phát
+hiện.</p>
+<h3 id="vì-sao-chỉ-có-3-thư-viện-phụ-thuộc">6.10 — Vì sao chỉ có 3 thư
+viện phụ thuộc</h3>
+<p>Chỉ dùng <code>@astrojs/mdx</code>, <code>@astrojs/rss</code>,
+<code>@astrojs/sitemap</code>. Không React, không Tailwind, không thư
+viện icon, không thư viện animation.</p>
+<p><strong>Vì sao:</strong> mỗi thư viện thêm vào là một thứ có thể hỏng
+khi nâng cấp, và một thứ phải học lại sau hai năm không đụng tới. Với
+một website đọc chữ là chính, CSS thuần là đủ.</p>
+<hr />
+<h2 id="phần-7-vòng-đời-một-bài-viết">Phần 7 — Vòng đời một bài
+viết</h2>
+<p>Từ lúc là ghi chép vụn cho tới lúc có người đọc trên điện thoại.</p>
+<pre><code>① GHI CHÉP THÔ
+   File Word, tin nhắn, ghi vội, một cuộc trao đổi
+                │
+                ▼
+② BIÊN TẬP (có thể nhờ trợ lý AI)
+   Xem docs/AI_CONTENT_WORKFLOW.md
+   ⚠️ Giữ nguyên luận điểm gốc. Đánh dấu phần mở rộng.
+                │
+                ▼
+③ KIỂM CHỨNG NGUỒN
+   Mọi con số, nghiên cứu, trích dẫn → tự mở link kiểm tra
+   ⚠️ Không kiểm chứng được → bỏ ý đó hoặc ghi rõ là chưa chắc
+                │
+                ▼
+④ TẠO FILE
+   src/content/articles/ten-khong-dau.md
+   Frontmatter: title, description, date, category  (+ draft: true)
+                │
+                ▼
+⑤ XEM THỬ
+   npm run dev      → bài nháp vẫn hiện
+   npm run build &amp;&amp; npm run preview  → giống hệt bản thật
+                │
+                ▼
+⑥ XUẤT BẢN
+   draft: false
+   git add . &amp;&amp; git commit -m &quot;Bài mới: ...&quot; &amp;&amp; git push
+                │
+                ▼
+⑦ TỰ ĐỘNG (1–2 phút)
+   GitHub build → đăng → 22 mục ở Phần 5 tự cập nhật
+                │
+                ▼
+⑧ NGƯỜI ĐỌC
+   Tìm thấy qua: trang chủ · chủ đề · thẻ · hành trình ·
+   tìm kiếm · Google · RSS · link chia sẻ trên Facebook/Zalo</code></pre>
+<p><strong>Chú ý bước ③.</strong> Đây là bước duy nhất không tự động hoá
+được, và cũng là bước quyết định uy tín lâu dài của thư viện.</p>
+<hr />
+<h2 id="phần-8-ba-điều-dễ-làm-hỏng-hệ-thống">Phần 8 — Ba điều dễ làm
+hỏng hệ thống</h2>
+<p>Hệ thống này khá bền, nhưng có ba cách phá vỡ nó. Cả ba đều xảy ra
+khi ai đó “làm cho nhanh”.</p>
+<h3 id="viết-thẳng-một-trang-html-cho-một-bài-viết">8.1 — Viết thẳng một
+trang HTML cho một bài viết</h3>
+<p><strong>Đừng làm:</strong> tạo
+<code>src/pages/bai-viet-dac-biet.astro</code> chứa nội dung bài
+viết.</p>
+<p><strong>Vì sao hỏng:</strong> bài đó sẽ không có trong RSS, không có
+trong sitemap, không có trong tìm kiếm, không hiện ở trang chủ đề, không
+được tính là bài liên quan. Bạn sẽ có một bài viết “vô hình” — và sáu
+tháng sau không hiểu vì sao nó không xuất hiện ở đâu cả.</p>
+<p><strong>Làm thay:</strong> nếu bài cần trình bày đặc biệt, dùng
+<code>.mdx</code> và tạo thêm một component trong
+<code>src/components/</code>.</p>
+<h3 id="viết-cứng-tên-tác-giả-tên-website-vào-component">8.2 — Viết cứng
+tên tác giả / tên website vào component</h3>
+<p><strong>Đừng làm:</strong> gõ thẳng <code>Mr. Lucero</code> hay
+<code>Đồng hành cùng con</code> vào một file <code>.astro</code>.</p>
+<p><strong>Vì sao hỏng:</strong> đến lúc muốn đổi, bạn phải đi tìm khắp
+nơi và chắc chắn sẽ sót.</p>
+<p><strong>Làm thay:</strong> luôn
+<code>import { SITE } from '../config/site'</code>.</p>
+<p><strong>Cách tự kiểm tra:</strong></p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&quot;Mr. Lucero&quot;</span> src/ <span class="at">--include</span><span class="op">=</span><span class="pp">*</span>.astro</span></code></pre></div>
+<p>Lệnh trên <strong>phải không trả về kết quả nào</strong>. Nếu có, đó
+là chỗ cần sửa.</p>
+<h3 id="viết-liên-kết-nội-bộ-mà-quên-withbase">8.3 — Viết liên kết nội
+bộ mà quên <code>withBase()</code></h3>
+<p><strong>Đừng làm:</strong>
+<code>&lt;a href="/articles/"&gt;</code></p>
+<p><strong>Vì sao hỏng:</strong> chạy tốt trên máy bạn, hỏng trên
+website thật (xem 6.4).</p>
+<p><strong>Làm thay:</strong>
+<code>&lt;a href={withBase('/articles/')}&gt;</code></p>
+<p><strong>Cách tự kiểm tra:</strong></p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&#39;href=&quot;/&#39;</span> src/ <span class="at">--include</span><span class="op">=</span><span class="pp">*</span>.astro</span></code></pre></div>
+<p>Kết quả trả về <strong>chỉ được phép</strong> là link ra ngoài
+(<code>https://…</code>). Mọi link nội bộ đều phải qua
+<code>withBase()</code>.</p>
+<hr />
+<h2 id="phần-9-tự-chẩn-đoán-khi-có-sự-cố">Phần 9 — Tự chẩn đoán khi có
+sự cố</h2>
+<p>Đi theo cây quyết định này.</p>
+<h3 id="website-mất-hết-css-chỉ-còn-chữ-đen-trên-nền-trắng">“Website mất
+hết CSS, chỉ còn chữ đen trên nền trắng”</h3>
+<p>→ <code>base</code> sai. Mở <code>src/config/site.ts</code>, đảm bảo
+<code>base</code> khớp <strong>chính xác</strong> tên repo, có dấu
+<code>/</code> ở hai đầu.</p>
+<h3 id="actions-xanh-nhưng-vào-link-thì-404">“Actions xanh nhưng vào
+link thì 404”</h3>
+<p>→ Chưa bật Pages đúng cách. Settings → Pages → Source →
+<strong>GitHub Actions</strong> (không phải “Deploy from a branch”).</p>
+<h3 id="bài-mới-không-hiện-ở-đâu-cả">“Bài mới không hiện ở đâu cả”</h3>
+<p>Kiểm tra theo thứ tự:</p>
+<ol type="1">
+<li><code>draft:</code> có phải <code>true</code> không?</li>
+<li><code>date</code> có phải ngày trong tương lai không?</li>
+<li>File có nằm đúng trong <code>src/content/articles/</code>
+không?</li>
+<li>Đuôi file có phải <code>.md</code> / <code>.mdx</code> không?</li>
+<li>Chạy <code>npm run build</code> — có báo lỗi gì không?</li>
+</ol>
+<h3 id="actions-đỏ">“Actions đỏ”</h3>
+<ol type="1">
+<li>Bấm vào lần chạy đỏ → xem log</li>
+<li>Đỏ ở bước <strong>“Cài thư viện”</strong> → chưa đẩy
+<code>package-lock.json</code> lên</li>
+<li>Đỏ ở bước <strong>“Build website”</strong> → chạy
+<code>npm run build</code> ở nhà, lỗi hiện y hệt</li>
+</ol>
+<h3 id="một-chủ-đề-bị-tách-làm-hai">“Một chủ đề bị tách làm hai”</h3>
+<p>→ Tên chủ đề viết khác nhau giữa các bài. Kiểm tra:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-h</span> <span class="st">&quot;^category:&quot;</span> src/content/articles/<span class="pp">*</span>.md<span class="pp">*</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span></code></pre></div>
+<p>Lệnh này liệt kê mọi cách viết chủ đề kèm số lần xuất hiện. Cách viết
+nào chỉ xuất hiện một lần rất đáng ngờ.</p>
+<h3 id="chia-sẻ-lên-facebook-không-hiện-ảnh">“Chia sẻ lên Facebook không
+hiện ảnh”</h3>
+<ol type="1">
+<li><code>siteUrl</code> còn là <code>your-username</code> không?</li>
+<li>Dùng <a href="https://developers.facebook.com/tools/debug/">Facebook
+Sharing Debugger</a>, bấm <strong>Scrape Again</strong> — Facebook lưu
+đệm rất lâu</li>
+<li>Ảnh phải đúng 1200×630</li>
+</ol>
+<h3 id="tôi-lỡ-làm-hỏng-gì-đó-và-không-biết-sửa">“Tôi lỡ làm hỏng gì đó
+và không biết sửa”</h3>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span>        <span class="co"># xem lịch sử</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff                 <span class="co"># xem mình vừa sửa gì</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .        <span class="co"># bỏ hết thay đổi chưa commit</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="op">&lt;</span>mã-commit<span class="op">&gt;</span>   # hoàn tác một commit đã đẩy lên</span></code></pre></div>
+<p>Git giữ lại mọi phiên bản. Bạn không thể mất nội dung, trừ khi tự xoá
+file và chưa từng commit.</p>
+<hr />
+<h2 id="phần-10-kiểm-tra-sức-khoẻ-định-kỳ">Phần 10 — Kiểm tra sức khoẻ
+định kỳ</h2>
+<p>Vài tháng một lần, chạy hết những lệnh dưới đây. Mất khoảng 5
+phút.</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Build sạch — phải không có lỗi</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Kiểm tra kiểu dữ liệu và frontmatter</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run check</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Không có tên riêng bị viết cứng trong giao diện</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&quot;Mr. Lucero&quot;</span> src/ <span class="at">--include</span><span class="op">=</span><span class="pp">*</span>.astro          <span class="co"># phải rỗng</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Không có liên kết nội bộ quên withBase()</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&#39;href=&quot;/&#39;</span> src/ <span class="at">--include</span><span class="op">=</span><span class="pp">*</span>.astro             <span class="co"># chỉ được có link ngoài</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Kiểm tra chủ đề có bị viết lệch không</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-h</span> <span class="st">&quot;^category:&quot;</span> src/content/articles/<span class="pp">*</span>.md<span class="pp">*</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Xem có bài nháp nào bị quên không</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-l</span> <span class="st">&quot;draft: true&quot;</span> src/content/articles/<span class="pp">*</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Xem bản build thật trong trình duyệt</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run preview</span></code></pre></div>
+<p>Rồi mở website thật và kiểm tra bằng mắt:</p>
+<ul class="task-list">
+<li><label><input type="checkbox" />Trang chủ hiện đúng số bài mong
+đợi</label></li>
+<li><label><input type="checkbox" />Mở một bài bất kỳ trên <strong>điện
+thoại</strong></label></li>
+<li><label><input type="checkbox" />Gõ thử một từ khoá <strong>không
+dấu</strong> trong trang tìm kiếm</label></li>
+<li><label><input type="checkbox" /><code>/rss.xml</code> và
+<code>/sitemap-index.xml</code> mở được</label></li>
+<li><label><input type="checkbox" />Bật chế độ tối, xem chữ có đủ rõ
+không</label></li>
+<li><label><input type="checkbox" />Dán link một bài vào Zalo hoặc
+Facebook, xem ảnh và tiêu đề</label></li>
+</ul>
+<h3 id="nâng-cấp-thư-viện-mỗi-612-tháng">Nâng cấp thư viện (mỗi 6–12
+tháng)</h3>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> outdated                 <span class="co"># xem cái gì cũ</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> update                   <span class="co"># nâng cấp trong phạm vi an toàn</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build                <span class="co"># PHẢI chạy lại và kiểm tra kỹ</span></span></code></pre></div>
+<blockquote>
+<p>Nâng cấp lớn (ví dụ Astro 7 → 8) thì làm trên một nhánh riêng:
+<code>git checkout -b nang-cap-astro</code> — hỏng thì bỏ nhánh,
+<code>main</code> vẫn nguyên.</p>
+</blockquote>
+<hr />
+<h2 id="phần-11-nhật-ký-thay-đổi">Phần 11 — Nhật ký thay đổi</h2>
+<p>Mỗi lần thay đổi hệ thống ở mức đáng kể, hãy thêm một mục vào đây.
+Sáu tháng sau bạn sẽ cảm ơn chính mình.</p>
+<h3 id="v1.0.0-11082026-phiên-bản-đầu-tiên">v1.0.0 — 11/08/2026 — Phiên
+bản đầu tiên</h3>
+<p><strong>Nền tảng</strong></p>
+<ul>
+<li>Astro 7 + TypeScript, sinh HTML tĩnh hoàn toàn</li>
+<li>Đúng 3 thư viện phụ thuộc: <code>@astrojs/mdx</code>,
+<code>@astrojs/rss</code>, <code>@astrojs/sitemap</code></li>
+<li>Cấu hình tập trung tại <code>src/config/site.ts</code>;
+<code>astro.config.mjs</code> đọc từ đó (chống lệch
+<code>base</code>)</li>
+<li>Chế độ tối: theo hệ điều hành + nút chuyển thủ công, lưu trong trình
+duyệt</li>
+</ul>
+<p><strong>Nội dung</strong></p>
+<ul>
+<li>Content Collections với schema đầy đủ, kiểm tra nghiêm ngặt lúc
+build</li>
+<li>Hỗ trợ cả <code>.md</code> và <code>.mdx</code></li>
+<li>Trường <code>sourceType</code> và <code>references</code> phục vụ
+nguyên tắc toàn vẹn nguồn</li>
+<li>Thời gian đọc tính tự động từ số từ</li>
+<li>Chủ đề và thẻ suy ra từ nội dung, không có danh sách cứng</li>
+<li>“Hành trình” gom bài theo tình huống cha mẹ gặp phải; hành trình
+chưa có bài thì tự ẩn</li>
+</ul>
+<p><strong>Trải nghiệm đọc</strong></p>
+<ul>
+<li>Cột chữ rộng ~704px, cỡ chữ co giãn theo màn hình</li>
+<li>Mục lục tự sinh: cột bên phải trên máy tính, khối gập lại trên điện
+thoại</li>
+<li>Thanh tiến độ đọc bằng CSS thuần, không dùng JavaScript</li>
+<li>Sáu kiểu hộp Callout: <code>tip</code>, <code>warning</code>,
+<code>say</code>, <code>reflect</code>, <code>key</code>,
+<code>avoid</code></li>
+<li>Vụn đường dẫn, bài liên quan, điều hướng bài trước/sau, nút chia
+sẻ</li>
+</ul>
+<p><strong>Tìm kiếm &amp; SEO</strong></p>
+<ul>
+<li>Tìm kiếm phía trình duyệt, không dấu vẫn khớp, không dùng dịch vụ
+ngoài</li>
+<li>Sitemap, RSS, <code>robots.txt</code> sinh tự động theo cấu
+hình</li>
+<li>Open Graph, Twitter Card, Schema.org (<code>WebSite</code>,
+<code>BlogPosting</code>, <code>BreadcrumbList</code>)</li>
+<li>Ảnh chia sẻ mặc định 1200×630 + script <code>npm run og</code> tạo
+ảnh riêng cho từng bài</li>
+</ul>
+<p><strong>Khả năng tiếp cận</strong></p>
+<ul>
+<li>Kiểm tra thực tế ở 360 / 390 / 768 / 1024 / 1440px — <strong>không
+có tràn ngang trên bất kỳ trang nào</strong></li>
+<li>Liên kết “bỏ qua điều hướng” là phần tử nhận focus đầu tiên</li>
+<li>Vùng chạm tối thiểu 44px, vòng focus luôn nhìn thấy</li>
+<li>Menu di động dùng <code>&lt;details&gt;</code> — chạy cả khi tắt
+JavaScript</li>
+<li>Tôn trọng <code>prefers-reduced-motion</code> và
+<code>prefers-color-scheme</code></li>
+</ul>
+<p><strong>Nội dung khởi đầu (3 bài)</strong></p>
+<ol type="1">
+<li><em>Từ phần thưởng đến động lực bên trong</em> — biên tập từ ghi
+chép gốc, có đối chiếu nghiên cứu đã kiểm chứng (Lepper 1973; Deci,
+Koestner &amp; Ryan 1999) <strong>và nêu rõ phần còn tranh luận</strong>
+(Cameron &amp; Pierce 1994; Eisenberger &amp; Cameron 1996)</li>
+<li><em>Hỏi con học được gì, thay vì hỏi con được mấy điểm</em></li>
+<li><em>Cấu trúc thay vì nhắc nhở</em></li>
+</ol>
+<p><strong>Triển khai</strong></p>
+<ul>
+<li>GitHub Actions tự build và đăng khi push lên <code>main</code></li>
+<li>Hỗ trợ cả project site và user site; sẵn sàng gắn tên miền
+riêng</li>
+</ul>
+<p><strong>Tài liệu</strong></p>
+<ul>
+<li><code>README.md</code>, <code>docs/CONTENT_GUIDE.md</code>,
+<code>docs/AI_CONTENT_WORKFLOW.md</code>,
+<code>docs/DEPLOYMENT.md</code>,
+<code>templates/article-template.md</code>, và tài liệu này</li>
+</ul>
+<hr />
+<h3 id="mẫu-ghi-cho-lần-thay-đổi-sau">Mẫu ghi cho lần thay đổi sau</h3>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### v1.1.0 — ngày/tháng/năm — Tên ngắn gọn</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>**Đã đổi**</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>…</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>**Vì sao**</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>…</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>**Cần chú ý**</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>…</span></code></pre></div>
+<hr />
+<h2 id="phần-12-những-hướng-mở-rộng-đã-được-tính-sẵn">Phần 12 — Những
+hướng mở rộng đã được tính sẵn</h2>
+<p>Hệ thống được dựng sao cho các việc dưới đây làm được <strong>mà
+không phải đập đi xây lại</strong>. Nêu ở đây để bạn biết mình có sẵn
+những lựa chọn nào — không có nghĩa là nên làm ngay.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Muốn thêm</th>
+<th>Cách làm</th>
+<th>Độ khó</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Chuỗi bài nhiều kỳ</td>
+<td>Thêm <code>series</code> và <code>seriesOrder</code> vào schema, tạo
+<code>src/pages/series/[slug].astro</code></td>
+<td>Dễ</td>
+</tr>
+<tr class="even">
+<td>Phân trang khi nhiều bài</td>
+<td>Dùng <code>paginate()</code> của Astro trong
+<code>articles/index.astro</code></td>
+<td>Dễ</td>
+</tr>
+<tr class="odd">
+<td>Trang tác giả (nhiều người viết)</td>
+<td>Tạo collection <code>authors</code>, liên kết bằng
+<code>reference()</code></td>
+<td>Trung bình</td>
+</tr>
+<tr class="even">
+<td>Đăng ký nhận bài qua email</td>
+<td>Nhúng form của dịch vụ bên ngoài vào Footer</td>
+<td>Dễ</td>
+</tr>
+<tr class="odd">
+<td>Bình luận</td>
+<td>Dịch vụ bình luận dựa trên GitHub Issues</td>
+<td>Trung bình</td>
+</tr>
+<tr class="even">
+<td>Bản in / xuất PDF từng bài</td>
+<td>Đã có CSS <code>@media print</code>; thêm nút gọi
+<code>window.print()</code></td>
+<td>Dễ</td>
+</tr>
+<tr class="odd">
+<td>Đa ngôn ngữ</td>
+<td>Astro có sẵn cơ chế i18n; cần tổ chức lại thư mục nội dung</td>
+<td>Khó</td>
+</tr>
+<tr class="even">
+<td>Ảnh chia sẻ riêng cho mọi bài</td>
+<td>Chạy <code>npm run og</code> trong bước build của GitHub
+Actions</td>
+<td>Trung bình</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nguyên tắc khi mở rộng:</strong> giữ nguyên hai thứ — <em>nội
+dung là file Markdown</em>, và <em>chủ đề do nội dung quyết định</em>.
+Còn lại đổi thoải mái.</p>
+<hr />
+<h2 id="lời-cuối">Lời cuối</h2>
+<p>Hệ thống này được thiết kế để <strong>một người có thể duy trì trong
+nhiều năm</strong>.</p>
+<p>Điều đó có nghĩa là mỗi lần bạn định thêm một tính năng, câu hỏi đáng
+hỏi không phải <em>“làm được không?”</em> mà là:</p>
+<blockquote>
+<p><strong>“Sáu tháng nữa, khi quên hết mọi thứ, tôi có còn hiểu và sửa
+được cái này không?”</strong></p>
+</blockquote>
+<p>Nếu câu trả lời là không, thì thứ đáng làm nhất có lẽ là viết thêm
+một bài viết mới — vì đó mới là tài sản thật của dự án.</p>
+<hr />
+<p><small></p>
+<p>Tài liệu này là bản <code>.md</code> gốc. Bản <code>.html</code> đi
+kèm được tạo ra từ chính file này để đọc cho dễ. Sửa nội dung thì sửa
+file <code>.md</code>. Muốn tạo lại bản <code>.html</code> (cần cài <a
+href="https://pandoc.org">pandoc</a>):</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> dong-hanh-guide.md <span class="at">-o</span> dong-hanh-guide.html <span class="at">--standalone</span> <span class="at">--toc</span> <span class="at">--toc-depth</span><span class="op">=</span>2 <span class="at">--metadata</span> title=<span class="st">&quot;Đồng hành cùng hệ thống&quot;</span></span></code></pre></div>
+<p>Không có pandoc cũng không sao — bản <code>.md</code> đọc tốt trên
+GitHub và trong mọi trình soạn thảo.</p>
+<p></small></p>
+    <footer class="doc-foot">
+      Tài liệu này được tạo từ <code>dong-hanh-guide.md</code>. Sửa nội dung ở file <code>.md</code>, sau đó tạo lại bản HTML này bằng <code>pandoc</code> (lệnh nằm ở cuối tài liệu).
+    </footer>
+  </main>
+</div>
+
+</body>
+</html>

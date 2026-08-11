@@ -1,0 +1,17 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description?: string;
+  count?: number;
+  countLabel?: string;
+}
+
+const { href, title, description, count, countLabel = 'bài viết' } = Astro.props as Props;
+---
+
+<a class="topic-card" href={href}>
+  <h3>{title}</h3>
+  {description && <p>{description}</p>}
+  {typeof count === 'number' && <span class="count">{count} {countLabel} →</span>}
+</a>

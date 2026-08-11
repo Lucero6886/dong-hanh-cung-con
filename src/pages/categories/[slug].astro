@@ -1,0 +1,45 @@
+---
+/**
+ * Trang một chủ đề. Đường dẫn được sinh tự động từ các chủ đề đang có bài viết.
+ * Thêm bài với `category:` mới → trang chủ đề mới tự xuất hiện.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getCategoriesWithArticles, type TaxonomyBucket } from '../../utils/articles';
+
+export async function getStaticPaths() {
+  const categories = await getCategoriesWithArticles();
+  return categories.map((c) => ({ params: { slug: c.slug }, props: { category: c } }));
+}
+
+const { category } = Astro.props as { category: TaxonomyBucket };
+const description =
+  category.description ||
+  `Các bài viết thuộc chủ đề ${category.name} trong thư viện Đồng hành cùng con.`;
+---
+
+<BaseLayout title={`Chủ đề: ${category.name}`} description={description}>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Trang chủ', href: '/' },
+        { label: 'Chủ đề', href: '/categories/' },
+        { label: category.name },
+      ]}
+    />
+
+    <div class="page-head">
+      <p class="eyebrow">Chủ đề</p>
+      <h1>{category.name}</h1>
+      <p>{description}</p>
+      <p style="margin-top: var(--sp-2)">
+        <strong>{category.articles.length}</strong> bài viết
+      </p>
+    </div>
+
+    <div class="grid grid-3">
+      {category.articles.map((a) => <ArticleCard article={a} headingLevel={2} />)}
+    </div>
+  </div>
+</BaseLayout>

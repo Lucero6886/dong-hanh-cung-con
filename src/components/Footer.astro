@@ -1,0 +1,71 @@
+---
+import { SITE, NAV, SOCIAL_LINKS, COPYRIGHT } from '../config/site';
+import { withBase } from '../utils/url';
+import { getCategoriesWithArticles } from '../utils/articles';
+
+const categories = (await getCategoriesWithArticles()).slice(0, 6);
+const year = new Date().getFullYear();
+const copyright = COPYRIGHT.line
+  .replace('{year}', String(year))
+  .replace('{holder}', COPYRIGHT.holder);
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h2>{SITE.shortTitle}</h2>
+        <p style="margin-bottom: var(--sp-2)">{SITE.tagline}</p>
+        <p class="footer-disclaimer">{SITE.description}</p>
+        {
+          SOCIAL_LINKS.length > 0 && (
+            <ul style="display:flex;gap:var(--sp-3);flex-wrap:wrap;margin-top:var(--sp-3)">
+              {SOCIAL_LINKS.map((s) => (
+                <li>
+                  <a href={s.href} rel="me noopener">
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+      </div>
+
+      <div>
+        <h2>Điều hướng</h2>
+        <ul>
+          {
+            NAV.map((item) => (
+              <li>
+                <a href={withBase(item.href)}>{item.label}</a>
+              </li>
+            ))
+          }
+          <li><a href={withBase('/rss.xml')}>RSS</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h2>Chủ đề</h2>
+        <ul>
+          {
+            categories.map((c) => (
+              <li>
+                <a href={withBase(`/categories/${c.slug}/`)}>{c.name}</a>
+              </li>
+            ))
+          }
+          {categories.length === 0 && <li class="text-muted">Chưa có bài viết</li>}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p style="margin:0">{copyright}</p>
+      <p style="margin:0">{COPYRIGHT.note}</p>
+      <p class="footer-disclaimer" style="margin:0">{COPYRIGHT.disclaimer}</p>
+      {SITE.email && <p style="margin:0"><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>}
+    </div>
+  </div>
+</footer>

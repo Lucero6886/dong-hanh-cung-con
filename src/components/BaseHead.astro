@@ -1,0 +1,98 @@
+---
+/**
+ * BaseHead — toàn bộ phần <head>: SEO, Open Graph, canonical, favicon, CSS.
+ *
+ * Mọi trang đều đi qua đây, nên chỉ cần sửa một chỗ là metadata toàn site đổi theo.
+ */
+import { SITE, DEPLOY, DEFAULT_OG_IMAGE, TWITTER_HANDLE } from '../config/site';
+import { assetUrl } from '../utils/url';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** 'website' cho trang thường, 'article' cho bài viết. */
+  ogType?: 'website' | 'article';
+  image?: string;
+  imageAlt?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  tags?: string[];
+  /** true → yêu cầu công cụ tìm kiếm không lập chỉ mục (dùng cho trang 404). */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = SITE.description,
+  ogType = 'website',
+  image = DEFAULT_OG_IMAGE,
+  imageAlt = SITE.title,
+  publishedTime,
+  modifiedTime,
+  author,
+  tags = [],
+  noindex = false,
+} = Astro.props;
+
+/* Tiêu đề trang chủ không lặp lại tên site hai lần. */
+const fullTitle = title === SITE.title ? SITE.title : `${title} | ${SITE.title}`;
+
+/* Canonical dựng từ đường dẫn thật của trang đang build. */
+const canonical = new URL(Astro.url.pathname, DEPLOY.siteUrl).href;
+const ogImage = new URL(assetUrl(image), DEPLOY.siteUrl).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex,follow" />}
+{!noindex && <meta name="robots" content="index,follow,max-image-preview:large" />}
+
+<link rel="icon" href={assetUrl('/favicon.svg')} type="image/svg+xml" />
+<link rel="alternate" type="application/rss+xml" title={SITE.title} href={assetUrl('/rss.xml')} />
+<meta name="generator" content={Astro.generator} />
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content="#2e6f60" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#101618" media="(prefers-color-scheme: dark)" />
+
+{/* Open Graph — quyết định ảnh xem trước trên Facebook, Messenger, Zalo, LinkedIn */}
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content={SITE.title} />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
+{publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+{author && <meta property="article:author" content={author} />}
+{tags.map((t) => <meta property="article:tag" content={t} />)}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+{TWITTER_HANDLE && <meta name="twitter:site" content={TWITTER_HANDLE} />}
+
+{/*
+  Đặt chế độ sáng/tối TRƯỚC khi trang vẽ, để không bị nháy màu.
+  Đây là đoạn JavaScript đồng bộ duy nhất trên site.
+  Tắt JavaScript → website vẫn chạy, chỉ là theo mặc định hệ điều hành.
+*/}
+<script is:inline>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'light' || saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    } catch (e) {}
+  })();
+</script>

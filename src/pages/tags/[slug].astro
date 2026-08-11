@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getTagsWithArticles, type TaxonomyBucket } from '../../utils/articles';
+
+export async function getStaticPaths() {
+  const tags = await getTagsWithArticles();
+  return tags.map((t) => ({ params: { slug: t.slug }, props: { tag: t } }));
+}
+
+const { tag } = Astro.props as { tag: TaxonomyBucket };
+const description = `Các bài viết mang thẻ “${tag.name}” trong thư viện Đồng hành cùng con.`;
+---
+
+<BaseLayout title={`Thẻ: ${tag.name}`} description={description}>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Trang chủ', href: '/' },
+        { label: 'Thẻ', href: '/tags/' },
+        { label: tag.name },
+      ]}
+    />
+
+    <div class="page-head">
+      <p class="eyebrow">Thẻ</p>
+      <h1>#{tag.name}</h1>
+      <p>{description}</p>
+      <p style="margin-top: var(--sp-2)"><strong>{tag.articles.length}</strong> bài viết</p>
+    </div>
+
+    <div class="grid grid-3">
+      {tag.articles.map((a) => <ArticleCard article={a} headingLevel={2} />)}
+    </div>
+  </div>
+</BaseLayout>

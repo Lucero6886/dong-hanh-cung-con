@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Search from '../components/Search.astro';
+import { getPublishedArticles } from '../utils/articles';
+
+const articles = await getPublishedArticles();
+---
+
+<BaseLayout
+  title="Tìm kiếm"
+  description="Tìm bài viết theo tiêu đề, mô tả, chủ đề, thẻ và nội dung. Tìm kiếm chạy ngay trên trình duyệt, không cần dịch vụ bên ngoài."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Trang chủ', href: '/' }, { label: 'Tìm kiếm' }]} />
+
+    <div class="page-head">
+      <h1>Tìm kiếm</h1>
+      <p>
+        Gõ không dấu cũng được — “dong luc” vẫn tìm ra “động lực”. Tìm kiếm chạy ngay trên máy bạn,
+        không gửi từ khoá đi đâu cả.
+      </p>
+    </div>
+
+    <div class="search-wrap">
+      <Search articles={articles} />
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .search-wrap {
+    max-width: var(--measure);
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getJourneysWithArticles, type JourneyBucket } from '../../utils/articles';
+
+export async function getStaticPaths() {
+  const journeys = await getJourneysWithArticles();
+  /* Chỉ tạo trang cho hành trình đã có bài — tránh sinh trang trống. */
+  return journeys
+    .filter((j) => j.articles.length > 0)
+    .map((j) => ({ params: { slug: j.slug }, props: { journey: j } }));
+}
+
+const { journey } = Astro.props as { journey: JourneyBucket };
+---
+
+<BaseLayout title={journey.title} description={journey.description}>
+  <div class="container">
+    <Breadcrumbs
+      items={[
+        { label: 'Trang chủ', href: '/' },
+        { label: 'Hành trình', href: '/journeys/' },
+        { label: journey.title },
+      ]}
+    />
+
+    <div class="page-head">
+      <p class="eyebrow">Hành trình</p>
+      <h1>{journey.title}</h1>
+      <p>{journey.description}</p>
+      <p style="margin-top: var(--sp-2)"><strong>{journey.articles.length}</strong> bài viết</p>
+    </div>
+
+    <div class="grid grid-3">
+      {journey.articles.map((a) => <ArticleCard article={a} headingLevel={2} />)}
+    </div>
+  </div>
+</BaseLayout>

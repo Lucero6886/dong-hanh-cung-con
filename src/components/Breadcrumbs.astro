@@ -1,0 +1,45 @@
+---
+import { withBase, absoluteUrl } from '../utils/url';
+
+export interface Crumb {
+  label: string;
+  /** Bỏ trống ở mục cuối cùng (trang hiện tại). */
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props as Props;
+
+/* Dữ liệu có cấu trúc giúp Google hiển thị đường dẫn phân cấp trong kết quả tìm kiếm. */
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.label,
+    ...(item.href ? { item: absoluteUrl(item.href) } : {}),
+  })),
+};
+---
+
+<nav class="breadcrumbs" aria-label="Đường dẫn phân cấp">
+  <ol>
+    {
+      items.map((item, i) => (
+        <li>
+          {item.href && i < items.length - 1 ? (
+            <a href={withBase(item.href)}>{item.label}</a>
+          ) : (
+            <span aria-current="page">{item.label}</span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />

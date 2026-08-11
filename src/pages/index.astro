@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import { SITE } from '../config/site';
+import { withBase, absoluteUrl } from '../utils/url';
+import {
+  getPublishedArticles,
+  getFeaturedArticles,
+  getCategoriesWithArticles,
+  getJourneysWithArticles,
+} from '../utils/articles';
+
+const featured = await getFeaturedArticles();
+const all = await getPublishedArticles();
+const latest = all.slice(0, SITE.latestLimit);
+const categories = (await getCategoriesWithArticles()).slice(0, 6);
+/* Hành trình chưa có bài nào thì ẩn — không tạo trang trống. */
+const journeys = (await getJourneysWithArticles()).filter((j) => j.articles.length > 0).slice(0, 6);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.title,
+  description: SITE.description,
+  url: absoluteUrl('/'),
+  inLanguage: SITE.language,
+  publisher: { '@type': 'Organization', name: SITE.title },
+};
+---
+
+<BaseLayout title={SITE.title} description={SITE.description}>
+  <script type="application/ld+json" is:inline slot="head" set:html={JSON.stringify(jsonLd)} />
+
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Thư viện dành cho cha mẹ</p>
+      <h1>Đồng hành cùng con</h1>
+      <p class="hero-tagline">
+        <span>Hiểu con hơn.</span>
+        <span>Đồng hành đúng cách.</span>
+        <span>Cùng con trưởng thành.</span>
+      </p>
+      <p class="lede">
+        Một nơi yên tĩnh để cha mẹ đọc, suy ngẫm và thử áp dụng. Không có công thức hoàn hảo cho
+        việc nuôi dạy một đứa trẻ — nhưng có những cách hiểu giúp chúng ta bớt loay hoay hơn, và
+        đồng hành với con một cách bình tĩnh hơn.
+      </p>
+      <p class="hero-actions">
+        <a class="btn btn-primary" href={withBase('/articles/')}>Khám phá bài viết</a>
+        <a class="btn btn-ghost" href={withBase('/about/')}>Về dự án này</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="container">
+    {
+      featured.length > 0 && (
+        <section class="section" aria-labelledby="featured-heading">
+          <div class="section-head">
+            <h2 id="featured-heading">Bài viết nổi bật</h2>
+            <a class="more" href={withBase('/articles/')}>
+              Tất cả bài viết →
+            </a>
+          </div>
+          <div class="grid grid-3">
+            {featured.map((a) => (
+              <ArticleCard article={a} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      categories.length > 0 && (
+        <section class="section" aria-labelledby="topics-heading">
+          <div class="section-head">
+            <h2 id="topics-heading">Khám phá theo chủ đề</h2>
+            <a class="more" href={withBase('/categories/')}>
+              Tất cả chủ đề →
+            </a>
+          </div>
+          <div class="grid grid-3">
+            {categories.map((c) => (
+              <CategoryCard
+                href={withBase(`/categories/${c.slug}/`)}
+                title={c.name}
+                description={c.description}
+                count={c.articles.length}
+              />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      journeys.length > 0 && (
+        <section class="section" aria-labelledby="journeys-heading">
+          <div class="section-head">
+            <h2 id="journeys-heading">Bạn đang ở đâu trên hành trình?</h2>
+            <a class="more" href={withBase('/journeys/')}>
+              Tất cả hành trình →
+            </a>
+          </div>
+          <p class="lede" style="margin-bottom: var(--sp-4)">
+            Đôi khi cha mẹ không tìm theo chủ đề, mà tìm theo tình huống mình đang gặp.
+          </p>
+          <div class="grid grid-3">
+            {journeys.map((j) => (
+              <CategoryCard
+                href={withBase(`/journeys/${j.slug}/`)}
+                title={j.title}
+                description={j.description}
+                count={j.articles.length}
+              />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      latest.length > 0 && (
+        <section class="section" aria-labelledby="latest-heading">
+          <div class="section-head">
+            <h2 id="latest-heading">Bài viết mới nhất</h2>
+            <a class="more" href={withBase('/articles/')}>
+              Xem thêm →
+            </a>
+          </div>
+          <div class="grid grid-3">
+            {latest.map((a) => (
+              <ArticleCard article={a} />
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      all.length === 0 && (
+        <section class="section">
+          <div class="empty">
+            <p>
+              <strong>Thư viện đang chờ bài viết đầu tiên.</strong>
+            </p>
+            <p>
+              Thêm một file Markdown vào <code>src/content/articles/</code> là bài viết sẽ tự động
+              xuất hiện ở đây.
+            </p>
+          </div>
+        </section>
+      )
+    }
+
+    <section class="section" aria-labelledby="philosophy-heading">
+      <div class="panel panel-brand philosophy">
+        <h2 id="philosophy-heading">Quan điểm của dự án</h2>
+        <p>
+          Mục tiêu của giáo dục không dừng ở việc điều chỉnh hành vi cho đúng. Điều đáng hướng tới
+          hơn là giúp trẻ dần hình thành khả năng tự hiểu và tự điều chỉnh từ bên trong.
+        </p>
+        <ul class="philosophy-list">
+          <li><strong>Hiểu biết</strong> — con hiểu vì sao một việc là đúng, chứ không chỉ biết phải làm gì.</li>
+          <li><strong>Trách nhiệm</strong> — con nhận ra đâu là phần việc của mình.</li>
+          <li><strong>Tự chủ</strong> — con được tập ra quyết định ở mức phù hợp với lứa tuổi.</li>
+          <li><strong>Bền bỉ</strong> — con học cách đứng dậy sau những lần chưa làm được.</li>
+          <li><strong>Động lực bên trong</strong> — con làm điều đúng ngay cả khi không ai thưởng.</li>
+        </ul>
+        <p style="margin-bottom:0">
+          Các bài viết ở đây được viết với tinh thần tôn trọng cha mẹ: không phán xét, không hù doạ,
+          không hứa hẹn một công thức duy nhất đúng.
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: var(--sp-7) 0 var(--sp-6);
+    background:
+      radial-gradient(ellipse 60% 100% at 12% 0%, var(--brand-soft), transparent 70%),
+      linear-gradient(180deg, var(--surface-2) 0%, transparent 60%);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero h1 {
+    margin-bottom: var(--sp-3);
+    max-width: 16ch;
+  }
+  .hero-tagline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    font-size: var(--step-1);
+    font-weight: 600;
+    color: var(--brand-ink);
+    margin-bottom: var(--sp-4);
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    margin-top: var(--sp-5);
+    margin-bottom: 0;
+  }
+  .philosophy {
+    max-width: 60rem;
+  }
+  .philosophy h2 {
+    font-size: var(--step-2);
+  }
+  .philosophy-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--sp-4) 0;
+    display: grid;
+    gap: var(--sp-2);
+  }
+  .philosophy-list li {
+    padding-left: 1.4rem;
+    position: relative;
+  }
+  .philosophy-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--brand);
+  }
+</style>

@@ -1,0 +1,44 @@
+---
+/**
+ * BaseLayout — khung chung của MỌI trang: <head>, header, main, footer.
+ * Trang nào cũng đi qua đây nên chỉ cần sửa một chỗ là toàn site đổi theo.
+ */
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../config/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  ogType?: 'website' | 'article';
+  image?: string;
+  imageAlt?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  tags?: string[];
+  noindex?: boolean;
+  /** Nạp thêm CSS/JSON-LD riêng cho trang. */
+  headExtra?: boolean;
+}
+
+const props = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang={SITE.language}>
+  <head>
+    <BaseHead {...props} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Bỏ qua điều hướng, tới nội dung chính</a>
+    <slot name="before-header" />
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

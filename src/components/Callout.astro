@@ -1,0 +1,70 @@
+---
+/**
+ * Callout — hộp biên tập tái sử dụng trong bài viết (.mdx).
+ *
+ * Cách dùng trong file .mdx (KHÔNG cần import — đã được truyền sẵn):
+ *
+ *   <Callout type="tip">Nội dung gợi ý cho cha mẹ.</Callout>
+ *   <Callout type="say">"Hôm nay con học được gì mà hôm qua chưa biết?"</Callout>
+ *   <Callout type="reflect" title="Tự hỏi mình">- Câu hỏi 1 ...</Callout>
+ *
+ * Các kiểu có sẵn:
+ *   tip     → Gợi ý cho cha mẹ
+ *   warning → Điều cần lưu ý
+ *   say     → Thử nói với con
+ *   reflect → Câu hỏi để suy ngẫm
+ *   key     → Ý chính
+ *   avoid   → Nên hạn chế
+ */
+export type CalloutType = 'tip' | 'warning' | 'say' | 'reflect' | 'key' | 'avoid';
+
+interface Props {
+  type?: CalloutType;
+  /** Ghi đè nhãn mặc định. */
+  title?: string;
+}
+
+const { type = 'tip', title } = Astro.props as Props;
+
+const PRESETS: Record<CalloutType, { label: string; icon: string }> = {
+  tip: {
+    label: 'Gợi ý cho cha mẹ',
+    icon: 'M12 3a6 6 0 0 0-3.6 10.8c.5.4.8.9.9 1.5l.1.7h5.2l.1-.7c.1-.6.4-1.1.9-1.5A6 6 0 0 0 12 3zM9.5 19h5M10 21.5h4',
+  },
+  warning: {
+    label: 'Điều cần lưu ý',
+    icon: 'M12 4 2.5 20h19L12 4zM12 10v4M12 17.2v.1',
+  },
+  say: {
+    label: 'Thử nói với con',
+    icon: 'M21 12a8 8 0 0 1-8 8H7l-4 3v-5.5A8 8 0 0 1 11 4h2a8 8 0 0 1 8 8z',
+  },
+  reflect: {
+    label: 'Câu hỏi để suy ngẫm',
+    icon: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM9.5 9.2a2.6 2.6 0 0 1 5 .9c0 1.7-2.5 2.2-2.5 3.9M12 17.2v.1',
+  },
+  key: {
+    label: 'Ý chính',
+    icon: 'M12 3.4l2.7 5.5 6 .9-4.35 4.24 1.03 6.01L12 17.25l-5.38 2.8 1.03-6.01L3.3 9.8l6-.9z',
+  },
+  avoid: {
+    label: 'Nên hạn chế',
+    icon: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM5.6 5.6l12.8 12.8',
+  },
+};
+
+const preset = PRESETS[type] ?? PRESETS.tip;
+const label = title ?? preset.label;
+---
+
+<aside class={`callout callout-${type}`}>
+  <p class="callout-title">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d={preset.icon}></path>
+    </svg>
+    <span>{label}</span>
+  </p>
+  <div class="callout-body">
+    <slot />
+  </div>
+</aside>

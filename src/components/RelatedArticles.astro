@@ -1,0 +1,24 @@
+---
+import type { EnrichedArticle } from '../utils/articles';
+import ArticleCard from './ArticleCard.astro';
+
+interface Props {
+  articles: EnrichedArticle[];
+  title?: string;
+}
+
+const { articles, title = 'Bài viết liên quan' } = Astro.props as Props;
+---
+
+{
+  articles.length > 0 && (
+    <section class="related" aria-labelledby="related-heading">
+      <h2 id="related-heading">{title}</h2>
+      <div class="grid grid-3">
+        {articles.map((a) => (
+          <ArticleCard article={a} headingLevel={3} />
+        ))}
+      </div>
+    </section>
+  )
+}

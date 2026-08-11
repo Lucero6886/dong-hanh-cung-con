@@ -1,0 +1,54 @@
+---
+interface Props {
+  /** URL tuyệt đối của bài viết. */
+  url: string;
+  title: string;
+}
+
+const { url, title } = Astro.props as Props;
+
+const enc = encodeURIComponent;
+
+/*
+ * Facebook, Messenger và Zalo lấy tiêu đề + ảnh xem trước từ thẻ Open Graph
+ * trong <head> chứ không lấy từ tham số trên URL chia sẻ — nên chỉ cần
+ * truyền đúng đường dẫn.
+ */
+const links = [
+  { label: 'Facebook', href: `https://www.facebook.com/sharer/sharer.php?u=${enc(url)}` },
+  { label: 'X', href: `https://twitter.com/intent/tweet?url=${enc(url)}&text=${enc(title)}` },
+  { label: 'LinkedIn', href: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(url)}` },
+];
+---
+
+<div class="share">
+  <h2>Chia sẻ</h2>
+  {
+    links.map((l) => (
+      <a href={l.href} target="_blank" rel="noopener noreferrer">
+        {l.label}
+      </a>
+    ))
+  }
+  <button type="button" class="copy-link" data-url={url} hidden>Sao chép liên kết</button>
+</div>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.copy-link');
+  if (btn && navigator.clipboard) {
+    btn.hidden = false;
+    btn.addEventListener('click', async () => {
+      const url = btn.dataset.url ?? location.href;
+      try {
+        await navigator.clipboard.writeText(url);
+        const original = btn.textContent;
+        btn.textContent = 'Đã sao chép ✓';
+        setTimeout(() => {
+          btn.textContent = original;
+        }, 2000);
+      } catch {
+        /* trình duyệt từ chối quyền — bỏ qua, các nút chia sẻ khác vẫn dùng được */
+      }
+    });
+  }
+</script>

@@ -1,0 +1,69 @@
+# =============================================================================
+#  TỰ ĐỘNG BUILD VÀ ĐĂNG WEBSITE LÊN GITHUB PAGES
+# =============================================================================
+#  Cơ chế: mỗi lần bạn đẩy code lên nhánh `main`, GitHub sẽ tự build lại toàn
+#  bộ website và đăng bản mới. Bạn không cần chạy lệnh gì trên máy mình.
+#
+#  ⚠️ CẦN LÀM MỘT LẦN DUY NHẤT trước khi workflow này chạy được:
+#     Vào repo trên GitHub → Settings → Pages → mục "Build and deployment"
+#     → Source: chọn "GitHub Actions"  (KHÔNG chọn "Deploy from a branch")
+#
+#  Xem thêm: docs/DEPLOYMENT.md
+# =============================================================================
+
+name: Deploy to GitHub Pages
+
+on:
+  # Đẩy code lên main → tự động đăng bài
+  push:
+    branches: [main]
+  # Cho phép bấm chạy tay trong tab Actions
+  workflow_dispatch:
+
+# Quyền tối thiểu cần để đăng lên Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Nếu đẩy nhiều lần liên tiếp, chỉ giữ lần cuối; không huỷ bản đang đăng dở
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lấy mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Cài Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Cài thư viện
+        run: npm ci
+
+      - name: Build website
+        run: npm run build
+
+      - name: Đóng gói kết quả
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Đăng lên GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

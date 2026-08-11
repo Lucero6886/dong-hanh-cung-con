@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getPublishedArticles } from '../../utils/articles';
+
+const articles = await getPublishedArticles();
+---
+
+<BaseLayout
+  title="Tất cả bài viết"
+  description="Toàn bộ bài viết về giáo dục trẻ và hành trình đồng hành cùng con, sắp xếp theo thời gian đăng."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Trang chủ', href: '/' }, { label: 'Bài viết' }]} />
+
+    <div class="page-head">
+      <h1>Tất cả bài viết</h1>
+      <p>
+        {articles.length} bài viết, mới nhất trước. Mỗi bài đều có ước lượng thời gian đọc và độ tuổi
+        phù hợp để bạn chọn đúng thứ mình cần lúc này.
+      </p>
+    </div>
+
+    {
+      articles.length > 0 ? (
+        <div class="grid grid-3">
+          {articles.map((a) => (
+            <ArticleCard article={a} headingLevel={2} />
+          ))}
+        </div>
+      ) : (
+        <div class="empty">
+          <p>Chưa có bài viết nào được xuất bản.</p>
+          <p>
+            Thêm một file <code>.md</code> vào <code>src/content/articles/</code> để bắt đầu.
+          </p>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

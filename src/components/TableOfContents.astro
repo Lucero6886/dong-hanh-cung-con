@@ -1,0 +1,29 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+  /** true → bản hiện trên di động (nằm trong <details>). */
+  compact?: boolean;
+}
+
+const { headings, compact = false } = Astro.props as Props;
+
+/* Chỉ lấy h2/h3. H1 là tiêu đề bài, không đưa vào mục lục. */
+const items = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{
+  items.length > 1 && (
+    <nav class="toc" aria-label="Mục lục bài viết">
+      {!compact && <h2>Nội dung bài viết</h2>}
+      <ol>
+        {items.map((h) => (
+          <li class={`depth-${h.depth}`}>
+            <a href={`#${h.slug}`}>{h.text}</a>
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}

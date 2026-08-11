@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../utils/url';
+import { getPublishedArticles } from '../utils/articles';
+
+const recent = (await getPublishedArticles()).slice(0, 4);
+---
+
+<BaseLayout title="Không tìm thấy trang" description="Trang bạn tìm không tồn tại." noindex>
+  <div class="container">
+    <div class="page-head">
+      <p class="eyebrow">Lỗi 404</p>
+      <h1>Không tìm thấy trang này</h1>
+      <p>
+        Có thể đường dẫn đã thay đổi, hoặc bài viết chưa được xuất bản. Bạn thử một trong những lối
+        đi dưới đây nhé.
+      </p>
+    </div>
+
+    <p style="display:flex;gap:var(--sp-3);flex-wrap:wrap">
+      <a class="btn btn-primary" href={withBase('/')}>Về trang chủ</a>
+      <a class="btn btn-ghost" href={withBase('/articles/')}>Tất cả bài viết</a>
+      <a class="btn btn-ghost" href={withBase('/search/')}>Tìm kiếm</a>
+    </p>
+
+    {
+      recent.length > 0 && (
+        <section class="section">
+          <h2>Bài viết gần đây</h2>
+          <ul class="list">
+            {recent.map((a) => (
+              <li class="list-item">
+                <h3>
+                  <a href={withBase(`/articles/${a.slug}/`)}>{a.title}</a>
+                </h3>
+                <p>{a.description}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>

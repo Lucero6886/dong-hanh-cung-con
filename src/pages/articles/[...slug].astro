@@ -1,0 +1,35 @@
+---
+/**
+ * Trang chi tiết bài viết.
+ *
+ * ⭐ ĐÂY LÀ CHỖ "TỰ ĐỘNG" MÀ BẠN CẦN HIỂU:
+ * getStaticPaths() quét toàn bộ src/content/articles/ và sinh ra một trang cho
+ * mỗi file Markdown. Bạn thêm một file .md mới → một trang mới xuất hiện.
+ * KHÔNG cần sửa file này, không cần khai báo ở đâu khác.
+ */
+import { render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import Callout from '../../components/Callout.astro';
+import { getPublishedArticles, getRelatedArticles, getAdjacentArticles } from '../../utils/articles';
+
+export async function getStaticPaths() {
+  const articles = await getPublishedArticles();
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content, headings } = await render(article.entry);
+const related = await getRelatedArticles(article);
+const { newer, older } = await getAdjacentArticles(article);
+---
+
+<ArticleLayout article={article} headings={headings} related={related} newer={newer} older={older}>
+  {/*
+    Truyền Callout xuống nội dung MDX. Nhờ dòng này, trong file .mdx bạn viết
+    thẳng <Callout type="tip">…</Callout> mà KHÔNG cần import.
+  */}
+  <Content components={{ Callout }} />
+</ArticleLayout>

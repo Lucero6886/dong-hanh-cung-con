@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { withBase } from '../../utils/url';
+import { getJourneysWithArticles } from '../../utils/articles';
+
+const journeys = await getJourneysWithArticles();
+const active = journeys.filter((j) => j.articles.length > 0);
+const upcoming = journeys.filter((j) => j.articles.length === 0);
+---
+
+<BaseLayout
+  title="Hành trình"
+  description="Tìm bài viết theo tình huống cha mẹ đang gặp: khi con chưa có động lực, khi con ngại học, khi con chưa tự giác, khi khó giao tiếp, khi con vào tuổi teen, khi con gặp thất bại."
+>
+  <div class="container">
+    <Breadcrumbs items={[{ label: 'Trang chủ', href: '/' }, { label: 'Hành trình' }]} />
+
+    <div class="page-head">
+      <h1>Hành trình</h1>
+      <p>
+        Chủ đề sắp xếp nội dung theo lĩnh vực. Hành trình sắp xếp theo <strong>tình huống bạn đang
+        gặp</strong> — thứ mà cha mẹ thường tìm kiếm trước tiên. Hai cách này bổ sung cho nhau, một
+        bài viết có thể thuộc nhiều hành trình.
+      </p>
+    </div>
+
+    {
+      active.length > 0 ? (
+        <div class="grid grid-2">
+          {active.map((j) => (
+            <CategoryCard
+              href={withBase(`/journeys/${j.slug}/`)}
+              title={j.title}
+              description={j.description}
+              count={j.articles.length}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="empty">
+          <p>Chưa có hành trình nào có bài viết.</p>
+        </div>
+      )
+    }
+
+    {
+      upcoming.length > 0 && (
+        <section class="section">
+          <h2>Đang xây dựng</h2>
+          <p class="text-muted" style="max-width: var(--measure)">
+            Những hành trình dưới đây đã được khai báo trong{' '}
+            <code>src/config/taxonomy.ts</code> nhưng chưa có bài viết nào khớp. Chúng sẽ tự hiện ra
+            ngay khi bạn đăng một bài mang thẻ hoặc chủ đề tương ứng.
+          </p>
+          <ul class="list">
+            {upcoming.map((j) => (
+              <li class="list-item">
+                <h3>{j.title}</h3>
+                <p>{j.description}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+  </div>
+</BaseLayout>
