@@ -2,6 +2,12 @@
 
 > Hiểu con hơn · Đồng hành đúng cách · Cùng con trưởng thành
 
+> ### 👋 Bạn là chủ dự án, không phải người viết code?
+>
+> **Đừng đọc file này.** Mở **[`implementation-notes.html`](./implementation-notes.html)** — sổ tay vận hành viết bằng tiếng Việt đời thường, cho biết dự án đang ở đâu, bạn tự làm được gì, và nhờ Claude thế nào.
+>
+> README bên dưới là tài liệu kỹ thuật, dành cho thợ web nếu sau này bạn thuê người.
+
 Thư viện bài viết dành cho cha mẹ Việt Nam về giáo dục trẻ và hành trình đồng hành cùng con.
 
 Đây là một **website tĩnh**: không có máy chủ, không có cơ sở dữ liệu, không có tài khoản đăng nhập, không có chi phí vận hành. Bạn viết bài bằng Markdown, đẩy lên GitHub, website tự build và tự đăng.

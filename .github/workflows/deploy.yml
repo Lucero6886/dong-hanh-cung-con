@@ -14,9 +14,11 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Đẩy code lên main → tự động đăng bài
+  # Đẩy code lên → tự động đăng bài.
+  # Nhận cả `main` lẫn `master`: GitHub Desktop có thể tạo nhánh tên `master`,
+  # nếu chỉ nghe `main` thì đẩy code lên mà máy không chạy, website không cập nhật.
   push:
-    branches: [main]
+    branches: [main, master]
   # Cho phép bấm chạy tay trong tab Actions
   workflow_dispatch:
 

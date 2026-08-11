@@ -1,0 +1,1278 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sổ tay vận hành dự án</title>
+<meta name="description" content="Tài liệu giúp hiểu bản chất hệ thống website Đồng hành cùng con, nắm được các thay đổi, và luôn làm chủ dự án.">
+<style>
+:root{
+  --paper:#fbfaf6; --surface:#fff; --surface-2:#f4f1ea;
+  --ink:#1d2b2a; --ink-2:#3c4c4a; --ink-muted:#5b6b69;
+  --line:#e4dfd3; --line-strong:#cec7b7;
+  --brand:#2e6f60; --brand-ink:#1e5348; --brand-soft:#e8f1ee;
+  --accent:#b0603a; --accent-ink:#8f4b2b; --accent-soft:#fbeee4;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Roboto,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#101618; --surface:#16201f; --surface-2:#1d2827;
+    --ink:#e9efec; --ink-2:#c6d2cf; --ink-muted:#97a8a5;
+    --line:#2a3837; --line-strong:#3b4d4b;
+    --brand:#6cbca7; --brand-ink:#8ed4bf; --brand-soft:#16302b;
+    --accent:#dd9161; --accent-ink:#e8a97f; --accent-soft:#2f2118;
+    color-scheme:dark;
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);font-family:var(--font);
+  font-size:17px;line-height:1.72;overflow-wrap:break-word;
+}
+.masthead{
+  background:linear-gradient(160deg,var(--brand-soft),transparent 70%);
+  border-bottom:1px solid var(--line);padding:44px 0 34px;
+}
+.wrap{width:min(100% - 2.2rem,1180px);margin-inline:auto}
+.badge{
+  display:inline-block;font-size:12px;font-weight:800;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--brand-ink);background:var(--surface);
+  border:1px solid var(--line-strong);border-radius:999px;padding:5px 12px;margin-bottom:14px;
+}
+.masthead h1{font-size:clamp(30px,5vw,46px);line-height:1.12;letter-spacing:-.03em;margin:0 0 10px}
+.masthead p{margin:0;color:var(--ink-2);font-size:clamp(16px,2vw,19px);max-width:60ch}
+.meta{margin-top:16px;font-size:14px;color:var(--ink-muted)}
+.meta code{background:var(--surface);border:1px solid var(--line);border-radius:5px;padding:1px 6px}
+
+.layout{display:grid;grid-template-columns:minmax(0,1fr);gap:34px;padding:36px 0 80px}
+@media (min-width:1024px){.layout{grid-template-columns:262px minmax(0,1fr);gap:52px}}
+
+nav#TOC{font-size:14px;order:-1}
+@media (min-width:1024px){
+  nav#TOC{position:sticky;top:20px;max-height:calc(100vh - 40px);overflow-y:auto;
+    border-right:1px solid var(--line);padding-right:20px}
+}
+@media (max-width:1023px){
+  nav#TOC{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+}
+nav#TOC::before{
+  content:"Mục lục";display:block;font-size:12px;font-weight:800;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-muted);margin-bottom:10px;
+}
+nav#TOC ul{list-style:none;margin:0;padding:0}
+nav#TOC ul ul{padding-left:12px}
+nav#TOC li{margin:1px 0}
+nav#TOC a{display:block;padding:5px 0;color:var(--ink-muted);text-decoration:none;line-height:1.4}
+nav#TOC a:hover{color:var(--brand-ink)}
+
+main{min-width:0;max-width:50rem}
+main > h1:first-child{
+  font-size:clamp(26px,4vw,34px);letter-spacing:-.02em;margin:0 0 18px;
+  padding-bottom:14px;border-bottom:1px solid var(--line);
+}
+h2{
+  font-size:clamp(21px,3vw,27px);line-height:1.25;letter-spacing:-.02em;
+  margin:52px 0 14px;padding-top:22px;border-top:1px solid var(--line);scroll-margin-top:20px;
+}
+h3{font-size:19px;line-height:1.3;margin:34px 0 10px;color:var(--brand-ink);scroll-margin-top:20px}
+h4{font-size:16px;margin:22px 0 8px;scroll-margin-top:20px}
+p{margin:0 0 16px}
+a{color:var(--brand-ink);text-underline-offset:.18em}
+a:hover{color:var(--accent-ink)}
+strong{color:var(--ink);font-weight:700}
+ul,ol{padding-left:1.35em;margin:0 0 16px}
+li{margin:.34em 0}
+hr{border:0;border-top:1px solid var(--line);margin:44px 0}
+
+blockquote{
+  margin:26px 0;padding:16px 20px;border-left:4px solid var(--brand);
+  background:var(--brand-soft);border-radius:0 12px 12px 0;color:var(--ink-2);
+}
+blockquote > :first-child{margin-top:0}
+blockquote > :last-child{margin-bottom:0}
+blockquote strong{color:var(--brand-ink)}
+
+code{font-family:var(--mono);font-size:.88em}
+:not(pre) > code{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:5px;
+  padding:.1em .38em;color:var(--accent-ink);
+}
+pre{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:12px;
+  padding:16px 18px;overflow-x:auto;font-size:13.5px;line-height:1.62;margin:0 0 18px;
+}
+pre code{color:var(--ink-2);background:none;border:0;padding:0;font-size:inherit}
+
+table{
+  width:100%;border-collapse:collapse;font-size:15px;margin:0 0 20px;
+  display:block;overflow-x:auto;
+}
+th,td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+th{background:var(--surface-2);font-weight:700;white-space:nowrap}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--surface-2) 45%,transparent)}
+
+/* Ô đánh dấu trong danh sách kiểm tra */
+input[type=checkbox]{margin-right:.5em;accent-color:var(--brand)}
+ul:has(> li > input[type=checkbox]){list-style:none;padding-left:.2em}
+
+/* Ô đánh dấu việc đang chờ ở Phần A cho nổi hơn */
+main ul:has(> li > input[type=checkbox]) > li{
+  background:var(--accent-soft);border:1px solid var(--line);
+  border-radius:10px;padding:10px 14px;margin:8px 0;list-style:none;
+}
+
+small{font-size:13.5px;color:var(--ink-muted)}
+footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20px;font-size:13.5px;color:var(--ink-muted)}
+
+@media print{
+  nav#TOC{display:none}
+  .layout{display:block;padding-top:0}
+  .masthead{background:none;padding:0 0 18px}
+  body{font-size:10.5pt;background:#fff;color:#000}
+  h2{break-after:avoid}
+  pre,table,blockquote{break-inside:avoid}
+  a{color:#000}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <span class="badge">Sổ tay vận hành · v1.0.0</span>
+    <h1>Sổ tay vận hành dự án</h1>
+    <p>Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự
+làm được những gì</p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-11 · Bản gốc: <code>implementation-notes.md</code></p>
+  </div>
+</header>
+
+<div class="wrap layout">
+<nav id="TOC" role="doc-toc" aria-label="Mục lục tài liệu">
+<ul>
+<li><a href="#sổ-tay-vận-hành-dự-án" id="toc-sổ-tay-vận-hành-dự-án">Sổ
+tay vận hành dự án</a>
+<ul>
+<li><a href="#phần-a-dự-án-đang-ở-đâu"
+id="toc-phần-a-dự-án-đang-ở-đâu">PHẦN A — Dự án đang ở đâu</a></li>
+<li><a href="#phần-b-làm-việc-với-claude-thế-nào"
+id="toc-phần-b-làm-việc-với-claude-thế-nào">PHẦN B — Làm việc với Claude
+thế nào</a></li>
+<li><a href="#phần-c-những-việc-bạn-tự-làm-được-không-cần-claude"
+id="toc-phần-c-những-việc-bạn-tự-làm-được-không-cần-claude">PHẦN C —
+Những việc bạn tự làm được, không cần Claude</a></li>
+<li><a href="#phần-d-từ-điển-15-từ-bạn-sẽ-gặp"
+id="toc-phần-d-từ-điển-15-từ-bạn-sẽ-gặp">PHẦN D — Từ điển: 15 từ bạn sẽ
+gặp</a></li>
+<li><a href="#phần-e-mười-tình-huống-thường-gặp"
+id="toc-phần-e-mười-tình-huống-thường-gặp">PHẦN E — Mười tình huống
+thường gặp</a></li>
+<li><a href="#phần-f-nhật-ký-thay-đổi"
+id="toc-phần-f-nhật-ký-thay-đổi">PHẦN F — Nhật ký thay đổi</a></li>
+<li><a href="#phần-g-bốn-cách-tự-kiểm-tra-claude-làm-đúng"
+id="toc-phần-g-bốn-cách-tự-kiểm-tra-claude-làm-đúng">PHẦN G — Bốn cách
+tự kiểm tra Claude làm đúng</a></li>
+<li><a href="#một-điều-cuối" id="toc-một-điều-cuối">Một điều
+cuối</a></li>
+</ul></li>
+</ul>
+</nav>
+  <main>
+<h1 id="sổ-tay-vận-hành-dự-án">Sổ tay vận hành dự án</h1>
+<blockquote>
+<p><strong>File này dành cho bạn — người chủ dự án, không phải người
+viết code.</strong></p>
+<p>Không cần đọc một lượt từ đầu đến cuối. Cần gì tra nấy:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Bạn muốn</th>
+<th>Đọc phần</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Biết dự án đang có gì</td>
+<td><strong>A</strong></td>
+</tr>
+<tr class="even">
+<td>Nhờ Claude làm việc gì đó</td>
+<td><strong>B</strong></td>
+</tr>
+<tr class="odd">
+<td>Tự làm mà không cần Claude</td>
+<td><strong>C</strong></td>
+</tr>
+<tr class="even">
+<td>Không hiểu một từ nào đó</td>
+<td><strong>D</strong></td>
+</tr>
+<tr class="odd">
+<td>Đang gặp một tình huống cụ thể</td>
+<td><strong>E</strong></td>
+</tr>
+<tr class="even">
+<td>Xem đã thay đổi những gì</td>
+<td><strong>F</strong></td>
+</tr>
+<tr class="odd">
+<td>Kiểm tra Claude có làm đúng không</td>
+<td><strong>G</strong></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p><strong>Nguyên tắc của sổ tay này:</strong> mỗi lần Claude chạm vào
+dự án, Claude <strong>bắt buộc</strong> ghi vào Phần F — đã làm gì, vì
+sao, ảnh hưởng gì tới bạn, và <em>nếu tự làm thì làm thế nào</em>. Bạn
+không phải nhớ. Bạn chỉ cần đọc.</p>
+<hr />
+<h2 id="phần-a-dự-án-đang-ở-đâu">PHẦN A — Dự án đang ở đâu</h2>
+<p><em>Cập nhật lần cuối: 11/08/2026</em></p>
+<h3 id="tình-trạng-chung">Tình trạng chung</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Hạng mục</th>
+<th>Hiện tại</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tên website</td>
+<td>Đồng hành cùng con</td>
+</tr>
+<tr class="even">
+<td>Đã lên mạng chưa?</td>
+<td>⏳ <strong>Sắp</strong> — còn 2 việc ở dưới</td>
+</tr>
+<tr class="odd">
+<td><strong>Địa chỉ website sẽ là</strong></td>
+<td><strong>https://lucero6886.github.io/dong-hanh-cung-con/</strong></td>
+</tr>
+<tr class="even">
+<td>Tài khoản GitHub</td>
+<td><code>Lucero6886</code></td>
+</tr>
+<tr class="odd">
+<td>Mã nguồn trên mạng</td>
+<td><a href="https://github.com/Lucero6886/dong-hanh-cung-con"
+class="uri">https://github.com/Lucero6886/dong-hanh-cung-con</a> (công
+khai ✓)</td>
+</tr>
+<tr class="even">
+<td>Nhánh đang dùng</td>
+<td><code>master</code></td>
+</tr>
+<tr class="odd">
+<td>Nơi lưu mã nguồn</td>
+<td>Máy bạn:
+<code>Downloads\Note giáo dục trẻ\dong-hanh-cung-con\</code></td>
+</tr>
+<tr class="even">
+<td>Số bài viết</td>
+<td><strong>3</strong> bài, đã xuất bản cả 3, không có bài nháp</td>
+</tr>
+<tr class="odd">
+<td>Số chủ đề đang dùng</td>
+<td><strong>3</strong> / 10 chủ đề đã chuẩn bị sẵn</td>
+</tr>
+<tr class="even">
+<td>Số thẻ</td>
+<td><strong>9</strong></td>
+</tr>
+<tr class="odd">
+<td>Số trang website tự sinh ra</td>
+<td><strong>28</strong></td>
+</tr>
+<tr class="even">
+<td>Tình trạng kỹ thuật</td>
+<td>✅ Chạy tốt, 0 lỗi, 0 cảnh báo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ba-bài-viết-hiện-có">Ba bài viết hiện có</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bài</th>
+<th>Chủ đề</th>
+<th>Nguồn gốc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Từ phần thưởng đến động lực bên trong</td>
+<td>Động lực &amp; thói quen</td>
+<td>Biên tập từ file Word của bạn</td>
+</tr>
+<tr class="even">
+<td>Hỏi con học được gì, thay vì hỏi con được mấy điểm</td>
+<td>Giao tiếp cha mẹ – con</td>
+<td>Mở rộng từ bài trên</td>
+</tr>
+<tr class="odd">
+<td>Cấu trúc thay vì nhắc nhở</td>
+<td>Tự lập &amp; trách nhiệm</td>
+<td>Mở rộng từ bài trên</td>
+</tr>
+</tbody>
+</table>
+<h3 id="chín-thẻ-đang-dùng">Chín thẻ đang dùng</h3>
+<p><code>cha mẹ</code> · <code>giao tiếp</code> · <code>giáo dục</code>
+· <code>phần thưởng</code> · <code>thói quen</code> ·
+<code>trách nhiệm</code> · <code>tự giác</code> · <code>tự học</code> ·
+<code>động lực</code></p>
+<h3 id="đã-xong">✅ Đã xong</h3>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="" /><strong>1. Có tài khoản
+GitHub</strong> — <code>Lucero6886</code></label></li>
+<li><label><input type="checkbox" checked="" /><strong>2. Claude đã biết
+tên tài khoản</strong> — đã điền vào cấu hình, mọi địa chỉ trong website
+giờ trỏ đúng</label></li>
+<li><label><input type="checkbox" checked="" /><strong>3. Cài GitHub
+Desktop và đẩy dự án lên</strong> — mã nguồn đã nằm trên GitHub, công
+khai</label></li>
+</ul>
+<h3 id="còn-hai-việc-làm-đúng-thứ-tự-này">⏳ Còn hai việc — làm đúng thứ
+tự này</h3>
+<p><strong>Việc 1 — Bật công tắc GitHub Pages</strong> <em>(2 phút, chỉ
+bạn làm được)</em></p>
+<p>Đây là việc bật cho website được phép hiện ra. Chưa bật thì vào link
+sẽ hiện “404”.</p>
+<ol type="1">
+<li>Mở <a
+href="https://github.com/Lucero6886/dong-hanh-cung-con/settings/pages"
+class="uri">https://github.com/Lucero6886/dong-hanh-cung-con/settings/pages</a></li>
+<li>Phần <strong><code>Build and deployment</code></strong>, ô
+<strong><code>Source</code></strong> đang là <em>“Deploy from a
+branch”</em></li>
+<li>Bấm vào và <strong>chọn <code>GitHub Actions</code></strong></li>
+<li>Xong — nó tự lưu, không có nút Save</li>
+</ol>
+<p><strong>Việc 2 — Đẩy bản sửa của Claude lên</strong> <em>(1
+phút)</em></p>
+<p>Claude vừa sửa 2 file (xem lý do ở <strong>Phần F</strong>, mục ngày
+11/08). Chưa đẩy lên thì website vẫn không chạy.</p>
+<ol type="1">
+<li>Mở <strong>GitHub Desktop</strong></li>
+<li>Cột trái hiện 2 file đã đổi:
+<code>.github/workflows/deploy.yml</code> và
+<code>src/config/site.ts</code>. Bấm xem thử nếu muốn.</li>
+<li>Ô dưới bên trái gõ: <em>“sửa địa chỉ website và nhánh”</em></li>
+<li>Bấm <strong><code>Commit to master</code></strong> → rồi bấm
+<strong><code>Push origin</code></strong></li>
+</ol>
+<p><strong>Sau đó:</strong> chờ khoảng 2 phút, rồi mở <a
+href="https://lucero6886.github.io/dong-hanh-cung-con/"
+class="uri">https://lucero6886.github.io/dong-hanh-cung-con/</a></p>
+<p>Muốn xem nó đang chạy tới đâu: <a
+href="https://github.com/Lucero6886/dong-hanh-cung-con/actions"
+class="uri">https://github.com/Lucero6886/dong-hanh-cung-con/actions</a>
+— chờ dấu tích xanh.</p>
+<blockquote>
+<p>Xong hai việc này là website chính thức lên mạng. Từ đó về sau chỉ
+còn việc viết bài.</p>
+</blockquote>
+<h3 id="quy-trình-sau-khi-xong-4-việc-trên">Quy trình sau khi xong 4
+việc trên</h3>
+<pre><code>Bạn đưa ghi chép cho Claude
+        ↓
+Claude biên tập và ghi file vào thư mục trên máy bạn
+        ↓
+Claude ghi vào Phần F của sổ tay: đã làm gì, vì sao
+        ↓
+Bạn mở GitHub Desktop → NHÌN THẤY chính xác Claude đã đổi những gì
+        ↓
+Ưng thì bấm 2 nút. Không ưng thì bấm &quot;Discard&quot; để huỷ.
+        ↓
+2 phút sau website tự cập nhật</code></pre>
+<blockquote>
+<p>Bước “nhìn thấy chính xác Claude đã đổi gì” chính là câu trả lời cho
+lo ngại của bạn. <strong>Không có gì lên mạng mà bạn chưa nhìn qua và
+chưa bấm đồng ý.</strong></p>
+</blockquote>
+<hr />
+<h2 id="phần-b-làm-việc-với-claude-thế-nào">PHẦN B — Làm việc với Claude
+thế nào</h2>
+<h3 id="ai-làm-gì">Ai làm gì</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Việc</th>
+<th>Ai làm</th>
+<th>Vì sao</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nghĩ ra ý tưởng bài viết</td>
+<td><strong>Bạn</strong></td>
+<td>Đây là giá trị của dự án. Không ai thay được.</td>
+</tr>
+<tr class="even">
+<td>Ghi chép thô, kể trải nghiệm</td>
+<td><strong>Bạn</strong></td>
+<td>Chất liệu gốc phải là của bạn.</td>
+</tr>
+<tr class="odd">
+<td>Biên tập thành bài hoàn chỉnh</td>
+<td>Claude</td>
+<td>Việc kỹ thuật về câu chữ và định dạng.</td>
+</tr>
+<tr class="even">
+<td>Kiểm chứng nguồn khoa học</td>
+<td>Claude, <strong>bạn duyệt</strong></td>
+<td>Claude tra, nhưng bạn là người chịu trách nhiệm cuối.</td>
+</tr>
+<tr class="odd">
+<td>Tạo file, đặt tên, điền thông tin kỹ thuật</td>
+<td>Claude</td>
+<td>Đây là chỗ dễ sai và không thú vị.</td>
+</tr>
+<tr class="even">
+<td>Kiểm tra website không lỗi</td>
+<td>Claude</td>
+<td>Chạy máy móc.</td>
+</tr>
+<tr class="odd">
+<td>Đẩy bài lên mạng</td>
+<td>Claude</td>
+<td>Một câu lệnh.</td>
+</tr>
+<tr class="even">
+<td><strong>Quyết định đăng hay không</strong></td>
+<td><strong>Bạn</strong></td>
+<td>Luôn luôn là bạn.</td>
+</tr>
+<tr class="odd">
+<td>Ghi lại vào sổ tay này</td>
+<td>Claude</td>
+<td>Bắt buộc, sau mỗi thay đổi.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="câu-mẫu-để-nhắn-cho-claude">Câu mẫu để nhắn cho Claude</h3>
+<p>Copy nguyên câu, thay phần trong ngoặc:</p>
+<p><strong>Đăng bài mới từ ghi chép</strong></p>
+<pre><code>Đây là ghi chép của tôi về (chủ đề).
+Biên tập thành bài viết cho website rồi đăng lên giúp tôi.
+Nhớ cập nhật sổ tay vận hành.
+
+(dán ghi chép của bạn vào đây)</code></pre>
+<p><strong>Đăng bài từ file Word</strong></p>
+<pre><code>Tôi vừa để file (tên file).docx vào thư mục dự án.
+Đọc và biên tập thành bài viết cho website giúp tôi.
+Giữ nguyên luận điểm của tôi, phần nào bạn thêm vào thì nói rõ.</code></pre>
+<p><strong>Sửa một bài đã đăng</strong></p>
+<pre><code>Bài &quot;(tên bài)&quot; cần sửa: (nói rõ muốn sửa gì).
+Sửa xong nhớ ghi vào sổ tay.</code></pre>
+<p><strong>Gỡ một bài xuống ngay</strong></p>
+<pre><code>Gỡ bài &quot;(tên bài)&quot; xuống khỏi website, giữ lại nội dung để sau đăng lại.</code></pre>
+<p><strong>Đổi thông tin website</strong></p>
+<pre><code>Đổi (tên website / tên tác giả / dòng bản quyền / menu) thành: (nội dung mới).</code></pre>
+<p><strong>Không hiểu chuyện gì đang xảy ra</strong></p>
+<pre><code>Giải thích cho tôi bằng tiếng Việt đời thường: (điều bạn không hiểu).
+Tôi không biết code, đừng dùng từ chuyên môn.</code></pre>
+<p><strong>Kiểm tra sức khoẻ dự án</strong></p>
+<pre><code>Kiểm tra toàn bộ dự án xem có gì hỏng không, rồi báo cáo cho tôi
+bằng ngôn ngữ dễ hiểu. Cập nhật phần A của sổ tay vận hành.</code></pre>
+<h3 id="quy-tắc-claude-phải-tuân-theo">Quy tắc Claude phải tuân
+theo</h3>
+<p>Các quy tắc này đã được ghi vào file <code>CLAUDE.md</code> trong dự
+án, nên <strong>mọi phiên làm việc với Claude về sau đều tự động đọc
+được</strong>, kể cả khi bạn mở một cuộc trò chuyện hoàn toàn mới:</p>
+<ol type="1">
+<li>Sau mỗi thay đổi, ghi một mục vào <strong>Phần F</strong> của sổ tay
+này.</li>
+<li>Cập nhật lại số liệu ở <strong>Phần A</strong>.</li>
+<li>Không đăng bài nào khi chưa hỏi ý bạn.</li>
+<li>Không bịa nguồn, không bịa số liệu, không bịa nghiên cứu.</li>
+<li>Giữ nguyên luận điểm gốc của bạn; phần nào Claude thêm vào phải nói
+rõ.</li>
+<li>Giải thích bằng tiếng Việt đời thường, không dùng từ chuyên môn mà
+không dịch.</li>
+</ol>
+<blockquote>
+<p>Nếu có lúc nào Claude làm mà không ghi sổ, bạn cứ nhắc: <em>“Cập nhật
+sổ tay vận hành đi.”</em></p>
+</blockquote>
+<hr />
+<h2 id="phần-c-những-việc-bạn-tự-làm-được-không-cần-claude">PHẦN C —
+Những việc bạn tự làm được, không cần Claude</h2>
+<p>Đây là phần quan trọng nhất của sổ tay. <strong>Tất cả đều làm trên
+trình duyệt web, không cài phần mềm, không gõ lệnh.</strong></p>
+<p>Mục đích: để bạn không bao giờ bị kẹt khi không có Claude bên
+cạnh.</p>
+<blockquote>
+<p><strong>Chuẩn bị chung:</strong> mở <a href="https://github.com"
+class="uri">https://github.com</a>, đăng nhập, vào repo
+<code>dong-hanh-cung-con</code> của bạn. “Repo” chỉ là cái tên gọi thư
+mục dự án đặt trên mạng. Xem Phần D.</p>
+</blockquote>
+<hr />
+<h3 id="việc-0-cài-github-desktop-một-lần-duy-nhất-quan-trọng-nhất">Việc
+0 — Cài GitHub Desktop (một lần duy nhất, quan trọng nhất)</h3>
+<p>GitHub Desktop là một ứng dụng miễn phí do chính GitHub làm. Nó là
+<strong>cây cầu</strong> giữa thư mục trên máy bạn và website trên mạng
+— và quan trọng hơn, nó <strong>cho bạn xem trước mọi thay đổi</strong>
+trước khi chúng lên mạng.</p>
+<p><strong>Cài đặt</strong></p>
+<ol type="1">
+<li>Vào <a href="https://desktop.github.com"
+class="uri">https://desktop.github.com</a>, tải bản cho Windows, cài như
+mọi phần mềm khác</li>
+<li>Mở lên, bấm <strong><code>Sign in to GitHub.com</code></strong> →
+trình duyệt mở ra → đăng nhập → xong</li>
+<li>Bấm <strong><code>File</code></strong> →
+<strong><code>Add local repository</code></strong></li>
+<li>Bấm <strong><code>Choose…</code></strong>, trỏ tới thư mục:
+<code>C:\Users\admin\Downloads\Note giáo dục trẻ\dong-hanh-cung-con</code></li>
+<li>Bấm <strong><code>Add repository</code></strong></li>
+</ol>
+<p><strong>Đưa dự án lên mạng lần đầu</strong></p>
+<ol start="6" type="1">
+<li>Bấm nút <strong><code>Publish repository</code></strong> ở thanh
+trên</li>
+<li>Tên để nguyên <code>dong-hanh-cung-con</code></li>
+<li><strong>Bỏ tích ô <code>Keep this code private</code></strong> —
+website công khai thì mã nguồn phải công khai (GitHub Pages miễn phí yêu
+cầu vậy)</li>
+<li>Bấm <strong><code>Publish repository</code></strong></li>
+</ol>
+<p>Xong. Mã nguồn đã lên GitHub. Giờ quay lại làm <strong>việc số
+6</strong> để bật website.</p>
+<hr />
+<h3 id="việc-0b-đưa-thay-đổi-của-claude-lên-mạng-làm-thường-xuyên">Việc
+0b — Đưa thay đổi của Claude lên mạng (làm thường xuyên)</h3>
+<p>Mỗi lần Claude sửa gì đó trong thư mục dự án, bạn làm ba bước
+này:</p>
+<ol type="1">
+<li>Mở <strong>GitHub Desktop</strong></li>
+<li>Cột trái hiện danh sách file đã đổi. <strong>Bấm vào từng file để
+xem.</strong>
+<ul>
+<li>Chữ <strong>nền xanh lá</strong> = phần được thêm vào</li>
+<li>Chữ <strong>nền đỏ</strong> = phần bị bỏ đi</li>
+<li>Đây là lúc bạn kiểm tra. Không ưng chỗ nào thì chưa bấm gì cả — nhắn
+Claude sửa lại.</li>
+</ul></li>
+<li>Ưng rồi thì:
+<ul>
+<li>Ô dưới bên trái, gõ vài chữ mô tả (ví dụ: <em>“bài mới về tuổi
+teen”</em>)</li>
+<li>Bấm nút xanh <strong><code>Commit to main</code></strong></li>
+<li>Bấm tiếp nút <strong><code>Push origin</code></strong> ở thanh
+trên</li>
+</ul></li>
+</ol>
+<p>⏱ Khoảng 2 phút sau website tự cập nhật.</p>
+<blockquote>
+<p><strong>Muốn huỷ hết thay đổi của Claude?</strong> Bấm chuột phải vào
+file → <strong><code>Discard changes</code></strong>. File quay về như
+cũ. Không mất gì.</p>
+</blockquote>
+<hr />
+<h3 id="việc-1-xem-website-đang-có-những-bài-gì">Việc 1 — Xem website
+đang có những bài gì</h3>
+<ol type="1">
+<li>Trong repo, bấm vào thư mục <strong><code>src</code></strong></li>
+<li>Bấm tiếp <strong><code>content</code></strong> →
+<strong><code>articles</code></strong></li>
+<li>Mỗi file trong đó là một bài viết</li>
+</ol>
+<p><strong>Xong.</strong> Không sửa gì thì không hỏng gì — cứ yên tâm
+bấm vào xem.</p>
+<hr />
+<h3 id="việc-2-sửa-chữ-trong-một-bài-đã-đăng">Việc 2 — Sửa chữ trong một
+bài đã đăng</h3>
+<ol type="1">
+<li>Vào <code>src</code> → <code>content</code> → <code>articles</code>,
+bấm vào bài cần sửa</li>
+<li>Bấm biểu tượng <strong>cây bút chì ✏️</strong> ở góc trên bên
+phải</li>
+<li>Sửa chữ như gõ trong Notepad</li>
+<li>Kéo xuống cuối, bấm nút xanh
+<strong><code>Commit changes</code></strong></li>
+<li>Hộp thoại hiện ra → bấm tiếp nút xanh
+<strong><code>Commit changes</code></strong></li>
+</ol>
+<p>⏱ Khoảng 2 phút sau website tự cập nhật.</p>
+<blockquote>
+<p>⚠️ <strong>Đừng đụng vào phần nằm giữa hai dòng <code>---</code> ở
+đầu file</strong> trừ khi bạn biết mình đang làm gì. Đó là phần khai báo
+kỹ thuật (xem Phần D: <em>frontmatter</em>). Sửa phần chữ bên dưới thì
+luôn an toàn.</p>
+</blockquote>
+<hr />
+<h3 id="việc-3-gỡ-một-bài-xuống-ngay-lập-tức">Việc 3 — Gỡ một bài xuống
+ngay lập tức</h3>
+<p>Dùng khi bạn nhận ra bài có chỗ sai và muốn ẩn đi trong lúc chưa kịp
+sửa.</p>
+<ol type="1">
+<li>Mở bài đó, bấm <strong>cây bút chì ✏️</strong></li>
+<li>Tìm dòng: <code>draft: false</code></li>
+<li>Sửa thành: <code>draft: true</code></li>
+<li>Bấm <strong><code>Commit changes</code></strong> hai lần</li>
+</ol>
+<p>⏱ 2 phút sau bài biến mất khỏi website. <strong>Nội dung vẫn còn
+nguyên</strong> — đổi lại thành <code>false</code> là bài quay về.</p>
+<blockquote>
+<p><strong>Đừng xoá file.</strong> Đổi <code>draft</code> là đủ, và giữ
+được toàn bộ nội dung.</p>
+</blockquote>
+<hr />
+<h3 id="việc-4-đưa-một-bài-lên-khối-bài-viết-nổi-bật-ở-trang-chủ">Việc 4
+— Đưa một bài lên khối “Bài viết nổi bật” ở trang chủ</h3>
+<ol type="1">
+<li>Mở bài đó, bấm <strong>cây bút chì ✏️</strong></li>
+<li>Tìm dòng <code>featured: false</code> → sửa thành
+<code>featured: true</code></li>
+<li>Bấm <strong><code>Commit changes</code></strong> hai lần</li>
+</ol>
+<hr />
+<h3 id="việc-5-xem-website-có-đang-bị-lỗi-không">Việc 5 — Xem website có
+đang bị lỗi không</h3>
+<ol type="1">
+<li>Trong repo, bấm tab <strong><code>Actions</code></strong> ở thanh
+trên cùng</li>
+<li>Nhìn dòng trên cùng của danh sách:</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th>Dấu hiệu</th>
+<th>Nghĩa là</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>✅ <strong>Dấu tích xanh</strong></td>
+<td>Mọi thứ bình thường, website đã cập nhật</td>
+</tr>
+<tr class="even">
+<td>🟡 <strong>Chấm vàng đang quay</strong></td>
+<td>Đang xử lý, chờ 1–2 phút</td>
+</tr>
+<tr class="odd">
+<td>❌ <strong>Dấu X đỏ</strong></td>
+<td>Có lỗi — website <strong>vẫn giữ bản cũ</strong>, không bị hỏng</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Gặp dấu X đỏ đừng lo. Website cũ vẫn chạy bình thường. Chỉ cần nhắn
+Claude: <em>“Actions đang báo đỏ, xem giúp tôi.”</em></p>
+</blockquote>
+<hr />
+<h3 id="việc-6-bật-github-pages-làm-một-lần-duy-nhất">Việc 6 — Bật
+GitHub Pages (làm một lần duy nhất)</h3>
+<p>Đây là việc số 3 trong danh sách chờ ở Phần A.</p>
+<ol type="1">
+<li>Trong repo, bấm <strong><code>Settings</code></strong> (bánh răng, ở
+thanh trên cùng bên phải)</li>
+<li>Cột bên trái, kéo xuống tìm mục <strong><code>Pages</code></strong>,
+bấm vào</li>
+<li>Nhìn phần <strong><code>Build and deployment</code></strong></li>
+<li>Ở ô <strong><code>Source</code></strong>, đang là “Deploy from a
+branch” → bấm vào và <strong>chọn
+<code>GitHub Actions</code></strong></li>
+<li>Xong, không cần bấm Save — nó tự lưu</li>
+</ol>
+<p>⏱ Vài phút sau, ngay tại trang đó sẽ hiện địa chỉ website của
+bạn.</p>
+<blockquote>
+<p>Đây là bước hay bị quên nhất. Không làm bước này thì Actions vẫn báo
+xanh nhưng vào link sẽ hiện “404 — không tìm thấy trang”.</p>
+</blockquote>
+<hr />
+<h3 id="việc-7-xem-website-và-lấy-link-gửi-phụ-huynh">Việc 7 — Xem
+website và lấy link gửi phụ huynh</h3>
+<h4 id="link-trang-chủ-dùng-để-giới-thiệu-chung">Link trang chủ — dùng
+để giới thiệu chung</h4>
+<pre><code>https://lucero6886.github.io/dong-hanh-cung-con/</code></pre>
+<p>Đây là link chính. Gửi link này khi muốn giới thiệu cả thư viện.</p>
+<blockquote>
+<p>💡 <strong>Lưu vào Bookmark.</strong> Mở link, bấm dấu ⭐ trên thanh
+địa chỉ trình duyệt. Lần sau không phải nhớ.</p>
+</blockquote>
+<h4 id="link-một-bài-cụ-thể-dùng-khi-muốn-gửi-đúng-một-bài">Link một bài
+cụ thể — dùng khi muốn gửi đúng một bài</h4>
+<p>Cách chắc chắn nhất, không cần nhớ gì:</p>
+<ol type="1">
+<li>Mở trang chủ</li>
+<li>Bấm vào bài muốn gửi</li>
+<li><strong>Copy nguyên dòng địa chỉ trên đầu trình duyệt</strong> (bôi
+đen → Ctrl+C)</li>
+</ol>
+<p>Ví dụ ba bài hiện có:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bài</th>
+<th>Link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Từ phần thưởng đến động lực bên trong</td>
+<td><code>.../articles/tu-phan-thuong-den-dong-luc-ben-trong/</code></td>
+</tr>
+<tr class="even">
+<td>Hỏi con học được gì, thay vì hỏi con được mấy điểm</td>
+<td><code>.../articles/hoi-con-hoc-duoc-gi-thay-vi-hoi-may-diem/</code></td>
+</tr>
+<tr class="odd">
+<td>Cấu trúc thay vì nhắc nhở</td>
+<td><code>.../articles/cau-truc-thay-vi-nhac-nho/</code></td>
+</tr>
+</tbody>
+</table>
+<p><em>(<code>...</code> là phần
+<code>https://lucero6886.github.io/dong-hanh-cung-con</code>)</em></p>
+<p>Trong mỗi bài còn có sẵn mục <strong>“Chia sẻ”</strong> ở cuối, kèm
+nút <strong><code>Sao chép liên kết</code></strong> — bấm một cái là
+link nằm sẵn trong bộ nhớ tạm, dán thẳng vào Zalo được.</p>
+<h4 id="khi-dán-vào-zalo-facebook-messenger">Khi dán vào Zalo / Facebook
+/ Messenger</h4>
+<p>Link sẽ <strong>tự nở ra thành một thẻ xem trước</strong> có tiêu đề,
+mô tả và ảnh — thay vì một dòng chữ dài loằng ngoằng. Website đã được
+chuẩn bị sẵn cho việc này.</p>
+<blockquote>
+<p>⏳ <strong>Zalo và Facebook lưu đệm rất lâu.</strong> Nếu bạn dán thử
+link <em>trước khi</em> website chạy xong, chúng sẽ nhớ luôn cái lỗi 404
+đó và hiện sai trong nhiều giờ. <strong>Chỉ dán thử sau khi mở link thấy
+website hiện ra bình thường.</strong> Lỡ rồi thì nhắn Claude, có cách
+xoá bộ nhớ đệm.</p>
+</blockquote>
+<h4 id="nên-kiểm-tra-trước-khi-gửi-cho-phụ-huynh">Nên kiểm tra trước khi
+gửi cho phụ huynh</h4>
+<ul class="task-list">
+<li><label><input type="checkbox" />Mở link trên <strong>điện
+thoại</strong> — phần lớn phụ huynh đọc bằng điện thoại</label></li>
+<li><label><input type="checkbox" />Bấm thử 2–3 liên kết trong bài xem
+có mở được không</label></li>
+<li><label><input type="checkbox" />Dán link vào Zalo của chính mình
+trước, xem thẻ xem trước hiện đúng chưa</label></li>
+<li><label><input type="checkbox" />Đọc lướt lại bài một lần cuối bằng
+con mắt phụ huynh</label></li>
+</ul>
+<h4 id="muốn-có-mã-qr-để-in-ra">Muốn có mã QR để in ra?</h4>
+<p>Nhắn Claude: <em>“Tạo mã QR cho link website để tôi in ra.”</em> Tiện
+khi họp phụ huynh hoặc dán ở bảng tin lớp.</p>
+<hr />
+<h2 id="phần-d-từ-điển-15-từ-bạn-sẽ-gặp">PHẦN D — Từ điển: 15 từ bạn sẽ
+gặp</h2>
+<p>Giải thích bằng ví dụ đời thường, không dùng từ chuyên môn để giải
+thích từ chuyên môn.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Từ</th>
+<th>Hiểu nôm na là</th>
+<th>Ví von</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Repo</strong> <em>(repository)</em></td>
+<td>Thư mục dự án đặt trên mạng</td>
+<td>Như một thư mục Google Drive, nhưng nhớ được mọi phiên bản cũ</td>
+</tr>
+<tr class="even">
+<td><strong>GitHub</strong></td>
+<td>Nơi lưu repo, miễn phí</td>
+<td>Cái “Google Drive” dành cho dự án như thế này</td>
+</tr>
+<tr class="odd">
+<td><strong>Commit</strong></td>
+<td>Lưu lại kèm ghi chú lý do</td>
+<td>Bấm Ctrl+S, nhưng có ghi “vì sao tôi sửa” và lưu vĩnh viễn</td>
+</tr>
+<tr class="even">
+<td><strong>Push</strong></td>
+<td>Đẩy bản trên máy lên mạng</td>
+<td>Bấm “đồng bộ” để mọi người thấy bản mới</td>
+</tr>
+<tr class="odd">
+<td><strong>Build</strong></td>
+<td>Máy dựng file bạn viết thành trang web</td>
+<td>Nhà in nhận bản thảo rồi in thành tờ báo</td>
+</tr>
+<tr class="even">
+<td><strong>Deploy</strong></td>
+<td>Đưa bản vừa dựng ra cho mọi người xem</td>
+<td>Xe chở báo ra sạp</td>
+</tr>
+<tr class="odd">
+<td><strong>Actions</strong></td>
+<td>Cái máy tự động chạy build + deploy</td>
+<td>Người thợ in tự động, làm việc mỗi khi có bản thảo mới</td>
+</tr>
+<tr class="even">
+<td><strong>Frontmatter</strong></td>
+<td>Phần khai báo ở đầu file, giữa hai dòng <code>---</code></td>
+<td>Tờ khai dán ngoài bì thư: gửi ai, ngày nào, thuộc loại gì</td>
+</tr>
+<tr class="odd">
+<td><strong>Markdown</strong> <em>(.md)</em></td>
+<td>Cách viết chữ có định dạng bằng ký hiệu đơn giản</td>
+<td><code>**đậm**</code> cho ra <strong>đậm</strong>. Như gõ tin nhắn
+Zalo có <code>*chữ*</code></td>
+</tr>
+<tr class="even">
+<td><strong>Draft</strong></td>
+<td>Bản nháp</td>
+<td><code>draft: true</code> = để trong ngăn kéo.
+<code>draft: false</code> = dán lên bảng tin</td>
+</tr>
+<tr class="odd">
+<td><strong>Slug</strong></td>
+<td>Phần đuôi trong địa chỉ bài viết</td>
+<td>Tên file <code>tu-giac.md</code> → địa chỉ
+<code>.../articles/tu-giac/</code></td>
+</tr>
+<tr class="even">
+<td><strong>Category</strong></td>
+<td>Chủ đề của bài</td>
+<td>Như kệ sách trong thư viện. Một bài nằm trên <strong>một</strong>
+kệ</td>
+</tr>
+<tr class="odd">
+<td><strong>Tag</strong></td>
+<td>Thẻ dán thêm để dễ tìm</td>
+<td>Giấy nhớ dán lên gáy sách. Một bài dán được <strong>nhiều</strong>
+thẻ</td>
+</tr>
+<tr class="even">
+<td><strong>RSS</strong></td>
+<td>Kênh để người đọc theo dõi bài mới</td>
+<td>Như “đăng ký nhận báo”, tự động có bài mới</td>
+</tr>
+<tr class="odd">
+<td><strong>Sitemap</strong></td>
+<td>Bản đồ website gửi cho Google</td>
+<td>Mục lục đưa cho thủ thư để họ xếp sách đúng chỗ</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ba-từ-dễ-nhầm-nhất">Ba từ dễ nhầm nhất</h3>
+<p><strong>Build vs Deploy.</strong> Build là <em>in báo</em>, deploy là
+<em>chở ra sạp</em>. Build hỏng thì không có gì ra sạp — nên báo cũ vẫn
+nằm đó, không ai đọc phải bản hỏng.</p>
+<p><strong>Draft vs Xoá.</strong> Draft là <em>cất vào ngăn kéo</em> —
+lấy ra lúc nào cũng được. Xoá là <em>đốt đi</em>. Luôn dùng draft.</p>
+<p><strong>Category vs Tag.</strong> Một bài chỉ nằm trên
+<strong>một</strong> kệ (category), nhưng dán được
+<strong>nhiều</strong> giấy nhớ (tag).</p>
+<hr />
+<h2 id="phần-e-mười-tình-huống-thường-gặp">PHẦN E — Mười tình huống
+thường gặp</h2>
+<h3 id="tôi-muốn-đăng-một-bài-mới">1. “Tôi muốn đăng một bài mới”</h3>
+<p>Nhắn Claude câu mẫu ở <strong>Phần B</strong>. Hoặc tự làm trên
+GitHub — nhưng lần đầu nên để Claude làm và đọc lại phần Claude ghi
+trong sổ, sẽ nhanh hiểu hơn.</p>
+<h3 id="tôi-phát-hiện-bài-có-chỗ-sai-chính-tả">2. “Tôi phát hiện bài có
+chỗ sai chính tả”</h3>
+<p>→ <strong>Phần C, việc 2.</strong> Tự sửa mất 1 phút, không cần
+Claude.</p>
+<h3 id="tôi-lỡ-đăng-nhầm-muốn-gỡ-ngay">3. “Tôi lỡ đăng nhầm, muốn gỡ
+ngay”</h3>
+<p>→ <strong>Phần C, việc 3.</strong> Đổi <code>draft: false</code>
+thành <code>draft: true</code>.</p>
+<h3 id="website-hiện-chữ-trơ-trọi-mất-hết-màu-và-bố-cục">4. “Website
+hiện chữ trơ trọi, mất hết màu và bố cục”</h3>
+<p>Đây là lỗi cấu hình địa chỉ, gần như luôn là do bước 2 trong danh
+sách chờ chưa làm. → Nhắn Claude: <em>“Website mất hết định dạng, tài
+khoản GitHub của tôi là ABC, sửa giúp tôi.”</em></p>
+<h3 id="actions-báo-dấu-x-đỏ">5. “Actions báo dấu X đỏ”</h3>
+<p>Website cũ <strong>vẫn đang chạy bình thường</strong>, không ai thấy
+lỗi. → Nhắn Claude: <em>“Actions đang báo đỏ, xem giúp tôi.”</em></p>
+<h3 id="vào-link-website-thì-hiện-404">6. “Vào link website thì hiện
+404”</h3>
+<p>→ Chưa bật GitHub Pages. <strong>Phần C, việc 6.</strong></p>
+<h3 id="bài-tôi-vừa-đăng-không-thấy-đâu-cả">7. “Bài tôi vừa đăng không
+thấy đâu cả”</h3>
+<p>Kiểm tra theo thứ tự: 1. Chờ đủ 2 phút chưa? 2. Tab
+<strong>Actions</strong> đã hiện dấu tích xanh chưa? 3. Trong bài, dòng
+<code>draft:</code> đang là <code>false</code> chứ? 4. Vẫn không thấy →
+nhắn Claude.</p>
+<h3 id="tôi-muốn-đổi-tên-website-tên-tác-giả">8. “Tôi muốn đổi tên
+website / tên tác giả”</h3>
+<p>→ Nhắn Claude câu mẫu ở <strong>Phần B</strong>. Toàn bộ website đổi
+theo, vì mọi thứ đều lấy từ <strong>một</strong> file cấu hình duy
+nhất.</p>
+<h3 id="tôi-lỡ-sửa-hỏng-gì-đó-và-không-biết-cách-quay-lại">9. “Tôi lỡ
+sửa hỏng gì đó và không biết cách quay lại”</h3>
+<p><strong>Không có gì mất được.</strong> GitHub lưu mọi phiên bản. →
+Nhắn Claude: <em>“Tôi lỡ sửa hỏng, quay lại bản trước giúp
+tôi.”</em></p>
+<h3 id="tôi-quên-hết-rồi-phải-bắt-đầu-từ-đâu">10. “Tôi quên hết rồi,
+phải bắt đầu từ đâu?”</h3>
+<p>→ Mở đúng file này, đọc <strong>Phần A</strong>. Nó luôn cho biết dự
+án đang ở đâu và việc gì đang chờ bạn.</p>
+<hr />
+<h2 id="phần-f-nhật-ký-thay-đổi">PHẦN F — Nhật ký thay đổi</h2>
+<blockquote>
+<p>Claude ghi vào đây sau <strong>mỗi</strong> lần chạm vào dự án. Bạn
+chỉ đọc. Mục mới nhất nằm trên cùng.</p>
+</blockquote>
+<hr />
+<h3
+id="sửa-lỗi-khiến-website-không-tự-cập-nhật-điền-địa-chỉ-thật">11/08/2026
+— Sửa lỗi khiến website không tự cập nhật + điền địa chỉ thật</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Sửa
+lỗi <em>(lỗi do Claude gây ra)</em></p>
+<p><strong>Bối cảnh</strong></p>
+<p>Bạn đã đẩy dự án lên GitHub thành công, nhưng website vào link vẫn
+báo 404. Claude kiểm tra và tìm ra hai nguyên nhân — <strong>một trong
+hai là lỗi của Claude.</strong></p>
+<p><strong>Nguyên nhân 1 — Lỗi của Claude: đặt sai tên nhánh cần theo
+dõi</strong></p>
+<p>Cái máy tự động của GitHub được cài để “hễ có thay đổi ở nhánh tên
+<strong><code>main</code></strong> thì dựng lại website”. Nhưng GitHub
+Desktop tạo nhánh tên <strong><code>master</code></strong>.</p>
+<p>Kết quả: bạn đẩy code lên, nhưng máy đứng chờ ở một nhánh khác.
+<strong>Nó chưa hề chạy lần nào.</strong></p>
+<p>Claude đã ghi trong tài liệu là phải đổi tên nhánh thành
+<code>main</code>, nhưng đó là một câu lệnh gõ tay — mà bạn thì dùng
+GitHub Desktop, hoàn toàn hợp lý. <strong>Đáng ra Claude phải lường
+trước điều này ngay từ đầu.</strong></p>
+<p>Cách sửa: cài cho máy nghe <strong>cả hai</strong> tên nhánh,
+<code>main</code> lẫn <code>master</code>. Từ giờ dùng cách nào cũng
+chạy.</p>
+<p><strong>Nguyên nhân 2 — Chưa có địa chỉ thật</strong></p>
+<p>Cấu hình vẫn ghi <code>your-username</code> vì trước đó Claude chưa
+biết tài khoản GitHub của bạn. Claude đã tự tìm ra
+(<code>Lucero6886</code>) từ chính thư mục dự án trên máy bạn, thay vì
+bắt bạn đi tìm.</p>
+<p>Đã điền vào. Toàn bộ địa chỉ trong website — thẻ xem trước khi chia
+sẻ Zalo/Facebook, bản đồ gửi Google, kênh RSS — giờ trỏ đúng.</p>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<p>Cần bạn làm 2 việc ở <strong>Phần A</strong> (bật GitHub Pages, rồi
+đẩy bản sửa này lên). Sau đó website chạy.</p>
+<p>Địa chỉ website của bạn:
+<strong>https://lucero6886.github.io/dong-hanh-cung-con/</strong></p>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<p>Xem hai file đã sửa trong GitHub Desktop trước khi bấm duyệt — đây
+đúng là lúc bước xem trước phát huy tác dụng.</p>
+<p>Cách tự kiểm tra máy tự động có chạy không, không cần Claude: <a
+href="https://github.com/Lucero6886/dong-hanh-cung-con/actions"
+class="uri">https://github.com/Lucero6886/dong-hanh-cung-con/actions</a>
+— xem <strong>Phần C, việc 5</strong>.</p>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Không. Chỉ cần làm 2 việc ở Phần A.</p>
+<p><strong>Vì sao ghi rõ lỗi của Claude vào đây</strong></p>
+<p>Vì sổ tay này chỉ có giá trị nếu nó trung thực. Bạn cần biết chỗ nào
+Claude làm hụt, để lần sau gặp hiện tượng tương tự — <em>“đẩy code lên
+rồi mà website không đổi gì”</em> — bạn nhận ra ngay và biết đường
+hỏi.</p>
+<hr />
+<h3 id="chọn-github-desktop-làm-nút-bấm-đưa-bài-lên-mạng">11/08/2026 —
+Chọn GitHub Desktop làm “nút bấm” đưa bài lên mạng</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong>
+Quyết định về quy trình</p>
+<p><strong>Đã làm gì</strong></p>
+<p>Bổ sung <strong>việc 0</strong> và <strong>việc 0b</strong> vào Phần
+C: cài và dùng GitHub Desktop.</p>
+<p><strong>Vì sao</strong></p>
+<p>Khi Claude ghi file vào thư mục trên máy bạn, các file đó mới chỉ nằm
+trên máy — chưa lên mạng. Cần một cách đưa chúng lên, mà không bắt bạn
+gõ lệnh.</p>
+<p>Đã cân nhắc hai cách:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cách</th>
+<th>Vì sao chọn / không chọn</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Claude tự đẩy lên mạng</td>
+<td>❌ Cần bạn tạo một “chìa khoá” (mật khẩu kỹ thuật) rồi dán cho
+Claude mỗi phiên. Rườm rà, và dán mật khẩu vào khung chat là thói quen
+không nên có.</td>
+</tr>
+<tr class="even">
+<td><strong>GitHub Desktop</strong></td>
+<td>✅ Miễn phí, chính chủ GitHub, không gõ lệnh, đăng nhập một lần.
+<strong>Và quan trọng nhất: nó cho bạn xem trước từng chữ Claude đã đổi,
+trước khi bấm đồng ý.</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<p>Điều này biến mối lo của bạn thành một tính năng. Thay vì Claude âm
+thầm làm rồi bạn phải tin, quy trình giờ là: <strong>Claude đề xuất →
+bạn xem → bạn duyệt.</strong> Không có gì lên mạng mà bạn chưa nhìn
+qua.</p>
+<p>Thêm một việc phải cài (mất 5 phút, một lần), đổi lại bạn giữ được
+quyền phủ quyết ở mọi thay đổi.</p>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<p>Đây vốn dĩ là phần của bạn — <strong>Phần C, việc 0 và 0b</strong>.
+Claude không làm hộ được, và cũng không nên làm hộ.</p>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Có: cài GitHub Desktop (việc số 3 trong danh sách chờ ở Phần A).</p>
+<p>Nếu bạn thấy cách này vẫn phiền, có một lựa chọn khác: tải file lên
+thẳng trên web GitHub bằng cách kéo thả. Nhắn Claude <em>“hướng dẫn tôi
+cách kéo thả file lên GitHub”</em> là được — nhưng cách đó bạn sẽ không
+xem trước được thay đổi.</p>
+<hr />
+<h3 id="dựng-toàn-bộ-website-v1.0.0">11/08/2026 — Dựng toàn bộ website
+(v1.0.0)</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong>
+Khởi tạo dự án</p>
+<p><strong>Đã làm gì</strong></p>
+<p>Dựng hoàn chỉnh website từ con số không: bộ khung, giao diện, hệ
+thống chủ đề và thẻ, tìm kiếm, và 3 bài viết đầu tiên. Website chạy
+được, kiểm tra không có lỗi.</p>
+<p><strong>Vì sao làm như vậy</strong></p>
+<p>Chọn kiểu website “tĩnh” — tức là mọi trang được dựng sẵn thành file,
+không có máy chủ chạy phía sau. Lý do: không tốn tiền duy trì, không thể
+bị sập vì quá tải, không cần bảo mật phức tạp, và quan trọng nhất — bài
+viết của bạn nằm trong các file văn bản đơn giản, mở bằng Notepad cũng
+đọc được sau 10 năm nữa.</p>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<ul>
+<li>Bạn có 3 bài viết thật, trong đó bài chính giữ nguyên luận điểm từ
+file Word của bạn.</li>
+<li>Website chưa lên mạng — cần bạn làm 3 việc ở <strong>Phần
+A</strong>.</li>
+<li>Từ giờ, thêm một bài là 22 thứ khác tự cập nhật theo (trang chủ, chủ
+đề, thẻ, tìm kiếm, RSS…). Bạn không phải sửa gì thêm.</li>
+</ul>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<p>Bạn không cần tự dựng lại. Nhưng phần bạn <em>nên</em> tự làm được là
+<strong>thêm và sửa bài</strong> — xem <strong>Phần C, việc
+1–4</strong>.</p>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Có — 3 việc ở <strong>Phần A</strong>. Website chưa lên mạng được nếu
+thiếu.</p>
+<hr />
+<h3 id="kiểm-chứng-lại-nguồn-khoa-học-trong-bài-chính">11/08/2026 — Kiểm
+chứng lại nguồn khoa học trong bài chính</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong>
+Kiểm chứng nội dung</p>
+<p><strong>Đã làm gì</strong></p>
+<p>Bài <em>“Từ phần thưởng đến động lực bên trong”</em> có nhắc tới
+nghiên cứu tâm lý học. Thay vì viết theo trí nhớ, Claude đã tra cứu thật
+trên mạng để xác minh.</p>
+<p><strong>Kết quả</strong></p>
+<p>Hai nghiên cứu được nhắc tới là <strong>có thật</strong> và đã ghi
+nguồn đầy đủ ở cuối bài. Nhưng tra kỹ thì phát hiện thêm một điều quan
+trọng: <strong>vấn đề này vẫn đang còn tranh luận</strong> trong giới
+nghiên cứu — có nhóm tác giả khác đưa ra kết luận gần như ngược lại.</p>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<p>Bài viết đã được viết lại phần đó để nêu <strong>cả hai
+phía</strong>, thay vì trình bày như thể đã có kết luận cuối cùng. Điều
+này bảo vệ uy tín của bạn: một bài thừa nhận “chỗ này chưa ngã ngũ” đáng
+tin hơn một bài nói chắc như đinh đóng cột.</p>
+<p>Ngoài ra, chi tiết tìm được còn <strong>củng cố chính luận điểm gốc
+của bạn</strong>: nghiên cứu cho thấy phần thưởng <em>bất ngờ, không gắn
+với nhiệm vụ</em> thì hầu như không gây tác động tiêu cực — đúng bằng sự
+khác biệt giữa <em>“học xong thì mẹ mua đồ chơi”</em> và <em>“cuối tuần
+cả nhà đi chơi”</em> mà bạn đã viết trong ghi chép.</p>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<p>Bạn tự kiểm tra được: mở bài viết, kéo xuống cuối phần <strong>“Nguồn
+tham khảo”</strong>, bấm vào từng đường link. Link nào không mở được thì
+báo Claude. <strong>Đây là việc bạn nên tự làm với mọi bài có trích
+nghiên cứu</strong> — xem thêm <strong>Phần G</strong>.</p>
+<hr />
+<h3 id="sửa-một-lỗi-phát-hiện-khi-kiểm-thử">11/08/2026 — Sửa một lỗi
+phát hiện khi kiểm thử</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Sửa
+lỗi</p>
+<p><strong>Đã làm gì</strong></p>
+<p>Khi thử tắt JavaScript trong trình duyệt (một số người đọc dùng máy
+cũ hoặc mạng yếu), phát hiện hai nút bấm — nút chuyển nền sáng/tối và
+nút sao chép liên kết — <strong>vẫn hiện ra nhưng bấm không có tác dụng
+gì</strong>.</p>
+<p><strong>Vì sao</strong></p>
+<p>Một quy tắc định dạng của Claude đã vô tình đè lên lệnh “ẩn nút này
+đi”. Đã sửa và kiểm tra lại cả hai trường hợp: bật và tắt
+JavaScript.</p>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<p>Người đọc không gặp cảnh bấm một cái nút chết. Bạn không phải làm
+gì.</p>
+<p><strong>Vì sao ghi lại chuyện nhỏ này vào sổ</strong></p>
+<p>Để bạn thấy rõ: <strong>cái gì cũng được kiểm tra bằng thử nghiệm
+thật, không phải nói suông.</strong> Khi Claude nói “website chạy tốt”,
+đó là kết quả chạy thử — nếu có lỗi thì lỗi được ghi lại ở đây, kể cả
+lỗi do chính Claude gây ra.</p>
+<hr />
+<h3 id="mẫu-cho-các-mục-sau">Mẫu cho các mục sau</h3>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### ngày/tháng/năm — Tên việc</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>**Người thực hiện:** Claude / Bạn · **Loại:** Bài mới / Sửa bài / Sửa lỗi / Đổi cấu hình</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>**Đã làm gì**</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>**Vì sao**</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>**Ảnh hưởng tới bạn**</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>**Nếu bạn muốn tự làm phần này**</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>**Có gì cần bạn quyết không?**</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>…</span></code></pre></div>
+<hr />
+<h2 id="phần-g-bốn-cách-tự-kiểm-tra-claude-làm-đúng">PHẦN G — Bốn cách
+tự kiểm tra Claude làm đúng</h2>
+<p>Bạn không cần biết code để kiểm chứng. Bốn cách dưới đây ai cũng làm
+được.</p>
+<h3 id="mở-từng-đường-link-nguồn">1. Mở từng đường link nguồn</h3>
+<p>Bài nào có mục <strong>“Nguồn tham khảo”</strong> ở cuối, hãy bấm thử
+từng link.</p>
+<ul>
+<li>Link mở ra đúng bài nghiên cứu → tốt</li>
+<li>Link chết, hoặc mở ra thứ chẳng liên quan → <strong>báo Claude
+ngay</strong></li>
+</ul>
+<blockquote>
+<p>Đây là cách kiểm tra quan trọng nhất, và cũng là chỗ dễ mất uy tín
+nhất nếu sai.</p>
+</blockquote>
+<h3 id="đọc-mục-ghi-chú-biên-tập-ở-cuối-bài">2. Đọc mục “Ghi chú biên
+tập” ở cuối bài</h3>
+<p>Mỗi bài đều có một dòng in nhỏ ở cuối, nói rõ bài này từ đâu ra: biên
+tập từ ghi chép gốc của bạn, hay do Claude viết mở rộng.</p>
+<p>Đọc dòng đó và tự hỏi: <strong>có đúng như vậy không?</strong> Nếu
+Claude ghi “biên tập từ ghi chép gốc” mà bạn đọc thấy toàn ý lạ, thì có
+vấn đề.</p>
+<h3 id="đọc-bài-như-một-người-đọc-bình-thường">3. Đọc bài như một người
+đọc bình thường</h3>
+<p>Không cần soi kỹ thuật. Chỉ cần tự hỏi:</p>
+<ul>
+<li>Đây có còn là điều <strong>tôi</strong> muốn nói không?</li>
+<li>Có câu nào làm cha mẹ khác cảm thấy bị phán xét không?</li>
+<li>Có chỗ nào nói chắc quá so với những gì thực sự biết không?</li>
+<li>Có chỗ nào nghe như đang chẩn đoán bệnh cho một đứa trẻ không?</li>
+</ul>
+<p>Thấy gợn ở đâu thì nói, kể cả khi không giải thích được vì sao. Trực
+giác của bạn về giọng văn đáng tin hơn Claude.</p>
+<h3 id="nhìn-tab-actions">4. Nhìn tab Actions</h3>
+<p>→ <strong>Phần C, việc 5.</strong> Dấu tích xanh = mọi thứ đã lên
+mạng thật, không chỉ là lời nói.</p>
+<hr />
+<h2 id="một-điều-cuối">Một điều cuối</h2>
+<p>Bạn không cần hiểu website được dựng thế nào, cũng như không cần biết
+máy in hoạt động ra sao để làm một tờ báo hay.</p>
+<p>Thứ <strong>bắt buộc</strong> phải nắm chỉ có ba:</p>
+<ol type="1">
+<li><strong>Dự án đang ở đâu</strong> → Phần A</li>
+<li><strong>Tự thêm, sửa, gỡ bài được</strong> → Phần C</li>
+<li><strong>Tự kiểm tra được Claude làm đúng</strong> → Phần G</li>
+</ol>
+<p>Ba thứ đó là quyền kiểm soát. Còn lại là chi tiết kỹ thuật — cần thì
+tra sổ, không cần nhớ.</p>
+<p>Và nếu có lúc nào đọc một mục trong Phần F mà không hiểu, cứ
+nhắn:</p>
+<blockquote>
+<p><em>“Mục ngày (…) trong sổ tay, giải thích lại cho tôi bằng lời dễ
+hiểu hơn.”</em></p>
+</blockquote>
+<p>Sổ tay này viết chưa đủ rõ thì đó là lỗi của sổ tay, không phải của
+bạn.</p>
+<hr />
+<p><small></p>
+<p><strong>Các tài liệu khác trong dự án</strong> — bạn <em>không
+cần</em> đọc để vận hành, chỉ tra khi tò mò:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Nội dung</th>
+<th>Dành cho</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>implementation-notes.md</code></td>
+<td><strong>Chính là file này</strong></td>
+<td>⭐ Bạn — dùng hằng ngày</td>
+</tr>
+<tr class="even">
+<td><code>dong-hanh-guide.md</code></td>
+<td>Giải thích sâu về kiến trúc hệ thống</td>
+<td>Bạn khi muốn hiểu sâu, hoặc thợ web sau này</td>
+</tr>
+<tr class="odd">
+<td><code>docs/CONTENT_GUIDE.md</code></td>
+<td>Hướng dẫn viết bài đầy đủ</td>
+<td>Khi bạn muốn tự viết bài không cần Claude</td>
+</tr>
+<tr class="even">
+<td><code>docs/DEPLOYMENT.md</code></td>
+<td>Đăng website, tên miền riêng</td>
+<td>Khi mua tên miền riêng</td>
+</tr>
+<tr class="odd">
+<td><code>docs/AI_CONTENT_WORKFLOW.md</code></td>
+<td>Quy trình biến ghi chép thành bài</td>
+<td>Khi muốn nhờ một trợ lý AI khác</td>
+</tr>
+<tr class="even">
+<td><code>README.md</code></td>
+<td>Tổng quan kỹ thuật</td>
+<td>Thợ web, nếu sau này bạn thuê người</td>
+</tr>
+<tr class="odd">
+<td><code>CLAUDE.md</code></td>
+<td>Quy tắc Claude phải theo</td>
+<td>Máy đọc, bạn không cần đọc</td>
+</tr>
+</tbody>
+</table>
+<p>Bản <code>.md</code> là bản gốc để sửa. Bản <code>.html</code> là để
+đọc cho dễ.</p>
+<p></small></p>
+    <footer class="doc-foot">
+      Sổ tay này được tạo từ <code>implementation-notes.md</code>. Claude cập nhật file <code>.md</code> sau mỗi thay đổi rồi tạo lại bản HTML này.
+    </footer>
+  </main>
+</div>
+
+</body>
+</html>

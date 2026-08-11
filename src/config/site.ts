@@ -39,10 +39,13 @@
  * -------------------------------------------------------------------------- */
 
 export const DEPLOY = {
-  /** Gốc tên miền, KHÔNG có dấu "/" ở cuối. ĐỔI "your-username" thành tài khoản GitHub của bạn. */
-  siteUrl: 'https://your-username.github.io',
+  /**
+   * Gốc tên miền, KHÔNG có dấu "/" ở cuối.
+   * Tài khoản GitHub: Lucero6886 → địa chỉ luôn viết thường: lucero6886.github.io
+   */
+  siteUrl: 'https://lucero6886.github.io',
 
-  /** Thư mục con. Project site → '/ten-repo/'. User site hoặc tên miền riêng → '/'. */
+  /** Thư mục con — phải trùng tên repo. Repo tên `dong-hanh-cung-con`. */
   base: '/dong-hanh-cung-con/',
 } as const;
 
