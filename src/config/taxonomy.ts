@@ -172,4 +172,11 @@ export const JOURNEYS: Journey[] = [
     tags: ['cảm xúc', 'trách nhiệm'],
     categories: ['Cảm xúc & tâm lý'],
   },
+  {
+    slug: 'khi-cha-me-qua-ban',
+    title: 'Khi cha mẹ quá bận',
+    description:
+      'Đi làm cả ngày, về tới nhà là đã cạn. Nhóm bài này chỉ gợi ý những việc nhỏ, lồng được vào các khoảng thời gian đã có sẵn — không đòi hỏi bạn phải tìm thêm thời gian ở đâu ra.',
+    tags: ['bận rộn'],
+  },
 ];

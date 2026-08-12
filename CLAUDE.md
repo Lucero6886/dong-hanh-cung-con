@@ -43,7 +43,7 @@ Sau khi thêm/gỡ bài hoặc đổi cấu hình, cập nhật lại bảng tr�
 ```bash
 pandoc implementation-notes.md \
   --from=markdown+yaml_metadata_block+pipe_tables+task_lists \
-  --to=html5 --standalone --toc --toc-depth=2 \
+  --to=html5 --standalone --toc --toc-depth=2 --wrap=none \
   --template=scripts/notes-template.html \
   --output=implementation-notes.html
 ```

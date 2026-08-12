@@ -1,7 +1,7 @@
 ---
 title: "Đồng hành cùng hệ thống"
 subtitle: "Tài liệu giúp bạn hiểu bản chất, nắm được thay đổi, và luôn làm chủ dự án này"
-version: "1.0.0"
+version: "1.1.0"
 date: "2026-08-11"
 ---
 
@@ -67,13 +67,13 @@ Những thứ ở cột phải **không phải là thiếu sót**. Chúng là c�
    MÁY CỦA BẠN
    ┌────────────────────────────────────────────┐
    │ 1. Bạn thêm file bai-viet-moi.md           │
-   │ 2. git add . && git commit && git push     │
+   │ 2. GitHub Desktop: Commit → Push           │
    └───────────────────┬────────────────────────┘
                        │ (mã nguồn được gửi lên)
                        ▼
    GITHUB
    ┌────────────────────────────────────────────┐
-   │ 3. Nhận push vào nhánh main                │
+   │ 3. Nhận push vào nhánh main HOẶC master    │
    │ 4. Kích hoạt .github/workflows/deploy.yml  │
    └───────────────────┬────────────────────────┘
                        ▼
@@ -481,6 +481,27 @@ Lệnh này liệt kê mọi cách viết chủ đề kèm số lần xuất hi�
 2. Dùng [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/), bấm **Scrape Again** — Facebook lưu đệm rất lâu
 3. Ảnh phải đúng 1200×630
 
+### "Đẩy code lên rồi mà website không đổi gì"
+
+→ Workflow không chạy vì tên nhánh không khớp. Kiểm tra `.github/workflows/deploy.yml`:
+`branches:` phải chứa đúng tên nhánh đang dùng. Hiện đã đặt `[main, master]` nên nhận cả hai.
+Xác nhận nhanh: nếu tab Actions **trống trơn, không có lần chạy nào**, đó chính là dấu hiệu.
+
+### "GitHub Desktop báo hàng chục file thay đổi mà nội dung không đổi"
+
+→ Quyền truy cập file bị thay đổi (thường do file đi qua một hệ thống tệp khác). Sửa:
+
+```bash
+git config core.fileMode false
+```
+
+Dấu hiệu nhận biết: `git diff --stat` liệt kê nhiều file nhưng số dòng thêm/bớt của chúng là `0`.
+
+### "Commit failed — a lock file already exists"
+
+→ Có `.git/index.lock` còn sót lại từ một lệnh git bị đứt giữa chừng. Xoá file đó là xong.
+File này không chứa nội dung gì, xoá hoàn toàn an toàn.
+
 ### "Tôi lỡ làm hỏng gì đó và không biết sửa"
 
 ```bash
@@ -546,6 +567,36 @@ npm run build                # PHẢI chạy lại và kiểm tra kỹ
 ## Phần 11 — Nhật ký thay đổi
 
 Mỗi lần thay đổi hệ thống ở mức đáng kể, hãy thêm một mục vào đây. Sáu tháng sau bạn sẽ cảm ơn chính mình.
+
+### v1.1.0 — 11/08/2026 — Đưa website lên mạng thật
+
+**Website chạy tại:** <https://lucero6886.github.io/dong-hanh-cung-con/>
+**Mã nguồn:** <https://github.com/Lucero6886/dong-hanh-cung-con> · nhánh `master`
+
+**Đã đổi**
+
+- `deploy.yml` nhận **cả `main` lẫn `master`** thay vì chỉ `main`
+- `site.ts` → `siteUrl: 'https://lucero6886.github.io'`
+- Thêm `CLAUDE.md` — quy tắc mọi phiên Claude tự đọc
+- Thêm `implementation-notes.md/.html` — sổ tay vận hành cho người không chuyên
+- Thêm `scripts/notes-template.html`
+- `.git/config` trên máy chủ dự án: `core.fileMode = false`
+
+**Vì sao**
+
+*Lỗi tên nhánh.* Workflow chỉ nghe `main`, nhưng GitHub Desktop tạo `master`. Đẩy code lên mà workflow **không chạy lần nào**. Tài liệu có ghi `git branch -M main`, nhưng đó là lệnh gõ tay — vô dụng với người dùng GitHub Desktop. Bài học: **đừng giả định người dùng thao tác bằng dòng lệnh.** Nghe cả hai nhánh là cách bền hơn đổi tên nhánh.
+
+*Sổ tay vận hành.* Chủ dự án nêu lo ngại nhờ Claude làm hết thì không nắm được dự án. Tài liệu này (`dong-hanh-guide`) đúng nhưng quá kỹ thuật với người không làm CNTT. Giải pháp không phải viết ngắn lại, mà là **đổi chỗ gánh nặng: không cần nhớ, chỉ cần tra được** — cộng với quy trình có bước xem trước rồi mới duyệt.
+
+*fileMode.* File đi qua cầu nối giữa hai máy bị đổi quyền truy cập, git báo 64 file thay đổi trong khi chỉ 3 file đổi nội dung.
+
+**Cần chú ý**
+
+- ⚠️ **Không chạy `git` trong thư mục kết nối** qua device_bash: không xoá được `.git/index.lock`, để lại file khoá chặn GitHub Desktop. Ghi file bằng `device_commit_files` hoặc `unzip -p ... > file`; phần git để chủ dự án lo bằng GitHub Desktop.
+- Nhánh chính là `master`, không phải `main`. Workflow nhận cả hai nên không cần đổi.
+- Sổ tay `implementation-notes.md` là tài liệu chủ dự án dùng hằng ngày. Tài liệu này (`dong-hanh-guide`) là tài liệu tra cứu sâu.
+
+---
 
 ### v1.0.0 — 11/08/2026 — Phiên bản đầu tiên
 

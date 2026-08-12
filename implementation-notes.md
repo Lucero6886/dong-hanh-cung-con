@@ -1,7 +1,7 @@
 ---
 title: "Sổ tay vận hành dự án"
 subtitle: "Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì"
-version: "1.0.0"
+version: "1.2.0"
 date: "2026-08-11"
 ---
 
@@ -34,79 +34,82 @@ date: "2026-08-11"
 | Hạng mục | Hiện tại |
 | --- | --- |
 | Tên website | Đồng hành cùng con |
-| Đã lên mạng chưa? | ⏳ **Sắp** — còn 2 việc ở dưới |
-| **Địa chỉ website sẽ là** | **https://lucero6886.github.io/dong-hanh-cung-con/** |
+| Đã lên mạng chưa? | ✅ **RỒI** — chạy từ 11/08/2026 |
+| **Địa chỉ website** | **https://lucero6886.github.io/dong-hanh-cung-con/** |
 | Tài khoản GitHub | `Lucero6886` |
 | Mã nguồn trên mạng | <https://github.com/Lucero6886/dong-hanh-cung-con> (công khai ✓) |
 | Nhánh đang dùng | `master` |
 | Nơi lưu mã nguồn | Máy bạn: `Downloads\Note giáo dục trẻ\dong-hanh-cung-con\` |
-| Số bài viết | **3** bài, đã xuất bản cả 3, không có bài nháp |
-| Số chủ đề đang dùng | **3** / 10 chủ đề đã chuẩn bị sẵn |
-| Số thẻ | **9** |
-| Số trang website tự sinh ra | **28** |
+| Số bài viết | **10** bài, đã xuất bản cả 10, không có bài nháp |
+| Số chủ đề đang dùng | **10 / 10** — đã phủ kín toàn bộ chủ đề |
+| Số hành trình có bài | **7 / 7** |
+| Số thẻ | **14** |
+| Số trang website tự sinh ra | **49** |
 | Tình trạng kỹ thuật | ✅ Chạy tốt, 0 lỗi, 0 cảnh báo |
 
-### Ba bài viết hiện có
+### Mười bài viết hiện có
 
-| Bài | Chủ đề | Nguồn gốc |
+Mỗi chủ đề đúng một bài — thư viện đã có khung đủ rộng để lớn tiếp.
+
+| Bài | Chủ đề | Phút đọc |
 | --- | --- | --- |
-| Từ phần thưởng đến động lực bên trong | Động lực & thói quen | Biên tập từ file Word của bạn |
-| Hỏi con học được gì, thay vì hỏi con được mấy điểm | Giao tiếp cha mẹ – con | Mở rộng từ bài trên |
-| Cấu trúc thay vì nhắc nhở | Tự lập & trách nhiệm | Mở rộng từ bài trên |
+| Từ phần thưởng đến động lực bên trong ⭐ | Động lực & thói quen | 11 |
+| Mười lăm phút, nhưng là mười lăm phút thật ⭐ | Đồng hành cùng con | 5 |
+| Màn hình: từ đếm giờ sang thoả thuận ⭐ | Công nghệ & trẻ em | 6 |
+| Hỏi con học được gì, thay vì hỏi con được mấy điểm | Giao tiếp cha mẹ – con | 4 |
+| Cấu trúc thay vì nhắc nhở | Tự lập & trách nhiệm | 4 |
+| Khi con nói "con chán học" | Học tập & tự học | 5 |
+| Cơn giận của con, và cơn giận của mình | Cảm xúc & tâm lý | 6 |
+| Kỷ luật không phải là phạt | Kỷ luật tích cực | 6 |
+| Khi con bắt đầu đóng cửa phòng | Tuổi teen | 6 |
+| Cảm giác có lỗi vì đi làm | Góc suy ngẫm của cha mẹ | 5 |
 
-### Chín thẻ đang dùng
+⭐ = đang hiện ở khối "Bài viết nổi bật" trang chủ (tối đa 3 bài).
 
-`cha mẹ` · `giao tiếp` · `giáo dục` · `phần thưởng` · `thói quen` · `trách nhiệm` · `tự giác` · `tự học` · `động lực`
+### Mười bốn thẻ đang dùng
 
-### ✅ Đã xong
+`bận rộn` · `cha mẹ` · `công nghệ` · `cảm xúc` · `giao tiếp` · `giáo dục` · `kỷ luật` · `phần thưởng` · `thói quen` · `trách nhiệm` · `tuổi teen` · `tự giác` · `tự học` · `động lực`
 
-- [x] **1. Có tài khoản GitHub** — `Lucero6886`
-- [x] **2. Claude đã biết tên tài khoản** — đã điền vào cấu hình, mọi địa chỉ trong website giờ trỏ đúng
-- [x] **3. Cài GitHub Desktop và đẩy dự án lên** — mã nguồn đã nằm trên GitHub, công khai
+### ✅ Toàn bộ phần thiết lập đã xong — không còn việc nào chờ bạn
 
-### ⏳ Còn hai việc — làm đúng thứ tự này
+- [x] Tài khoản GitHub — `Lucero6886`
+- [x] Điền địa chỉ thật vào cấu hình
+- [x] Cài GitHub Desktop và đẩy dự án lên
+- [x] Bật GitHub Pages
+- [x] **Website chạy thật** — đã kiểm tra trang chủ, trang bài viết, trang chủ đề đều hiển thị đúng
 
-**Việc 1 — Bật công tắc GitHub Pages** *(2 phút, chỉ bạn làm được)*
+> **Phần khó nhất đã qua, và chỉ phải làm một lần.** Từ giờ trở đi không còn cài đặt, không còn công tắc nào phải bật. Chỉ còn việc viết bài.
 
-Đây là việc bật cho website được phép hiện ra. Chưa bật thì vào link sẽ hiện "404".
-
-1. Mở <https://github.com/Lucero6886/dong-hanh-cung-con/settings/pages>
-2. Phần **`Build and deployment`**, ô **`Source`** đang là *"Deploy from a branch"*
-3. Bấm vào và **chọn `GitHub Actions`**
-4. Xong — nó tự lưu, không có nút Save
-
-**Việc 2 — Đẩy bản sửa của Claude lên** *(1 phút)*
-
-Claude vừa sửa 2 file (xem lý do ở **Phần F**, mục ngày 11/08). Chưa đẩy lên thì website vẫn không chạy.
-
-1. Mở **GitHub Desktop**
-2. Cột trái hiện 2 file đã đổi: `.github/workflows/deploy.yml` và `src/config/site.ts`. Bấm xem thử nếu muốn.
-3. Ô dưới bên trái gõ: *"sửa địa chỉ website và nhánh"*
-4. Bấm **`Commit to master`** → rồi bấm **`Push origin`**
-
-**Sau đó:** chờ khoảng 2 phút, rồi mở <https://lucero6886.github.io/dong-hanh-cung-con/>
-
-Muốn xem nó đang chạy tới đâu: <https://github.com/Lucero6886/dong-hanh-cung-con/actions> — chờ dấu tích xanh.
-
-> Xong hai việc này là website chính thức lên mạng. Từ đó về sau chỉ còn việc viết bài.
-
-### Quy trình sau khi xong 4 việc trên
+### Vòng lặp từ giờ trở đi — mỗi bài viết mới
 
 ```
-Bạn đưa ghi chép cho Claude
-        ↓
-Claude biên tập và ghi file vào thư mục trên máy bạn
-        ↓
-Claude ghi vào Phần F của sổ tay: đã làm gì, vì sao
-        ↓
-Bạn mở GitHub Desktop → NHÌN THẤY chính xác Claude đã đổi những gì
-        ↓
-Ưng thì bấm 2 nút. Không ưng thì bấm "Discard" để huỷ.
-        ↓
-2 phút sau website tự cập nhật
+① Bạn đưa ghi chép cho Claude
+      (ghi vội, file Word, một đoạn suy nghĩ — thô cũng được)
+              ↓
+② Claude biên tập, kiểm chứng nguồn, tạo file
+      và ghi vào Phần F sổ tay: đã làm gì, vì sao
+              ↓
+③ Bạn mở GitHub Desktop
+      NHÌN THẤY chính xác từng chữ được thêm (xanh) / bỏ đi (đỏ)
+              ↓
+④ Ưng  → gõ Summary → Commit → Push
+   Không ưng → chuột phải → Discard changes → nhắn Claude sửa
+              ↓
+⑤ Chờ 2 phút. Bài tự xuất hiện trên website.
+      Trang chủ, chủ đề, thẻ, tìm kiếm, RSS đều tự cập nhật.
 ```
 
-> Bước "nhìn thấy chính xác Claude đã đổi gì" chính là câu trả lời cho lo ngại của bạn. **Không có gì lên mạng mà bạn chưa nhìn qua và chưa bấm đồng ý.**
+**Bạn không phải nhớ gì trong vòng lặp này.** Bước ③ và ④ đã có sơ đồ trong **Phần C, việc 0b**. Bước ① chỉ cần nhắn một câu — mẫu câu ở **Phần B**.
+
+> Bước ③ là chỗ bạn giữ quyền kiểm soát. **Không có gì lên mạng mà bạn chưa nhìn qua và chưa bấm đồng ý.**
+
+### Cách tự kiểm tra website còn sống
+
+| Muốn biết | Mở link này |
+| --- | --- |
+| Website đang thế nào | <https://lucero6886.github.io/dong-hanh-cung-con/> |
+| Bài mới đã lên chưa | <https://github.com/Lucero6886/dong-hanh-cung-con/actions> — chờ dấu ✅ |
+| Mã nguồn | <https://github.com/Lucero6886/dong-hanh-cung-con> |
 
 ---
 
@@ -122,7 +125,7 @@ Bạn mở GitHub Desktop → NHÌN THẤY chính xác Claude đã đổi nhữn
 | Kiểm chứng nguồn khoa học | Claude, **bạn duyệt** | Claude tra, nhưng bạn là người chịu trách nhiệm cuối. |
 | Tạo file, đặt tên, điền thông tin kỹ thuật | Claude | Đây là chỗ dễ sai và không thú vị. |
 | Kiểm tra website không lỗi | Claude | Chạy máy móc. |
-| Đẩy bài lên mạng | Claude | Một câu lệnh. |
+| Đưa bài lên mạng | **Bạn** | Bạn xem lại thay đổi rồi bấm 2 nút trong GitHub Desktop. Đây là quyền phủ quyết của bạn. |
 | **Quyết định đăng hay không** | **Bạn** | Luôn luôn là bạn. |
 | Ghi lại vào sổ tay này | Claude | Bắt buộc, sau mỗi thay đổi. |
 
@@ -461,12 +464,143 @@ Kiểm tra theo thứ tự:
 
 → Mở đúng file này, đọc **Phần A**. Nó luôn cho biết dự án đang ở đâu và việc gì đang chờ bạn.
 
+### 11. "GitHub Desktop hiện hàng chục file lạ mà tôi không hề sửa"
+
+Ví dụ nó báo 64 file thay đổi trong khi Claude chỉ sửa 2 file.
+
+**Nguyên nhân:** khi file đi qua cầu nối từ máy Claude sang máy bạn, *quyền truy cập file* bị đổi, và git tưởng đó là thay đổi nội dung. Nội dung thật ra không đổi gì.
+
+**Cách nhận ra:** bấm vào một file "lạ" trong danh sách — cột phải **không hiện dòng xanh dòng đỏ nào**. Đó là dấu hiệu file không đổi nội dung.
+
+**Đã xử lý xong ngày 11/08/2026** bằng cách bảo git bỏ qua quyền truy cập file. Nếu tái diễn, nhắn Claude: *"GitHub Desktop lại hiện quá nhiều file, xử lý giúp tôi."*
+
+---
+
+### 12. "Commit failed — A lock file already exists in the repository"
+
+**Nguyên nhân:** git dùng một "biển báo đang thi công" để tránh hai bên sửa cùng lúc. Có việc gì đó bị đứt giữa chừng nên biển còn nằm lại, chặn mọi thao tác sau đó.
+
+**Cách xử lý — bạn tự làm được:**
+
+1. Mở **File Explorer**, vào `Downloads\Note giáo dục trẻ\dong-hanh-cung-con`
+2. Bật hiện file ẩn: tab **`View`** → tích ô **`Hidden items`**
+3. Vào thư mục **`.git`**
+4. Tìm file tên **`index.lock`** → **xoá nó đi**
+5. Quay lại GitHub Desktop, bấm Commit lại
+
+Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn hộ.
+
+> File `index.lock` chỉ là biển báo, **không chứa nội dung gì của bạn**. Xoá nó hoàn toàn an toàn.
+
 ---
 
 ## PHẦN F — Nhật ký thay đổi
 
 > Claude ghi vào đây sau **mỗi** lần chạm vào dự án. Bạn chỉ đọc.
 > Mục mới nhất nằm trên cùng.
+
+---
+
+### 11/08/2026 — Thêm 7 bài viết, phủ kín toàn bộ chủ đề
+
+**Người thực hiện:** Claude · **Loại:** Nội dung
+
+**Đã làm gì**
+
+Viết thêm **7 bài mới**, nâng thư viện từ 3 lên **10 bài**. Mỗi chủ đề trong số 10 chủ đề giờ đều có ít nhất một bài. Thêm hành trình mới **"Khi cha mẹ quá bận"**.
+
+| Bài mới | Chủ đề |
+| --- | --- |
+| Mười lăm phút, nhưng là mười lăm phút thật | Đồng hành cùng con |
+| Khi con nói "con chán học" | Học tập & tự học |
+| Cơn giận của con, và cơn giận của mình | Cảm xúc & tâm lý |
+| Màn hình: từ đếm giờ sang thoả thuận | Công nghệ & trẻ em |
+| Khi con bắt đầu đóng cửa phòng | Tuổi teen |
+| Kỷ luật không phải là phạt | Kỷ luật tích cực |
+| Cảm giác có lỗi vì đi làm | Góc suy ngẫm của cha mẹ |
+
+**Vì sao viết theo hướng này**
+
+Bạn yêu cầu nội dung *thân thiện, dễ vận dụng, cho cha mẹ bận rộn*. Nên cả 7 bài đi theo cùng một nguyên tắc biên tập:
+
+- **Không đòi thêm thời gian.** Mọi gợi ý đều lồng vào khoảng đã có sẵn: đường đưa đón, bữa ăn, mười phút trước khi ngủ.
+- **Mỗi bài 4–6 phút đọc**, đủ đọc hết trong một lần chờ.
+- **Luôn có mục "nếu bạn quá mệt thì làm gì"** — vì có những tối cha mẹ không còn sức làm đúng bài.
+- **Không dùng cảm giác tội lỗi** để thuyết phục. Riêng bài *Cảm giác có lỗi vì đi làm* nói thẳng rằng bản thân cảm giác đó ít khi giúp ích.
+
+**Về nguồn**
+
+Chỉ bài *Màn hình* có trích dẫn khoa học. Claude đã **tra cứu trực tiếp tài liệu chính thức** của Viện Nhi khoa Hoa Kỳ, công bố ngày 20/01/2026 — hướng dẫn mới đã **chuyển trọng tâm khỏi việc đếm giờ**, sang bảo vệ giấc ngủ, bữa ăn, và trò chuyện với con. Hai link nguồn đã kiểm tra mở được.
+
+Sáu bài còn lại **không trích dẫn nghiên cứu nào**, và ghi rõ trong phần cuối bài rằng đó là quan sát thực hành. Đây là lựa chọn có chủ ý: thà không dẫn nguồn còn hơn dẫn nguồn không kiểm chứng được.
+
+**Ảnh hưởng tới bạn**
+
+Website từ 28 trang lên **49 trang**. Cả 7 hành trình giờ đều có bài — trước đây 2 hành trình còn trống.
+
+Khối "Bài viết nổi bật" trang chủ được chỉnh lại còn đúng 3 bài: bài gốc từ file Word của bạn, bài về cha mẹ bận rộn, và bài về màn hình. Bài *Hỏi con học được gì* được chuyển khỏi khối nổi bật để nhường chỗ — nội dung không đổi, vẫn nằm trong danh sách bài viết.
+
+**Nếu bạn muốn tự làm phần này**
+
+Đọc lại **cả 7 bài** trước khi duyệt. Đây là nội dung mang tên bạn, và bạn là người chịu trách nhiệm cuối.
+
+Ba việc nên làm khi đọc:
+
+1. Mở hai link nguồn ở cuối bài *Màn hình* xem có mở được không.
+2. Tự hỏi ở mỗi bài: *đây có còn là điều tôi muốn nói không?*
+3. Thấy chỗ nào giọng chưa đúng, cứ nói — kể cả khi không giải thích được vì sao.
+
+Muốn gỡ một bài xuống: đổi `draft: false` thành `draft: true`, xem **Phần C, việc 3**.
+
+**Có gì cần bạn quyết không?**
+
+Có. Bảy bài này **chưa lên mạng** cho tới khi bạn xem lại trong GitHub Desktop và bấm Commit + Push.
+
+---
+
+### 11/08/2026 — 🎉 Website chính thức lên mạng
+
+**Người thực hiện:** Bạn (bấm duyệt) + Claude (chuẩn bị) · **Loại:** Cột mốc
+
+**Đã làm gì**
+
+Website đã chạy thật tại **https://lucero6886.github.io/dong-hanh-cung-con/**
+
+Claude đã kiểm chứng bằng cách tải thật từ Internet, không phải chỉ chạy thử trên máy:
+
+| Kiểm tra | Kết quả |
+| --- | --- |
+| Trang chủ | ✅ Hiện đủ 3 bài, 3 chủ đề, các hành trình |
+| Trang bài viết | ✅ Đủ mục lục, hộp callout, bảng so sánh, nguồn tham khảo, bài liên quan |
+| Trang chủ đề | ✅ Đếm đúng số bài từng chủ đề |
+
+**Ảnh hưởng tới bạn**
+
+Bạn có thể gửi link cho phụ huynh ngay từ bây giờ. Cách lấy link ở **Phần C, việc 7**.
+
+Toàn bộ phần thiết lập đã xong và **chỉ phải làm một lần**. Vòng lặp cho các bài sau nằm ở **Phần A**.
+
+**Ba trục trặc đã gặp trên đường — và cách nhận ra lần sau**
+
+| Hiện tượng | Nguyên nhân | Ai gây ra |
+| --- | --- | --- |
+| Đẩy code lên mà website không đổi gì | Máy tự động canh nhánh `main`, GitHub Desktop lại tạo nhánh `master` | **Claude** — xem mục ngay dưới |
+| GitHub Desktop hiện 64 file thay vì 7 | Quyền truy cập file bị đổi khi qua cầu nối | Giới hạn kỹ thuật — đã tắt cảnh báo này |
+| "Commit failed — a lock file already exists" | Claude thử chạy git trong thư mục kết nối, bị đứt giữa chừng, để lại file khoá | **Claude** |
+
+Cả ba đều đã ghi thành tình huống **11** và **12** ở Phần E, kèm cách bạn tự xử lý.
+
+**Nếu bạn muốn tự làm phần này**
+
+Cột mốc này đã qua, không phải làm lại. Nhưng ba trục trặc trên **có thể tái diễn**, nên hãy đọc lướt tình huống 11 và 12 ở Phần E một lần — biết trước thì lần sau gặp sẽ không hoảng.
+
+**Có gì cần bạn quyết không?**
+
+Không. Từ giờ chỉ còn viết bài.
+
+**Rút kinh nghiệm cho Claude**
+
+Đã ghi vào `CLAUDE.md`: không được thử chạy git trong thư mục kết nối trên máy bạn. Đó là việc của GitHub Desktop, tức là của bạn. Claude chỉ ghi file. Hai trong ba trục trặc hôm nay đến từ việc Claude làm quá phần của mình.
 
 ---
 
