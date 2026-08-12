@@ -144,6 +144,7 @@ Chi tiết: `CONTRIBUTING.md` và `docs/CONTENT_GUIDE.md`.
 | Tạo lại bộ ảnh logo khi chủ dự án đổi logo | `python3 scripts/make-brand-assets.py <file-logo>` → ghi ra `public/brand/` |
 | Mô tả chủ đề, hành trình | `src/config/taxonomy.ts` |
 | Trường frontmatter hợp lệ | `src/content.config.ts` |
+| Thứ tự đọc của một loạt bài trong hành trình | `stageOrder` trong frontmatter (số nhỏ đọc trước; bỏ trống → xếp theo ngày) |
 | Truy vấn bài viết | `src/utils/articles.ts` — đừng gọi `getCollection()` trực tiếp trong trang |
 | Màu sắc, cỡ chữ | `src/styles/global.css` khối `:root` |
 | Quy trình đăng | `.github/workflows/deploy.yml` |

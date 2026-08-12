@@ -27,7 +27,7 @@ date: "2026-08-11"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 12/08/2026*
+*Cập nhật lần cuối: 12/08/2026 (lần 2 trong ngày)*
 
 ### Tình trạng chung
 
@@ -41,22 +41,35 @@ date: "2026-08-11"
 | Mã nguồn trên mạng | <https://github.com/Lucero6886/dong-hanh-cung-con> (công khai ✓) |
 | Nhánh đang dùng | `master` |
 | Nơi lưu mã nguồn | Máy bạn: `Downloads\Note giáo dục trẻ\dong-hanh-cung-con\` |
-| Số bài viết | **10** bài, đã xuất bản cả 10, không có bài nháp |
-| Số chủ đề đang dùng | **10 / 10** — đã phủ kín toàn bộ chủ đề |
-| Số hành trình có bài | **7 / 7** |
-| Số thẻ | **14** |
-| Số trang website tự sinh ra | **49** |
+| Số bài viết | **16** bài, đã xuất bản cả 16, không có bài nháp |
+| Số chủ đề đang dùng | **12 / 12** — đã phủ kín toàn bộ chủ đề |
+| Số hành trình có bài | **8 / 8** |
+| Số thẻ | **17** |
+| Số trang website tự sinh ra | **61** |
 | Tình trạng kỹ thuật | ✅ Chạy tốt, 0 lỗi, 0 cảnh báo |
 
-### Mười bài viết hiện có
+### Mười sáu bài viết hiện có
 
-Mỗi chủ đề đúng một bài — thư viện đã có khung đủ rộng để lớn tiếp.
+Sáu bài mới nhất tạo thành một loạt đọc theo thứ tự, từ thai kỳ đến khi con trưởng thành.
+
+**Loạt bài theo giai đoạn** — xem tại `/journeys/di-theo-tung-giai-doan/`
+
+| # | Bài | Chủ đề | Phút đọc |
+| --- | --- | --- | --- |
+| 1 | Chín tháng, và một danh sách ngắn hơn bạn tưởng | Mang thai & năm đầu đời | 10 |
+| 2 | Não của con đang xây theo kiểu nào ⭐ | Não bộ & các giai đoạn phát triển | 8 |
+| 3 | Sáu năm đầu: cái gì thật sự là vàng, cái gì chỉ là mạ | Não bộ & các giai đoạn phát triển | 7 |
+| 4 | Sáu đến mười hai: giai đoạn ít ai nói tới | Não bộ & các giai đoạn phát triển | 7 |
+| 5 | Não tuổi teen: đang xây lại, không phải đang hỏng | Tuổi teen | 9 |
+| 6 | Khi con đã trưởng thành, mình còn là gì của con? | Não bộ & các giai đoạn phát triển | 8 |
+
+**Mười bài còn lại** — đọc lẻ, không theo thứ tự
 
 | Bài | Chủ đề | Phút đọc |
 | --- | --- | --- |
 | Từ phần thưởng đến động lực bên trong ⭐ | Động lực & thói quen | 11 |
 | Mười lăm phút, nhưng là mười lăm phút thật ⭐ | Đồng hành cùng con | 5 |
-| Màn hình: từ đếm giờ sang thoả thuận ⭐ | Công nghệ & trẻ em | 6 |
+| Màn hình: từ đếm giờ sang thoả thuận | Công nghệ & trẻ em | 6 |
 | Hỏi con học được gì, thay vì hỏi con được mấy điểm | Giao tiếp cha mẹ – con | 4 |
 | Cấu trúc thay vì nhắc nhở | Tự lập & trách nhiệm | 4 |
 | Khi con nói "con chán học" | Học tập & tự học | 5 |
@@ -67,9 +80,9 @@ Mỗi chủ đề đúng một bài — thư viện đã có khung đủ rộng 
 
 ⭐ = đang hiện ở khối "Bài viết nổi bật" trang chủ (tối đa 3 bài).
 
-### Mười bốn thẻ đang dùng
+### Mười bảy thẻ đang dùng
 
-`bận rộn` · `cha mẹ` · `công nghệ` · `cảm xúc` · `giao tiếp` · `giáo dục` · `kỷ luật` · `phần thưởng` · `thói quen` · `trách nhiệm` · `tuổi teen` · `tự giác` · `tự học` · `động lực`
+`bận rộn` · `cha mẹ` · `công nghệ` · `cảm xúc` · `giai đoạn phát triển` · `giao tiếp` · `giáo dục` · `kỷ luật` · `não bộ` · `phần thưởng` · `thai kỳ` · `thói quen` · `trách nhiệm` · `tuổi teen` · `tự giác` · `tự học` · `động lực`
 
 ### ✅ Toàn bộ phần thiết lập đã xong — không còn việc nào chờ bạn
 
@@ -532,6 +545,70 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 > Claude ghi vào đây sau **mỗi** lần chạm vào dự án. Bạn chỉ đọc.
 > Mục mới nhất nằm trên cùng.
+
+---
+
+### 12/08/2026 — Sáu bài về các giai đoạn phát triển, từ thai kỳ đến tuổi trưởng thành
+
+**Người thực hiện:** Claude · **Loại:** Thêm nội dung + mở rộng cấu hình
+
+**Đã làm gì**
+
+Thêm **6 bài** tạo thành một loạt đọc theo thứ tự, và mở rộng phạm vi website từ "cha mẹ có con 5–18 tuổi" thành "từ khi mang thai đến khi con trưởng thành".
+
+| # | Bài | Ý chính |
+| --- | --- | --- |
+| 1 | Chín tháng, và một danh sách ngắn hơn bạn tưởng | Bảy việc có bằng chứng thật trong thai kỳ; tách phần khoa học thật của thai giáo khỏi phần quảng cáo |
+| 2 | Não của con đang xây theo kiểu nào ⭐ | Não xây bằng cách thêm rồi bớt; "cửa sổ vàng" hẹp hơn nhiều so với cách nó được bán |
+| 3 | Sáu năm đầu: cái gì thật sự là vàng, cái gì chỉ là mạ | Ba thứ có bằng chứng — cả ba đều miễn phí |
+| 4 | Sáu đến mười hai: giai đoạn ít ai nói tới | Chức năng điều hành; giấc ngủ; vì sao ứng dụng luyện trí não không có tác dụng |
+| 5 | Não tuổi teen: đang xây lại, không phải đang hỏng | Con số 25 là sai; giấc ngủ; ngưỡng cần tìm chuyên gia |
+| 6 | Khi con đã trưởng thành, mình còn là gì của con? | Chuyển từ người quản lý sang người được hỏi ý kiến |
+
+Kèm theo, ba thay đổi về cấu hình:
+
+- **Hai chủ đề mới:** *Mang thai & năm đầu đời* và *Não bộ & các giai đoạn phát triển*. Thứ tự 12 chủ đề được sắp lại theo dòng thời gian; đường dẫn của các chủ đề cũ **không đổi**, nên không có link nào hỏng.
+- **Một hành trình mới:** *Đi theo từng giai đoạn của con* — gom đúng 6 bài này theo thứ tự đọc.
+- **Một trường mới trong khai báo bài viết:** `stageOrder`. Xem mục kế tiếp.
+
+**Vì sao làm như vậy**
+
+Ba quyết định đáng nêu:
+
+1. **Không viết theo kiểu "giai đoạn vàng, bỏ lỡ là hết".** Bạn đã chọn hướng này, và tôi thấy nó đúng cả về khoa học lẫn về nguyên tắc của website. Cách nói phổ biến kia không đứng vững trước nghiên cứu — việc cắt tỉa não kéo dài tới giữa tuổi teen, và khả năng học ngữ pháp một ngôn ngữ được giữ tới khoảng 17 tuổi. Quan trọng hơn: nó khiến cha mẹ có con lớn thấy mình đã muộn, mà điều đó vừa sai vừa vô ích.
+
+2. **Nêu cả phía phản biện, kể cả khi nó làm bài kém "kêu" hơn.** Bốn chỗ được nêu phản biện rõ: con số "não chín ở tuổi 25" (không có nghiên cứu nào nói vậy — chính các nhà nghiên cứu được gán cho con số ấy đã nói họ không hiểu vì sao người ta chọn 25); "khoảng cách hàng triệu từ" (không lặp lại được); nỗi sợ "nuôi con kiểu trực thăng" (hiệu ứng nhỏ, toàn bộ là tương quan, và có nghiên cứu đi ngược hẳn); stress thai kỳ (nghiên cứu tốt nhất kết luận mối liên hệ nhiều khả năng do nhiễu hơn là nhân quả).
+
+3. **Bài về thai kỳ được viết cẩn thận ở bốn chỗ dễ gây tổn thương.** Người đã lỡ uống rượu trước khi biết có thai; người hút thuốc; người bị stress; người không kịp uống acid folic. Mỗi chỗ đều nêu đúng khuyến cáo, rồi nói ngay điều còn làm được từ bây giờ — thay vì để lại một cảm giác đã gây hại rồi.
+
+**Về nguồn — phần này tôi làm kỹ hơn bình thường**
+
+Chủ đề não bộ có rất nhiều thông tin sai lan truyền, nên tôi không viết một câu khoa học nào theo trí nhớ.
+
+- **40 đường link** trong mục Nguồn tham khảo của 6 bài. Nguồn là WHO, Bộ Y tế Việt Nam (Viện Dinh dưỡng), Cơ quan phòng bệnh Hoa Kỳ, Dịch vụ Y tế Quốc gia Anh, Viện Sức khoẻ Tâm thần Quốc gia Hoa Kỳ, Đại học Harvard, Cochrane, NICE, và các bài trên *Nature*, *Nature Reviews Neuroscience*, *Molecular Psychiatry*.
+- **Cả 40 link đều được mở và đọc lại một lần nữa** sau khi viết xong, để xác nhận trang còn sống *và* thực sự chứa đúng điều bài viết nói.
+- Ba khẳng định bị **bỏ khỏi bài** vì không kiểm chứng được nguồn gốc tới nơi tới chốn, dù nghe rất hợp lý. Thà thiếu còn hơn sai.
+
+**Ảnh hưởng tới bạn**
+
+- Website từ 10 lên **16 bài**, từ 49 lên **61 trang**.
+- Sáu bài mới dài hơn mức thường (7–10 phút thay vì 4–6). Đây là loại bài tra cứu, đọc một lần rồi quay lại khi cần — khác với nhóm bài cho cha mẹ bận rộn.
+- Khối "Bài viết nổi bật" ở trang chủ: tôi đưa bài *Não của con đang xây theo kiểu nào* lên, và hạ bài *Màn hình: từ đếm giờ sang thoả thuận* xuống. Trang chủ chỉ hiện 3 bài. **Nếu bạn muốn đổi lại, xem Phần C, việc 4** — bạn tự làm được trong 2 phút.
+- Mô tả website và trang Giới thiệu đã sửa cho khớp phạm vi mới.
+
+**Nếu bạn muốn tự làm phần này**
+
+- **Đổi bài nổi bật** → Phần C, việc 4.
+- **Sửa chữ trong bài** → Phần C, việc 2.
+- **Đổi thứ tự đọc của loạt bài:** mỗi bài trong loạt có một dòng `stageOrder: 1` (đến 6) ở phần khai báo đầu file. Đổi số là đổi thứ tự. Bài không có dòng này thì xếp theo ngày như cũ.
+- **Thêm bài mới vào loạt** → đặt `stageOrder` một số chưa dùng, và đặt `category` là một trong hai chủ đề mới (hoặc thêm thẻ `giai đoạn phát triển`).
+
+**Có gì cần bạn quyết không?**
+
+Hai việc:
+
+1. **Đọc lại bài về thai kỳ trước khi duyệt.** Đây là bài chạm vào y tế nhiều nhất trong cả website. Tôi đã ghi rõ ở đầu bài rằng nó không thay thế bác sĩ, nhưng bạn nên tự thấy thoải mái với nội dung trước khi nó mang tên bạn.
+2. **Bài về tuổi teen có nhắc tới dấu hiệu cảnh báo sức khoẻ tinh thần, gồm cả ý nghĩ tự làm hại bản thân.** Tôi viết theo hướng dẫn của Viện Sức khoẻ Tâm thần Quốc gia Hoa Kỳ và có nêu ngưỡng cần tìm chuyên gia. Nếu bạn thấy phần này nên nhẹ hơn hoặc nên bỏ, nhắn tôi.
 
 ---
 

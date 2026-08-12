@@ -51,6 +51,17 @@ const articles = defineCollection({
     /** Độ tuổi phù hợp, ví dụ: ["6–10", "11–14"]. */
     ageGroups: z.array(z.string()).default([]),
 
+    /**
+     * Thứ tự đọc trong một HÀNH TRÌNH (số nhỏ đọc trước).
+     *
+     * Bình thường bài trong hành trình xếp theo ngày đăng — mới nhất lên trước.
+     * Nhưng có những loạt bài phải đọc theo đúng trình tự (ví dụ loạt bài đi từ
+     * thai kỳ đến tuổi trưởng thành). Điền số ở đây là ép đúng thứ tự đó.
+     *
+     * Bỏ trống → bài xếp theo ngày như cũ, nằm sau các bài đã đánh số.
+     */
+    stageOrder: z.number().int().positive().optional(),
+
     /** true → bài xuất hiện ở khối "Bài viết nổi bật" trên trang chủ. */
     featured: z.boolean().default(false),
 

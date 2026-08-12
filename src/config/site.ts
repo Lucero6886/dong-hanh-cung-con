@@ -65,7 +65,7 @@ export const SITE = {
 
   /** Mô tả mặc định cho SEO (dùng khi trang không có mô tả riêng). */
   description:
-    'Thư viện bài viết dành cho cha mẹ Việt Nam về giáo dục trẻ và hành trình đồng hành cùng con: động lực, thói quen, giao tiếp, cảm xúc, kỷ luật tích cực và tuổi teen.',
+    'Thư viện bài viết dành cho cha mẹ Việt Nam, đi cùng con từ khi mang thai đến khi con trưởng thành: phát triển não bộ theo từng giai đoạn, động lực, thói quen, giao tiếp, cảm xúc, kỷ luật tích cực và tuổi teen.',
 
   /** Tác giả mặc định của bài viết. Có thể ghi đè trong frontmatter từng bài. */
   author: 'Mr. Lucero',

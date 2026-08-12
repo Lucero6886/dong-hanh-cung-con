@@ -29,6 +29,8 @@ export interface EnrichedArticle {
   tags: string[];
   tagSlugs: string[];
   ageGroups: string[];
+  /** Thứ tự đọc trong hành trình. Bỏ trống → xếp theo ngày. */
+  stageOrder?: number;
   featured: boolean;
   coverImage?: string;
   coverAlt?: string;
@@ -54,6 +56,7 @@ function enrich(entry: Article): EnrichedArticle {
     tags: d.tags,
     tagSlugs: d.tags.map(slugify),
     ageGroups: d.ageGroups,
+    stageOrder: d.stageOrder,
     featured: d.featured,
     coverImage: d.coverImage,
     coverAlt: d.coverAlt,
@@ -143,11 +146,20 @@ export async function getJourneysWithArticles(): Promise<JourneyBucket[]> {
   const all = await getPublishedArticles();
   return JOURNEYS.map((j) => ({
     ...j,
-    articles: all.filter(
-      (a) =>
-        (j.tags ?? []).some((t) => a.tags.includes(t)) ||
-        (j.categories ?? []).includes(a.category)
-    ),
+    articles: all
+      .filter(
+        (a) =>
+          (j.tags ?? []).some((t) => a.tags.includes(t)) ||
+          (j.categories ?? []).includes(a.category)
+      )
+      /* Bài có `stageOrder` là loạt bài phải đọc theo trình tự → lên trước và
+         xếp theo số. Bài không có thì giữ thứ tự cũ (mới nhất trước), nằm sau. */
+      .sort((a, b) => {
+        const x = a.stageOrder ?? Infinity;
+        const y = b.stageOrder ?? Infinity;
+        if (x !== y) return x - y;
+        return b.date.getTime() - a.date.getTime();
+      }),
   }));
 }
 
