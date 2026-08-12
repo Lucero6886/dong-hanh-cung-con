@@ -28,3 +28,6 @@ desktop.ini
 
 # File tạm của Microsoft Word (khi bạn để bản nháp .docx trong repo)
 ~$*.docx
+
+# Thư mục nháp của scripts/make-brand-assets.py (kết quả thật nằm ở public/brand/)
+.brand-tmp/

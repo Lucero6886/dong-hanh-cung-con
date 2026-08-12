@@ -475,6 +475,98 @@
   color: var(--ink-2);
 }
 
+/* Dòng thương hiệu nhã nhặn ở cuối mỗi bài — nằm chung một chỗ nên áp dụng
+   cho cả 10 bài mà không phải sửa file bài nào. */
+.article-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  font-size: var(--step--1);
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--sp-3) var(--sp-4);
+  margin-bottom: var(--sp-5);
+}
+.article-brand img {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+:root[data-theme='dark'] .article-brand img {
+  background: #f2f1ec;
+  border-radius: 6px;
+  padding: 2px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .article-brand img {
+    background: #f2f1ec;
+    border-radius: 6px;
+    padding: 2px;
+  }
+}
+
+/* Khối đơn vị thực hiện trên trang Giới thiệu */
+.about-brand {
+  display: flex;
+  gap: var(--sp-4);
+  align-items: flex-start;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--sp-4);
+  margin: var(--sp-4) 0;
+}
+.about-brand img {
+  width: 150px;
+  height: 150px;
+  flex: none;
+  object-fit: contain;
+  box-sizing: border-box;
+  /* Gỡ khung viền mà .prose img đặt cho ảnh minh hoạ — logo không cần khung. */
+  border: 0;
+  border-radius: 0;
+}
+.about-brand > div > p {
+  margin: 0 0 var(--sp-2);
+}
+.about-brand > div > p:last-child {
+  margin-bottom: 0;
+}
+.about-brand-name {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: var(--step-1);
+}
+.about-brand-tagline {
+  font-size: var(--step--1);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+@media (max-width: 560px) {
+  .about-brand {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+:root[data-theme='dark'] .about-brand img {
+  background: #f2f1ec;
+  border-radius: 10px;
+  padding: 6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .about-brand img {
+    background: #f2f1ec;
+    border-radius: 10px;
+    padding: 6px;
+  }
+}
+
 .share {
   display: flex;
   align-items: center;

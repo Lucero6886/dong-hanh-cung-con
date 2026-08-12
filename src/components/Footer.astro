@@ -1,6 +1,6 @@
 ---
-import { SITE, NAV, SOCIAL_LINKS, COPYRIGHT } from '../config/site';
-import { withBase } from '../utils/url';
+import { SITE, NAV, SOCIAL_LINKS, COPYRIGHT, BRAND } from '../config/site';
+import { withBase, assetUrl } from '../utils/url';
 import { getCategoriesWithArticles } from '../utils/articles';
 
 const categories = (await getCategoriesWithArticles()).slice(0, 6);
@@ -60,6 +60,34 @@ const copyright = COPYRIGHT.line
         </ul>
       </div>
     </div>
+
+    {
+      BRAND.enabled && (
+        <div class="footer-brand">
+          <img
+            src={assetUrl(BRAND.logoMark)}
+            alt={BRAND.logoAlt}
+            width="56"
+            height="56"
+            loading="lazy"
+            decoding="async"
+          />
+          <div>
+            <span class="footer-brand-name">
+              {BRAND.url ? (
+                <a href={BRAND.url} rel="noopener">
+                  {BRAND.name}
+                </a>
+              ) : (
+                BRAND.name
+              )}
+            </span>
+            <span class="footer-brand-tagline">{BRAND.tagline}</span>
+            <p>{BRAND.blurb}</p>
+          </div>
+        </div>
+      )
+    }
 
     <div class="footer-bottom">
       <p style="margin:0">{copyright}</p>

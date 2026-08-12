@@ -140,6 +140,8 @@ Chi tiết: `CONTRIBUTING.md` và `docs/CONTENT_GUIDE.md`.
 | --- | --- |
 | Thêm/sửa bài | `src/content/articles/*.md` hoặc `.mdx` |
 | Đổi tên site, tên miền, menu, bản quyền | `src/config/site.ts` ⭐ nguồn duy nhất |
+| Thương hiệu ELS (logo, khẩu hiệu, giới thiệu, bật/tắt) | `src/config/site.ts` khối `BRAND` |
+| Tạo lại bộ ảnh logo khi chủ dự án đổi logo | `python3 scripts/make-brand-assets.py <file-logo>` → ghi ra `public/brand/` |
 | Mô tả chủ đề, hành trình | `src/config/taxonomy.ts` |
 | Trường frontmatter hợp lệ | `src/content.config.ts` |
 | Truy vấn bài viết | `src/utils/articles.ts` — đừng gọi `getCollection()` trực tiếp trong trang |

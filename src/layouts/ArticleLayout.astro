@@ -16,7 +16,7 @@ import Tag from '../components/Tag.astro';
 import type { EnrichedArticle } from '../utils/articles';
 import { articleUrl, categoryUrl, absoluteUrl, assetUrl } from '../utils/url';
 import { formatDate, isoDate } from '../utils/date';
-import { SITE, DEPLOY, DEFAULT_OG_IMAGE } from '../config/site';
+import { SITE, DEPLOY, DEFAULT_OG_IMAGE, BRAND } from '../config/site';
 import '../styles/article.css';
 
 interface Props {
@@ -49,7 +49,18 @@ const jsonLd = {
   datePublished: isoDate(article.date),
   dateModified: isoDate(article.updated ?? article.date),
   author: { '@type': 'Person', name: article.author },
-  publisher: { '@type': 'Organization', name: SITE.title },
+  /* Google hiển thị tên và logo đơn vị xuất bản trong kết quả tìm kiếm. */
+  publisher: BRAND.enabled
+    ? {
+        '@type': 'Organization',
+        name: BRAND.name,
+        alternateName: BRAND.shortName,
+        logo: {
+          '@type': 'ImageObject',
+          url: new URL(assetUrl(BRAND.logo), DEPLOY.siteUrl).href,
+        },
+      }
+    : { '@type': 'Organization', name: SITE.title },
   inLanguage: SITE.language,
   mainEntityOfPage: { '@type': 'WebPage', '@id': url },
   image: new URL(assetUrl(ogImage), DEPLOY.siteUrl).href,
@@ -179,6 +190,26 @@ const jsonLd = {
         <strong>Ghi chú biên tập:</strong> {d.editorNote ?? SOURCE_LABEL[article.sourceType]}
         {' '}Nội dung mang tính chia sẻ giáo dục, không thay thế tư vấn chuyên môn dành riêng cho từng trẻ.
       </p>
+
+      {
+        BRAND.enabled && (
+          <p class="article-brand">
+            <img
+              src={assetUrl(BRAND.logoMark)}
+              alt=""
+              width="28"
+              height="28"
+              loading="lazy"
+              decoding="async"
+            />
+            <span>
+              <strong>{SITE.title}</strong> — {BRAND.byline || `một dự án của ${BRAND.shortName}`}
+              <br />
+              <span class="text-muted">{BRAND.name} · {BRAND.tagline}</span>
+            </span>
+          </p>
+        )
+      }
 
       <ShareButtons url={url} title={article.title} />
 

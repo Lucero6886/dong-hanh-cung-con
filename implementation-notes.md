@@ -27,13 +27,14 @@ date: "2026-08-11"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 11/08/2026*
+*Cập nhật lần cuối: 12/08/2026*
 
 ### Tình trạng chung
 
 | Hạng mục | Hiện tại |
 | --- | --- |
 | Tên website | Đồng hành cùng con |
+| Thương hiệu | ELS — Lucero's English System (đơn vị thực hiện, logo ở thanh trên và chân trang) |
 | Đã lên mạng chưa? | ✅ **RỒI** — chạy từ 11/08/2026 |
 | **Địa chỉ website** | **https://lucero6886.github.io/dong-hanh-cung-con/** |
 | Tài khoản GitHub | `Lucero6886` |
@@ -383,6 +384,39 @@ Nhắn Claude: *"Tạo mã QR cho link website để tôi in ra."* Tiện khi h�
 
 ---
 
+### Việc 8 — Sửa phần thương hiệu ELS
+
+Toàn bộ phần ELS nằm gọn trong **một khối** của file `src/config/site.ts`, tên là `BRAND`. Sửa ở đó là cả website đổi theo — không phải tìm từng trang.
+
+#### Sửa chữ giới thiệu về ELS
+
+1. Vào <https://github.com/Lucero6886/dong-hanh-cung-con>
+2. Bấm vào thư mục `src` → `config` → file `site.ts`
+3. Bấm biểu tượng ✏️ (bút chì) góc phải
+4. Tìm dòng bắt đầu bằng `blurb:` — đó là đoạn giới thiệu ELS hiện ở chân trang và trang Giới thiệu
+5. Sửa chữ trong dấu nháy, giữ nguyên dấu nháy hai đầu
+6. Kéo xuống cuối → **Commit changes**
+
+Các dòng khác trong khối `BRAND` cũng sửa được y như vậy:
+
+| Dòng | Nó là gì | Hiện đang là |
+| --- | --- | --- |
+| `byline` | Dòng nhỏ dưới tên website ở thanh trên | *một dự án của ELS* |
+| `tagline` | Khẩu hiệu in trên logo | *Friendly · Effective · International* |
+| `blurb` | Đoạn giới thiệu ở chân trang và trang Giới thiệu | (đoạn 2 dòng) |
+| `url` | Link tới trang chính / Facebook của ELS | **đang để trống** |
+| `enabled` | Bật/tắt toàn bộ phần thương hiệu | `true` |
+
+> 💡 **Muốn logo bấm vào được?** Điền địa chỉ Facebook hoặc website của trung tâm vào dòng `url`, giữa hai dấu nháy. Đang để trống nên logo chỉ hiện ra, không dẫn đi đâu.
+
+> ⚠️ **Muốn gỡ hết ELS khỏi website?** Đổi `enabled: true` thành `enabled: false`. Website trở lại y như trước, không mất gì.
+
+#### Thay logo mới
+
+Đây là việc **cần Claude**, vì một file logo phải cắt ra thành 7 file khác nhau (bản đầy đủ, bản rút gọn, ba cỡ icon…). Nhắn: *"Tôi có logo mới, đổi giúp tôi"* rồi gửi file.
+
+---
+
 ## PHẦN D — Từ điển: 15 từ bạn sẽ gặp
 
 Giải thích bằng ví dụ đời thường, không dùng từ chuyên môn để giải thích từ chuyên môn.
@@ -498,6 +532,66 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 > Claude ghi vào đây sau **mỗi** lần chạm vào dự án. Bạn chỉ đọc.
 > Mục mới nhất nằm trên cùng.
+
+---
+
+### 12/08/2026 — Đưa logo và thương hiệu ELS lên website
+
+**Người thực hiện:** Claude · **Loại:** Thay đổi giao diện + cấu hình
+
+**Đã làm gì**
+
+Bạn gửi file `logo-els.jpg`. Từ một file đó, tôi dựng ra bộ 7 file ảnh trong `public/brand/` và gắn vào bốn chỗ trên website:
+
+| Chỗ | Dùng bản nào | Trông thế nào |
+| --- | --- | --- |
+| Thanh trên cùng (mọi trang) | Bản rút gọn 34px | Logo + *Đồng hành cùng con* + dòng nhỏ *MỘT DỰ ÁN CỦA ELS* |
+| Chân trang (mọi trang) | Bản rút gọn 56px | Logo + tên đầy đủ + khẩu hiệu + đoạn giới thiệu ELS |
+| Cuối mỗi bài viết (cả 10 bài) | Bản rút gọn 28px | Một dòng nhã nhặn trong khung xám nhạt |
+| Trang Giới thiệu | **Logo đầy đủ** 150px | Mục "Đơn vị thực hiện", đọc rõ cả hai dòng chữ trên logo |
+
+Cộng thêm: **icon tab trình duyệt** đổi từ hình vẽ tay cũ sang logo ELS, và Google giờ nhận ELS là đơn vị xuất bản các bài viết (ảnh hưởng tới cách hiện trong kết quả tìm kiếm).
+
+**Vì sao làm như vậy, không phải cách khác**
+
+Ba quyết định đáng nêu, vì chúng khác với cách làm hiển nhiên:
+
+1. **Website vẫn mang tên "Đồng hành cùng con", ELS đứng sau.** Người đọc là cha mẹ đang tìm nội dung nuôi dạy con — họ tìm chủ đề trước, thương hiệu sau. Đặt ELS lên làm tên chính sẽ khiến người cần nội dung khó nhận ra đây là nơi cần tìm. Giữ tên cũ cũng không làm mất đường link và thứ hạng tìm kiếm đã có.
+
+2. **Có hai bản logo, không phải một.** Logo của bạn có hai dòng chữ vòng cung. Thu xuống 34px ở thanh trên thì chữ thành vệt mờ, cả logo nhìn như một vết bẩn. Nên tôi tách thêm **bản rút gọn** — chỉ quả địa cầu và mũ cử nhân — dùng cho mọi chỗ nhỏ. Bản đầy đủ chỉ dùng ở trang Giới thiệu, nơi đủ rộng để đọc chữ.
+
+3. **Giữ nguyên tông xanh lá của website.** Logo xanh dương + vàng đặt lên nền xanh lá hiện tại vẫn hài hoà. Đổi cả website sang màu thương hiệu sẽ phải kiểm tra lại độ đọc được của từng trang ở cả chế độ sáng lẫn tối — rủi ro lớn, lợi ích nhỏ.
+
+**Về chuyện đổi ảnh sang .svg**
+
+Bạn hỏi có tạo được file `.svg` từ ảnh `.jpg` không — **có**, và tôi đã làm.
+
+- File `.jpg` bạn gửi là ảnh ghép từ các điểm ảnh: phóng to là vỡ, in ra là rỗ.
+- Bản `.svg` vẽ lại logo bằng đường cong toán học: **nét ở mọi kích thước**, kể cả in khổ lớn. Nhẹ hơn ảnh, và tự động sắc nét trên màn hình điện thoại độ phân giải cao.
+- ⚠️ **Nhưng đây là bản dựng lại, không phải file gốc của người thiết kế.** Rất sát bản gốc — tôi đã đặt cạnh nhau so từng chi tiết. Khác biệt duy nhất nhìn thấy được: viền đỏ quanh mũ cử nhân trong ảnh gốc là vệt mờ toả dần, bản vector chuyển thành một đường viền đỏ gọn. Nhìn sạch hơn, nhưng không giống hệt.
+- **Nếu cần in băng rôn, standee hay sửa từng nét**, hãy xin file `.ai` gốc từ người đã thiết kế logo. Bản dựng lại này đủ tốt cho website, không đủ chuẩn cho xưởng in khó tính.
+- File `.ai` là định dạng riêng của Adobe Illustrator nên tôi không tạo được trực tiếp. Nhưng **Illustrator mở thẳng file `.svg`** và lưu lại thành `.ai` được, nếu bạn cần.
+
+**Ảnh hưởng tới bạn**
+
+- Không mất bài nào, không đổi đường link nào. Chỉ là giao diện có thêm logo.
+- Icon tab trình duyệt đổi — người đã lưu bookmark sẽ thấy hình mới.
+- **Có một đoạn chữ bạn nên đọc lại**: đoạn giới thiệu ELS ở chân trang. Tôi viết là *"nơi tác giả dạy học và làm việc với trẻ mỗi ngày"* — đây là tôi suy đoán, không phải bạn nói. Nếu chưa đúng thực tế thì sửa (cách sửa ở **Phần C, việc 8**).
+
+**Nếu bạn muốn tự làm phần này**
+
+- **Sửa chữ giới thiệu ELS, khẩu hiệu, dòng nhỏ dưới tên website, link Facebook** → **Phần C, việc 8**. Làm được hoàn toàn trên web GitHub, không cần Claude.
+- **Gỡ sạch ELS khỏi website** → cũng ở việc 8: đổi một chữ `true` thành `false`.
+- **Thay logo mới** → việc này cần Claude, vì một file logo phải cắt thành 7 file. Nhắn kèm file mới là được.
+- Bộ ảnh được tạo bằng `scripts/make-brand-assets.py`. Bạn không cần chạy nó; ghi ra đây để sau này ai xem dự án cũng biết 7 file kia từ đâu ra.
+
+**Có gì cần bạn quyết không?**
+
+Ba việc, đều **không gấp**:
+
+1. **Đọc lại đoạn giới thiệu ELS** ở chân trang — nếu sai thực tế thì sửa.
+2. **Có muốn logo bấm vào được không?** Hiện logo chỉ hiện ra, không dẫn đi đâu. Cho tôi địa chỉ Facebook hoặc website của trung tâm là tôi gắn vào.
+3. **Ảnh xem trước khi chia sẻ link lên Zalo/Facebook** hiện vẫn là ảnh cũ, chưa có logo. Bạn không chọn mục này lúc tôi hỏi nên tôi để nguyên. Muốn thêm thì nhắn.
 
 ---
 

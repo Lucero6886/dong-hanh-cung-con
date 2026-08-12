@@ -86,12 +86,69 @@ export const SITE = {
 } as const;
 
 /* -----------------------------------------------------------------------------
+ * 2B) THƯƠNG HIỆU ELS — ĐƠN VỊ THỰC HIỆN
+ * -----------------------------------------------------------------------------
+ *  Website vẫn mang tên "Đồng hành cùng con"; ELS đứng phía sau với vai trò
+ *  đơn vị thực hiện. Người đọc là cha mẹ đi tìm nội dung nuôi dạy con — họ tìm
+ *  chủ đề trước, thương hiệu sau.
+ *
+ *  ⚙️  Muốn gỡ toàn bộ thương hiệu khỏi website: đổi `enabled` thành false.
+ *      Không phải sửa thêm bất kỳ file nào khác.
+ * -------------------------------------------------------------------------- */
+
+export const BRAND = {
+  /** false → website trở lại y như trước khi có ELS. */
+  enabled: true,
+
+  /** Tên viết tắt, dùng ở những chỗ chật (thanh trên, chú thích ảnh). */
+  shortName: 'ELS',
+
+  /** Tên đầy đủ, dùng ở chân trang và trang Giới thiệu. */
+  name: "Lucero's English System",
+
+  /** Khẩu hiệu in trên logo. */
+  tagline: 'Friendly · Effective · International',
+
+  /**
+   * Logo đầy đủ (có hai dòng chữ vòng cung), dạng vector nên nét ở mọi cỡ.
+   * Chỉ dùng ở chỗ đủ rộng để đọc được chữ — hiện là trang Giới thiệu.
+   * Bản `.png` cùng tên nằm sẵn cạnh đó để dự phòng.
+   */
+  logo: '/brand/els-logo.svg',
+
+  /**
+   * Bản rút gọn: chỉ quả địa cầu và mũ cử nhân, đã bỏ hai dòng chữ.
+   * Dùng cho mọi chỗ nhỏ — thanh trên, chân trang, cuối bài, icon tab.
+   * Lý do: thu logo đầy đủ xuống 34px thì chữ thành vệt mờ, nhìn như một vết bẩn.
+   */
+  logoMark: '/brand/els-mark.svg',
+
+  logoAlt: "Logo ELS — Lucero's English System",
+
+  /** Dòng nhỏ dưới tên website ở thanh trên. Để '' nếu không muốn hiện. */
+  byline: 'một dự án của ELS',
+
+  /**
+   * Đoạn giới thiệu ở chân trang và trang Giới thiệu.
+   * ⚠️  Đây là chỗ bạn NÊN đọc lại và sửa cho đúng với thực tế của trung tâm.
+   */
+  blurb:
+    'ELS — Lucero’s English System là nơi tác giả dạy học và làm việc với trẻ mỗi ngày. Nhiều bài viết trên website bắt đầu từ những trao đổi thật với phụ huynh và học sinh trong quá trình đó.',
+
+  /**
+   * Trang chính hoặc Facebook của ELS.
+   * Để chuỗi rỗng '' → logo hiển thị bình thường nhưng không thành liên kết.
+   */
+  url: '',
+} as const;
+
+/* -----------------------------------------------------------------------------
  * 3) BẢN QUYỀN CHÂN TRANG
  *    {year} sẽ được thay bằng năm hiện tại khi build.
  * -------------------------------------------------------------------------- */
 
 export const COPYRIGHT = {
-  holder: 'Mr. Lucero',
+  holder: "ELS — Lucero's English System",
   line: '© {year} {holder} · Đồng hành cùng con',
   note: 'Nội dung giáo dục dành cho cha mẹ. Bảo lưu mọi quyền trừ khi có ghi chú khác.',
   disclaimer:

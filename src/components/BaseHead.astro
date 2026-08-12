@@ -4,7 +4,7 @@
  *
  * Mọi trang đều đi qua đây, nên chỉ cần sửa một chỗ là metadata toàn site đổi theo.
  */
-import { SITE, DEPLOY, DEFAULT_OG_IMAGE, TWITTER_HANDLE } from '../config/site';
+import { SITE, DEPLOY, DEFAULT_OG_IMAGE, TWITTER_HANDLE, BRAND } from '../config/site';
 import { assetUrl } from '../utils/url';
 import '../styles/global.css';
 
@@ -52,7 +52,18 @@ const ogImage = new URL(assetUrl(image), DEPLOY.siteUrl).href;
 {noindex && <meta name="robots" content="noindex,follow" />}
 {!noindex && <meta name="robots" content="index,follow,max-image-preview:large" />}
 
-<link rel="icon" href={assetUrl('/favicon.svg')} type="image/svg+xml" />
+{/* Icon tab trình duyệt. Bật thương hiệu → dùng logo ELS; tắt → về hình vẽ cũ. */}
+{
+  BRAND.enabled ? (
+    <>
+      <link rel="icon" href={assetUrl('/brand/favicon-32.png')} sizes="32x32" type="image/png" />
+      <link rel="icon" href={assetUrl('/brand/favicon-192.png')} sizes="192x192" type="image/png" />
+      <link rel="apple-touch-icon" href={assetUrl('/brand/apple-touch-icon.png')} />
+    </>
+  ) : (
+    <link rel="icon" href={assetUrl('/favicon.svg')} type="image/svg+xml" />
+  )
+}
 <link rel="alternate" type="application/rss+xml" title={SITE.title} href={assetUrl('/rss.xml')} />
 <meta name="generator" content={Astro.generator} />
 <meta name="color-scheme" content="light dark" />

@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import { SITE } from '../config/site';
-import { withBase } from '../utils/url';
+import { SITE, BRAND } from '../config/site';
+import { withBase, assetUrl } from '../utils/url';
 import '../styles/article.css';
 ---
 
@@ -78,6 +78,41 @@ import '../styles/article.css';
           Trong quá trình biên tập, luận điểm gốc của tác giả được giữ nguyên; phần mở rộng của người
           biên tập được ghi rõ ở cuối bài trong mục <em>Ghi chú biên tập</em>.
         </p>
+
+        {
+          BRAND.enabled && (
+            <>
+              <h2>Đơn vị thực hiện</h2>
+              <div class="about-brand">
+                <img
+                  src={assetUrl(BRAND.logo)}
+                  alt={BRAND.logoAlt}
+                  width="150"
+                  height="150"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div>
+                  <p class="about-brand-name">{BRAND.name}</p>
+                  <p class="about-brand-tagline">{BRAND.tagline}</p>
+                  <p>{BRAND.blurb}</p>
+                  {BRAND.url && (
+                    <p>
+                      <a href={BRAND.url} rel="noopener">
+                        Xem thêm về {BRAND.shortName} →
+                      </a>
+                    </p>
+                  )}
+                </div>
+              </div>
+              <p>
+                Website này là phần nội dung dành cho cha mẹ, tách riêng khỏi hoạt động dạy học.
+                Các bài viết ở đây không quảng cáo khoá học và không nhằm bán bất cứ thứ gì —
+                đọc xong rồi thôi cũng được.
+              </p>
+            </>
+          )
+        }
 
         <h2>Liên hệ</h2>
         <p>

@@ -213,7 +213,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <p><strong>Nguyên tắc của sổ tay này:</strong> mỗi lần Claude chạm vào dự án, Claude <strong>bắt buộc</strong> ghi vào Phần F — đã làm gì, vì sao, ảnh hưởng gì tới bạn, và <em>nếu tự làm thì làm thế nào</em>. Bạn không phải nhớ. Bạn chỉ cần đọc.</p>
 <hr />
 <h2 id="phần-a-dự-án-đang-ở-đâu">PHẦN A — Dự án đang ở đâu</h2>
-<p><em>Cập nhật lần cuối: 11/08/2026</em></p>
+<p><em>Cập nhật lần cuối: 12/08/2026</em></p>
 <h3 id="tình-trạng-chung">Tình trạng chung</h3>
 <table>
 <colgroup>
@@ -232,50 +232,54 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <td>Đồng hành cùng con</td>
 </tr>
 <tr class="even">
+<td>Thương hiệu</td>
+<td>ELS — Lucero’s English System (đơn vị thực hiện, logo ở thanh trên và chân trang)</td>
+</tr>
+<tr class="odd">
 <td>Đã lên mạng chưa?</td>
 <td>✅ <strong>RỒI</strong> — chạy từ 11/08/2026</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>Địa chỉ website</strong></td>
 <td><strong>https://lucero6886.github.io/dong-hanh-cung-con/</strong></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Tài khoản GitHub</td>
 <td><code>Lucero6886</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Mã nguồn trên mạng</td>
 <td><a href="https://github.com/Lucero6886/dong-hanh-cung-con" class="uri">https://github.com/Lucero6886/dong-hanh-cung-con</a> (công khai ✓)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Nhánh đang dùng</td>
 <td><code>master</code></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Nơi lưu mã nguồn</td>
 <td>Máy bạn: <code>Downloads\Note giáo dục trẻ\dong-hanh-cung-con\</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Số bài viết</td>
 <td><strong>10</strong> bài, đã xuất bản cả 10, không có bài nháp</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Số chủ đề đang dùng</td>
 <td><strong>10 / 10</strong> — đã phủ kín toàn bộ chủ đề</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Số hành trình có bài</td>
 <td><strong>7 / 7</strong></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Số thẻ</td>
 <td><strong>14</strong></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Số trang website tự sinh ra</td>
 <td><strong>49</strong></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Tình trạng kỹ thuật</td>
 <td>✅ Chạy tốt, 0 lỗi, 0 cảnh báo</td>
 </tr>
@@ -704,6 +708,68 @@ bằng ngôn ngữ dễ hiểu. Cập nhật phần A của sổ tay vận hành
 <h4 id="muốn-có-mã-qr-để-in-ra">Muốn có mã QR để in ra?</h4>
 <p>Nhắn Claude: <em>“Tạo mã QR cho link website để tôi in ra.”</em> Tiện khi họp phụ huynh hoặc dán ở bảng tin lớp.</p>
 <hr />
+<h3 id="việc-8-sửa-phần-thương-hiệu-els">Việc 8 — Sửa phần thương hiệu ELS</h3>
+<p>Toàn bộ phần ELS nằm gọn trong <strong>một khối</strong> của file <code>src/config/site.ts</code>, tên là <code>BRAND</code>. Sửa ở đó là cả website đổi theo — không phải tìm từng trang.</p>
+<h4 id="sửa-chữ-giới-thiệu-về-els">Sửa chữ giới thiệu về ELS</h4>
+<ol type="1">
+<li>Vào <a href="https://github.com/Lucero6886/dong-hanh-cung-con" class="uri">https://github.com/Lucero6886/dong-hanh-cung-con</a></li>
+<li>Bấm vào thư mục <code>src</code> → <code>config</code> → file <code>site.ts</code></li>
+<li>Bấm biểu tượng ✏️ (bút chì) góc phải</li>
+<li>Tìm dòng bắt đầu bằng <code>blurb:</code> — đó là đoạn giới thiệu ELS hiện ở chân trang và trang Giới thiệu</li>
+<li>Sửa chữ trong dấu nháy, giữ nguyên dấu nháy hai đầu</li>
+<li>Kéo xuống cuối → <strong>Commit changes</strong></li>
+</ol>
+<p>Các dòng khác trong khối <code>BRAND</code> cũng sửa được y như vậy:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dòng</th>
+<th>Nó là gì</th>
+<th>Hiện đang là</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>byline</code></td>
+<td>Dòng nhỏ dưới tên website ở thanh trên</td>
+<td><em>một dự án của ELS</em></td>
+</tr>
+<tr class="even">
+<td><code>tagline</code></td>
+<td>Khẩu hiệu in trên logo</td>
+<td><em>Friendly · Effective · International</em></td>
+</tr>
+<tr class="odd">
+<td><code>blurb</code></td>
+<td>Đoạn giới thiệu ở chân trang và trang Giới thiệu</td>
+<td>(đoạn 2 dòng)</td>
+</tr>
+<tr class="even">
+<td><code>url</code></td>
+<td>Link tới trang chính / Facebook của ELS</td>
+<td><strong>đang để trống</strong></td>
+</tr>
+<tr class="odd">
+<td><code>enabled</code></td>
+<td>Bật/tắt toàn bộ phần thương hiệu</td>
+<td><code>true</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong>Muốn logo bấm vào được?</strong> Điền địa chỉ Facebook hoặc website của trung tâm vào dòng <code>url</code>, giữa hai dấu nháy. Đang để trống nên logo chỉ hiện ra, không dẫn đi đâu.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Muốn gỡ hết ELS khỏi website?</strong> Đổi <code>enabled: true</code> thành <code>enabled: false</code>. Website trở lại y như trước, không mất gì.</p>
+</blockquote>
+<h4 id="thay-logo-mới">Thay logo mới</h4>
+<p>Đây là việc <strong>cần Claude</strong>, vì một file logo phải cắt ra thành 7 file khác nhau (bản đầy đủ, bản rút gọn, ba cỡ icon…). Nhắn: <em>“Tôi có logo mới, đổi giúp tôi”</em> rồi gửi file.</p>
+<hr />
 <h2 id="phần-d-từ-điển-15-từ-bạn-sẽ-gặp">PHẦN D — Từ điển: 15 từ bạn sẽ gặp</h2>
 <p>Giải thích bằng ví dụ đời thường, không dùng từ chuyên môn để giải thích từ chuyên môn.</p>
 <table>
@@ -848,6 +914,84 @@ bằng ngôn ngữ dễ hiểu. Cập nhật phần A của sổ tay vận hành
 <blockquote>
 <p>Claude ghi vào đây sau <strong>mỗi</strong> lần chạm vào dự án. Bạn chỉ đọc. Mục mới nhất nằm trên cùng.</p>
 </blockquote>
+<hr />
+<h3 id="đưa-logo-và-thương-hiệu-els-lên-website">12/08/2026 — Đưa logo và thương hiệu ELS lên website</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Thay đổi giao diện + cấu hình</p>
+<p><strong>Đã làm gì</strong></p>
+<p>Bạn gửi file <code>logo-els.jpg</code>. Từ một file đó, tôi dựng ra bộ 7 file ảnh trong <code>public/brand/</code> và gắn vào bốn chỗ trên website:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Chỗ</th>
+<th>Dùng bản nào</th>
+<th>Trông thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thanh trên cùng (mọi trang)</td>
+<td>Bản rút gọn 34px</td>
+<td>Logo + <em>Đồng hành cùng con</em> + dòng nhỏ <em>MỘT DỰ ÁN CỦA ELS</em></td>
+</tr>
+<tr class="even">
+<td>Chân trang (mọi trang)</td>
+<td>Bản rút gọn 56px</td>
+<td>Logo + tên đầy đủ + khẩu hiệu + đoạn giới thiệu ELS</td>
+</tr>
+<tr class="odd">
+<td>Cuối mỗi bài viết (cả 10 bài)</td>
+<td>Bản rút gọn 28px</td>
+<td>Một dòng nhã nhặn trong khung xám nhạt</td>
+</tr>
+<tr class="even">
+<td>Trang Giới thiệu</td>
+<td><strong>Logo đầy đủ</strong> 150px</td>
+<td>Mục “Đơn vị thực hiện”, đọc rõ cả hai dòng chữ trên logo</td>
+</tr>
+</tbody>
+</table>
+<p>Cộng thêm: <strong>icon tab trình duyệt</strong> đổi từ hình vẽ tay cũ sang logo ELS, và Google giờ nhận ELS là đơn vị xuất bản các bài viết (ảnh hưởng tới cách hiện trong kết quả tìm kiếm).</p>
+<p><strong>Vì sao làm như vậy, không phải cách khác</strong></p>
+<p>Ba quyết định đáng nêu, vì chúng khác với cách làm hiển nhiên:</p>
+<ol type="1">
+<li><p><strong>Website vẫn mang tên “Đồng hành cùng con”, ELS đứng sau.</strong> Người đọc là cha mẹ đang tìm nội dung nuôi dạy con — họ tìm chủ đề trước, thương hiệu sau. Đặt ELS lên làm tên chính sẽ khiến người cần nội dung khó nhận ra đây là nơi cần tìm. Giữ tên cũ cũng không làm mất đường link và thứ hạng tìm kiếm đã có.</p></li>
+<li><p><strong>Có hai bản logo, không phải một.</strong> Logo của bạn có hai dòng chữ vòng cung. Thu xuống 34px ở thanh trên thì chữ thành vệt mờ, cả logo nhìn như một vết bẩn. Nên tôi tách thêm <strong>bản rút gọn</strong> — chỉ quả địa cầu và mũ cử nhân — dùng cho mọi chỗ nhỏ. Bản đầy đủ chỉ dùng ở trang Giới thiệu, nơi đủ rộng để đọc chữ.</p></li>
+<li><p><strong>Giữ nguyên tông xanh lá của website.</strong> Logo xanh dương + vàng đặt lên nền xanh lá hiện tại vẫn hài hoà. Đổi cả website sang màu thương hiệu sẽ phải kiểm tra lại độ đọc được của từng trang ở cả chế độ sáng lẫn tối — rủi ro lớn, lợi ích nhỏ.</p></li>
+</ol>
+<p><strong>Về chuyện đổi ảnh sang .svg</strong></p>
+<p>Bạn hỏi có tạo được file <code>.svg</code> từ ảnh <code>.jpg</code> không — <strong>có</strong>, và tôi đã làm.</p>
+<ul>
+<li>File <code>.jpg</code> bạn gửi là ảnh ghép từ các điểm ảnh: phóng to là vỡ, in ra là rỗ.</li>
+<li>Bản <code>.svg</code> vẽ lại logo bằng đường cong toán học: <strong>nét ở mọi kích thước</strong>, kể cả in khổ lớn. Nhẹ hơn ảnh, và tự động sắc nét trên màn hình điện thoại độ phân giải cao.</li>
+<li>⚠️ <strong>Nhưng đây là bản dựng lại, không phải file gốc của người thiết kế.</strong> Rất sát bản gốc — tôi đã đặt cạnh nhau so từng chi tiết. Khác biệt duy nhất nhìn thấy được: viền đỏ quanh mũ cử nhân trong ảnh gốc là vệt mờ toả dần, bản vector chuyển thành một đường viền đỏ gọn. Nhìn sạch hơn, nhưng không giống hệt.</li>
+<li><strong>Nếu cần in băng rôn, standee hay sửa từng nét</strong>, hãy xin file <code>.ai</code> gốc từ người đã thiết kế logo. Bản dựng lại này đủ tốt cho website, không đủ chuẩn cho xưởng in khó tính.</li>
+<li>File <code>.ai</code> là định dạng riêng của Adobe Illustrator nên tôi không tạo được trực tiếp. Nhưng <strong>Illustrator mở thẳng file <code>.svg</code></strong> và lưu lại thành <code>.ai</code> được, nếu bạn cần.</li>
+</ul>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<ul>
+<li>Không mất bài nào, không đổi đường link nào. Chỉ là giao diện có thêm logo.</li>
+<li>Icon tab trình duyệt đổi — người đã lưu bookmark sẽ thấy hình mới.</li>
+<li><strong>Có một đoạn chữ bạn nên đọc lại</strong>: đoạn giới thiệu ELS ở chân trang. Tôi viết là <em>“nơi tác giả dạy học và làm việc với trẻ mỗi ngày”</em> — đây là tôi suy đoán, không phải bạn nói. Nếu chưa đúng thực tế thì sửa (cách sửa ở <strong>Phần C, việc 8</strong>).</li>
+</ul>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<ul>
+<li><strong>Sửa chữ giới thiệu ELS, khẩu hiệu, dòng nhỏ dưới tên website, link Facebook</strong> → <strong>Phần C, việc 8</strong>. Làm được hoàn toàn trên web GitHub, không cần Claude.</li>
+<li><strong>Gỡ sạch ELS khỏi website</strong> → cũng ở việc 8: đổi một chữ <code>true</code> thành <code>false</code>.</li>
+<li><strong>Thay logo mới</strong> → việc này cần Claude, vì một file logo phải cắt thành 7 file. Nhắn kèm file mới là được.</li>
+<li>Bộ ảnh được tạo bằng <code>scripts/make-brand-assets.py</code>. Bạn không cần chạy nó; ghi ra đây để sau này ai xem dự án cũng biết 7 file kia từ đâu ra.</li>
+</ul>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Ba việc, đều <strong>không gấp</strong>:</p>
+<ol type="1">
+<li><strong>Đọc lại đoạn giới thiệu ELS</strong> ở chân trang — nếu sai thực tế thì sửa.</li>
+<li><strong>Có muốn logo bấm vào được không?</strong> Hiện logo chỉ hiện ra, không dẫn đi đâu. Cho tôi địa chỉ Facebook hoặc website của trung tâm là tôi gắn vào.</li>
+<li><strong>Ảnh xem trước khi chia sẻ link lên Zalo/Facebook</strong> hiện vẫn là ảnh cũ, chưa có logo. Bạn không chọn mục này lúc tôi hỏi nên tôi để nguyên. Muốn thêm thì nhắn.</li>
+</ol>
 <hr />
 <h3 id="thêm-7-bài-viết-phủ-kín-toàn-bộ-chủ-đề">11/08/2026 — Thêm 7 bài viết, phủ kín toàn bộ chủ đề</h3>
 <p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Nội dung</p>

@@ -648,6 +648,45 @@ main {
   height: 26px;
   flex: none;
 }
+
+/* Logo ELS dạng ảnh — cao hơn hình vẽ tay cũ một chút để phần chi tiết đọc được */
+.logo .brand-mark {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+
+/* Tên website + dòng "một dự án của ELS" xếp chồng, canh sát nhau */
+.logo-text {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.05rem;
+  line-height: 1.15;
+}
+.logo-title {
+  font-weight: 800;
+}
+.logo-byline {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* Máy rất hẹp (dưới 360px): bỏ dòng phụ và thu logo lại, nếu không thanh trên
+   sẽ rộng quá màn hình và cả trang bị kéo ngang.
+   Điện thoại phổ thông ngày nay rộng 360–430px nên vẫn thấy đủ hai dòng. */
+@media (max-width: 359px) {
+  .logo-byline {
+    display: none;
+  }
+  .logo .brand-mark {
+    width: 26px;
+    height: 26px;
+  }
+}
 .header-right {
   display: flex;
   align-items: center;
@@ -821,6 +860,59 @@ main {
 .footer-disclaimer {
   max-width: 46rem;
   opacity: 0.9;
+}
+
+/* --- Khối thương hiệu ELS ở chân trang ------------------------------------ */
+.footer-brand {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding-top: var(--sp-4);
+  padding-bottom: var(--sp-5);
+  border-top: 1px solid var(--line);
+}
+.footer-brand img {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  object-fit: contain;
+  box-sizing: border-box;
+}
+.footer-brand-name {
+  font-weight: 700;
+  color: var(--ink-2);
+  display: block;
+}
+.footer-brand-tagline {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+.footer-brand p {
+  margin: 0;
+  max-width: 42rem;
+}
+
+/* --- Chế độ tối -----------------------------------------------------------
+ * Logo ELS là hình xanh dương đậm, đặt thẳng lên nền tối sẽ chìm.
+ * Giải pháp: lót một mảng sáng bo góc phía sau, đúng bằng kích thước logo.
+ * -------------------------------------------------------------------------- */
+:root[data-theme='dark'] .logo .brand-mark,
+:root[data-theme='dark'] .footer-brand img {
+  background: #f2f1ec;
+  border-radius: 8px;
+  padding: 3px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .logo .brand-mark,
+  :root:not([data-theme='light']) .footer-brand img {
+    background: #f2f1ec;
+    border-radius: 8px;
+    padding: 3px;
+  }
 }
 
 /* -----------------------------------------------------------------------------
