@@ -44,59 +44,65 @@ export const CATEGORIES: CategoryMeta[] = [
     order: 3,
   },
   {
+    name: 'Nhân cách & tấm gương',
+    description:
+      'Trẻ học điều tốt từ đâu: từ chuyện được kể, từ người chúng nhìn thấy, và từ việc người lớn có sống đúng điều mình dạy hay không.',
+    order: 4,
+  },
+  {
     name: 'Động lực & thói quen',
     description:
       'Vì sao trẻ hành động? Cách nuôi dưỡng động lực bền vững và xây dựng thói quen mà không biến mọi việc thành giao dịch.',
-    order: 4,
+    order: 5,
   },
   {
     name: 'Học tập & tự học',
     description:
       'Đồng hành với việc học của con: từ điểm số sang hiểu biết, từ nhắc nhở sang khả năng tự học.',
-    order: 5,
+    order: 6,
   },
   {
     name: 'Giao tiếp cha mẹ – con',
     slug: 'giao-tiep',
     description:
       'Cách đặt câu hỏi, cách lắng nghe, cách nói điều khó nói — để cánh cửa trò chuyện giữa cha mẹ và con luôn mở.',
-    order: 6,
+    order: 7,
   },
   {
     name: 'Cảm xúc & tâm lý',
     description:
       'Giúp trẻ gọi tên và điều tiết cảm xúc, và giúp cha mẹ giữ được sự bình tĩnh của chính mình.',
-    order: 7,
+    order: 8,
   },
   {
     name: 'Kỷ luật tích cực',
     description:
       'Đặt giới hạn rõ ràng mà vẫn tôn trọng: kỷ luật hướng tới hiểu biết và tự điều chỉnh, không hướng tới sợ hãi.',
-    order: 8,
+    order: 9,
   },
   {
     name: 'Tự lập & trách nhiệm',
     description:
       'Từng bước trao lại cho con quyền quyết định và phần việc của con, theo mức độ phù hợp với lứa tuổi.',
-    order: 9,
+    order: 10,
   },
   {
     name: 'Công nghệ & trẻ em',
     description:
       'Thiết bị, màn hình và Internet trong đời sống gia đình: thoả thuận thay vì kiểm soát, đồng hành thay vì cấm đoán.',
-    order: 10,
+    order: 11,
   },
   {
     name: 'Tuổi teen',
     description:
       'Giai đoạn con cần khoảng cách để trưởng thành — và vẫn cần cha mẹ ở gần theo một cách khác.',
-    order: 11,
+    order: 12,
   },
   {
     name: 'Góc suy ngẫm của cha mẹ',
     description:
       'Những ghi chép, câu hỏi và tự vấn của người lớn trên hành trình làm cha mẹ.',
-    order: 12,
+    order: 13,
   },
 ];
 
@@ -191,6 +197,13 @@ export const JOURNEYS: Journey[] = [
       'Từ khi mang thai đến khi con trưởng thành. Mỗi bài mô tả điều đang thực sự diễn ra ở một chặng — não bộ đang làm gì, con đang cần gì, và vai trò của cha mẹ đổi thế nào.',
     tags: ['giai đoạn phát triển'],
     categories: ['Mang thai & năm đầu đời', 'Não bộ & các giai đoạn phát triển'],
+  },
+  {
+    slug: 'day-con-nen-nguoi',
+    title: 'Dạy con nên người',
+    description:
+      'Trung thực, tự giác, kiên trì, biết nghĩ cho người khác — những thứ này học được bằng cách nào? Nhóm bài này bám vào nghiên cứu thật, kể cả khi kết quả ngược với điều chúng ta vẫn làm.',
+    tags: ['nhân cách'],
   },
   {
     slug: 'khi-cha-me-qua-ban',

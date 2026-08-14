@@ -27,7 +27,7 @@ date: "2026-08-11"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 12/08/2026 (lần 2 trong ngày)*
+*Cập nhật lần cuối: 14/08/2026*
 
 ### Tình trạng chung
 
@@ -41,18 +41,29 @@ date: "2026-08-11"
 | Mã nguồn trên mạng | <https://github.com/Lucero6886/dong-hanh-cung-con> (công khai ✓) |
 | Nhánh đang dùng | `master` |
 | Nơi lưu mã nguồn | Máy bạn: `Downloads\Note giáo dục trẻ\dong-hanh-cung-con\` |
-| Số bài viết | **16** bài, đã xuất bản cả 16, không có bài nháp |
-| Số chủ đề đang dùng | **12 / 12** — đã phủ kín toàn bộ chủ đề |
-| Số hành trình có bài | **8 / 8** |
-| Số thẻ | **17** |
-| Số trang website tự sinh ra | **61** |
+| Số bài viết | **22** bài, đã xuất bản cả 22, không có bài nháp |
+| Số chủ đề đang dùng | **13 / 13** — đã phủ kín toàn bộ chủ đề |
+| Số hành trình có bài | **9 / 9** |
+| Số thẻ | **18** |
+| Số trang website tự sinh ra | **70** |
 | Tình trạng kỹ thuật | ✅ Chạy tốt, 0 lỗi, 0 cảnh báo |
+| Trợ lý tự soạn bài | ✅ Bật — 8h sáng thứ Hai hằng tuần, chỉ khi tuần đó bạn chưa đăng bài (xem Phần C, việc 9) |
 
-### Mười sáu bài viết hiện có
+### Hai mươi hai bài viết hiện có
 
-Sáu bài mới nhất tạo thành một loạt đọc theo thứ tự, từ thai kỳ đến khi con trưởng thành.
+Website hiện có **hai loạt bài đọc theo thứ tự**, và mười bài đọc lẻ.
 
-**Loạt bài theo giai đoạn** — xem tại `/journeys/di-theo-tung-giai-doan/`
+**Loạt 1 — Dạy con nên người** — xem tại `/journeys/day-con-nen-nguoi/`
+
+| # | Bài | Chủ đề | Phút đọc |
+| --- | --- | --- | --- |
+| 1 | Kể chuyện thế nào thì con thực sự đổi ⭐ | Nhân cách & tấm gương | 7 |
+| 2 | Vì sao bác hàng xóm hiệu quả hơn danh nhân | Nhân cách & tấm gương | 7 |
+| 3 | Tự giác không mọc lên từ lời nhắc | Động lực & thói quen | 8 |
+| 4 | "Nếu… thì…" — câu nói ngắn hiệu quả hơn trăm lời nhắc | Động lực & thói quen | 7 |
+| 5 | Năm điều ai cũng nói về nuôi con — mà nghiên cứu không ủng hộ | Góc suy ngẫm của cha mẹ | 9 |
+
+**Loạt 2 — Đi theo từng giai đoạn của con** — xem tại `/journeys/di-theo-tung-giai-doan/`
 
 | # | Bài | Chủ đề | Phút đọc |
 | --- | --- | --- | --- |
@@ -63,12 +74,13 @@ Sáu bài mới nhất tạo thành một loạt đọc theo thứ tự, từ th
 | 5 | Não tuổi teen: đang xây lại, không phải đang hỏng | Tuổi teen | 9 |
 | 6 | Khi con đã trưởng thành, mình còn là gì của con? | Não bộ & các giai đoạn phát triển | 8 |
 
-**Mười bài còn lại** — đọc lẻ, không theo thứ tự
+**Mười hai bài còn lại** — đọc lẻ, không theo thứ tự
 
 | Bài | Chủ đề | Phút đọc |
 | --- | --- | --- |
 | Từ phần thưởng đến động lực bên trong ⭐ | Động lực & thói quen | 11 |
-| Mười lăm phút, nhưng là mười lăm phút thật ⭐ | Đồng hành cùng con | 5 |
+| Đi cùng con, không đi thay con | Đồng hành cùng con | 7 |
+| Mười lăm phút, nhưng là mười lăm phút thật | Đồng hành cùng con | 5 |
 | Màn hình: từ đếm giờ sang thoả thuận | Công nghệ & trẻ em | 6 |
 | Hỏi con học được gì, thay vì hỏi con được mấy điểm | Giao tiếp cha mẹ – con | 4 |
 | Cấu trúc thay vì nhắc nhở | Tự lập & trách nhiệm | 4 |
@@ -80,9 +92,9 @@ Sáu bài mới nhất tạo thành một loạt đọc theo thứ tự, từ th
 
 ⭐ = đang hiện ở khối "Bài viết nổi bật" trang chủ (tối đa 3 bài).
 
-### Mười bảy thẻ đang dùng
+### Mười tám thẻ đang dùng
 
-`bận rộn` · `cha mẹ` · `công nghệ` · `cảm xúc` · `giai đoạn phát triển` · `giao tiếp` · `giáo dục` · `kỷ luật` · `não bộ` · `phần thưởng` · `thai kỳ` · `thói quen` · `trách nhiệm` · `tuổi teen` · `tự giác` · `tự học` · `động lực`
+`bận rộn` · `cha mẹ` · `công nghệ` · `cảm xúc` · `giai đoạn phát triển` · `giao tiếp` · `giáo dục` · `kỷ luật` · `nhân cách` · `não bộ` · `phần thưởng` · `thai kỳ` · `thói quen` · `trách nhiệm` · `tuổi teen` · `tự giác` · `tự học` · `động lực`
 
 ### ✅ Toàn bộ phần thiết lập đã xong — không còn việc nào chờ bạn
 
@@ -430,6 +442,62 @@ Các dòng khác trong khối `BRAND` cũng sửa được y như vậy:
 
 ---
 
+### Việc 9 — Trợ lý tự soạn bài nháp hằng tuần
+
+Từ 14/08/2026, có một tác vụ tự động chạy **8 giờ sáng thứ Hai hằng tuần**.
+
+#### Nó làm gì
+
+```
+Sáng thứ Hai, 8 giờ
+        ↓
+Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là khi nào
+        ↓
+┌─ Bạn ĐÃ đăng bài trong 7 ngày qua ─────────────────┐
+│  → Không làm gì. Nhắn bạn một câu ngắn. Hết.        │
+└────────────────────────────────────────────────────┘
+        ↓
+┌─ Bạn CHƯA đăng bài trong 7 ngày qua ───────────────┐
+│  → Đếm số bài của từng chủ đề                       │
+│  → Chọn chủ đề đang ít bài nhất                     │
+│  → Tra cứu nguồn thật, mở lại từng link kiểm chứng  │
+│  → Viết một bài nháp, chạy thử cho chắc không lỗi   │
+│  → Gửi file bài viết vào khung chat cho bạn         │
+└────────────────────────────────────────────────────┘
+```
+
+#### Ba điều bảo đảm
+
+- **Bài đó KHÔNG tự lên mạng.** Nó được đặt `draft: true` — nghĩa là kể cả khi file có nằm trong dự án, website vẫn ẩn nó đi.
+- **Trợ lý không được đụng vào GitHub.** Không push, không tạo pull request. Nó chỉ gửi file cho bạn.
+- **Không tuần nào bị ép có bài.** Bạn bỏ qua thì không có gì xảy ra cả.
+
+#### Khi nhận được bài nháp, bạn làm gì
+
+**Nếu ưng:**
+
+1. Tải file `.mdx` trong khung chat về
+2. Chép vào thư mục `dong-hanh-cung-con\src\content\articles\` trên máy
+3. Mở file bằng Notepad, tìm dòng `draft: true`, sửa thành `draft: false`
+4. Mở GitHub Desktop → Commit → Push
+
+**Nếu không ưng:** không làm gì cả. Xoá file đi hoặc kệ nó.
+
+#### Muốn đổi hoặc tắt
+
+Nhắn cho Claude một câu là được:
+
+| Muốn gì | Nhắn thế nào |
+| --- | --- |
+| Tắt hẳn | *"Tắt tác vụ tự soạn bài hằng tuần"* |
+| Đổi ngày giờ | *"Đổi tác vụ soạn bài sang sáng Chủ nhật"* |
+| Đổi thành 2 tuần một lần | *"Cho tác vụ soạn bài chạy 2 tuần một lần"* |
+| Chỉ định chủ đề | *"Tuần sau cho trợ lý viết về chủ đề Kỷ luật tích cực"* |
+
+> ⚠️ **Một điều kiện quan trọng:** trợ lý đọc mã nguồn **trên GitHub**, không đọc máy bạn. Nên **bài nào bạn chưa Push thì trợ lý không nhìn thấy**. Nếu bạn để dồn nhiều bài chưa push, trợ lý có thể viết trùng nội dung. Cách tránh: cứ duyệt xong thì Push luôn.
+
+---
+
 ## PHẦN D — Từ điển: 15 từ bạn sẽ gặp
 
 Giải thích bằng ví dụ đời thường, không dùng từ chuyên môn để giải thích từ chuyên môn.
@@ -545,6 +613,114 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 > Claude ghi vào đây sau **mỗi** lần chạm vào dự án. Bạn chỉ đọc.
 > Mục mới nhất nằm trên cùng.
+
+---
+
+### 14/08/2026 — Thêm bài cho chủ đề "Đồng hành cùng con", và bật trợ lý tự soạn bài hằng tuần
+
+**Người thực hiện:** Claude · **Loại:** Thêm nội dung + tự động hoá
+
+**Đã làm gì — việc 1: bài mới**
+
+Chủ đề *Đồng hành cùng con* mới có một bài, nên thêm bài thứ hai: **"Đi cùng con, không đi thay con"** (7 phút đọc).
+
+Bài bàn về ranh giới giữa **giúp** và **làm hộ** — khoảnh khắc tay cha mẹ đưa ra trước cả khi con kịp hỏi. Ba ý chính:
+
+- Phân tích gộp **238 nghiên cứu trên 126.423 người** cho thấy lối nuôi con hỗ trợ tự chủ đi kèm kết quả tốt hơn, còn kiểm soát tâm lý đi kèm kết quả xấu hơn — và **kết quả này giữ nguyên ở cả Trung Quốc và Hàn Quốc**, không riêng phương Tây. Điểm này được đưa vào có chủ ý, vì lập luận "cái đó là kiểu Tây, trẻ châu Á khác" rất hay gặp ở Việt Nam.
+- Một thí nghiệm trên **128 cặp cha/mẹ và con 3 tuổi**: hai nhóm chỉ khác nhau **một câu hướng dẫn** — *"chỉ giúp khi con thật sự cần"* so với *"giúp thật nhiều để làm xong càng nhiều càng tốt"* — và trẻ nhóm đầu tự điều chỉnh tốt hơn ngay trong lúc làm.
+- Một **"cái thang giúp đỡ"** 6 bậc, từ *chờ* xuống *làm hộ*, kèm nguyên tắc luôn bắt đầu từ bậc trên cùng.
+
+Bài cũng nói rõ hai giới hạn: phân tích gộp kia là nghiên cứu **tương quan**, không chứng minh nhân quả; và thí nghiệm trên trẻ 3 tuổi có hiệu quả **không lan** sang các bài kiểm tra khác. Cái thang 6 bậc được ghi rõ là cách sắp xếp của tác giả cho dễ nhớ, không phải công cụ đã được kiểm chứng.
+
+**Đã làm gì — việc 2: trợ lý tự soạn bài**
+
+Bật một tác vụ chạy **8 giờ sáng thứ Hai hằng tuần**. Toàn bộ cách nó hoạt động, ba điều bảo đảm, và cách tắt/đổi — **xem Phần C, việc 9**. Lần chạy đầu tiên: **thứ Hai 17/08/2026**.
+
+**Vì sao thiết kế như vậy**
+
+Ba quyết định đáng nêu, vì bạn có thể muốn đổi:
+
+1. **Có điều kiện, không phải cứ thứ Hai là viết.** Tác vụ kiểm tra ngày đăng bài gần nhất trước. Tuần nào bạn đã đăng thì nó không làm gì — đúng như bạn yêu cầu ("nếu sau 1 tuần mà tôi không cập nhật"). Không có chuyện mỗi tuần bị dồn thêm một bài phải đọc.
+
+2. **Bài luôn ở dạng nháp và không bao giờ tự lên mạng.** Đây là điều kiện tôi tự đặt thêm, vì quy tắc số 4 của dự án là *"không tự ý đăng bài"*. Tác vụ bị cấm chạy `git push`, bị cấm đặt `draft: false`, và chỉ được gửi file vào khung chat cho bạn. Nguyên tắc "không có gì lên mạng mà bạn chưa nhìn qua" vẫn nguyên vẹn.
+
+3. **Chọn chủ đề ít bài nhất, không chọn chủ đề "hot".** Cách này giữ cho thư viện cân đối thay vì phình ra ở vài chỗ. Nếu bạn muốn chỉ định chủ đề cho một tuần cụ thể thì nhắn tôi.
+
+**Ảnh hưởng tới bạn**
+
+- Website từ 21 lên **22 bài**, từ 69 lên **70 trang**. Chủ đề *Đồng hành cùng con* giờ có 2 bài.
+- Mỗi sáng thứ Hai bạn có thể nhận một tin nhắn. Hoặc là *"tuần này anh đăng bài rồi"*, hoặc là một bài nháp kèm giải thích.
+- **Không có nghĩa vụ nào.** Bỏ qua thì không có gì xảy ra.
+
+**Nếu bạn muốn tự làm phần này**
+
+- **Bật/tắt/đổi lịch tác vụ** → Phần C, việc 9. Chỉ cần nhắn một câu cho Claude, không phải làm gì kỹ thuật.
+- **Duyệt một bài nháp** → cũng ở việc 9: tải file, chép vào thư mục, sửa một chữ `true` thành `false`, rồi Commit + Push.
+
+**Có gì cần bạn quyết không?**
+
+Một việc, và **nên làm sớm**:
+
+**Hãy Push toàn bộ công việc đang chờ lên GitHub trước sáng thứ Hai.** Trợ lý đọc mã nguồn trên GitHub chứ không đọc máy bạn — nên bài nào chưa push thì nó không nhìn thấy, và có thể viết trùng nội dung. Hiện đang có khá nhiều file chờ trong GitHub Desktop.
+
+Tác vụ có tự bảo vệ một phần: nếu thấy dưới 22 bài trên GitHub, nó sẽ tự cảnh báo trong báo cáo rằng bạn có lẽ chưa push. Nhưng push trước vẫn gọn hơn.
+
+---
+
+### 13/08/2026 — Loạt bài "Dạy con nên người": năm bài về nhân cách, tự giác và thói quen
+
+**Người thực hiện:** Claude · **Loại:** Thêm nội dung + mở rộng cấu hình
+
+**Đã làm gì**
+
+Bạn hỏi có nghiên cứu nào về việc dạy đức tính tốt qua chuyện có thật không. Có — và nhiều kết quả ngược hẳn với cách chúng ta vẫn làm. Từ đó thành **5 bài**, đọc theo thứ tự:
+
+| # | Bài | Phát hiện cốt lõi |
+| --- | --- | --- |
+| 1 | Kể chuyện thế nào thì con thực sự đổi ⭐ | Truyện răn đe (Pinocchio, cậu bé chăn cừu) **không có tác dụng**. Chuyện cho thấy nói thật thì được gì mới có |
+| 2 | Vì sao bác hàng xóm hiệu quả hơn danh nhân | Tấm gương với tới được hiệu quả hơn tấm gương vĩ đại; kể toàn thành tựu thì phản tác dụng |
+| 3 | Tự giác không mọc lên từ lời nhắc | Ba việc làm với ý tốt mà làm mòn tự giác: thưởng sai, khen sai, gắn nhãn |
+| 4 | "Nếu… thì…" — câu nói ngắn hiệu quả hơn trăm lời nhắc | Cách xây thói quen có bằng chứng mạnh nhất, và mạnh nhất ở trẻ nhỏ và trẻ khó tập trung |
+| 5 | Năm điều ai cũng nói về nuôi con — mà nghiên cứu không ủng hộ | Kẹo dẻo, "nghiên cứu Harvard về việc nhà", 21 ngày, grit, tư duy phát triển |
+
+Kèm theo, hai thay đổi cấu hình:
+
+- **Chủ đề mới:** *Nhân cách & tấm gương* (thứ tự 4). Thứ tự 13 chủ đề được sắp lại; **đường dẫn của các chủ đề cũ không đổi**, không có link nào hỏng.
+- **Hành trình mới:** *Dạy con nên người* — gom đúng 5 bài này theo thứ tự đọc, dùng lại trường `stageOrder` đã làm hôm qua.
+
+**Vì sao viết theo hướng này**
+
+Ba quyết định của bạn đã định hình cả loạt bài:
+
+1. **Ưu tiên chuyện gần, vẫn dùng danh nhân nhưng đúng cách.** Đây là lựa chọn khớp với bằng chứng nhất. Cùng một bài học, kể về con vật biết nói thì trẻ chia sẻ *ít hơn*; kể về một đứa trẻ trong lớp vẽ thì hiệu quả rõ và còn tăng sau vài tuần. Với danh nhân, bài viết luôn dẫn phần họ **vật lộn** trước phần họ đạt được — vì nghiên cứu cho thấy kể toàn thành tựu làm điểm học sinh *giảm*.
+
+2. **Nói thẳng về những khái niệm không đứng vững, và để hẳn một bài riêng.** Bài số 5 có thể sẽ gây tranh luận, nên nó được viết theo một khuôn cố định cho từng mục: *điều người ta nói → nghiên cứu gốc thật ra là gì → chuyện gì xảy ra khi kiểm chứng lại → phần nào vẫn đứng vững và nên làm gì*. Không chê ai, và luôn nói rõ phần còn đúng.
+
+3. **Một chi tiết trung thực mà tôi cố ý không giấu:** câu chuyện có bằng chứng mạnh nhất trong cả lĩnh vực này — George Washington chặt cây anh đào — **là chuyện bịa**, do một người bán sách nghĩ ra năm 1806. Không nghiên cứu nào chứng minh rằng tính *có thật* của câu chuyện làm tăng tác dụng. Bài viết nói thẳng điều đó, rồi giải thích thứ chuyện thật *thực sự* mang lại là gì: người thật, tình huống thật, có phần vất vả, nhân vật với tới được.
+
+**Về nguồn**
+
+- **34 đường link** trong 5 bài. Nguồn gồm các tạp chí *Psychological Science*, *Nature*, *Child Development*, *Cognition*, *Psychological Bulletin*, cùng tài liệu của Đại học Columbia, Đại học Cornell, Đại học Duke và bảo tàng Mount Vernon.
+- Tôi cho mở lại **toàn bộ** các link một lần nữa sau khi soạn xong. **7 chỗ có vấn đề** và đều đã xử lý: 1 link không chứa đúng nội dung → đổi sang nguồn Đại học Columbia; 3 chỗ tôi diễn đạt hơi quá so với bản gốc → viết lại cho khớp; 1 chỗ ghi sai tên tác giả → sửa; 2 chỗ số liệu không nằm trên trang đã dẫn → chuyển sang dẫn nguồn có số liệu.
+- **"Nghiên cứu Harvard về việc nhà"**: tôi cho tìm kỹ và **không có nghiên cứu nào như vậy**. Bài viết dẫn cả nguồn gốc thật của khẳng định ấy (một bài nói chuyện năm 2016) lẫn một nhà tâm lý học đã đi tìm và không tìm ra.
+
+**Ảnh hưởng tới bạn**
+
+- Website từ 16 lên **21 bài**, từ 61 lên **69 trang**, thêm 1 chủ đề và 1 hành trình.
+- Khối "Bài viết nổi bật" trang chủ: đưa bài *Kể chuyện thế nào thì con thực sự đổi* lên, hạ bài *Mười lăm phút, nhưng là mười lăm phút thật* xuống. **Đổi lại được trong 2 phút** — xem Phần C, việc 4.
+- Năm bài này dài 7–9 phút, cùng nhóm với loạt bài về giai đoạn phát triển.
+
+**Nếu bạn muốn tự làm phần này**
+
+- **Đổi bài nổi bật** → Phần C, việc 4. · **Sửa chữ trong bài** → Phần C, việc 2.
+- **Đổi thứ tự đọc của loạt bài** → sửa số ở dòng `stageOrder` đầu mỗi file.
+- **Thêm bài vào loạt này** → đặt thẻ `nhân cách` và một `stageOrder` chưa dùng.
+
+**Có gì cần bạn quyết không?**
+
+Một việc, và nên đọc trước khi duyệt:
+
+**Bài số 5 nói thẳng rằng năm khái niệm phổ biến không đứng vững.** Bạn đã chọn hướng này, nhưng đây là bài dễ gây phản ứng nhất trên toàn website — có thể có phụ huynh hoặc đồng nghiệp đang tin và đang chia sẻ chính những điều đó. Bài được viết điềm đạm và luôn nêu phần còn đúng, nhưng bạn nên đọc hết một lượt trước khi nó mang tên bạn. Nếu muốn bỏ bớt một hai mục, nhắn tôi — gỡ từng mục rất dễ.
 
 ---
 
