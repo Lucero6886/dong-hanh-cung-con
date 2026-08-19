@@ -144,10 +144,10 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 
 <header class="masthead">
   <div class="wrap">
-    <span class="badge">Tài liệu đồng hành · v1.1.0</span>
+    <span class="badge">Tài liệu đồng hành · v1.2.0</span>
     <h1>Đồng hành cùng hệ thống</h1>
     <p>Tài liệu giúp bạn hiểu bản chất, nắm được thay đổi, và luôn làm chủ dự án này</p>
-    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-11 · Bản gốc: <code>dong-hanh-guide.md</code></p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-19 · Bản gốc: <code>dong-hanh-guide.md</code></p>
   </div>
 </header>
 
@@ -481,6 +481,14 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <td><code>src/components/Callout.astro</code> + <code>src/styles/article.css</code></td>
 </tr>
 <tr class="even">
+<td>Sửa cách hiển thị hình trong bài</td>
+<td><code>src/components/Figure.astro</code> + khối <code>.prose .fig</code> trong <code>src/styles/article.css</code></td>
+</tr>
+<tr class="odd">
+<td>Đổi màu / cỡ chữ / khuôn của hình minh hoạ</td>
+<td><code>scripts/figures_lib.py</code> — sửa một chỗ, đổi toàn bộ hình</td>
+</tr>
+<tr class="even">
 <td>Thêm một trang mới (vd <code>/lien-he/</code>)</td>
 <td>Tạo <code>src/pages/lien-he.astro</code></td>
 </tr>
@@ -729,6 +737,47 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <h3 id="vì-sao-chỉ-có-3-thư-viện-phụ-thuộc">6.10 — Vì sao chỉ có 3 thư viện phụ thuộc</h3>
 <p>Chỉ dùng <code>@astrojs/mdx</code>, <code>@astrojs/rss</code>, <code>@astrojs/sitemap</code>. Không React, không Tailwind, không thư viện icon, không thư viện animation.</p>
 <p><strong>Vì sao:</strong> mỗi thư viện thêm vào là một thứ có thể hỏng khi nâng cấp, và một thứ phải học lại sau hai năm không đụng tới. Với một website đọc chữ là chính, CSS thuần là đủ.</p>
+<h3 id="vì-sao-hình-minh-hoạ-được-sinh-ra-bằng-script-không-phải-ảnh-chụp">6.11 — Vì sao hình minh hoạ được <strong>sinh ra bằng script</strong>, không phải ảnh chụp</h3>
+<p>Toàn bộ 22 ảnh bìa và 28 sơ đồ trong bài đều do <code>scripts/make-figures.py</code> vẽ ra. Không có ảnh chụp người thật nào trên website.</p>
+<p><strong>Vì sao:</strong> ba lý do, xếp theo mức quan trọng.</p>
+<ol type="1">
+<li><strong>Pháp lý.</strong> Ảnh chụp trẻ em lấy trên mạng gần như luôn vướng bản quyền <em>và</em> quyền hình ảnh của trẻ. Đây là rủi ro không đáng đánh đổi cho một website giáo dục.</li>
+<li><strong>Nội dung.</strong> Sơ đồ chở được thông tin — con số, thứ tự, so sánh, mức độ. Ảnh chụp một đứa trẻ đang đọc sách thì không nói thêm điều gì mà đoạn văn chưa nói.</li>
+<li><strong>Vận hành.</strong> Đổi một con số trong bài → sửa một dòng trong script → chạy lại → xong. Với ảnh chụp thì phải đi tìm ảnh mới.</li>
+</ol>
+<p><strong>Hệ quả cần biết:</strong> ba màu dữ liệu trong <code>figures_lib.py</code> đã chạy qua bộ kiểm tra trực quan hoá (dải sáng, độ bão hoà, khoảng cách khi mô phỏng mù màu, độ tương phản) và đạt toàn bộ. <strong>Màu gốc của website thì trượt</strong> — xanh lá quá nhạt, xanh dương của logo quá tối, và xanh lá cạnh nâu đất thì người mù màu không phân biệt được. Nên ba màu dùng cho hình đã được dịch nhẹ so với màu website. Đổi một màu thì phải chạy lại bộ kiểm tra, không được ước lượng bằng mắt. Và <strong>một hình tối đa 3 màu dữ liệu</strong> — màu vàng thứ tư đã thử và trượt.</p>
+<h3 id="vì-sao-hình-luôn-có-nền-sáng-kể-cả-ở-chế-độ-tối">6.12 — Vì sao hình luôn có nền sáng, kể cả ở chế độ tối</h3>
+<p>Mỗi hình tự mang một “tấm thẻ” nền sáng <code>#faf8f3</code> của riêng nó. Ở chế độ tối, hình hiện ra như một tấm thẻ sáng đặt trên trang tối.</p>
+<p><strong>Vì sao:</strong> hình là <strong>file ảnh độc lập</strong> (<code>.png</code>, <code>.svg</code>) nằm trong <code>public/</code>. File ảnh không đọc được biến CSS của trang, nên nó không có cách nào biết người đọc đang ở chế độ sáng hay tối. Nếu để nền trong suốt, chữ đen trong hình sẽ <strong>biến mất hoàn toàn</strong> trên nền tối.</p>
+<p>Có ba cách giải quyết, và đây là lý do chọn cách này:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cách</th>
+<th>Vấn đề</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nền trong suốt</td>
+<td>Chữ biến mất ở chế độ tối — hỏng thật</td>
+</tr>
+<tr class="even">
+<td>Sinh hai bộ hình, sáng và tối</td>
+<td>Gấp đôi số file, gấp đôi chỗ có thể sai lệch</td>
+</tr>
+<tr class="odd">
+<td><strong>Tấm thẻ nền sáng (đang dùng)</strong></td>
+<td>Ở chế độ tối trông hơi “sáng hơn trang” — chấp nhận được</td>
+</tr>
+</tbody>
+</table>
+<p>Vì lý do này, <code>.prose .fig</code> trong <code>article.css</code> <strong>gỡ bỏ</strong> viền mặc định của <code>.prose img</code> — hình đã tự mang viền và nền của nó rồi, thêm viền nữa thành hai lớp.</p>
+<p><strong>Đừng “sửa” nền sáng thành trong suốt.</strong> Nó là chủ ý, và lý do được ghi ngay ở đầu <code>figures_lib.py</code>.</p>
 <hr />
 <h2 id="phần-7-vòng-đời-một-bài-viết">Phần 7 — Vòng đời một bài viết</h2>
 <p>Từ lúc là ghi chép vụn cho tới lúc có người đọc trên điện thoại.</p>
@@ -747,8 +796,13 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
                 │
                 ▼
 ④ TẠO FILE
-   src/content/articles/ten-khong-dau.md
+   src/content/articles/ten-khong-dau.md   (.mdx nếu bài có &lt;Figure&gt;)
    Frontmatter: title, description, date, category  (+ draft: true)
+                │
+                ▼
+④b LÀM HÌNH
+   Thêm mục vào figures() trong make-figures.py và PLAN trong attach-figures.py
+   python3 scripts/make-figures.py &amp;&amp; python3 scripts/attach-figures.py
                 │
                 ▼
 ⑤ XEM THỬ
@@ -821,6 +875,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <li><code>siteUrl</code> còn là <code>your-username</code> không?</li>
 <li>Dùng <a href="https://developers.facebook.com/tools/debug/">Facebook Sharing Debugger</a>, bấm <strong>Scrape Again</strong> — Facebook lưu đệm rất lâu</li>
 <li>Ảnh phải đúng 1200×630</li>
+<li>Bài đó có <code>coverImage</code> trong frontmatter không? Có thì ảnh chia sẻ chính là ảnh bìa của bài; không có thì rơi về ảnh mặc định của website</li>
 </ol>
 <h3 id="đẩy-code-lên-rồi-mà-website-không-đổi-gì">“Đẩy code lên rồi mà website không đổi gì”</h3>
 <p>→ Workflow không chạy vì tên nhánh không khớp. Kiểm tra <code>.github/workflows/deploy.yml</code>: <code>branches:</code> phải chứa đúng tên nhánh đang dùng. Hiện đã đặt <code>[main, master]</code> nên nhận cả hai. Xác nhận nhanh: nếu tab Actions <strong>trống trơn, không có lần chạy nào</strong>, đó chính là dấu hiệu.</p>
@@ -878,6 +933,30 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <hr />
 <h2 id="phần-11-nhật-ký-thay-đổi">Phần 11 — Nhật ký thay đổi</h2>
 <p>Mỗi lần thay đổi hệ thống ở mức đáng kể, hãy thêm một mục vào đây. Sáu tháng sau bạn sẽ cảm ơn chính mình.</p>
+<blockquote>
+<p>Nhật ký này chỉ ghi thay đổi <strong>hệ thống</strong>. Thay đổi nội dung (thêm bài, sửa bài) ghi ở Phần F của <code>implementation-notes.md</code>.</p>
+</blockquote>
+<h3 id="v1.2.0-19082026-hệ-thống-hình-minh-hoạ">v1.2.0 — 19/08/2026 — Hệ thống hình minh hoạ</h3>
+<p><strong>Thêm vào</strong></p>
+<ul>
+<li><code>scripts/figures_lib.py</code> — bộ khuôn dùng chung: bảng màu đã kiểm định, một thang cỡ chữ, 8 khuôn sơ đồ (<code>bar_h</code>, <code>dot_scale</code>, <code>diverging</code>, <code>steps_down</code>, <code>range_bar</code>, <code>ladder</code>, <code>two_col</code>, <code>flow</code>). <strong>File này không tự chạy.</strong></li>
+<li><code>scripts/make-figures.py</code> — vẽ 22 ảnh bìa PNG 1200×630 và 28 sơ đồ SVG vào <code>public/images/articles/</code>. Ảnh bìa dùng 8 hoạ tiết hình học, ánh xạ sang 13 chủ đề qua bảng <code>MOTIF</code>.</li>
+<li><code>scripts/attach-figures.py</code> — gắn <code>coverImage</code>/<code>coverAlt</code> vào frontmatter và chèn khối <code>&lt;Figure&gt;</code> sau các đoạn văn mốc. <strong>Chạy lại nhiều lần vẫn an toàn</strong>; nếu một đoạn mốc khớp nhiều hơn hoặc ít hơn đúng một lần thì script từ chối chèn thay vì đoán.</li>
+<li><code>src/components/Figure.astro</code> — <code>&lt;figure&gt;</code> + <code>&lt;img loading="lazy"&gt;</code> + <code>&lt;figcaption&gt;</code> tuỳ chọn.</li>
+</ul>
+<p><strong>Sửa</strong></p>
+<ul>
+<li><code>src/pages/articles/[...slug].astro</code> — thêm <code>Figure</code> vào <code>&lt;Content components={{ Callout, Figure }} /&gt;</code>.</li>
+<li><code>src/styles/article.css</code> — thêm khối <code>.prose .fig</code>; <strong>gỡ viền</strong> của <code>.prose img</code> bên trong figure; từ 900px trở lên hình tràn rộng hơn cột chữ (<code>calc(100% + 4rem)</code>, lề <code>-2rem</code>).</li>
+<li>22 file bài viết — thêm <code>coverImage</code> + <code>coverAlt</code>, chèn 1–2 <code>&lt;Figure&gt;</code>.</li>
+<li><code>src/content/articles/cau-truc-thay-vi-nhac-nho.md</code> <strong>đổi đuôi thành <code>.mdx</code></strong> — file <code>.md</code> không chạy được cú pháp JSX <code>&lt;Figure&gt;</code>.</li>
+</ul>
+<p><strong>Cần nhớ</strong></p>
+<ul>
+<li>Ảnh bìa của bài giờ cũng là <code>og:image</code> khi chia sẻ link.</li>
+<li>Lý do kiến trúc: mục <strong>6.11</strong> (vì sao vẽ chứ không chụp) và <strong>6.12</strong> (vì sao nền sáng).</li>
+<li>Bài mới có <code>&lt;Figure&gt;</code> thì file <strong>phải</strong> là <code>.mdx</code>.</li>
+</ul>
 <h3 id="v1.1.0-11082026-đưa-website-lên-mạng-thật">v1.1.0 — 11/08/2026 — Đưa website lên mạng thật</h3>
 <p><strong>Website chạy tại:</strong> <a href="https://lucero6886.github.io/dong-hanh-cung-con/" class="uri">https://lucero6886.github.io/dong-hanh-cung-con/</a> <strong>Mã nguồn:</strong> <a href="https://github.com/Lucero6886/dong-hanh-cung-con" class="uri">https://github.com/Lucero6886/dong-hanh-cung-con</a> · nhánh <code>master</code></p>
 <p><strong>Đã đổi</strong></p>

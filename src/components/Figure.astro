@@ -1,0 +1,30 @@
+---
+/**
+ * Figure — khối hình minh hoạ trong thân bài viết.
+ *
+ * Dùng trong file .mdx mà KHÔNG cần import (giống <Callout>):
+ *
+ *   <Figure
+ *     src="/images/articles/ten-bai-f1.svg"
+ *     alt="Mô tả cho người dùng trình đọc màn hình"
+ *     caption="Dòng chú thích hiện dưới hình" />
+ *
+ * Các file hình do `scripts/make-figures.py` sinh ra. Đừng sửa file .svg trực
+ * tiếp — sửa phần khai báo trong script đó rồi chạy lại, nếu không lần chạy sau
+ * sẽ ghi đè mất.
+ */
+import { assetUrl } from '../utils/url';
+
+interface Props {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+const { src, alt, caption } = Astro.props as Props;
+---
+
+<figure class="fig">
+  <img src={assetUrl(src)} alt={alt} loading="lazy" decoding="async" />
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

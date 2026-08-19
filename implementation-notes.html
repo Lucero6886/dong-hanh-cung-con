@@ -143,10 +143,10 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 
 <header class="masthead">
   <div class="wrap">
-    <span class="badge">Sổ tay vận hành · v1.2.0</span>
+    <span class="badge">Sổ tay vận hành · v1.3.0</span>
     <h1>Sổ tay vận hành dự án</h1>
     <p>Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì</p>
-    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-11 · Bản gốc: <code>implementation-notes.md</code></p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-19 · Bản gốc: <code>implementation-notes.md</code></p>
   </div>
 </header>
 
@@ -213,7 +213,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <p><strong>Nguyên tắc của sổ tay này:</strong> mỗi lần Claude chạm vào dự án, Claude <strong>bắt buộc</strong> ghi vào Phần F — đã làm gì, vì sao, ảnh hưởng gì tới bạn, và <em>nếu tự làm thì làm thế nào</em>. Bạn không phải nhớ. Bạn chỉ cần đọc.</p>
 <hr />
 <h2 id="phần-a-dự-án-đang-ở-đâu">PHẦN A — Dự án đang ở đâu</h2>
-<p><em>Cập nhật lần cuối: 14/08/2026</em></p>
+<p><em>Cập nhật lần cuối: 19/08/2026</em></p>
 <h3 id="tình-trạng-chung">Tình trạng chung</h3>
 <table>
 <colgroup>
@@ -280,10 +280,14 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <td><strong>70</strong></td>
 </tr>
 <tr class="even">
+<td>Hình minh hoạ</td>
+<td><strong>22 ảnh bìa</strong> + <strong>28 sơ đồ</strong> trong bài — mọi bài đều có ảnh bìa và ít nhất một sơ đồ</td>
+</tr>
+<tr class="odd">
 <td>Tình trạng kỹ thuật</td>
 <td>✅ Chạy tốt, 0 lỗi, 0 cảnh báo</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Trợ lý tự soạn bài</td>
 <td>✅ Bật — 8h sáng thứ Hai hằng tuần, chỉ khi tuần đó bạn chưa đăng bài (xem Phần C, việc 9)</td>
 </tr>
@@ -1098,6 +1102,100 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <p>Claude ghi vào đây sau <strong>mỗi</strong> lần chạm vào dự án. Bạn chỉ đọc. Mục mới nhất nằm trên cùng.</p>
 </blockquote>
 <hr />
+<h3 id="thêm-hình-minh-hoạ-cho-toàn-bộ-22-bài-viết">19/08/2026 — Thêm hình minh hoạ cho toàn bộ 22 bài viết</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Thêm hình ảnh + thêm công cụ</p>
+<p><strong>Đã làm gì</strong></p>
+<p>Cả 22 bài giờ đều có hình. Cụ thể hai loại:</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Loại</th>
+<th>Số lượng</th>
+<th>Nằm ở đâu</th>
+<th>Để làm gì</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Ảnh bìa</strong></td>
+<td>22 (mỗi bài một cái)</td>
+<td>Đầu bài, và trong danh sách bài</td>
+<td>Nhận ra bài từ xa, và hiện lên khi bạn gửi link qua Zalo/Facebook</td>
+</tr>
+<tr class="even">
+<td><strong>Sơ đồ trong bài</strong></td>
+<td>28</td>
+<td>Giữa bài, ngay dưới đoạn nó minh hoạ</td>
+<td>Biến con số và ý trừu tượng thành hình để dễ nhớ</td>
+</tr>
+</tbody>
+</table>
+<p>Tổng dung lượng <strong>1,3 MB</strong> cho cả 50 hình — nhẹ, không làm website chậm.</p>
+<p><strong>Sơ đồ mang thông tin, không phải hình trang trí.</strong> Ví dụ: cái thang 6 bậc trong bài <em>“Đi cùng con, không đi thay con”</em>, hay so sánh con số 238 nghiên cứu / 126.423 người. Mỗi sơ đồ đặt đúng chỗ đoạn văn nói tới nó, kèm một dòng chú thích bên dưới.</p>
+<p><strong>Ba quyết định đáng nêu, vì bạn có thể thắc mắc</strong></p>
+<ol type="1">
+<li><p><strong>Hình vẽ bằng máy, không dùng ảnh chụp người thật.</strong> Ảnh chụp trẻ em lấy trên mạng gần như luôn vướng bản quyền và quyền hình ảnh của trẻ — rủi ro không đáng. Hình vẽ thì mình sở hữu hoàn toàn, và quan trọng hơn: nó chở được <strong>thông tin</strong> (con số, thứ tự, so sánh), còn ảnh chụp thì chỉ trang trí.</p></li>
+<li><p><strong>Màu lấy từ chính website và logo ELS, nhưng đã chỉnh lại một chút.</strong> Ba màu dùng cho mọi hình: xanh lá <code>#1e8163</code>, xanh dương <code>#3f6bbf</code> (lấy từ logo ELS), nâu đất <code>#b04c26</code>. Tôi có chạy bộ đo kiểm tra màu, và <strong>màu gốc của website trượt</strong>: xanh lá quá nhạt nên in ra bị bệt, xanh dương của logo quá tối, và xanh lá với nâu đất đứng cạnh nhau thì <strong>người mù màu không phân biệt được</strong>. Nên tôi dịch nhẹ ba màu cho tới khi đạt hết. Nhìn bằng mắt thường vẫn là màu của website — chỉ khác rất nhẹ, và chỉ áp dụng cho hình, <strong>không đụng vào màu website</strong>.</p>
+<p>Hệ quả: <strong>một hình tối đa 3 màu dữ liệu.</strong> Tôi đã thử thêm màu vàng thứ tư, nó trượt phần mù màu nên bỏ. Cần so sánh nhiều hơn 3 nhóm thì phải tách thành hai hình.</p></li>
+<li><p><strong>Hình luôn có nền sáng, kể cả khi bạn xem website ở chế độ tối.</strong> Đây là <strong>chủ ý, không phải lỗi</strong>. Lý do: hình là file ảnh riêng biệt, nó không biết được trang đang sáng hay tối. Nếu để nền trong suốt thì ở chế độ tối chữ đen trong hình sẽ biến mất hoàn toàn. Nên mỗi hình tự mang một “tấm thẻ” nền sáng — ở chế độ tối nó hiện ra như một tấm thẻ sáng đặt trên nền tối, vẫn đọc được.</p></li>
+</ol>
+<p><strong>Đã kiểm tra những gì</strong></p>
+<ul>
+<li>Mở thử <strong>cả 22 trang bài</strong> trên trình duyệt, ở khổ máy tính và khổ điện thoại 390px: <strong>116 hình hiển thị đúng, không hình nào tràn ra ngoài lề.</strong></li>
+<li><code>npm run build</code> → 70 trang, không lỗi. <code>npm run check</code> → 0 lỗi, 0 cảnh báo.</li>
+<li>Kiểm tra phần chia sẻ link: ảnh bìa của từng bài giờ chính là ảnh hiện ra khi dán link vào Zalo/Messenger/Facebook.</li>
+</ul>
+<p><strong>Có sửa vài lỗi do chính tôi gây ra trong lúc làm</strong> — ghi lại cho trung thực: chữ số bị tràn ra khỏi khung thẻ (do tôi ước lượng bề rộng chữ thấp hơn thực tế 11–15%, phải đo lại bằng trình duyệt rồi chỉnh); dấu trừ hiện thành ô vuông; và hai bài bị lỗi cú pháp vì tiêu đề có dấu nháy kép. Tất cả đã sửa và kiểm tra lại.</p>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<ul>
+<li>Bài viết dễ đọc và dễ nhớ hơn — đúng thứ bạn yêu cầu.</li>
+<li><strong>Gửi link cho phụ huynh giờ đẹp hơn hẳn:</strong> thay vì một dòng chữ trơ, người nhận thấy ảnh bìa có tên bài và logo ELS.</li>
+<li>Trong GitHub Desktop bạn sẽ thấy <strong>nhiều file mới hơn mọi lần trước</strong> — vì mỗi hình là một file. Đừng lo, đó là bình thường.</li>
+<li><strong>Từ nay bài mới nên có ảnh bìa.</strong> Cứ nhắn tôi <em>“làm hình cho bài này”</em>, tôi lo phần còn lại.</li>
+</ul>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<p>Phần này <strong>cần gõ lệnh</strong>, nên không nằm trong nhóm “tự làm trên web” như Phần C. Nhưng nếu có lúc nào bạn muốn tự tạo lại toàn bộ hình (ví dụ sau khi đổi logo), chỉ có <strong>hai lệnh</strong>, chạy trong thư mục dự án:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> scripts/make-figures.py      <span class="co"># vẽ lại toàn bộ 22 ảnh bìa + 28 sơ đồ</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> scripts/attach-figures.py    <span class="co"># gắn hình vào đúng chỗ trong từng bài</span></span></code></pre></div>
+<p>Lệnh thứ hai <strong>chạy lại nhiều lần cũng không sao</strong> — nó tự biết bài nào đã gắn rồi thì bỏ qua, không gắn trùng.</p>
+<p>Ba file mới cần biết, nằm trong thư mục <code>scripts/</code>:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>File</th>
+<th>Nó là gì</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>figures_lib.py</code></td>
+<td>Bộ khuôn dùng chung: bảng màu, cỡ chữ, 8 dạng sơ đồ. <strong>File này không tự chạy.</strong> Muốn đổi màu toàn website thì sửa ở đây, sửa một chỗ là đổi hết.</td>
+</tr>
+<tr class="even">
+<td><code>make-figures.py</code></td>
+<td>Vẽ hình. Mở ra sẽ thấy danh sách từng hình và số liệu của nó — muốn sửa một con số trong sơ đồ thì sửa ở đây.</td>
+</tr>
+<tr class="odd">
+<td><code>attach-figures.py</code></td>
+<td>Gắn hình vào bài.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Việc bạn tự làm được mà không cần gõ lệnh:</strong> đổi dòng chú thích dưới một sơ đồ. Vào GitHub, mở file bài viết, tìm dòng bắt đầu bằng <code>&lt;Figure</code>, sửa phần trong <code>caption="..."</code> — làm y như Phần C, việc 2.</p>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Có <strong>một việc</strong>, và nó không gấp:</p>
+<p><strong>Trợ lý tự soạn bài hằng tuần hiện chưa biết làm hình.</strong> Sáng thứ Hai nếu nó soạn một bài nháp, bài đó sẽ không có ảnh bìa và không có sơ đồ — trông lệch so với 22 bài kia. Tôi có thể bổ sung bước làm hình vào phần việc của trợ lý, nhưng <strong>đó là sửa một thứ đang chạy tự động, nên tôi không tự làm.</strong> Bạn muốn thì nhắn: <em>“cho trợ lý làm hình luôn”</em>. Không muốn thì cứ để nguyên, khi nào duyệt bài nháp bạn nhờ tôi làm hình sau cũng được.</p>
+<hr />
 <h3 id="thêm-bài-cho-chủ-đề-đồng-hành-cùng-con-và-bật-trợ-lý-tự-soạn-bài-hằng-tuần">14/08/2026 — Thêm bài cho chủ đề “Đồng hành cùng con”, và bật trợ lý tự soạn bài hằng tuần</h3>
 <p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Thêm nội dung + tự động hoá</p>
 <p><strong>Đã làm gì — việc 1: bài mới</strong></p>
@@ -1626,24 +1724,24 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <p>Để bạn thấy rõ: <strong>cái gì cũng được kiểm tra bằng thử nghiệm thật, không phải nói suông.</strong> Khi Claude nói “website chạy tốt”, đó là kết quả chạy thử — nếu có lỗi thì lỗi được ghi lại ở đây, kể cả lỗi do chính Claude gây ra.</p>
 <hr />
 <h3 id="mẫu-cho-các-mục-sau">Mẫu cho các mục sau</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### ngày/tháng/năm — Tên việc</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>**Người thực hiện:** Claude / Bạn · **Loại:** Bài mới / Sửa bài / Sửa lỗi / Đổi cấu hình</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>**Đã làm gì**</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>…</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>**Vì sao**</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>…</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>**Ảnh hưởng tới bạn**</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>…</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>**Nếu bạn muốn tự làm phần này**</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>…</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>**Có gì cần bạn quyết không?**</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>…</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### ngày/tháng/năm — Tên việc</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>**Người thực hiện:** Claude / Bạn · **Loại:** Bài mới / Sửa bài / Sửa lỗi / Đổi cấu hình</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>**Đã làm gì**</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>**Vì sao**</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>**Ảnh hưởng tới bạn**</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>**Nếu bạn muốn tự làm phần này**</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>**Có gì cần bạn quyết không?**</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>…</span></code></pre></div>
 <hr />
 <h2 id="phần-g-bốn-cách-tự-kiểm-tra-claude-làm-đúng">PHẦN G — Bốn cách tự kiểm tra Claude làm đúng</h2>
 <p>Bạn không cần biết code để kiểm chứng. Bốn cách dưới đây ai cũng làm được.</p>

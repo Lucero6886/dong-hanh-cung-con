@@ -82,6 +82,14 @@ Ba quy ước dưới đây, vi phạm là website hỏng. Giải thích đầy 
 2. **Không viết cứng danh tính** (tên tác giả, tên website) vào component — luôn `import { SITE } from '../config/site'`.
 3. **Không tạo trang `.astro` riêng cho một bài viết** — bài viết luôn nằm trong `src/content/articles/`.
 
+### Quy ước về hình minh hoạ
+
+- **Không tự chế màu mới.** Ba màu dữ liệu trong `figures_lib.py` (`TEAL` `#1e8163`, `BLUE` `#3f6bbf`, `CLAY` `#b04c26`) đã qua bộ kiểm tra của quy chuẩn trực quan hoá và đạt toàn bộ. Đổi một màu thì **bắt buộc chạy lại bộ kiểm tra**, không được ước lượng bằng mắt.
+- **Tối đa 3 màu dữ liệu trên một hình.** Màu thứ 4 (vàng) đã thử và trượt phần mù màu. Cần nhiều hơn → gộp nhóm hoặc tách thành hai hình.
+- **Mọi hình tự mang nền sáng.** Đây là chủ ý cho chế độ tối, không phải lỗi — lý do ghi ở đầu `figures_lib.py`. Đừng "sửa" thành nền trong suốt.
+- **Sơ đồ phải mang thông tin**, không trang trí. Không dùng ảnh chụp trẻ em lấy trên mạng (bản quyền + quyền hình ảnh của trẻ).
+- Bài mới nên có `coverImage` + `coverAlt` trong frontmatter và ít nhất một `<Figure>` trong thân bài. Bài `.md` có `<Figure>` phải đổi đuôi thành `.mdx`.
+
 Tự kiểm tra:
 
 ```bash
@@ -142,6 +150,11 @@ Chi tiết: `CONTRIBUTING.md` và `docs/CONTENT_GUIDE.md`.
 | Đổi tên site, tên miền, menu, bản quyền | `src/config/site.ts` ⭐ nguồn duy nhất |
 | Thương hiệu ELS (logo, khẩu hiệu, giới thiệu, bật/tắt) | `src/config/site.ts` khối `BRAND` |
 | Tạo lại bộ ảnh logo khi chủ dự án đổi logo | `python3 scripts/make-brand-assets.py <file-logo>` → ghi ra `public/brand/` |
+| Bảng màu / cỡ chữ / 8 khuôn sơ đồ dùng chung cho mọi hình | `scripts/figures_lib.py` ⭐ nguồn duy nhất — **không tự chạy** |
+| Vẽ lại toàn bộ ảnh bìa + sơ đồ | `python3 scripts/make-figures.py` → ghi ra `public/images/articles/` (xoá và tạo lại cả thư mục) |
+| Gắn ảnh bìa + `<Figure>` vào bài viết | `python3 scripts/attach-figures.py` — chạy lại nhiều lần vẫn an toàn, tự bỏ qua bài đã gắn |
+| Thêm hình cho một bài mới | Thêm mục vào `figures()` trong `make-figures.py` và vào `PLAN` trong `attach-figures.py`, rồi chạy hai lệnh trên |
+| Đổi hoạ tiết ảnh bìa của một chủ đề | Bảng `MOTIF` trong `make-figures.py` (8 hoạ tiết ↔ 13 chủ đề) |
 | Mô tả chủ đề, hành trình | `src/config/taxonomy.ts` |
 | Trường frontmatter hợp lệ | `src/content.config.ts` |
 | Thứ tự đọc của một loạt bài trong hành trình | `stageOrder` trong frontmatter (số nhỏ đọc trước; bỏ trống → xếp theo ngày) |

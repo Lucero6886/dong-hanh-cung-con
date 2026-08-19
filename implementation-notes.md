@@ -1,8 +1,8 @@
 ---
 title: "Sổ tay vận hành dự án"
 subtitle: "Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì"
-version: "1.2.0"
-date: "2026-08-11"
+version: "1.3.0"
+date: "2026-08-19"
 ---
 
 # Sổ tay vận hành dự án
@@ -27,7 +27,7 @@ date: "2026-08-11"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 14/08/2026*
+*Cập nhật lần cuối: 19/08/2026*
 
 ### Tình trạng chung
 
@@ -46,6 +46,7 @@ date: "2026-08-11"
 | Số hành trình có bài | **9 / 9** |
 | Số thẻ | **18** |
 | Số trang website tự sinh ra | **70** |
+| Hình minh hoạ | **22 ảnh bìa** + **28 sơ đồ** trong bài — mọi bài đều có ảnh bìa và ít nhất một sơ đồ |
 | Tình trạng kỹ thuật | ✅ Chạy tốt, 0 lỗi, 0 cảnh báo |
 | Trợ lý tự soạn bài | ✅ Bật — 8h sáng thứ Hai hằng tuần, chỉ khi tuần đó bạn chưa đăng bài (xem Phần C, việc 9) |
 
@@ -613,6 +614,77 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 > Claude ghi vào đây sau **mỗi** lần chạm vào dự án. Bạn chỉ đọc.
 > Mục mới nhất nằm trên cùng.
+
+---
+
+### 19/08/2026 — Thêm hình minh hoạ cho toàn bộ 22 bài viết
+
+**Người thực hiện:** Claude · **Loại:** Thêm hình ảnh + thêm công cụ
+
+**Đã làm gì**
+
+Cả 22 bài giờ đều có hình. Cụ thể hai loại:
+
+| Loại | Số lượng | Nằm ở đâu | Để làm gì |
+| --- | --- | --- | --- |
+| **Ảnh bìa** | 22 (mỗi bài một cái) | Đầu bài, và trong danh sách bài | Nhận ra bài từ xa, và hiện lên khi bạn gửi link qua Zalo/Facebook |
+| **Sơ đồ trong bài** | 28 | Giữa bài, ngay dưới đoạn nó minh hoạ | Biến con số và ý trừu tượng thành hình để dễ nhớ |
+
+Tổng dung lượng **1,3 MB** cho cả 50 hình — nhẹ, không làm website chậm.
+
+**Sơ đồ mang thông tin, không phải hình trang trí.** Ví dụ: cái thang 6 bậc trong bài *"Đi cùng con, không đi thay con"*, hay so sánh con số 238 nghiên cứu / 126.423 người. Mỗi sơ đồ đặt đúng chỗ đoạn văn nói tới nó, kèm một dòng chú thích bên dưới.
+
+**Ba quyết định đáng nêu, vì bạn có thể thắc mắc**
+
+1. **Hình vẽ bằng máy, không dùng ảnh chụp người thật.** Ảnh chụp trẻ em lấy trên mạng gần như luôn vướng bản quyền và quyền hình ảnh của trẻ — rủi ro không đáng. Hình vẽ thì mình sở hữu hoàn toàn, và quan trọng hơn: nó chở được **thông tin** (con số, thứ tự, so sánh), còn ảnh chụp thì chỉ trang trí.
+
+2. **Màu lấy từ chính website và logo ELS, nhưng đã chỉnh lại một chút.** Ba màu dùng cho mọi hình: xanh lá `#1e8163`, xanh dương `#3f6bbf` (lấy từ logo ELS), nâu đất `#b04c26`. Tôi có chạy bộ đo kiểm tra màu, và **màu gốc của website trượt**: xanh lá quá nhạt nên in ra bị bệt, xanh dương của logo quá tối, và xanh lá với nâu đất đứng cạnh nhau thì **người mù màu không phân biệt được**. Nên tôi dịch nhẹ ba màu cho tới khi đạt hết. Nhìn bằng mắt thường vẫn là màu của website — chỉ khác rất nhẹ, và chỉ áp dụng cho hình, **không đụng vào màu website**.
+
+   Hệ quả: **một hình tối đa 3 màu dữ liệu.** Tôi đã thử thêm màu vàng thứ tư, nó trượt phần mù màu nên bỏ. Cần so sánh nhiều hơn 3 nhóm thì phải tách thành hai hình.
+
+3. **Hình luôn có nền sáng, kể cả khi bạn xem website ở chế độ tối.** Đây là **chủ ý, không phải lỗi**. Lý do: hình là file ảnh riêng biệt, nó không biết được trang đang sáng hay tối. Nếu để nền trong suốt thì ở chế độ tối chữ đen trong hình sẽ biến mất hoàn toàn. Nên mỗi hình tự mang một "tấm thẻ" nền sáng — ở chế độ tối nó hiện ra như một tấm thẻ sáng đặt trên nền tối, vẫn đọc được.
+
+**Đã kiểm tra những gì**
+
+- Mở thử **cả 22 trang bài** trên trình duyệt, ở khổ máy tính và khổ điện thoại 390px: **116 hình hiển thị đúng, không hình nào tràn ra ngoài lề.**
+- `npm run build` → 70 trang, không lỗi. `npm run check` → 0 lỗi, 0 cảnh báo.
+- Kiểm tra phần chia sẻ link: ảnh bìa của từng bài giờ chính là ảnh hiện ra khi dán link vào Zalo/Messenger/Facebook.
+
+**Có sửa vài lỗi do chính tôi gây ra trong lúc làm** — ghi lại cho trung thực: chữ số bị tràn ra khỏi khung thẻ (do tôi ước lượng bề rộng chữ thấp hơn thực tế 11–15%, phải đo lại bằng trình duyệt rồi chỉnh); dấu trừ hiện thành ô vuông; và hai bài bị lỗi cú pháp vì tiêu đề có dấu nháy kép. Tất cả đã sửa và kiểm tra lại.
+
+**Ảnh hưởng tới bạn**
+
+- Bài viết dễ đọc và dễ nhớ hơn — đúng thứ bạn yêu cầu.
+- **Gửi link cho phụ huynh giờ đẹp hơn hẳn:** thay vì một dòng chữ trơ, người nhận thấy ảnh bìa có tên bài và logo ELS.
+- Trong GitHub Desktop bạn sẽ thấy **nhiều file mới hơn mọi lần trước** — vì mỗi hình là một file. Đừng lo, đó là bình thường.
+- **Từ nay bài mới nên có ảnh bìa.** Cứ nhắn tôi *"làm hình cho bài này"*, tôi lo phần còn lại.
+
+**Nếu bạn muốn tự làm phần này**
+
+Phần này **cần gõ lệnh**, nên không nằm trong nhóm "tự làm trên web" như Phần C. Nhưng nếu có lúc nào bạn muốn tự tạo lại toàn bộ hình (ví dụ sau khi đổi logo), chỉ có **hai lệnh**, chạy trong thư mục dự án:
+
+```bash
+python3 scripts/make-figures.py      # vẽ lại toàn bộ 22 ảnh bìa + 28 sơ đồ
+python3 scripts/attach-figures.py    # gắn hình vào đúng chỗ trong từng bài
+```
+
+Lệnh thứ hai **chạy lại nhiều lần cũng không sao** — nó tự biết bài nào đã gắn rồi thì bỏ qua, không gắn trùng.
+
+Ba file mới cần biết, nằm trong thư mục `scripts/`:
+
+| File | Nó là gì |
+| --- | --- |
+| `figures_lib.py` | Bộ khuôn dùng chung: bảng màu, cỡ chữ, 8 dạng sơ đồ. **File này không tự chạy.** Muốn đổi màu toàn website thì sửa ở đây, sửa một chỗ là đổi hết. |
+| `make-figures.py` | Vẽ hình. Mở ra sẽ thấy danh sách từng hình và số liệu của nó — muốn sửa một con số trong sơ đồ thì sửa ở đây. |
+| `attach-figures.py` | Gắn hình vào bài. |
+
+**Việc bạn tự làm được mà không cần gõ lệnh:** đổi dòng chú thích dưới một sơ đồ. Vào GitHub, mở file bài viết, tìm dòng bắt đầu bằng `<Figure`, sửa phần trong `caption="..."` — làm y như Phần C, việc 2.
+
+**Có gì cần bạn quyết không?**
+
+Có **một việc**, và nó không gấp:
+
+**Trợ lý tự soạn bài hằng tuần hiện chưa biết làm hình.** Sáng thứ Hai nếu nó soạn một bài nháp, bài đó sẽ không có ảnh bìa và không có sơ đồ — trông lệch so với 22 bài kia. Tôi có thể bổ sung bước làm hình vào phần việc của trợ lý, nhưng **đó là sửa một thứ đang chạy tự động, nên tôi không tự làm.** Bạn muốn thì nhắn: *"cho trợ lý làm hình luôn"*. Không muốn thì cứ để nguyên, khi nào duyệt bài nháp bạn nhờ tôi làm hình sau cũng được.
 
 ---
 

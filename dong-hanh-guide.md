@@ -1,8 +1,8 @@
 ---
 title: "Đồng hành cùng hệ thống"
 subtitle: "Tài liệu giúp bạn hiểu bản chất, nắm được thay đổi, và luôn làm chủ dự án này"
-version: "1.1.0"
-date: "2026-08-11"
+version: "1.2.0"
+date: "2026-08-19"
 ---
 
 # Đồng hành cùng hệ thống
@@ -208,6 +208,8 @@ Tra bảng này thay vì đi tìm trong code.
 | Sửa thẻ bài viết | `src/components/ArticleCard.astro` |
 | Sửa trang chủ | `src/pages/index.astro` |
 | Thêm kiểu hộp Callout mới | `src/components/Callout.astro` + `src/styles/article.css` |
+| Sửa cách hiển thị hình trong bài | `src/components/Figure.astro` + khối `.prose .fig` trong `src/styles/article.css` |
+| Đổi màu / cỡ chữ / khuôn của hình minh hoạ | `scripts/figures_lib.py` — sửa một chỗ, đổi toàn bộ hình |
 | Thêm một trang mới (vd `/lien-he/`) | Tạo `src/pages/lien-he.astro` |
 
 ### Kỹ thuật
@@ -342,6 +344,36 @@ Chỉ dùng `@astrojs/mdx`, `@astrojs/rss`, `@astrojs/sitemap`. Không React, kh
 
 **Vì sao:** mỗi thư viện thêm vào là một thứ có thể hỏng khi nâng cấp, và một thứ phải học lại sau hai năm không đụng tới. Với một website đọc chữ là chính, CSS thuần là đủ.
 
+### 6.11 — Vì sao hình minh hoạ được **sinh ra bằng script**, không phải ảnh chụp
+
+Toàn bộ 22 ảnh bìa và 28 sơ đồ trong bài đều do `scripts/make-figures.py` vẽ ra. Không có ảnh chụp người thật nào trên website.
+
+**Vì sao:** ba lý do, xếp theo mức quan trọng.
+
+1. **Pháp lý.** Ảnh chụp trẻ em lấy trên mạng gần như luôn vướng bản quyền *và* quyền hình ảnh của trẻ. Đây là rủi ro không đáng đánh đổi cho một website giáo dục.
+2. **Nội dung.** Sơ đồ chở được thông tin — con số, thứ tự, so sánh, mức độ. Ảnh chụp một đứa trẻ đang đọc sách thì không nói thêm điều gì mà đoạn văn chưa nói.
+3. **Vận hành.** Đổi một con số trong bài → sửa một dòng trong script → chạy lại → xong. Với ảnh chụp thì phải đi tìm ảnh mới.
+
+**Hệ quả cần biết:** ba màu dữ liệu trong `figures_lib.py` đã chạy qua bộ kiểm tra trực quan hoá (dải sáng, độ bão hoà, khoảng cách khi mô phỏng mù màu, độ tương phản) và đạt toàn bộ. **Màu gốc của website thì trượt** — xanh lá quá nhạt, xanh dương của logo quá tối, và xanh lá cạnh nâu đất thì người mù màu không phân biệt được. Nên ba màu dùng cho hình đã được dịch nhẹ so với màu website. Đổi một màu thì phải chạy lại bộ kiểm tra, không được ước lượng bằng mắt. Và **một hình tối đa 3 màu dữ liệu** — màu vàng thứ tư đã thử và trượt.
+
+### 6.12 — Vì sao hình luôn có nền sáng, kể cả ở chế độ tối
+
+Mỗi hình tự mang một "tấm thẻ" nền sáng `#faf8f3` của riêng nó. Ở chế độ tối, hình hiện ra như một tấm thẻ sáng đặt trên trang tối.
+
+**Vì sao:** hình là **file ảnh độc lập** (`.png`, `.svg`) nằm trong `public/`. File ảnh không đọc được biến CSS của trang, nên nó không có cách nào biết người đọc đang ở chế độ sáng hay tối. Nếu để nền trong suốt, chữ đen trong hình sẽ **biến mất hoàn toàn** trên nền tối.
+
+Có ba cách giải quyết, và đây là lý do chọn cách này:
+
+| Cách | Vấn đề |
+| --- | --- |
+| Nền trong suốt | Chữ biến mất ở chế độ tối — hỏng thật |
+| Sinh hai bộ hình, sáng và tối | Gấp đôi số file, gấp đôi chỗ có thể sai lệch |
+| **Tấm thẻ nền sáng (đang dùng)** | Ở chế độ tối trông hơi "sáng hơn trang" — chấp nhận được |
+
+Vì lý do này, `.prose .fig` trong `article.css` **gỡ bỏ** viền mặc định của `.prose img` — hình đã tự mang viền và nền của nó rồi, thêm viền nữa thành hai lớp.
+
+**Đừng "sửa" nền sáng thành trong suốt.** Nó là chủ ý, và lý do được ghi ngay ở đầu `figures_lib.py`.
+
 ---
 
 ## Phần 7 — Vòng đời một bài viết
@@ -364,8 +396,13 @@ Từ lúc là ghi chép vụn cho tới lúc có người đọc trên điện t
                 │
                 ▼
 ④ TẠO FILE
-   src/content/articles/ten-khong-dau.md
+   src/content/articles/ten-khong-dau.md   (.mdx nếu bài có <Figure>)
    Frontmatter: title, description, date, category  (+ draft: true)
+                │
+                ▼
+④b LÀM HÌNH
+   Thêm mục vào figures() trong make-figures.py và PLAN trong attach-figures.py
+   python3 scripts/make-figures.py && python3 scripts/attach-figures.py
                 │
                 ▼
 ⑤ XEM THỬ
@@ -480,6 +517,7 @@ Lệnh này liệt kê mọi cách viết chủ đề kèm số lần xuất hi�
 1. `siteUrl` còn là `your-username` không?
 2. Dùng [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/), bấm **Scrape Again** — Facebook lưu đệm rất lâu
 3. Ảnh phải đúng 1200×630
+4. Bài đó có `coverImage` trong frontmatter không? Có thì ảnh chia sẻ chính là ảnh bìa của bài; không có thì rơi về ảnh mặc định của website
 
 ### "Đẩy code lên rồi mà website không đổi gì"
 
@@ -567,6 +605,30 @@ npm run build                # PHẢI chạy lại và kiểm tra kỹ
 ## Phần 11 — Nhật ký thay đổi
 
 Mỗi lần thay đổi hệ thống ở mức đáng kể, hãy thêm một mục vào đây. Sáu tháng sau bạn sẽ cảm ơn chính mình.
+
+> Nhật ký này chỉ ghi thay đổi **hệ thống**. Thay đổi nội dung (thêm bài, sửa bài) ghi ở Phần F của `implementation-notes.md`.
+
+### v1.2.0 — 19/08/2026 — Hệ thống hình minh hoạ
+
+**Thêm vào**
+
+- `scripts/figures_lib.py` — bộ khuôn dùng chung: bảng màu đã kiểm định, một thang cỡ chữ, 8 khuôn sơ đồ (`bar_h`, `dot_scale`, `diverging`, `steps_down`, `range_bar`, `ladder`, `two_col`, `flow`). **File này không tự chạy.**
+- `scripts/make-figures.py` — vẽ 22 ảnh bìa PNG 1200×630 và 28 sơ đồ SVG vào `public/images/articles/`. Ảnh bìa dùng 8 hoạ tiết hình học, ánh xạ sang 13 chủ đề qua bảng `MOTIF`.
+- `scripts/attach-figures.py` — gắn `coverImage`/`coverAlt` vào frontmatter và chèn khối `<Figure>` sau các đoạn văn mốc. **Chạy lại nhiều lần vẫn an toàn**; nếu một đoạn mốc khớp nhiều hơn hoặc ít hơn đúng một lần thì script từ chối chèn thay vì đoán.
+- `src/components/Figure.astro` — `<figure>` + `<img loading="lazy">` + `<figcaption>` tuỳ chọn.
+
+**Sửa**
+
+- `src/pages/articles/[...slug].astro` — thêm `Figure` vào `<Content components={{ Callout, Figure }} />`.
+- `src/styles/article.css` — thêm khối `.prose .fig`; **gỡ viền** của `.prose img` bên trong figure; từ 900px trở lên hình tràn rộng hơn cột chữ (`calc(100% + 4rem)`, lề `-2rem`).
+- 22 file bài viết — thêm `coverImage` + `coverAlt`, chèn 1–2 `<Figure>`.
+- `src/content/articles/cau-truc-thay-vi-nhac-nho.md` **đổi đuôi thành `.mdx`** — file `.md` không chạy được cú pháp JSX `<Figure>`.
+
+**Cần nhớ**
+
+- Ảnh bìa của bài giờ cũng là `og:image` khi chia sẻ link.
+- Lý do kiến trúc: mục **6.11** (vì sao vẽ chứ không chụp) và **6.12** (vì sao nền sáng).
+- Bài mới có `<Figure>` thì file **phải** là `.mdx`.
 
 ### v1.1.0 — 11/08/2026 — Đưa website lên mạng thật
 

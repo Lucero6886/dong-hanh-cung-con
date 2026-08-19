@@ -31,3 +31,10 @@ desktop.ini
 
 # Thư mục nháp của scripts/make-brand-assets.py (kết quả thật nằm ở public/brand/)
 .brand-tmp/
+
+# Bộ nhớ đệm của Python (tự sinh khi chạy scripts/make-figures.py)
+__pycache__/
+*.pyc
+
+# Thùng rác tạm — Claude bỏ file cần xoá vào đây, bạn xoá tay khi tiện
+_to_delete/

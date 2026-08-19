@@ -10,6 +10,7 @@
 import { render } from 'astro:content';
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import Callout from '../../components/Callout.astro';
+import Figure from '../../components/Figure.astro';
 import { getPublishedArticles, getRelatedArticles, getAdjacentArticles } from '../../utils/articles';
 
 export async function getStaticPaths() {
@@ -28,8 +29,9 @@ const { newer, older } = await getAdjacentArticles(article);
 
 <ArticleLayout article={article} headings={headings} related={related} newer={newer} older={older}>
   {/*
-    Truyền Callout xuống nội dung MDX. Nhờ dòng này, trong file .mdx bạn viết
-    thẳng <Callout type="tip">…</Callout> mà KHÔNG cần import.
+    Truyền Callout và Figure xuống nội dung MDX. Nhờ dòng này, trong file .mdx
+    bạn viết thẳng <Callout type="tip">…</Callout> và <Figure src=… /> mà KHÔNG
+    cần import gì cả.
   */}
-  <Content components={{ Callout }} />
+  <Content components={{ Callout, Figure }} />
 </ArticleLayout>
