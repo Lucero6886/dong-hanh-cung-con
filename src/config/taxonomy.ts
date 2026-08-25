@@ -171,7 +171,10 @@ export const JOURNEYS: Journey[] = [
     title: 'Khi cha mẹ và con khó giao tiếp',
     description:
       'Câu chuyện dừng lại ở "bình thường ạ". Nhóm bài này bàn về cách mở lại cuộc trò chuyện.',
-    tags: ['giao tiếp', 'cha mẹ'],
+    // ⚠️ KHÔNG thêm thẻ 'cha mẹ' vào đây. 20/22 bài đang mang thẻ đó (nó là thẻ
+    // "bài này dành cho cha mẹ", không phải thẻ chủ đề), nên thêm vào là hành
+    // trình này nuốt gần hết thư viện.
+    tags: ['giao tiếp'],
     categories: ['Giao tiếp cha mẹ – con'],
   },
   {

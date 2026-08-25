@@ -103,12 +103,9 @@ grep -rn 'href="/' src/ --include=*.astro              # chỉ được có link
 
 ## Việc đang chờ chủ dự án
 
-Kiểm tra Phần A của `implementation-notes.md` mỗi đầu phiên. Tính đến 11/08/2026 còn 4 việc chưa xong:
+Kiểm tra Phần A của `implementation-notes.md` mỗi đầu phiên.
 
-1. Có tài khoản GitHub
-2. **Cho biết tên tài khoản GitHub** → khi biết, sửa `DEPLOY.siteUrl` trong `src/config/site.ts` (đang là `your-username`) rồi cập nhật sổ tay
-3. Cài GitHub Desktop *(chỉ chủ dự án làm được)*
-4. Bật GitHub Pages: Settings → Pages → Source → GitHub Actions *(chỉ chủ dự án làm được)*
+**Tính đến 23/08/2026: không còn việc thiết lập nào chờ chủ dự án.** Toàn bộ đã xong — tài khoản GitHub `Lucero6886`, `DEPLOY.siteUrl` đã điền `https://lucero6886.github.io`, GitHub Desktop đã cài, GitHub Pages đã bật, website chạy thật từ 11/08/2026.
 
 ## Cách đưa thay đổi lên mạng
 

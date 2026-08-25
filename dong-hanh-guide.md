@@ -1,8 +1,8 @@
 ---
 title: "Đồng hành cùng hệ thống"
 subtitle: "Tài liệu giúp bạn hiểu bản chất, nắm được thay đổi, và luôn làm chủ dự án này"
-version: "1.2.0"
-date: "2026-08-19"
+version: "1.2.1"
+date: "2026-08-23"
 ---
 
 # Đồng hành cùng hệ thống
@@ -502,6 +502,20 @@ Kiểm tra theo thứ tự:
 2. Đỏ ở bước **"Cài thư viện"** → chưa đẩy `package-lock.json` lên
 3. Đỏ ở bước **"Build website"** → chạy `npm run build` ở nhà, lỗi hiện y hệt
 
+### "Một hành trình hiện gần hết thư viện"
+
+→ Hành trình đó đang được định nghĩa bằng một thẻ **quá phổ biến**. Điều kiện lọc là **hoặc**: `(bài có bất kỳ thẻ nào trong danh sách) HOẶC (bài thuộc một trong các chủ đề)`. Chỉ cần một thẻ rộng là gom sạch.
+
+Kiểm tra nhanh — đếm số bài mang từng thẻ:
+
+```bash
+grep -h "^  - " src/content/articles/*.mdx | sed 's/^  - //;s/"//g' | sort | uniq -c | sort -rn
+```
+
+**Quy tắc:** thẻ nào gắn trên **quá nửa** số bài thì không được dùng để định nghĩa hành trình — nó không phân biệt được gì. Thẻ như `cha mẹ` là thẻ đối tượng đọc, không phải thẻ chủ đề.
+
+Đã xảy ra một lần: hành trình `khi-kho-giao-tiep` khai báo `tags: ['giao tiếp', 'cha mẹ']`, mà `cha mẹ` có trên 20/22 bài → hành trình hiện 20 bài. Bỏ `cha mẹ` đi còn 6.
+
 ### "Một chủ đề bị tách làm hai"
 
 → Tên chủ đề viết khác nhau giữa các bài. Kiểm tra:
@@ -607,6 +621,13 @@ npm run build                # PHẢI chạy lại và kiểm tra kỹ
 Mỗi lần thay đổi hệ thống ở mức đáng kể, hãy thêm một mục vào đây. Sáu tháng sau bạn sẽ cảm ơn chính mình.
 
 > Nhật ký này chỉ ghi thay đổi **hệ thống**. Thay đổi nội dung (thêm bài, sửa bài) ghi ở Phần F của `implementation-notes.md`.
+
+### v1.2.1 — 23/08/2026 — Rà soát: sửa hành trình gom sai bài, nâng thư viện
+
+- `src/config/taxonomy.ts` — hành trình `khi-kho-giao-tiep` bỏ thẻ `cha mẹ` khỏi `tags`. Thẻ đó có trên 20/22 bài nên hành trình đang hiện 20 bài thay vì 6. Đã ghi cảnh báo tại chỗ. Xem Phần 9, mục *"Một hành trình hiện gần hết thư viện"*.
+- `src/content/articles/man-hinh-tu-dem-gio-sang-thoa-thuan.mdx` — gỡ `updated:` trùng với `date:` (đầu bài đang hiện "Đăng 11/08" rồi "Cập nhật 11/08").
+- `package.json` — Astro 7.2.0 → **7.2.4**, `@astrojs/mdx` 7.0.5 → **7.0.7**. Bản vá, không đổi API. `npm audit`: 0 lỗ hổng.
+- **Chưa làm:** TypeScript 6 → 7 (nâng cấp lớn, để dành cho một nhánh riêng).
 
 ### v1.2.0 — 19/08/2026 — Hệ thống hình minh hoạ
 

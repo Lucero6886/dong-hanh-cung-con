@@ -144,10 +144,10 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 
 <header class="masthead">
   <div class="wrap">
-    <span class="badge">Tài liệu đồng hành · v1.2.0</span>
+    <span class="badge">Tài liệu đồng hành · v1.2.1</span>
     <h1>Đồng hành cùng hệ thống</h1>
     <p>Tài liệu giúp bạn hiểu bản chất, nắm được thay đổi, và luôn làm chủ dự án này</p>
-    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-19 · Bản gốc: <code>dong-hanh-guide.md</code></p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-23 · Bản gốc: <code>dong-hanh-guide.md</code></p>
   </div>
 </header>
 
@@ -866,9 +866,15 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <li>Đỏ ở bước <strong>“Cài thư viện”</strong> → chưa đẩy <code>package-lock.json</code> lên</li>
 <li>Đỏ ở bước <strong>“Build website”</strong> → chạy <code>npm run build</code> ở nhà, lỗi hiện y hệt</li>
 </ol>
+<h3 id="một-hành-trình-hiện-gần-hết-thư-viện">“Một hành trình hiện gần hết thư viện”</h3>
+<p>→ Hành trình đó đang được định nghĩa bằng một thẻ <strong>quá phổ biến</strong>. Điều kiện lọc là <strong>hoặc</strong>: <code>(bài có bất kỳ thẻ nào trong danh sách) HOẶC (bài thuộc một trong các chủ đề)</code>. Chỉ cần một thẻ rộng là gom sạch.</p>
+<p>Kiểm tra nhanh — đếm số bài mang từng thẻ:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-h</span> <span class="st">&quot;^  - &quot;</span> src/content/articles/<span class="pp">*</span>.mdx <span class="kw">|</span> <span class="fu">sed</span> <span class="st">&#39;s/^  - //;s/&quot;//g&#39;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-rn</span></span></code></pre></div>
+<p><strong>Quy tắc:</strong> thẻ nào gắn trên <strong>quá nửa</strong> số bài thì không được dùng để định nghĩa hành trình — nó không phân biệt được gì. Thẻ như <code>cha mẹ</code> là thẻ đối tượng đọc, không phải thẻ chủ đề.</p>
+<p>Đã xảy ra một lần: hành trình <code>khi-kho-giao-tiep</code> khai báo <code>tags: ['giao tiếp', 'cha mẹ']</code>, mà <code>cha mẹ</code> có trên 20/22 bài → hành trình hiện 20 bài. Bỏ <code>cha mẹ</code> đi còn 6.</p>
 <h3 id="một-chủ-đề-bị-tách-làm-hai">“Một chủ đề bị tách làm hai”</h3>
 <p>→ Tên chủ đề viết khác nhau giữa các bài. Kiểm tra:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-h</span> <span class="st">&quot;^category:&quot;</span> src/content/articles/<span class="pp">*</span>.md<span class="pp">*</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-h</span> <span class="st">&quot;^category:&quot;</span> src/content/articles/<span class="pp">*</span>.md<span class="pp">*</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span></code></pre></div>
 <p>Lệnh này liệt kê mọi cách viết chủ đề kèm số lần xuất hiện. Cách viết nào chỉ xuất hiện một lần rất đáng ngờ.</p>
 <h3 id="chia-sẻ-lên-facebook-không-hiện-ảnh">“Chia sẻ lên Facebook không hiện ảnh”</h3>
 <ol type="1">
@@ -881,39 +887,39 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <p>→ Workflow không chạy vì tên nhánh không khớp. Kiểm tra <code>.github/workflows/deploy.yml</code>: <code>branches:</code> phải chứa đúng tên nhánh đang dùng. Hiện đã đặt <code>[main, master]</code> nên nhận cả hai. Xác nhận nhanh: nếu tab Actions <strong>trống trơn, không có lần chạy nào</strong>, đó chính là dấu hiệu.</p>
 <h3 id="github-desktop-báo-hàng-chục-file-thay-đổi-mà-nội-dung-không-đổi">“GitHub Desktop báo hàng chục file thay đổi mà nội dung không đổi”</h3>
 <p>→ Quyền truy cập file bị thay đổi (thường do file đi qua một hệ thống tệp khác). Sửa:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config core.fileMode false</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config core.fileMode false</span></code></pre></div>
 <p>Dấu hiệu nhận biết: <code>git diff --stat</code> liệt kê nhiều file nhưng số dòng thêm/bớt của chúng là <code>0</code>.</p>
 <h3 id="commit-failed-a-lock-file-already-exists">“Commit failed — a lock file already exists”</h3>
 <p>→ Có <code>.git/index.lock</code> còn sót lại từ một lệnh git bị đứt giữa chừng. Xoá file đó là xong. File này không chứa nội dung gì, xoá hoàn toàn an toàn.</p>
 <h3 id="tôi-lỡ-làm-hỏng-gì-đó-và-không-biết-sửa">“Tôi lỡ làm hỏng gì đó và không biết sửa”</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span>        <span class="co"># xem lịch sử</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff                 <span class="co"># xem mình vừa sửa gì</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .        <span class="co"># bỏ hết thay đổi chưa commit</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="op">&lt;</span>mã-commit<span class="op">&gt;</span>   # hoàn tác một commit đã đẩy lên</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span>        <span class="co"># xem lịch sử</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff                 <span class="co"># xem mình vừa sửa gì</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">--</span> .        <span class="co"># bỏ hết thay đổi chưa commit</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="op">&lt;</span>mã-commit<span class="op">&gt;</span>   # hoàn tác một commit đã đẩy lên</span></code></pre></div>
 <p>Git giữ lại mọi phiên bản. Bạn không thể mất nội dung, trừ khi tự xoá file và chưa từng commit.</p>
 <hr />
 <h2 id="phần-10-kiểm-tra-sức-khoẻ-định-kỳ">Phần 10 — Kiểm tra sức khoẻ định kỳ</h2>
 <p>Vài tháng một lần, chạy hết những lệnh dưới đây. Mất khoảng 5 phút.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Build sạch — phải không có lỗi</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Kiểm tra kiểu dữ liệu và frontmatter</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run check</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Không có tên riêng bị viết cứng trong giao diện</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&quot;Mr. Lucero&quot;</span> src/ <span class="at">--include</span><span class="op">=</span><span class="pp">*</span>.astro          <span class="co"># phải rỗng</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Không có liên kết nội bộ quên withBase()</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&#39;href=&quot;/&#39;</span> src/ <span class="at">--include</span><span class="op">=</span><span class="pp">*</span>.astro             <span class="co"># chỉ được có link ngoài</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Kiểm tra chủ đề có bị viết lệch không</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-h</span> <span class="st">&quot;^category:&quot;</span> src/content/articles/<span class="pp">*</span>.md<span class="pp">*</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Xem có bài nháp nào bị quên không</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-l</span> <span class="st">&quot;draft: true&quot;</span> src/content/articles/<span class="pp">*</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Xem bản build thật trong trình duyệt</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run preview</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Build sạch — phải không có lỗi</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Kiểm tra kiểu dữ liệu và frontmatter</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run check</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Không có tên riêng bị viết cứng trong giao diện</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&quot;Mr. Lucero&quot;</span> src/ <span class="at">--include</span><span class="op">=</span><span class="pp">*</span>.astro          <span class="co"># phải rỗng</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Không có liên kết nội bộ quên withBase()</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">&#39;href=&quot;/&#39;</span> src/ <span class="at">--include</span><span class="op">=</span><span class="pp">*</span>.astro             <span class="co"># chỉ được có link ngoài</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Kiểm tra chủ đề có bị viết lệch không</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-h</span> <span class="st">&quot;^category:&quot;</span> src/content/articles/<span class="pp">*</span>.md<span class="pp">*</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="kw">|</span> <span class="fu">uniq</span> <span class="at">-c</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Xem có bài nháp nào bị quên không</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-l</span> <span class="st">&quot;draft: true&quot;</span> src/content/articles/<span class="pp">*</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Xem bản build thật trong trình duyệt</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run preview</span></code></pre></div>
 <p>Rồi mở website thật và kiểm tra bằng mắt:</p>
 <ul class="task-list">
 <li><label><input type="checkbox" />Trang chủ hiện đúng số bài mong đợi</label></li>
@@ -924,9 +930,9 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <li><label><input type="checkbox" />Dán link một bài vào Zalo hoặc Facebook, xem ảnh và tiêu đề</label></li>
 </ul>
 <h3 id="nâng-cấp-thư-viện-mỗi-612-tháng">Nâng cấp thư viện (mỗi 6–12 tháng)</h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> outdated                 <span class="co"># xem cái gì cũ</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> update                   <span class="co"># nâng cấp trong phạm vi an toàn</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build                <span class="co"># PHẢI chạy lại và kiểm tra kỹ</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> outdated                 <span class="co"># xem cái gì cũ</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> update                   <span class="co"># nâng cấp trong phạm vi an toàn</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> run build                <span class="co"># PHẢI chạy lại và kiểm tra kỹ</span></span></code></pre></div>
 <blockquote>
 <p>Nâng cấp lớn (ví dụ Astro 7 → 8) thì làm trên một nhánh riêng: <code>git checkout -b nang-cap-astro</code> — hỏng thì bỏ nhánh, <code>main</code> vẫn nguyên.</p>
 </blockquote>
@@ -936,6 +942,13 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <blockquote>
 <p>Nhật ký này chỉ ghi thay đổi <strong>hệ thống</strong>. Thay đổi nội dung (thêm bài, sửa bài) ghi ở Phần F của <code>implementation-notes.md</code>.</p>
 </blockquote>
+<h3 id="v1.2.1-23082026-rà-soát-sửa-hành-trình-gom-sai-bài-nâng-thư-viện">v1.2.1 — 23/08/2026 — Rà soát: sửa hành trình gom sai bài, nâng thư viện</h3>
+<ul>
+<li><code>src/config/taxonomy.ts</code> — hành trình <code>khi-kho-giao-tiep</code> bỏ thẻ <code>cha mẹ</code> khỏi <code>tags</code>. Thẻ đó có trên 20/22 bài nên hành trình đang hiện 20 bài thay vì 6. Đã ghi cảnh báo tại chỗ. Xem Phần 9, mục <em>“Một hành trình hiện gần hết thư viện”</em>.</li>
+<li><code>src/content/articles/man-hinh-tu-dem-gio-sang-thoa-thuan.mdx</code> — gỡ <code>updated:</code> trùng với <code>date:</code> (đầu bài đang hiện “Đăng 11/08” rồi “Cập nhật 11/08”).</li>
+<li><code>package.json</code> — Astro 7.2.0 → <strong>7.2.4</strong>, <code>@astrojs/mdx</code> 7.0.5 → <strong>7.0.7</strong>. Bản vá, không đổi API. <code>npm audit</code>: 0 lỗ hổng.</li>
+<li><strong>Chưa làm:</strong> TypeScript 6 → 7 (nâng cấp lớn, để dành cho một nhánh riêng).</li>
+</ul>
 <h3 id="v1.2.0-19082026-hệ-thống-hình-minh-hoạ">v1.2.0 — 19/08/2026 — Hệ thống hình minh hoạ</h3>
 <p><strong>Thêm vào</strong></p>
 <ul>
@@ -1036,16 +1049,16 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 </ul>
 <hr />
 <h3 id="mẫu-ghi-cho-lần-thay-đổi-sau">Mẫu ghi cho lần thay đổi sau</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### v1.1.0 — ngày/tháng/năm — Tên ngắn gọn</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>**Đã đổi**</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>…</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>**Vì sao**</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>…</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>**Cần chú ý**</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>…</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### v1.1.0 — ngày/tháng/năm — Tên ngắn gọn</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>**Đã đổi**</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>…</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>**Vì sao**</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>…</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>**Cần chú ý**</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>…</span></code></pre></div>
 <hr />
 <h2 id="phần-12-những-hướng-mở-rộng-đã-được-tính-sẵn">Phần 12 — Những hướng mở rộng đã được tính sẵn</h2>
 <p>Hệ thống được dựng sao cho các việc dưới đây làm được <strong>mà không phải đập đi xây lại</strong>. Nêu ở đây để bạn biết mình có sẵn những lựa chọn nào — không có nghĩa là nên làm ngay.</p>
@@ -1117,7 +1130,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <hr />
 <p><small></p>
 <p>Tài liệu này là bản <code>.md</code> gốc. Bản <code>.html</code> đi kèm được tạo ra từ chính file này để đọc cho dễ. Sửa nội dung thì sửa file <code>.md</code>. Muốn tạo lại bản <code>.html</code> (cần cài <a href="https://pandoc.org">pandoc</a>):</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> dong-hanh-guide.md <span class="at">-o</span> dong-hanh-guide.html <span class="at">--standalone</span> <span class="at">--toc</span> <span class="at">--toc-depth</span><span class="op">=</span>2 <span class="at">--metadata</span> title=<span class="st">&quot;Đồng hành cùng hệ thống&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> dong-hanh-guide.md <span class="at">-o</span> dong-hanh-guide.html <span class="at">--standalone</span> <span class="at">--toc</span> <span class="at">--toc-depth</span><span class="op">=</span>2 <span class="at">--metadata</span> title=<span class="st">&quot;Đồng hành cùng hệ thống&quot;</span></span></code></pre></div>
 <p>Không có pandoc cũng không sao — bản <code>.md</code> đọc tốt trên GitHub và trong mọi trình soạn thảo.</p>
 <p></small></p>
     <footer class="doc-foot">

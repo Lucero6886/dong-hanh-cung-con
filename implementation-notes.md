@@ -1,8 +1,8 @@
 ---
 title: "Sổ tay vận hành dự án"
 subtitle: "Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì"
-version: "1.3.0"
-date: "2026-08-19"
+version: "1.3.1"
+date: "2026-08-23"
 ---
 
 # Sổ tay vận hành dự án
@@ -27,7 +27,7 @@ date: "2026-08-19"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 19/08/2026*
+*Cập nhật lần cuối: 23/08/2026*
 
 ### Tình trạng chung
 
@@ -43,7 +43,7 @@ date: "2026-08-19"
 | Nơi lưu mã nguồn | Máy bạn: `Downloads\Note giáo dục trẻ\dong-hanh-cung-con\` |
 | Số bài viết | **22** bài, đã xuất bản cả 22, không có bài nháp |
 | Số chủ đề đang dùng | **13 / 13** — đã phủ kín toàn bộ chủ đề |
-| Số hành trình có bài | **9 / 9** |
+| Số hành trình có bài | **9 / 9** — từ 2 đến 10 bài mỗi hành trình |
 | Số thẻ | **18** |
 | Số trang website tự sinh ra | **70** |
 | Hình minh hoạ | **22 ảnh bìa** + **28 sơ đồ** trong bài — mọi bài đều có ảnh bìa và ít nhất một sơ đồ |
@@ -52,7 +52,7 @@ date: "2026-08-19"
 
 ### Hai mươi hai bài viết hiện có
 
-Website hiện có **hai loạt bài đọc theo thứ tự**, và mười bài đọc lẻ.
+Website hiện có **hai loạt bài đọc theo thứ tự**, và mười một bài đọc lẻ.
 
 **Loạt 1 — Dạy con nên người** — xem tại `/journeys/day-con-nen-nguoi/`
 
@@ -75,12 +75,12 @@ Website hiện có **hai loạt bài đọc theo thứ tự**, và mười bài 
 | 5 | Não tuổi teen: đang xây lại, không phải đang hỏng | Tuổi teen | 9 |
 | 6 | Khi con đã trưởng thành, mình còn là gì của con? | Não bộ & các giai đoạn phát triển | 8 |
 
-**Mười hai bài còn lại** — đọc lẻ, không theo thứ tự
+**Mười một bài còn lại** — đọc lẻ, không theo thứ tự
 
 | Bài | Chủ đề | Phút đọc |
 | --- | --- | --- |
 | Từ phần thưởng đến động lực bên trong ⭐ | Động lực & thói quen | 11 |
-| Đi cùng con, không đi thay con | Đồng hành cùng con | 7 |
+| Đi cùng con, không đi thay con | Đồng hành cùng con | 8 |
 | Mười lăm phút, nhưng là mười lăm phút thật | Đồng hành cùng con | 5 |
 | Màn hình: từ đếm giờ sang thoả thuận | Công nghệ & trẻ em | 6 |
 | Hỏi con học được gì, thay vì hỏi con được mấy điểm | Giao tiếp cha mẹ – con | 4 |
@@ -617,6 +617,94 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 ---
 
+### 23/08/2026 — Rà soát toàn bộ dự án, sửa 6 chỗ sai
+
+**Người thực hiện:** Claude · **Loại:** Rà soát + sửa lỗi
+
+**Vì sao có mục này**
+
+Bạn nhờ rà soát lại dự án. Tôi kiểm tra ba thứ: **website có đúng như sổ tay mô tả không**, **các bài viết có chỗ nào lệch nhau không**, và **có gì cũ hỏng chưa ai để ý không**. Tìm được 6 chỗ sai, đã sửa hết. Dưới đây là toàn bộ, kể cả những chỗ sai do chính tôi ghi nhầm trước đó.
+
+**Lỗi đáng kể nhất — một hành trình nuốt gần hết thư viện**
+
+Hành trình **"Khi cha mẹ và con khó giao tiếp"** đang hiện **20 trong tổng số 22 bài**. Tức là bạn bấm vào một hành trình về chuyện khó nói chuyện với con, và nhận về gần như toàn bộ website.
+
+Nguyên nhân: hành trình đó được khai báo là "gom bài có thẻ `giao tiếp` **hoặc** thẻ `cha mẹ`". Mà thẻ `cha mẹ` đang gắn trên **20/22 bài** — nó là thẻ đánh dấu "bài này dành cho cha mẹ đọc", không phải thẻ chủ đề. Nên điều kiện "hoặc" đó gom sạch.
+
+Đã sửa: bỏ thẻ `cha mẹ` khỏi hành trình này. Giờ nó còn **6 bài**, đúng là 6 bài về giao tiếp thật. Tôi cũng ghi một dòng cảnh báo ngay tại chỗ đó trong `taxonomy.ts` để lần sau không ai thêm lại.
+
+**Năm chỗ còn lại**
+
+| # | Chỗ sai | Đã sửa thành |
+| --- | --- | --- |
+| 2 | Sổ tay viết "**mười** bài đọc lẻ" nhưng bảng ngay dưới liệt kê 11 bài | mười một |
+| 3 | Tiêu đề bảng ghi "**Mười hai** bài còn lại" — cộng vào thành 23 bài, trong khi chỉ có 22 | Mười một |
+| 4 | Bài *"Đi cùng con, không đi thay con"* ghi 7 phút đọc, website tính ra 8 phút (sai ở 2 chỗ trong sổ tay) | 8 phút |
+| 5 | `CLAUDE.md` vẫn ghi "còn 4 việc chờ chủ dự án" từ 11/08 — cả 4 việc đã xong từ lâu, và còn ghi địa chỉ website là `your-username` | Ghi rõ: không còn việc nào chờ |
+| 6 | Bài *"Màn hình: từ đếm giờ sang thoả thuận"* có ngày cập nhật **trùng** ngày đăng, nên đầu bài hiện "Đăng 11/08" rồi lại "Cập nhật 11/08" | Gỡ dòng thừa |
+
+Lỗi 2, 3, 4 là **do tôi ghi nhầm** trong các phiên trước. Ghi lại ở đây cho đúng nguyên tắc sổ tay phải trung thực.
+
+**Cập nhật thư viện**
+
+Nâng Astro từ 7.2.0 lên **7.2.4** và bộ đọc MDX từ 7.0.5 lên **7.0.7** — đều là bản vá nhỏ, không đổi cách dùng. Kiểm tra bảo mật: **0 lỗ hổng**.
+
+Có một bản nâng cấp lớn đang chờ (TypeScript 6 → 7). **Tôi không tự làm** — nâng cấp lớn thì hay kèm thay đổi phá vỡ, và nó không mang lại lợi ích gì cho website đọc chữ như thế này. Khi nào cần thì làm trên một nhánh riêng.
+
+**Những gì đã kiểm tra và thấy sạch**
+
+Để bạn yên tâm là tôi không chỉ nhìn lướt:
+
+- **Số liệu Phần A** — 22 bài, 13/13 chủ đề, 9/9 hành trình, 18 thẻ, 70 trang, 22 ảnh bìa, 28 sơ đồ: đếm lại từ file thật, khớp hết.
+- **Tên chủ đề trong từng bài** — so từng ký tự với danh sách chính thức, kể cả dấu gạch ngang dài/ngắn dễ nhầm. Khớp cả 22 bài.
+- **Thứ tự đọc hai loạt bài** — 1→5 và 1→6, không trùng số, không thiếu số.
+- **18 thẻ** — không có thẻ nào bị viết thành hai kiểu (có dấu/không dấu, số ít/số nhiều).
+- **Ngày tháng** — không bài nào ghi ngày ở tương lai.
+- **Ba quy ước kỹ thuật bắt buộc** — không có tên tác giả viết cứng trong giao diện, không có liên kết nội bộ nào quên `withBase()`.
+- **Mọi hình đều có mô tả cho người khiếm thị** (`alt`) — 22 ảnh bìa và 28 sơ đồ, đủ cả.
+- **Mọi đường dẫn ảnh trong bài đều trỏ tới file có thật** — không có hình vỡ.
+- **Trợ lý tự soạn bài** — vẫn bật, chạy 8h sáng thứ Hai, lần chạy tới là **24/08**.
+
+**Ảnh hưởng tới bạn**
+
+- Hành trình "Khi cha mẹ và con khó giao tiếp" giờ **gọn lại còn 6 bài** — đây là thay đổi bạn sẽ nhìn thấy trên website.
+- Bài "Màn hình" bớt một dòng ngày tháng thừa.
+- Còn lại là sửa trong sổ tay và tài liệu, không đụng tới nội dung bài viết nào.
+- **Không có bài nào bị sửa nội dung, không có bài nào bị gỡ.**
+
+**Nếu bạn muốn tự làm phần này**
+
+- **Sửa một hành trình gom sai bài** → vào GitHub, mở `src/config/taxonomy.ts`, tìm hành trình đó, xem dòng `tags:`. Quy tắc dễ nhớ: **thẻ nào gắn trên quá nửa số bài thì đừng dùng để định nghĩa hành trình** — nó không phân biệt được gì.
+- **Sửa số liệu trong sổ tay** → làm y như Phần C, việc 2 (sửa chữ trong một bài), chỉ khác là mở file `implementation-notes.md`.
+- **Gỡ dòng ngày cập nhật thừa** → mở file bài viết, xoá dòng bắt đầu bằng `updated:`.
+- **Tự kiểm tra hành trình nào đang gom quá nhiều bài** → cách nhanh nhất không cần gõ lệnh: vào website, bấm lần lượt từng hành trình và đếm. Hành trình nào ra gần bằng tổng số bài là có vấn đề.
+
+**Có gì cần bạn quyết không?**
+
+Có **hai việc**.
+
+**Việc 1 — gấp, trước sáng mai.** Trợ lý tự soạn bài chạy **8h sáng thứ Hai 24/08**, và nó **vẫn chưa biết làm hình**. Bài nó soạn ra sẽ không có ảnh bìa, không có sơ đồ — lệch hẳn so với 22 bài kia. Lần trước tôi có đề nghị dạy nó làm hình, bạn chưa đồng ý nên tôi để nguyên. Nếu muốn thì nhắn *"cho trợ lý làm hình luôn"*. Không muốn cũng không sao — cứ để nó soạn chữ, khi nào bạn duyệt thì nhờ tôi làm hình sau.
+
+**Việc 2 — không gấp.** Rà soát phát hiện **bốn nghiên cứu bị dùng lại ở hai bài khác nhau**, có chỗ gần như cùng một cách diễn đạt:
+
+| Nghiên cứu | Xuất hiện ở |
+| --- | --- |
+| Phân tích gộp 53 nghiên cứu / 46.000 người về "nuôi con kiểu trực thăng" | *Đi cùng con, không đi thay con* · *Khi con đã trưởng thành* |
+| Van Petegem 2015 — 1.472 thanh thiếu niên, quy tắc và sự ép buộc | *Đi cùng con, không đi thay con* · *Tự giác không mọc lên từ lời nhắc* |
+| Chuyện hoang đường "21 ngày thành thói quen" | *Năm điều ai cũng nói về nuôi con* · *"Nếu… thì…"* |
+| Foster-Hanson — dán nhãn "người tốt bụng" cho trẻ 4–5 tuổi | *Vì sao bác hàng xóm hiệu quả hơn danh nhân* · *Tự giác không mọc lên từ lời nhắc* |
+
+**Đây chưa chắc đã là lỗi.** Phần lớn phụ huynh chỉ đọc một bài, nên nhắc lại một nghiên cứu ở bài khác là hợp lý. Nó chỉ thành vấn đề với người đọc cả hai bài liền nhau — mà hai bài trong cùng một loạt thì khả năng đó cao. Bạn muốn tôi viết lại cho đỡ trùng thì nhắn, tôi sẽ giữ nguyên luận điểm và chỉ đổi cách dẫn dắt.
+
+**Còn hai việc tôi chưa kiểm tra được hôm nay**
+
+Nói thẳng để bạn biết rà soát này chưa phải toàn bộ:
+
+1. **Website thật trên mạng** — tôi không mở được trang từ phiên này (bị chặn quyền truy cập mạng). Tôi mới chỉ kiểm tra bản dựng ở máy. Bạn tự kiểm tra bằng Phần C, việc 5 — mất 30 giây.
+2. **102 đường link nguồn trong các bài** — chưa mở lại được để xem link nào chết. Nên làm định kỳ 6 tháng một lần. Lần kiểm chứng gần nhất là lúc viết bài (11–14/08), nên chưa đáng lo.
+
+---
+
 ### 19/08/2026 — Thêm hình minh hoạ cho toàn bộ 22 bài viết
 
 **Người thực hiện:** Claude · **Loại:** Thêm hình ảnh + thêm công cụ
@@ -694,7 +782,7 @@ Có **một việc**, và nó không gấp:
 
 **Đã làm gì — việc 1: bài mới**
 
-Chủ đề *Đồng hành cùng con* mới có một bài, nên thêm bài thứ hai: **"Đi cùng con, không đi thay con"** (7 phút đọc).
+Chủ đề *Đồng hành cùng con* mới có một bài, nên thêm bài thứ hai: **"Đi cùng con, không đi thay con"** (8 phút đọc).
 
 Bài bàn về ranh giới giữa **giúp** và **làm hộ** — khoảnh khắc tay cha mẹ đưa ra trước cả khi con kịp hỏi. Ba ý chính:
 

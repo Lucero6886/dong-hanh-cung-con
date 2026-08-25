@@ -143,10 +143,10 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 
 <header class="masthead">
   <div class="wrap">
-    <span class="badge">Sổ tay vận hành · v1.3.0</span>
+    <span class="badge">Sổ tay vận hành · v1.3.1</span>
     <h1>Sổ tay vận hành dự án</h1>
     <p>Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì</p>
-    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-19 · Bản gốc: <code>implementation-notes.md</code></p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-23 · Bản gốc: <code>implementation-notes.md</code></p>
   </div>
 </header>
 
@@ -213,7 +213,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <p><strong>Nguyên tắc của sổ tay này:</strong> mỗi lần Claude chạm vào dự án, Claude <strong>bắt buộc</strong> ghi vào Phần F — đã làm gì, vì sao, ảnh hưởng gì tới bạn, và <em>nếu tự làm thì làm thế nào</em>. Bạn không phải nhớ. Bạn chỉ cần đọc.</p>
 <hr />
 <h2 id="phần-a-dự-án-đang-ở-đâu">PHẦN A — Dự án đang ở đâu</h2>
-<p><em>Cập nhật lần cuối: 19/08/2026</em></p>
+<p><em>Cập nhật lần cuối: 23/08/2026</em></p>
 <h3 id="tình-trạng-chung">Tình trạng chung</h3>
 <table>
 <colgroup>
@@ -269,7 +269,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 </tr>
 <tr class="odd">
 <td>Số hành trình có bài</td>
-<td><strong>9 / 9</strong></td>
+<td><strong>9 / 9</strong> — từ 2 đến 10 bài mỗi hành trình</td>
 </tr>
 <tr class="even">
 <td>Số thẻ</td>
@@ -294,7 +294,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 </tbody>
 </table>
 <h3 id="hai-mươi-hai-bài-viết-hiện-có">Hai mươi hai bài viết hiện có</h3>
-<p>Website hiện có <strong>hai loạt bài đọc theo thứ tự</strong>, và mười bài đọc lẻ.</p>
+<p>Website hiện có <strong>hai loạt bài đọc theo thứ tự</strong>, và mười một bài đọc lẻ.</p>
 <p><strong>Loạt 1 — Dạy con nên người</strong> — xem tại <code>/journeys/day-con-nen-nguoi/</code></p>
 <table>
 <colgroup>
@@ -399,7 +399,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 </tr>
 </tbody>
 </table>
-<p><strong>Mười hai bài còn lại</strong> — đọc lẻ, không theo thứ tự</p>
+<p><strong>Mười một bài còn lại</strong> — đọc lẻ, không theo thứ tự</p>
 <table>
 <colgroup>
 <col style="width: 33%" />
@@ -422,7 +422,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <tr class="even">
 <td>Đi cùng con, không đi thay con</td>
 <td>Đồng hành cùng con</td>
-<td>7</td>
+<td>8</td>
 </tr>
 <tr class="odd">
 <td>Mười lăm phút, nhưng là mười lăm phút thật</td>
@@ -1102,6 +1102,129 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <p>Claude ghi vào đây sau <strong>mỗi</strong> lần chạm vào dự án. Bạn chỉ đọc. Mục mới nhất nằm trên cùng.</p>
 </blockquote>
 <hr />
+<h3 id="rà-soát-toàn-bộ-dự-án-sửa-6-chỗ-sai">23/08/2026 — Rà soát toàn bộ dự án, sửa 6 chỗ sai</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Rà soát + sửa lỗi</p>
+<p><strong>Vì sao có mục này</strong></p>
+<p>Bạn nhờ rà soát lại dự án. Tôi kiểm tra ba thứ: <strong>website có đúng như sổ tay mô tả không</strong>, <strong>các bài viết có chỗ nào lệch nhau không</strong>, và <strong>có gì cũ hỏng chưa ai để ý không</strong>. Tìm được 6 chỗ sai, đã sửa hết. Dưới đây là toàn bộ, kể cả những chỗ sai do chính tôi ghi nhầm trước đó.</p>
+<p><strong>Lỗi đáng kể nhất — một hành trình nuốt gần hết thư viện</strong></p>
+<p>Hành trình <strong>“Khi cha mẹ và con khó giao tiếp”</strong> đang hiện <strong>20 trong tổng số 22 bài</strong>. Tức là bạn bấm vào một hành trình về chuyện khó nói chuyện với con, và nhận về gần như toàn bộ website.</p>
+<p>Nguyên nhân: hành trình đó được khai báo là “gom bài có thẻ <code>giao tiếp</code> <strong>hoặc</strong> thẻ <code>cha mẹ</code>”. Mà thẻ <code>cha mẹ</code> đang gắn trên <strong>20/22 bài</strong> — nó là thẻ đánh dấu “bài này dành cho cha mẹ đọc”, không phải thẻ chủ đề. Nên điều kiện “hoặc” đó gom sạch.</p>
+<p>Đã sửa: bỏ thẻ <code>cha mẹ</code> khỏi hành trình này. Giờ nó còn <strong>6 bài</strong>, đúng là 6 bài về giao tiếp thật. Tôi cũng ghi một dòng cảnh báo ngay tại chỗ đó trong <code>taxonomy.ts</code> để lần sau không ai thêm lại.</p>
+<p><strong>Năm chỗ còn lại</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Chỗ sai</th>
+<th>Đã sửa thành</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>Sổ tay viết “<strong>mười</strong> bài đọc lẻ” nhưng bảng ngay dưới liệt kê 11 bài</td>
+<td>mười một</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>Tiêu đề bảng ghi “<strong>Mười hai</strong> bài còn lại” — cộng vào thành 23 bài, trong khi chỉ có 22</td>
+<td>Mười một</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Bài <em>“Đi cùng con, không đi thay con”</em> ghi 7 phút đọc, website tính ra 8 phút (sai ở 2 chỗ trong sổ tay)</td>
+<td>8 phút</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td><code>CLAUDE.md</code> vẫn ghi “còn 4 việc chờ chủ dự án” từ 11/08 — cả 4 việc đã xong từ lâu, và còn ghi địa chỉ website là <code>your-username</code></td>
+<td>Ghi rõ: không còn việc nào chờ</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>Bài <em>“Màn hình: từ đếm giờ sang thoả thuận”</em> có ngày cập nhật <strong>trùng</strong> ngày đăng, nên đầu bài hiện “Đăng 11/08” rồi lại “Cập nhật 11/08”</td>
+<td>Gỡ dòng thừa</td>
+</tr>
+</tbody>
+</table>
+<p>Lỗi 2, 3, 4 là <strong>do tôi ghi nhầm</strong> trong các phiên trước. Ghi lại ở đây cho đúng nguyên tắc sổ tay phải trung thực.</p>
+<p><strong>Cập nhật thư viện</strong></p>
+<p>Nâng Astro từ 7.2.0 lên <strong>7.2.4</strong> và bộ đọc MDX từ 7.0.5 lên <strong>7.0.7</strong> — đều là bản vá nhỏ, không đổi cách dùng. Kiểm tra bảo mật: <strong>0 lỗ hổng</strong>.</p>
+<p>Có một bản nâng cấp lớn đang chờ (TypeScript 6 → 7). <strong>Tôi không tự làm</strong> — nâng cấp lớn thì hay kèm thay đổi phá vỡ, và nó không mang lại lợi ích gì cho website đọc chữ như thế này. Khi nào cần thì làm trên một nhánh riêng.</p>
+<p><strong>Những gì đã kiểm tra và thấy sạch</strong></p>
+<p>Để bạn yên tâm là tôi không chỉ nhìn lướt:</p>
+<ul>
+<li><strong>Số liệu Phần A</strong> — 22 bài, 13/13 chủ đề, 9/9 hành trình, 18 thẻ, 70 trang, 22 ảnh bìa, 28 sơ đồ: đếm lại từ file thật, khớp hết.</li>
+<li><strong>Tên chủ đề trong từng bài</strong> — so từng ký tự với danh sách chính thức, kể cả dấu gạch ngang dài/ngắn dễ nhầm. Khớp cả 22 bài.</li>
+<li><strong>Thứ tự đọc hai loạt bài</strong> — 1→5 và 1→6, không trùng số, không thiếu số.</li>
+<li><strong>18 thẻ</strong> — không có thẻ nào bị viết thành hai kiểu (có dấu/không dấu, số ít/số nhiều).</li>
+<li><strong>Ngày tháng</strong> — không bài nào ghi ngày ở tương lai.</li>
+<li><strong>Ba quy ước kỹ thuật bắt buộc</strong> — không có tên tác giả viết cứng trong giao diện, không có liên kết nội bộ nào quên <code>withBase()</code>.</li>
+<li><strong>Mọi hình đều có mô tả cho người khiếm thị</strong> (<code>alt</code>) — 22 ảnh bìa và 28 sơ đồ, đủ cả.</li>
+<li><strong>Mọi đường dẫn ảnh trong bài đều trỏ tới file có thật</strong> — không có hình vỡ.</li>
+<li><strong>Trợ lý tự soạn bài</strong> — vẫn bật, chạy 8h sáng thứ Hai, lần chạy tới là <strong>24/08</strong>.</li>
+</ul>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<ul>
+<li>Hành trình “Khi cha mẹ và con khó giao tiếp” giờ <strong>gọn lại còn 6 bài</strong> — đây là thay đổi bạn sẽ nhìn thấy trên website.</li>
+<li>Bài “Màn hình” bớt một dòng ngày tháng thừa.</li>
+<li>Còn lại là sửa trong sổ tay và tài liệu, không đụng tới nội dung bài viết nào.</li>
+<li><strong>Không có bài nào bị sửa nội dung, không có bài nào bị gỡ.</strong></li>
+</ul>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<ul>
+<li><strong>Sửa một hành trình gom sai bài</strong> → vào GitHub, mở <code>src/config/taxonomy.ts</code>, tìm hành trình đó, xem dòng <code>tags:</code>. Quy tắc dễ nhớ: <strong>thẻ nào gắn trên quá nửa số bài thì đừng dùng để định nghĩa hành trình</strong> — nó không phân biệt được gì.</li>
+<li><strong>Sửa số liệu trong sổ tay</strong> → làm y như Phần C, việc 2 (sửa chữ trong một bài), chỉ khác là mở file <code>implementation-notes.md</code>.</li>
+<li><strong>Gỡ dòng ngày cập nhật thừa</strong> → mở file bài viết, xoá dòng bắt đầu bằng <code>updated:</code>.</li>
+<li><strong>Tự kiểm tra hành trình nào đang gom quá nhiều bài</strong> → cách nhanh nhất không cần gõ lệnh: vào website, bấm lần lượt từng hành trình và đếm. Hành trình nào ra gần bằng tổng số bài là có vấn đề.</li>
+</ul>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Có <strong>hai việc</strong>.</p>
+<p><strong>Việc 1 — gấp, trước sáng mai.</strong> Trợ lý tự soạn bài chạy <strong>8h sáng thứ Hai 24/08</strong>, và nó <strong>vẫn chưa biết làm hình</strong>. Bài nó soạn ra sẽ không có ảnh bìa, không có sơ đồ — lệch hẳn so với 22 bài kia. Lần trước tôi có đề nghị dạy nó làm hình, bạn chưa đồng ý nên tôi để nguyên. Nếu muốn thì nhắn <em>“cho trợ lý làm hình luôn”</em>. Không muốn cũng không sao — cứ để nó soạn chữ, khi nào bạn duyệt thì nhờ tôi làm hình sau.</p>
+<p><strong>Việc 2 — không gấp.</strong> Rà soát phát hiện <strong>bốn nghiên cứu bị dùng lại ở hai bài khác nhau</strong>, có chỗ gần như cùng một cách diễn đạt:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Nghiên cứu</th>
+<th>Xuất hiện ở</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Phân tích gộp 53 nghiên cứu / 46.000 người về “nuôi con kiểu trực thăng”</td>
+<td><em>Đi cùng con, không đi thay con</em> · <em>Khi con đã trưởng thành</em></td>
+</tr>
+<tr class="even">
+<td>Van Petegem 2015 — 1.472 thanh thiếu niên, quy tắc và sự ép buộc</td>
+<td><em>Đi cùng con, không đi thay con</em> · <em>Tự giác không mọc lên từ lời nhắc</em></td>
+</tr>
+<tr class="odd">
+<td>Chuyện hoang đường “21 ngày thành thói quen”</td>
+<td><em>Năm điều ai cũng nói về nuôi con</em> · <em>“Nếu… thì…”</em></td>
+</tr>
+<tr class="even">
+<td>Foster-Hanson — dán nhãn “người tốt bụng” cho trẻ 4–5 tuổi</td>
+<td><em>Vì sao bác hàng xóm hiệu quả hơn danh nhân</em> · <em>Tự giác không mọc lên từ lời nhắc</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Đây chưa chắc đã là lỗi.</strong> Phần lớn phụ huynh chỉ đọc một bài, nên nhắc lại một nghiên cứu ở bài khác là hợp lý. Nó chỉ thành vấn đề với người đọc cả hai bài liền nhau — mà hai bài trong cùng một loạt thì khả năng đó cao. Bạn muốn tôi viết lại cho đỡ trùng thì nhắn, tôi sẽ giữ nguyên luận điểm và chỉ đổi cách dẫn dắt.</p>
+<p><strong>Còn hai việc tôi chưa kiểm tra được hôm nay</strong></p>
+<p>Nói thẳng để bạn biết rà soát này chưa phải toàn bộ:</p>
+<ol type="1">
+<li><strong>Website thật trên mạng</strong> — tôi không mở được trang từ phiên này (bị chặn quyền truy cập mạng). Tôi mới chỉ kiểm tra bản dựng ở máy. Bạn tự kiểm tra bằng Phần C, việc 5 — mất 30 giây.</li>
+<li><strong>102 đường link nguồn trong các bài</strong> — chưa mở lại được để xem link nào chết. Nên làm định kỳ 6 tháng một lần. Lần kiểm chứng gần nhất là lúc viết bài (11–14/08), nên chưa đáng lo.</li>
+</ol>
+<hr />
 <h3 id="thêm-hình-minh-hoạ-cho-toàn-bộ-22-bài-viết">19/08/2026 — Thêm hình minh hoạ cho toàn bộ 22 bài viết</h3>
 <p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Thêm hình ảnh + thêm công cụ</p>
 <p><strong>Đã làm gì</strong></p>
@@ -1199,7 +1322,7 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <h3 id="thêm-bài-cho-chủ-đề-đồng-hành-cùng-con-và-bật-trợ-lý-tự-soạn-bài-hằng-tuần">14/08/2026 — Thêm bài cho chủ đề “Đồng hành cùng con”, và bật trợ lý tự soạn bài hằng tuần</h3>
 <p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Thêm nội dung + tự động hoá</p>
 <p><strong>Đã làm gì — việc 1: bài mới</strong></p>
-<p>Chủ đề <em>Đồng hành cùng con</em> mới có một bài, nên thêm bài thứ hai: <strong>“Đi cùng con, không đi thay con”</strong> (7 phút đọc).</p>
+<p>Chủ đề <em>Đồng hành cùng con</em> mới có một bài, nên thêm bài thứ hai: <strong>“Đi cùng con, không đi thay con”</strong> (8 phút đọc).</p>
 <p>Bài bàn về ranh giới giữa <strong>giúp</strong> và <strong>làm hộ</strong> — khoảnh khắc tay cha mẹ đưa ra trước cả khi con kịp hỏi. Ba ý chính:</p>
 <ul>
 <li>Phân tích gộp <strong>238 nghiên cứu trên 126.423 người</strong> cho thấy lối nuôi con hỗ trợ tự chủ đi kèm kết quả tốt hơn, còn kiểm soát tâm lý đi kèm kết quả xấu hơn — và <strong>kết quả này giữ nguyên ở cả Trung Quốc và Hàn Quốc</strong>, không riêng phương Tây. Điểm này được đưa vào có chủ ý, vì lập luận “cái đó là kiểu Tây, trẻ châu Á khác” rất hay gặp ở Việt Nam.</li>
