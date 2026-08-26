@@ -143,10 +143,10 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 
 <header class="masthead">
   <div class="wrap">
-    <span class="badge">Sổ tay vận hành · v1.3.1</span>
+    <span class="badge">Sổ tay vận hành · v1.4.0</span>
     <h1>Sổ tay vận hành dự án</h1>
     <p>Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì</p>
-    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-23 · Bản gốc: <code>implementation-notes.md</code></p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-25 · Bản gốc: <code>implementation-notes.md</code></p>
   </div>
 </header>
 
@@ -213,7 +213,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <p><strong>Nguyên tắc của sổ tay này:</strong> mỗi lần Claude chạm vào dự án, Claude <strong>bắt buộc</strong> ghi vào Phần F — đã làm gì, vì sao, ảnh hưởng gì tới bạn, và <em>nếu tự làm thì làm thế nào</em>. Bạn không phải nhớ. Bạn chỉ cần đọc.</p>
 <hr />
 <h2 id="phần-a-dự-án-đang-ở-đâu">PHẦN A — Dự án đang ở đâu</h2>
-<p><em>Cập nhật lần cuối: 23/08/2026</em></p>
+<p><em>Cập nhật lần cuối: 25/08/2026</em></p>
 <h3 id="tình-trạng-chung">Tình trạng chung</h3>
 <table>
 <colgroup>
@@ -276,18 +276,22 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <td><strong>18</strong></td>
 </tr>
 <tr class="odd">
+<td>Số đường link nguồn</td>
+<td><strong>112</strong> trong 16 bài — đã soát lại toàn bộ ngày 25/08/2026</td>
+</tr>
+<tr class="even">
 <td>Số trang website tự sinh ra</td>
 <td><strong>70</strong></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Hình minh hoạ</td>
 <td><strong>22 ảnh bìa</strong> + <strong>28 sơ đồ</strong> trong bài — mọi bài đều có ảnh bìa và ít nhất một sơ đồ</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Tình trạng kỹ thuật</td>
 <td>✅ Chạy tốt, 0 lỗi, 0 cảnh báo</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Trợ lý tự soạn bài</td>
 <td>✅ Bật — 8h sáng thứ Hai hằng tuần, chỉ khi tuần đó bạn chưa đăng bài (xem Phần C, việc 9)</td>
 </tr>
@@ -903,23 +907,33 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 │  → Đếm số bài của từng chủ đề                       │
 │  → Chọn chủ đề đang ít bài nhất                     │
 │  → Tra cứu nguồn thật, mở lại từng link kiểm chứng  │
+│  → Kiểm tra nghiên cứu đó đã có bài nào dùng chưa   │
 │  → Viết một bài nháp, chạy thử cho chắc không lỗi   │
-│  → Gửi file bài viết vào khung chat cho bạn         │
+│  → Vẽ ảnh bìa + sơ đồ, dùng đúng bảng màu website   │
+│  → Gửi bài viết VÀ các file ảnh vào khung chat      │
 └────────────────────────────────────────────────────┘</code></pre>
-<h4 id="ba-điều-bảo-đảm">Ba điều bảo đảm</h4>
+<blockquote>
+<p><strong>Từ 31/08/2026 trợ lý mới biết làm hình.</strong> Bài nháp nào nó gửi trước ngày đó thì chỉ có chữ — muốn thêm hình thì nhắn tôi làm giúp.</p>
+</blockquote>
+<h4 id="bốn-điều-bảo-đảm">Bốn điều bảo đảm</h4>
 <ul>
 <li><strong>Bài đó KHÔNG tự lên mạng.</strong> Nó được đặt <code>draft: true</code> — nghĩa là kể cả khi file có nằm trong dự án, website vẫn ẩn nó đi.</li>
 <li><strong>Trợ lý không được đụng vào GitHub.</strong> Không push, không tạo pull request. Nó chỉ gửi file cho bạn.</li>
 <li><strong>Không tuần nào bị ép có bài.</strong> Bạn bỏ qua thì không có gì xảy ra cả.</li>
+<li><strong>Không được tự chế màu mới cho hình.</strong> Chỉ dùng 3 màu đã kiểm định của website. Nếu không làm được hình, nó phải nói thẳng là chưa có hình, chứ không được im lặng.</li>
 </ul>
 <h4 id="khi-nhận-được-bài-nháp-bạn-làm-gì">Khi nhận được bài nháp, bạn làm gì</h4>
 <p><strong>Nếu ưng:</strong></p>
 <ol type="1">
-<li>Tải file <code>.mdx</code> trong khung chat về</li>
-<li>Chép vào thư mục <code>dong-hanh-cung-con\src\content\articles\</code> trên máy</li>
-<li>Mở file bằng Notepad, tìm dòng <code>draft: true</code>, sửa thành <code>draft: false</code></li>
+<li>Tải <strong>tất cả</strong> file trong khung chat về — một file <code>.mdx</code> (bài viết), một file <code>.png</code> (ảnh bìa), và một hoặc hai file <code>.svg</code> (sơ đồ)</li>
+<li>Chép file <code>.mdx</code> vào <code>dong-hanh-cung-con\src\content\articles\</code></li>
+<li>Chép các file <code>.png</code> và <code>.svg</code> vào <code>dong-hanh-cung-con\public\images\articles\</code></li>
+<li>Mở file <code>.mdx</code> bằng Notepad, tìm dòng <code>draft: true</code>, sửa thành <code>draft: false</code></li>
 <li>Mở GitHub Desktop → Commit → Push</li>
 </ol>
+<blockquote>
+<p>⚠️ <strong>Bước 3 dễ quên nhất.</strong> Quên chép ảnh thì bài vẫn lên, nhưng chỗ có hình sẽ hiện ô trống. Sửa được ngay: chép ảnh vào rồi Commit + Push lần nữa.</p>
+</blockquote>
 <p><strong>Nếu không ưng:</strong> không làm gì cả. Xoá file đi hoặc kệ nó.</p>
 <h4 id="muốn-đổi-hoặc-tắt">Muốn đổi hoặc tắt</h4>
 <p>Nhắn cho Claude một câu là được:</p>
@@ -1101,6 +1115,181 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <blockquote>
 <p>Claude ghi vào đây sau <strong>mỗi</strong> lần chạm vào dự án. Bạn chỉ đọc. Mục mới nhất nằm trên cùng.</p>
 </blockquote>
+<hr />
+<h3 id="soát-lại-toàn-bộ-nguồn-khoa-học-tìm-ra-4-lỗi-nặng-và-20-lỗi-vừa">25/08/2026 — Soát lại toàn bộ nguồn khoa học: tìm ra 4 lỗi nặng và ~20 lỗi vừa</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Sửa lỗi nội dung — <strong>mục quan trọng nhất trong sổ tay này</strong></p>
+<p><strong>Vì sao có mục này</strong></p>
+<p>Bạn hỏi: <em>“đọc lại tất cả nội dung từng file được không? có thấy chỗ nào thiếu chính xác hay bất hợp lý không?”</em></p>
+<p>Tôi đã mở lại <strong>hơn 80 nguồn gốc</strong> và đối chiếu từng con số, từng tên tác giả, từng câu trích. Kết quả: có lỗi thật, và mấy lỗi nặng. <strong>Tất cả đều do tôi viết sai ở các phiên trước</strong> — không phải do bạn.</p>
+<p><strong>Tin tốt trước</strong></p>
+<ul>
+<li><strong>Không có nghiên cứu bịa, không có tác giả bịa, không có link chết.</strong></li>
+<li>Những con số lớn đều <strong>chính xác tới từng chữ số</strong>: bảng 5 mốc phát triển não của Nature 2022 (1,7 · 5,9 · 12,5 · 14,4 · 28,7 tuổi), 669.498 người của nghiên cứu ngôn ngữ, 192 nghiên cứu/708.561 người về tuổi khởi phát rối loạn tâm thần, 238 nghiên cứu/126.423 người về nuôi con hỗ trợ tự chủ, 268 trẻ trong thí nghiệm kể chuyện.</li>
+<li>Ba chỗ bài viết <strong>tự nêu giới hạn của nghiên cứu</strong> rất chuẩn — và đó là chuẩn tôi đã áp cho những chỗ còn lại.</li>
+</ul>
+<p><strong>BỐN LỖI NẶNG — và vì sao chúng nặng</strong></p>
+<p><strong>1. Con số về lời khen bị áp sai cho trẻ em.</strong> <em>(hai bài: “Tự giác không mọc lên từ lời nhắc” và “Từ phần thưởng đến động lực bên trong”)</em></p>
+<p>Cả hai bài viết <em>“lời khen làm tăng động lực, d = +0,33”</em>. Con số ấy là <strong>mức gộp chung mọi lứa tuổi</strong>. Tách theo tuổi:</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Hiệu ứng</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sinh viên đại học</td>
+<td><strong>+0,43</strong></td>
+</tr>
+<tr class="even">
+<td><strong>Trẻ em</strong> (7 nghiên cứu)</td>
+<td><strong>+0,11 — không đạt ý nghĩa thống kê</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Chính tác giả viết: <em>“tuy lời khen làm tăng động lực bên trong ở sinh viên đại học, nó <strong>không làm được như vậy ở trẻ em</strong>.”</em></p>
+<p>Đây là lỗi nặng nhất, vì hai lẽ: đây là website nuôi con, và vì ngay đoạn dưới tôi lại dùng đúng nghiên cứu ấy để nói “phần thưởng gây hại cho trẻ nhiều hơn” — tức là lấy phần bất lợi cho trẻ nhưng bỏ phần chỉ đúng với người lớn. <strong>Đã sửa cả bài viết lẫn sơ đồ.</strong></p>
+<p><strong>2. Bài “Cơn giận của con” dựa vào một cơ chế đã bị bác bỏ.</strong></p>
+<p>Đoạn giải thích <em>“khả năng kìm nén như bình xăng cạn dần trong ngày”</em> là một lý thuyết mà hai cuộc kiểm chứng lớn (24 và 36 phòng thí nghiệm, hơn 5.600 người) đều <strong>không tìm lại được</strong>. Vi phạm hai quy tắc của chính dự án: trình bày suy diễn như kết luận khoa học, và không nêu phía phản biện.</p>
+<p>Đã thay bằng đoạn trung thực hơn: giữ nguyên quan sát (buổi tối dễ cáu hơn), nhưng nói thẳng là <strong>chưa ai giải thích chắc chắn được</strong>, và nêu những nguyên nhân đời thường có căn cứ hơn (mệt, đói, thiếu ngủ).</p>
+<p><strong>3. Bài “Con chán học” ghi sai mốc tuổi.</strong> Tôi viết <em>“trẻ dưới 14 tuổi”</em>. Nghiên cứu gốc nói mốc là <strong>khoảng 16</strong>, và quan trọng hơn: khả năng nghĩ xa <strong>tiếp tục phát triển suốt tuổi teen sang cả tuổi thanh niên</strong> — không có mốc nào để nó tự bật lên. Con số 14 vừa sai vừa gợi ý sai rằng từ 14 tuổi thì lập luận “sau này” bắt đầu hiệu quả.</p>
+<p><strong>4. Bài “Màn hình” bỏ sót con số quan trọng nhất với chính nhóm tuổi bài nhắm tới.</strong></p>
+<p>Tôi viết như thể Viện Nhi khoa Hoa Kỳ đã bỏ hết con số cho trẻ 6–14. Thực ra họ vẫn giữ, nguyên văn: giới hạn <em>“có thể dao động từ dưới 1 giờ/ngày với trẻ mẫu giáo, tới <strong>1–2 giờ/ngày hoặc hơn</strong> cho phần giải trí ở trẻ tuổi đi học và thiếu niên.”</em> Đã bổ sung, kèm cả con số của WHO cho trẻ dưới 5 tuổi (dưới 2 tuổi: không màn hình; 2–4 tuổi: không quá 1 giờ).</p>
+<p><strong>MỘT LỖI VỀ GIỌNG VIẾT — dùng nỗi sợ</strong></p>
+<p>Bài <em>“Mười lăm phút, nhưng là mười lăm phút thật”</em> có câu: <em>“Đến tuổi teen, khi bạn muốn nghe, cánh cửa đã khép từ lâu.”</em></p>
+<p>Câu này vi phạm quy tắc <em>“tuyệt đối không dùng nỗi sợ hoặc cảm giác tội lỗi”</em>, nói với đúng nhóm cha mẹ đi làm vốn đã sẵn áy náy — và nó <strong>mâu thuẫn với chính hai bài khác</strong> trên website. Đã viết lại, và trỏ sang bài <em>“Khi con bắt đầu đóng cửa phòng”</em> để nói rõ: con kể ít đi ở tuổi teen phần lớn là bình thường, không phải bằng chứng bạn đã làm sai.</p>
+<p><strong>Bài đó còn một lỗi nữa:</strong> tôi dùng nghiên cứu Milkie 2015 để nói “số giờ không quan trọng bằng chất lượng”, nhưng bỏ mất hai điều chính nhóm tác giả nêu — <strong>với tuổi teen thì số giờ CÓ ý nghĩa</strong>, và họ <strong>không hề đo chất lượng</strong>. Đã bổ sung cả hai.</p>
+<p><strong>MỘT ĐIỀU CẦN NÓI MẠNH HƠN — đòn roi</strong></p>
+<p>Bài <em>“Kỷ luật không phải là phạt”</em> xếp <em>“đánh lại cho biết đau”</em> vào cột <strong>“ít tác dụng”</strong>, và viết <em>“điểm khác biệt không nằm ở nặng hay nhẹ”</em>. Với đòn roi thì điều đó chưa đủ. Đây là chỗ hiếm hoi bằng chứng đủ mạnh để nói thẳng: phân tích gộp <strong>75 nghiên cứu trên 160.927 trẻ</strong> tìm thấy 13/17 nhóm kết quả có liên hệ có ý nghĩa với việc đánh đòn, và <strong>tất cả đều theo chiều bất lợi</strong>. Không có lợi ích nào. Đã thêm đoạn này kèm nguồn.</p>
+<p><strong>Còn khoảng 20 lỗi vừa và nhỏ</strong> — chủ yếu ba dạng:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dạng lỗi</th>
+<th>Ví dụ</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Gán nhầm nghiên cứu</strong></td>
+<td>Phép so sánh anh chị em ruột là của <strong>500 cặp song sinh ở Anh</strong>, không phải nhóm 1.037 người New Zealand · Phần theo dõi tới tuổi 26 thuộc một nghiên cứu khác · Câu về can thiệp chức năng điều hành là của Diamond &amp; Ling 2016, không phải Diamond 2013</td>
+</tr>
+<tr class="even">
+<td><strong>Số của nhóm A ghi thành nhóm B</strong></td>
+<td>Nhóm đối chứng trong thí nghiệm kể chuyện <strong>có đọc sách</strong>, không phải “không đọc gì” · Hai con số 46,75% và 58,82% là số gộp hai cách kể, không phải của riêng truyện · Ba con số kẹo dẻo là của mẫu 552 trẻ, không phải 918</td>
+</tr>
+<tr class="odd">
+<td><strong>Nói chắc hơn bằng chứng cho phép</strong></td>
+<td><em>“Không có nghiên cứu Harvard nào về việc nhà”</em> → thật ra là <strong>không ai truy được</strong> (vắng bằng chứng khác với bằng chứng vắng) · Đặt trong ngoặc kép một câu mà nguồn không nói · Khuyến cáo dành cho <strong>giới nghiên cứu</strong> bị trình bày như lời khuyên cho thai phụ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Một chỗ tôi phải viết lại cả một mục</strong></p>
+<p>Mục <em>“Điều thứ hai: bỏ con vật biết nói đi”</em> trong bài <em>“Kể chuyện thế nào cho con đổi”</em> — tôi đã hiểu ngược kết luận của nhóm nghiên cứu. <strong>Chính họ bác bỏ</strong> cách giải thích rằng vấn đề nằm ở nhân vật là con vật; họ kết luận trẻ <strong>hiểu được</strong> truyện nhưng <strong>không bắc cầu được</strong> sang đời mình, và <em>“thứ quyết định là bài học, không phải bản thân câu chuyện.”</em></p>
+<p>Thú vị là khi sửa cho đúng, lời khuyên thực hành lại <strong>mạnh hơn</strong>: chính nhóm ấy còn có một thí nghiệm nữa mà tôi bỏ sót — <strong>bỏ hẳn truyện đi, nói thẳng bài học trong 59 chữ, cho kết quả cao nhất: 67,33%.</strong> Giờ mục đó đã có cả con số này.</p>
+<p><strong>Sửa thêm 9 sơ đồ</strong></p>
+<p>Sơ đồ mang số liệu, nên số sai trong bài thì sơ đồ cũng sai. Đã sửa 9 hình, gồm hai hình có lỗi độc lập: một hình vẽ cột cuối gần bằng không trong khi thật ra còn khoảng 21%, và một hình liệt kê 4 khả năng mà <strong>2 khả năng không hề có trong bài</strong>.</p>
+<p><strong>Bổ sung đầu mối hỗ trợ khẩn cấp</strong></p>
+<p>Hai bài có phần nói về dấu hiệu cần lo ở trẻ. Trước đây chỉ ghi “hãy trao đổi với bác sĩ hoặc chuyên gia” — đúng nhưng chưa đủ dùng lúc cần. Đã bổ sung <strong>Tổng đài quốc gia bảo vệ trẻ em 111</strong> (24/24, miễn phí, có tư vấn tâm lý).</p>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<ul>
+<li><strong>19 trong 22 bài có chữ thay đổi.</strong> Không bài nào bị gỡ, không luận điểm chính nào bị đảo.</li>
+<li>Số nguồn tăng từ 102 lên <strong>112 link</strong>, số bài có nguồn từ 14 lên <strong>16</strong>.</li>
+<li>Trang web vẫn 70 trang, 0 lỗi, 0 cảnh báo.</li>
+<li><strong>Điều đáng nói nhất:</strong> những chỗ tôi sửa đều theo hướng <strong>nói nhẹ đi, chứ không nói mạnh lên</strong>. Nếu bạn thấy bài đọc bớt dứt khoát hơn trước — đó là chủ ý.</li>
+</ul>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<p>Bạn không cần tự kiểm chứng nguồn — đó là việc của tôi, và tôi vừa chứng minh là cần làm kỹ hơn. Nhưng có <strong>ba câu hỏi</strong> bạn hỏi tôi bất cứ lúc nào cũng được, và chúng bắt được phần lớn loại lỗi vừa rồi:</p>
+<ol type="1">
+<li><em>“Con số này là của nhóm tuổi nào?”</em> — bắt được lỗi nặng số 1.</li>
+<li><em>“Câu trong ngoặc kép này có đúng nguyên văn không?”</em> — bắt được các lỗi trích dẫn.</li>
+<li><em>“Nhóm đối chứng trong nghiên cứu đó làm gì?”</em> — bắt được lỗi số liệu nhóm A/nhóm B.</li>
+</ol>
+<p>Còn muốn tự đọc nguồn thì: mở bài trên website, kéo xuống cuối, bấm vào từng link ở mục <strong>Nguồn tham khảo</strong>. Phần <strong>Ghi chú biên tập</strong> ngay trên đó nói rõ chỗ nào là nghiên cứu, chỗ nào là ý kiến của tác giả.</p>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Không. Nhưng có <strong>một việc tôi đề nghị</strong>: từ nay cho tôi <strong>soát nguồn định kỳ 6 tháng một lần</strong> thay vì chỉ khi bạn hỏi. Lần này bạn tình cờ hỏi mới ra; nếu không hỏi thì bốn lỗi nặng kia còn nằm trên mạng. Muốn thì nhắn <em>“đặt lịch soát nguồn 6 tháng”</em>, tôi lập một tác vụ tự động.</p>
+<hr />
+<h3 id="dạy-trợ-lý-làm-hình-và-gỡ-bốn-chỗ-trùng-nghiên-cứu">25/08/2026 — Dạy trợ lý làm hình, và gỡ bốn chỗ trùng nghiên cứu</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Tự động hoá + biên tập nội dung</p>
+<p><strong>Trước hết, một đính chính</strong></p>
+<p>Ở mục 23/08 tôi có viết <em>“trợ lý chạy 8h sáng mai 24/08”</em> và hỏi bạn có muốn dạy nó làm hình không. Bạn trả lời <strong>có</strong>. Nhưng lúc bạn trả lời thì đã là <strong>25/08</strong> — trợ lý đã chạy xong buổi 24/08 rồi, với lời dặn <strong>cũ</strong>.</p>
+<p>Buổi 24/08 nhiều khả năng nó <strong>không soạn bài nào</strong>, và như vậy là đúng: nó kiểm tra thấy bạn vừa đăng bài ngày 19/08, tức là trong vòng 7 ngày, nên theo đúng quy tắc thì nó nghỉ. Bạn có nhận được tin nhắn nào sáng thứ Hai không thì cứ đối chiếu lại.</p>
+<p>Phần dạy làm hình vì thế <strong>có hiệu lực từ buổi chạy tới: thứ Hai 31/08</strong>.</p>
+<p><strong>Việc 1 — trợ lý giờ đã biết làm hình</strong></p>
+<p>Trước đây trợ lý chỉ soạn chữ. Bài nháp nó gửi sẽ không có ảnh bìa, không có sơ đồ, nhìn lệch hẳn so với 22 bài kia. Giờ trong phần việc của nó có thêm hẳn một bước làm hình, dùng đúng bộ khuôn và bảng màu sẵn có.</p>
+<p>Bốn điều tôi ràng buộc thêm cho nó, vì đây là thứ chạy tự động không ai ngồi canh:</p>
+<ol type="1">
+<li><strong>Cấm tự chế màu mới.</strong> Chỉ được dùng 3 màu đã kiểm định. Đây là chỗ dễ hỏng nhất — máy rất hay “sáng tạo” thêm màu, và chỉ cần một bài lệch màu là cả thư viện mất đồng bộ.</li>
+<li><strong>Sơ đồ phải mang số liệu thật lấy từ chính bài viết</strong>, không phải hình trang trí.</li>
+<li><strong>Nếu làm hình thất bại thì vẫn gửi bài, nhưng phải nói rõ là chưa có hình</strong> — thà thiếu hình còn hơn im lặng để bạn tưởng là đủ.</li>
+<li>Thêm một bước <strong>tra trùng nghiên cứu</strong>: trước khi đưa một nghiên cứu vào bài, nó phải tìm xem bài nào đã dùng chưa. Có rồi thì nhắc ngắn và trỏ sang, không trình bày lại từ đầu.</li>
+</ol>
+<p>Mọi ràng buộc cũ giữ nguyên: <strong>bài luôn ở dạng nháp, cấm tự đăng, cấm chạy lệnh đẩy lên mạng, cấm bịa nguồn.</strong></p>
+<p><strong>Việc 2 — gỡ bốn chỗ trùng nghiên cứu</strong></p>
+<p>Rà soát hôm 23/08 phát hiện bốn nghiên cứu bị trình bày đầy đủ ở hai bài khác nhau. Bạn chọn sửa hết.</p>
+<p><strong>Nguyên tắc tôi dùng:</strong> bài nào người đọc gặp trước thì <strong>giữ nguyên phần trình bày đầy đủ</strong>; bài gặp sau <strong>nhắc gọn lại và trỏ sang bài kia</strong>. Không bỏ nghiên cứu nào, không đổi luận điểm nào, không gỡ nguồn nào.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Nghiên cứu</th>
+<th>Bài giữ đầy đủ</th>
+<th>Bài rút gọn + trỏ sang</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“21 ngày thành thói quen”</td>
+<td><em>“Nếu… thì…”</em> (bài 4 trong loạt)</td>
+<td><em>Năm điều ai cũng nói về nuôi con</em> (bài 5)</td>
+</tr>
+<tr class="even">
+<td>Gắn nhãn “người tốt bụng”</td>
+<td><em>Vì sao bác hàng xóm hiệu quả hơn danh nhân</em> (bài 2)</td>
+<td><em>Tự giác không mọc lên từ lời nhắc</em> (bài 3)</td>
+</tr>
+<tr class="odd">
+<td>1.472 thanh thiếu niên — quy tắc và ép buộc</td>
+<td><em>Tự giác không mọc lên từ lời nhắc</em></td>
+<td><em>Đi cùng con, không đi thay con</em></td>
+</tr>
+<tr class="even">
+<td>Phân tích gộp “nuôi con kiểu trực thăng”</td>
+<td><em>Khi con đã trưởng thành</em></td>
+<td><em>Đi cùng con, không đi thay con</em></td>
+</tr>
+</tbody>
+</table>
+<p>Vì hai loạt bài đọc theo thứ tự, cách này hợp tự nhiên: đọc tới bài sau, bạn gặp câu <em>“bài trước đã nói kỹ điều này”</em> — nghe như người viết nhớ mình đã nói gì, chứ không phải lặp lại vì quên.</p>
+<p><strong>Một chỗ tôi cố ý KHÔNG sửa:</strong> nghiên cứu Stattin &amp; Kerr (cha mẹ biết chuyện của con chủ yếu vì con tự kể) xuất hiện ở cả bài <em>Não tuổi teen</em> lẫn bài <em>Khi con đã trưởng thành</em>. Nhưng bài sau đã tự trỏ về bằng câu <em>“điều đã đúng từ hồi con mười lăm tuổi và vẫn đúng bây giờ”</em> — đó là nhắc lại có chủ ý, đúng chỗ, nên để nguyên.</p>
+<p><strong>Sửa kèm một sơ đồ</strong></p>
+<p>Bảng “khen thế nào” trong bài <em>Tự giác</em> có một dòng trùng verbatim với bài <em>Bác hàng xóm</em>. Đã đổi dòng đó, và <strong>đổi luôn sơ đồ đi kèm</strong> cho khớp — nếu không thì bảng nói một đằng, hình vẽ nói một nẻo.</p>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<ul>
+<li>Bốn bài có chữ thay đổi: <em>Năm điều ai cũng nói…</em>, <em>Tự giác không mọc lên…</em>, <em>Đi cùng con…</em>, và một sơ đồ trong bài <em>Tự giác</em>.</li>
+<li><strong>Thời gian đọc không đổi</strong> (9, 8, 8 phút) — phần rút gọn và phần viết thêm bù nhau.</li>
+<li><strong>Không nguồn nào bị gỡ.</strong> Số link trong mỗi bài giữ nguyên.</li>
+<li>Từ 31/08, bài nháp sáng thứ Hai sẽ có ảnh bìa và sơ đồ.</li>
+</ul>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<ul>
+<li><strong>Xem trợ lý đang được dặn gì</strong> → nhắn tôi <em>“cho tôi xem lời dặn của trợ lý”</em>, tôi in ra đầy đủ. Muốn đổi câu nào cứ nói.</li>
+<li><strong>Tự tìm chỗ trùng nghiên cứu</strong> → cách không cần gõ lệnh: mở hai bài cùng một loạt, đọc liền nhau. Chỗ nào bạn thấy <em>“cái này vừa đọc rồi”</em> thì đúng là chỗ đó.</li>
+<li><strong>Sửa một dòng trong bảng của bài viết</strong> → làm y như Phần C, việc 2. Nhưng nhớ: nếu bảng đó có sơ đồ đi kèm thì phải sửa cả sơ đồ, và sơ đồ thì cần gõ lệnh — nhắn tôi.</li>
+<li><strong>Tắt trợ lý</strong> → Phần C, việc 9.</li>
+</ul>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Không. Hai việc bạn giao đều đã xong.</p>
+<p>Còn lại vẫn là hai việc tôi chưa kiểm tra được (ghi ở mục 23/08): <strong>mở website thật</strong> và <strong>kiểm tra 102 đường link nguồn có còn sống không</strong>. Việc thứ hai nên làm định kỳ khoảng 6 tháng một lần — tức là quãng <strong>tháng 2/2027</strong>. Khi nào bạn nhắn, tôi mở lại từng link một.</p>
 <hr />
 <h3 id="rà-soát-toàn-bộ-dự-án-sửa-6-chỗ-sai">23/08/2026 — Rà soát toàn bộ dự án, sửa 6 chỗ sai</h3>
 <p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Rà soát + sửa lỗi</p>

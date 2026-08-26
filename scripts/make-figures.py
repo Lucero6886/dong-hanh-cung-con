@@ -255,17 +255,18 @@ def figures():
                  "Khi nhóm nghiên cứu chỉ đổi cái kết của chuyện Washington thành trừng phạt, "
                  "toàn bộ tác dụng biến mất.")),
         ("f2", two_col(
-            "Cùng một bài học, đổi nhân vật thì kết quả đổi hẳn",
-            ("Nhân vật là con vật biết nói", CLAY,
+            "Bài học phải khớp với tình huống thật thì truyện mới có tác dụng",
+            ("Tình huống xa đời trẻ", CLAY,
              ["Truyện hải ly chia gỗ: 22,9% xử sự công bằng",
-              "Nhóm không đọc gì: 21,9% — gần như bằng nhau",
-              "Bản truyện con vật còn làm trẻ chia sẻ ÍT hơn"]),
-            ("Nhân vật là người, tình huống quen", TEAL,
-             ["Truyện một đứa trẻ trong lớp vẽ: 46,8%",
-              "Sau 2–4 tuần còn tăng tiếp lên 58,8%",
-              "Bản nhân vật người làm trẻ chia sẻ NHIỀU hơn"]),
-            note="Trẻ nhỏ không tự bắc cầu từ “con hải ly chia gỗ” sang “mình chia đồ chơi với em”. "
-                 "Người lớn tưởng cây cầu ấy hiển nhiên; với trẻ thì không.")),
+              "Sách kiến thức về hải ly, không có bài học: 21,9%",
+              "Truyện có bài học không hơn sách không có bài học"]),
+            ("Tình huống giống đời trẻ", TEAL,
+             ["Truyện một đứa trẻ chia bút trong lớp vẽ: 46,9%",
+              "Sau 2–4 tuần còn tăng tiếp lên 56,3%",
+              "Nói thẳng bài học, bỏ hẳn truyện đi: 67,3%"]),
+            subtitle="Rottman và cộng sự · Cognition, 2020",
+            note="Chính nhóm tác giả kết luận rằng trẻ hiểu được truyện nhưng không bắc cầu được sang "
+                 "đời mình — thứ quyết định là bài học, không phải bản thân câu chuyện.")),
     ]
 
     # ── Tấm gương ─────────────────────────────────────────────────────────
@@ -287,20 +288,20 @@ def figures():
             "Phần thưởng tác động thế nào tới hứng thú tự nhiên của trẻ",
             [("Thưởng vật chất, đã hứa trước", -0.36, "-0,36"),
              ("Thưởng bất ngờ, không hứa trước", 0.01, "0,01"),
-             ("Lời khen, phản hồi tích cực", 0.33, "+0,33")],
-            label_w=270,
+             ("Lời khen — số riêng cho trẻ em", 0.11, "+0,11 · không có ý nghĩa TK")],
+            label_w=290,
             subtitle="Phân tích gộp 128 nghiên cứu · Psychological Bulletin, 1999",
-            note="Số càng âm thì hứng thú tự nhiên càng giảm. Chính bài báo ghi rằng tác hại nặng hơn ở "
-                 "trẻ em so với sinh viên đại học. Vấn đề nằm ở đúng một chỗ: hứa trước một phần thưởng "
-                 "vật chất cho việc con vốn đã thích.")),
+            note="Số càng âm thì hứng thú tự nhiên càng giảm. Lưu ý dòng thứ ba: con số +0,33 hay "
+                 "được trích cho lời khen là mức gộp mọi lứa tuổi. Tách theo tuổi thì sinh viên đại "
+                 "học là +0,43, còn ở trẻ em chỉ +0,11 và không đạt ý nghĩa thống kê.")),
         ("f2", two_col(
             "Khen mô tả việc, đừng khen phong danh hiệu",
             ("Đặt lên vai con một danh hiệu", CLAY,
-             ["“Con giỏi quá!”", "“Con thông minh thật.”", "“Con là đứa ngoan.”"]),
+             ["“Con thông minh thật.”", "“Con là đứa ngoan.”", "“Con học giỏi lắm.”"]),
             ("Mô tả điều con vừa làm", TEAL,
-             ["“Con làm lại ba lần mới xong.”",
-              "“Chỗ đó khó mà con tìm ra cách.”",
-              "“Con vừa tự dọn bàn. Bố thấy.”"]),
+             ["“Chỗ đó khó mà con tìm ra cách.”",
+              "“Con vừa tự dọn bàn. Bố thấy.”",
+              "“Con ngồi được đúng hai mươi phút không đứng dậy.”"]),
             note="Trong nghiên cứu kinh điển, 38% trẻ được khen thông minh đã khai man điểm số; ở nhóm "
                  "được khen chăm chỉ, con số là 13%.")),
     ]
@@ -317,7 +318,7 @@ def figures():
         ("f2", range_bar(
             "Bao lâu thì một việc thành thói quen?",
             [("Điều ai cũng nói", 21, None, 21, GRAY, "21 ngày"),
-             ("Nghiên cứu thật", 4, 63, 335, TEAL, "4 – 335 ngày")],
+             ("Nghiên cứu thật", 4, 66, 335, TEAL, "4 – 335 ngày · trung vị 59–66")],
             0, 340, [0, 50, 100, 150, 200, 250, 300], xlabel="số ngày", label_w=170,
             note="Chấm tròn là mức trung vị, khoảng 59–66 ngày. Toàn bộ nghiên cứu này làm trên người lớn, "
                  "chưa từng kiểm chứng ở trẻ em. Và bỏ lỡ một ngày không làm hỏng quá trình.")),
@@ -342,10 +343,10 @@ def figures():
     F["nam-dieu-ai-cung-noi-ve-nuoi-con"] = [
         ("f1", steps_down(
             "Thí nghiệm kẹo dẻo: liên hệ còn lại bao nhiêu sau mỗi bước kiểm tra?",
-            [("Nghiên cứu gốc, 35 trẻ ở một trường mẫu giáo", 1.0, "mốc gốc"),
-             ("Làm lại với 918 trẻ đa dạng hơn", 0.5, "còn một nửa"),
+            [("Nghiên cứu theo dõi gốc, vài chục trẻ ở một trường mẫu giáo", 1.0, "mốc gốc"),
+             ("Làm lại trên mẫu lớn hơn, đa dạng hơn", 0.5, "còn một nửa"),
              ("Sau khi tính hoàn cảnh gia đình", 0.33, "còn một phần ba"),
-             ("Sau khi tính năng lực sẵn có của trẻ", 0.02, "gần như hết")],
+             ("Sau khi tính năng lực sẵn có của trẻ", 0.21, "không còn ý nghĩa thống kê")],
             subtitle="Watts, Duncan & Quan · Psychological Science, 2018",
             note="Và gần như toàn bộ phần lợi ích nhỏ còn lại đến từ việc trẻ chờ được 20 giây — "
                  "không phải 15 phút.")),
@@ -366,7 +367,7 @@ def figures():
             "Giấc ngủ tuổi teen: khuyến nghị và thực tế",
             [("Khuyến nghị cho tuổi 13–18", 9, "8 – 10 tiếng"),
              ("Một đứa trẻ đi ngủ 11h30, dậy 6h", 6.5, "6,5 tiếng"),
-             ("Thiếu mỗi ngày", 2.5, "khoảng 2,5 tiếng")],
+             ("Thiếu so với mức sàn 8 tiếng", 1.5, "khoảng 1,5 tiếng")],
             emphasis=2, label_w=250, color=CLAY,
             subtitle="Viện Y học Giấc ngủ Hoa Kỳ · lịch học phổ biến ở Việt Nam",
             note="Khi bước vào dậy thì, đồng hồ sinh học của trẻ lùi lại tới hai tiếng — đo được bằng "
@@ -411,7 +412,7 @@ def figures():
              ["Ngủ 9–12 tiếng mỗi ngày", "Vận động thật, không phải một tiết thể dục",
               "Có bạn thân", "Được giao việc nhà có hậu quả thật",
               "Giỏi được một thứ gì đó"]),
-            subtitle="Adele Diamond · Annual Review of Psychology, 2013",
+            subtitle="Cột trái: Adele Diamond · Annual Review of Psychology, 2013 · Số giờ ngủ: Viện Y học Giấc ngủ Hoa Kỳ",
             note="Ba trong bốn thứ ở cột trái thường TĂNG lên khi ta thêm một lớp học nữa. "
                  "Chúng ta hay thấy con “không tập trung” rồi kết luận là con thiếu ý chí.")),
     ]
@@ -502,8 +503,8 @@ def figures():
              ["“Con chán học.”", "“Học chán lắm.”", "“Con không muốn đi học.”"]),
             ("Điều có thể đang xảy ra bên dưới", TEAL,
              ["Con không theo kịp và ngại nói ra",
-              "Con theo kịp quá dễ nên thấy vô nghĩa",
-              "Có chuyện với bạn bè hoặc thầy cô",
+              "Con đã cố mà không giỏi lên, bắt đầu nghĩ mình không có khả năng",
+              "Việc học đang thua một thứ hấp dẫn hơn, thường là màn hình",
               "Con đang mệt, thiếu ngủ, quá tải lịch học"]),
             note="Bốn khả năng cần bốn cách xử lý khác nhau — và cả bốn đều bắt đầu bằng việc hỏi thêm "
                  "thay vì trả lời ngay.")),
@@ -561,7 +562,7 @@ def figures():
             [("Điều ta sợ", "“Con đang xa mình. Mình đang mất con.”"),
              ("Điều thường đang xảy ra", "Con đang tập có một không gian riêng — việc bình thường "
                                           "của tuổi này, không phải dấu hiệu quan hệ hỏng")],
-            note="Điều cần giữ không phải cánh cửa mở, mà là việc con vẫn thấy kể với bạn là an toàn.")),
+            note="Thứ cần giữ không phải cánh cửa phòng, mà là việc con vẫn thấy kể với bạn là an toàn.")),
     ]
 
     # ── Từ phần thưởng đến động lực bên trong ─────────────────────────────
@@ -569,10 +570,10 @@ def figures():
         ("f1", flow(
             "Đường đi từ động lực bên ngoài vào bên trong",
             [("Làm vì được thưởng", "phần thưởng là lý do; hết thưởng thì hết làm"),
-             ("Làm vì thấy mình làm được", "cảm giác năng lực bắt đầu thay chỗ cho phần thưởng"),
-             ("Làm vì thấy có nghĩa", "việc đó gắn với điều con thấy đáng làm")],
-            note="Không có công tắc nào chuyển thẳng từ chặng một sang chặng ba. Điều cha mẹ làm được "
-                 "là đừng dựng thêm rào ở chặng một — cụ thể là đừng hứa thưởng cho việc con vốn đã thích.")),
+             ("Làm vì thấy việc đó có nghĩa", "phần thưởng lùi xuống thành niềm vui thêm, không còn là lý do"),
+             ("Làm vì đó là việc của mình", "con muốn biết, muốn giỏi hơn — kể cả khi không ai thưởng")],
+            note="Không có công tắc nào chuyển thẳng từ chặng một sang chặng ba. Bản thân chặng một "
+                 "không có gì đáng ngại; chỗ cần thận trọng là hứa thưởng cho việc con vốn đã thích.")),
     ]
 
     return F

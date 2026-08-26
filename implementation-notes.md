@@ -1,8 +1,8 @@
 ---
 title: "Sổ tay vận hành dự án"
 subtitle: "Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì"
-version: "1.3.1"
-date: "2026-08-23"
+version: "1.4.0"
+date: "2026-08-25"
 ---
 
 # Sổ tay vận hành dự án
@@ -27,7 +27,7 @@ date: "2026-08-23"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 23/08/2026*
+*Cập nhật lần cuối: 25/08/2026*
 
 ### Tình trạng chung
 
@@ -45,6 +45,7 @@ date: "2026-08-23"
 | Số chủ đề đang dùng | **13 / 13** — đã phủ kín toàn bộ chủ đề |
 | Số hành trình có bài | **9 / 9** — từ 2 đến 10 bài mỗi hành trình |
 | Số thẻ | **18** |
+| Số đường link nguồn | **112** trong 16 bài — đã soát lại toàn bộ ngày 25/08/2026 |
 | Số trang website tự sinh ra | **70** |
 | Hình minh hoạ | **22 ảnh bìa** + **28 sơ đồ** trong bài — mọi bài đều có ảnh bìa và ít nhất một sơ đồ |
 | Tình trạng kỹ thuật | ✅ Chạy tốt, 0 lỗi, 0 cảnh báo |
@@ -462,25 +463,33 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 │  → Đếm số bài của từng chủ đề                       │
 │  → Chọn chủ đề đang ít bài nhất                     │
 │  → Tra cứu nguồn thật, mở lại từng link kiểm chứng  │
+│  → Kiểm tra nghiên cứu đó đã có bài nào dùng chưa   │
 │  → Viết một bài nháp, chạy thử cho chắc không lỗi   │
-│  → Gửi file bài viết vào khung chat cho bạn         │
+│  → Vẽ ảnh bìa + sơ đồ, dùng đúng bảng màu website   │
+│  → Gửi bài viết VÀ các file ảnh vào khung chat      │
 └────────────────────────────────────────────────────┘
 ```
 
-#### Ba điều bảo đảm
+> **Từ 31/08/2026 trợ lý mới biết làm hình.** Bài nháp nào nó gửi trước ngày đó thì chỉ có chữ — muốn thêm hình thì nhắn tôi làm giúp.
+
+#### Bốn điều bảo đảm
 
 - **Bài đó KHÔNG tự lên mạng.** Nó được đặt `draft: true` — nghĩa là kể cả khi file có nằm trong dự án, website vẫn ẩn nó đi.
 - **Trợ lý không được đụng vào GitHub.** Không push, không tạo pull request. Nó chỉ gửi file cho bạn.
 - **Không tuần nào bị ép có bài.** Bạn bỏ qua thì không có gì xảy ra cả.
+- **Không được tự chế màu mới cho hình.** Chỉ dùng 3 màu đã kiểm định của website. Nếu không làm được hình, nó phải nói thẳng là chưa có hình, chứ không được im lặng.
 
 #### Khi nhận được bài nháp, bạn làm gì
 
 **Nếu ưng:**
 
-1. Tải file `.mdx` trong khung chat về
-2. Chép vào thư mục `dong-hanh-cung-con\src\content\articles\` trên máy
-3. Mở file bằng Notepad, tìm dòng `draft: true`, sửa thành `draft: false`
-4. Mở GitHub Desktop → Commit → Push
+1. Tải **tất cả** file trong khung chat về — một file `.mdx` (bài viết), một file `.png` (ảnh bìa), và một hoặc hai file `.svg` (sơ đồ)
+2. Chép file `.mdx` vào `dong-hanh-cung-con\src\content\articles\`
+3. Chép các file `.png` và `.svg` vào `dong-hanh-cung-con\public\images\articles\`
+4. Mở file `.mdx` bằng Notepad, tìm dòng `draft: true`, sửa thành `draft: false`
+5. Mở GitHub Desktop → Commit → Push
+
+> ⚠️ **Bước 3 dễ quên nhất.** Quên chép ảnh thì bài vẫn lên, nhưng chỗ có hình sẽ hiện ô trống. Sửa được ngay: chép ảnh vào rồi Commit + Push lần nữa.
 
 **Nếu không ưng:** không làm gì cả. Xoá file đi hoặc kệ nó.
 
@@ -614,6 +623,174 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 > Claude ghi vào đây sau **mỗi** lần chạm vào dự án. Bạn chỉ đọc.
 > Mục mới nhất nằm trên cùng.
+
+---
+
+### 25/08/2026 — Soát lại toàn bộ nguồn khoa học: tìm ra 4 lỗi nặng và ~20 lỗi vừa
+
+**Người thực hiện:** Claude · **Loại:** Sửa lỗi nội dung — **mục quan trọng nhất trong sổ tay này**
+
+**Vì sao có mục này**
+
+Bạn hỏi: *"đọc lại tất cả nội dung từng file được không? có thấy chỗ nào thiếu chính xác hay bất hợp lý không?"*
+
+Tôi đã mở lại **hơn 80 nguồn gốc** và đối chiếu từng con số, từng tên tác giả, từng câu trích. Kết quả: có lỗi thật, và mấy lỗi nặng. **Tất cả đều do tôi viết sai ở các phiên trước** — không phải do bạn.
+
+**Tin tốt trước**
+
+- **Không có nghiên cứu bịa, không có tác giả bịa, không có link chết.**
+- Những con số lớn đều **chính xác tới từng chữ số**: bảng 5 mốc phát triển não của Nature 2022 (1,7 · 5,9 · 12,5 · 14,4 · 28,7 tuổi), 669.498 người của nghiên cứu ngôn ngữ, 192 nghiên cứu/708.561 người về tuổi khởi phát rối loạn tâm thần, 238 nghiên cứu/126.423 người về nuôi con hỗ trợ tự chủ, 268 trẻ trong thí nghiệm kể chuyện.
+- Ba chỗ bài viết **tự nêu giới hạn của nghiên cứu** rất chuẩn — và đó là chuẩn tôi đã áp cho những chỗ còn lại.
+
+**BỐN LỖI NẶNG — và vì sao chúng nặng**
+
+**1. Con số về lời khen bị áp sai cho trẻ em.** *(hai bài: "Tự giác không mọc lên từ lời nhắc" và "Từ phần thưởng đến động lực bên trong")*
+
+Cả hai bài viết *"lời khen làm tăng động lực, d = +0,33"*. Con số ấy là **mức gộp chung mọi lứa tuổi**. Tách theo tuổi:
+
+| | Hiệu ứng |
+| --- | --- |
+| Sinh viên đại học | **+0,43** |
+| **Trẻ em** (7 nghiên cứu) | **+0,11 — không đạt ý nghĩa thống kê** |
+
+Chính tác giả viết: *"tuy lời khen làm tăng động lực bên trong ở sinh viên đại học, nó **không làm được như vậy ở trẻ em**."*
+
+Đây là lỗi nặng nhất, vì hai lẽ: đây là website nuôi con, và vì ngay đoạn dưới tôi lại dùng đúng nghiên cứu ấy để nói "phần thưởng gây hại cho trẻ nhiều hơn" — tức là lấy phần bất lợi cho trẻ nhưng bỏ phần chỉ đúng với người lớn. **Đã sửa cả bài viết lẫn sơ đồ.**
+
+**2. Bài "Cơn giận của con" dựa vào một cơ chế đã bị bác bỏ.**
+
+Đoạn giải thích *"khả năng kìm nén như bình xăng cạn dần trong ngày"* là một lý thuyết mà hai cuộc kiểm chứng lớn (24 và 36 phòng thí nghiệm, hơn 5.600 người) đều **không tìm lại được**. Vi phạm hai quy tắc của chính dự án: trình bày suy diễn như kết luận khoa học, và không nêu phía phản biện.
+
+Đã thay bằng đoạn trung thực hơn: giữ nguyên quan sát (buổi tối dễ cáu hơn), nhưng nói thẳng là **chưa ai giải thích chắc chắn được**, và nêu những nguyên nhân đời thường có căn cứ hơn (mệt, đói, thiếu ngủ).
+
+**3. Bài "Con chán học" ghi sai mốc tuổi.** Tôi viết *"trẻ dưới 14 tuổi"*. Nghiên cứu gốc nói mốc là **khoảng 16**, và quan trọng hơn: khả năng nghĩ xa **tiếp tục phát triển suốt tuổi teen sang cả tuổi thanh niên** — không có mốc nào để nó tự bật lên. Con số 14 vừa sai vừa gợi ý sai rằng từ 14 tuổi thì lập luận "sau này" bắt đầu hiệu quả.
+
+**4. Bài "Màn hình" bỏ sót con số quan trọng nhất với chính nhóm tuổi bài nhắm tới.**
+
+Tôi viết như thể Viện Nhi khoa Hoa Kỳ đã bỏ hết con số cho trẻ 6–14. Thực ra họ vẫn giữ, nguyên văn: giới hạn *"có thể dao động từ dưới 1 giờ/ngày với trẻ mẫu giáo, tới **1–2 giờ/ngày hoặc hơn** cho phần giải trí ở trẻ tuổi đi học và thiếu niên."* Đã bổ sung, kèm cả con số của WHO cho trẻ dưới 5 tuổi (dưới 2 tuổi: không màn hình; 2–4 tuổi: không quá 1 giờ).
+
+**MỘT LỖI VỀ GIỌNG VIẾT — dùng nỗi sợ**
+
+Bài *"Mười lăm phút, nhưng là mười lăm phút thật"* có câu: *"Đến tuổi teen, khi bạn muốn nghe, cánh cửa đã khép từ lâu."*
+
+Câu này vi phạm quy tắc *"tuyệt đối không dùng nỗi sợ hoặc cảm giác tội lỗi"*, nói với đúng nhóm cha mẹ đi làm vốn đã sẵn áy náy — và nó **mâu thuẫn với chính hai bài khác** trên website. Đã viết lại, và trỏ sang bài *"Khi con bắt đầu đóng cửa phòng"* để nói rõ: con kể ít đi ở tuổi teen phần lớn là bình thường, không phải bằng chứng bạn đã làm sai.
+
+**Bài đó còn một lỗi nữa:** tôi dùng nghiên cứu Milkie 2015 để nói "số giờ không quan trọng bằng chất lượng", nhưng bỏ mất hai điều chính nhóm tác giả nêu — **với tuổi teen thì số giờ CÓ ý nghĩa**, và họ **không hề đo chất lượng**. Đã bổ sung cả hai.
+
+**MỘT ĐIỀU CẦN NÓI MẠNH HƠN — đòn roi**
+
+Bài *"Kỷ luật không phải là phạt"* xếp *"đánh lại cho biết đau"* vào cột **"ít tác dụng"**, và viết *"điểm khác biệt không nằm ở nặng hay nhẹ"*. Với đòn roi thì điều đó chưa đủ. Đây là chỗ hiếm hoi bằng chứng đủ mạnh để nói thẳng: phân tích gộp **75 nghiên cứu trên 160.927 trẻ** tìm thấy 13/17 nhóm kết quả có liên hệ có ý nghĩa với việc đánh đòn, và **tất cả đều theo chiều bất lợi**. Không có lợi ích nào. Đã thêm đoạn này kèm nguồn.
+
+**Còn khoảng 20 lỗi vừa và nhỏ** — chủ yếu ba dạng:
+
+| Dạng lỗi | Ví dụ |
+| --- | --- |
+| **Gán nhầm nghiên cứu** | Phép so sánh anh chị em ruột là của **500 cặp song sinh ở Anh**, không phải nhóm 1.037 người New Zealand · Phần theo dõi tới tuổi 26 thuộc một nghiên cứu khác · Câu về can thiệp chức năng điều hành là của Diamond & Ling 2016, không phải Diamond 2013 |
+| **Số của nhóm A ghi thành nhóm B** | Nhóm đối chứng trong thí nghiệm kể chuyện **có đọc sách**, không phải "không đọc gì" · Hai con số 46,75% và 58,82% là số gộp hai cách kể, không phải của riêng truyện · Ba con số kẹo dẻo là của mẫu 552 trẻ, không phải 918 |
+| **Nói chắc hơn bằng chứng cho phép** | *"Không có nghiên cứu Harvard nào về việc nhà"* → thật ra là **không ai truy được** (vắng bằng chứng khác với bằng chứng vắng) · Đặt trong ngoặc kép một câu mà nguồn không nói · Khuyến cáo dành cho **giới nghiên cứu** bị trình bày như lời khuyên cho thai phụ |
+
+**Một chỗ tôi phải viết lại cả một mục**
+
+Mục *"Điều thứ hai: bỏ con vật biết nói đi"* trong bài *"Kể chuyện thế nào cho con đổi"* — tôi đã hiểu ngược kết luận của nhóm nghiên cứu. **Chính họ bác bỏ** cách giải thích rằng vấn đề nằm ở nhân vật là con vật; họ kết luận trẻ **hiểu được** truyện nhưng **không bắc cầu được** sang đời mình, và *"thứ quyết định là bài học, không phải bản thân câu chuyện."*
+
+Thú vị là khi sửa cho đúng, lời khuyên thực hành lại **mạnh hơn**: chính nhóm ấy còn có một thí nghiệm nữa mà tôi bỏ sót — **bỏ hẳn truyện đi, nói thẳng bài học trong 59 chữ, cho kết quả cao nhất: 67,33%.** Giờ mục đó đã có cả con số này.
+
+**Sửa thêm 9 sơ đồ**
+
+Sơ đồ mang số liệu, nên số sai trong bài thì sơ đồ cũng sai. Đã sửa 9 hình, gồm hai hình có lỗi độc lập: một hình vẽ cột cuối gần bằng không trong khi thật ra còn khoảng 21%, và một hình liệt kê 4 khả năng mà **2 khả năng không hề có trong bài**.
+
+**Bổ sung đầu mối hỗ trợ khẩn cấp**
+
+Hai bài có phần nói về dấu hiệu cần lo ở trẻ. Trước đây chỉ ghi "hãy trao đổi với bác sĩ hoặc chuyên gia" — đúng nhưng chưa đủ dùng lúc cần. Đã bổ sung **Tổng đài quốc gia bảo vệ trẻ em 111** (24/24, miễn phí, có tư vấn tâm lý).
+
+**Ảnh hưởng tới bạn**
+
+- **19 trong 22 bài có chữ thay đổi.** Không bài nào bị gỡ, không luận điểm chính nào bị đảo.
+- Số nguồn tăng từ 102 lên **112 link**, số bài có nguồn từ 14 lên **16**.
+- Trang web vẫn 70 trang, 0 lỗi, 0 cảnh báo.
+- **Điều đáng nói nhất:** những chỗ tôi sửa đều theo hướng **nói nhẹ đi, chứ không nói mạnh lên**. Nếu bạn thấy bài đọc bớt dứt khoát hơn trước — đó là chủ ý.
+
+**Nếu bạn muốn tự làm phần này**
+
+Bạn không cần tự kiểm chứng nguồn — đó là việc của tôi, và tôi vừa chứng minh là cần làm kỹ hơn. Nhưng có **ba câu hỏi** bạn hỏi tôi bất cứ lúc nào cũng được, và chúng bắt được phần lớn loại lỗi vừa rồi:
+
+1. *"Con số này là của nhóm tuổi nào?"* — bắt được lỗi nặng số 1.
+2. *"Câu trong ngoặc kép này có đúng nguyên văn không?"* — bắt được các lỗi trích dẫn.
+3. *"Nhóm đối chứng trong nghiên cứu đó làm gì?"* — bắt được lỗi số liệu nhóm A/nhóm B.
+
+Còn muốn tự đọc nguồn thì: mở bài trên website, kéo xuống cuối, bấm vào từng link ở mục **Nguồn tham khảo**. Phần **Ghi chú biên tập** ngay trên đó nói rõ chỗ nào là nghiên cứu, chỗ nào là ý kiến của tác giả.
+
+**Có gì cần bạn quyết không?**
+
+Không. Nhưng có **một việc tôi đề nghị**: từ nay cho tôi **soát nguồn định kỳ 6 tháng một lần** thay vì chỉ khi bạn hỏi. Lần này bạn tình cờ hỏi mới ra; nếu không hỏi thì bốn lỗi nặng kia còn nằm trên mạng. Muốn thì nhắn *"đặt lịch soát nguồn 6 tháng"*, tôi lập một tác vụ tự động.
+
+---
+
+### 25/08/2026 — Dạy trợ lý làm hình, và gỡ bốn chỗ trùng nghiên cứu
+
+**Người thực hiện:** Claude · **Loại:** Tự động hoá + biên tập nội dung
+
+**Trước hết, một đính chính**
+
+Ở mục 23/08 tôi có viết *"trợ lý chạy 8h sáng mai 24/08"* và hỏi bạn có muốn dạy nó làm hình không. Bạn trả lời **có**. Nhưng lúc bạn trả lời thì đã là **25/08** — trợ lý đã chạy xong buổi 24/08 rồi, với lời dặn **cũ**.
+
+Buổi 24/08 nhiều khả năng nó **không soạn bài nào**, và như vậy là đúng: nó kiểm tra thấy bạn vừa đăng bài ngày 19/08, tức là trong vòng 7 ngày, nên theo đúng quy tắc thì nó nghỉ. Bạn có nhận được tin nhắn nào sáng thứ Hai không thì cứ đối chiếu lại.
+
+Phần dạy làm hình vì thế **có hiệu lực từ buổi chạy tới: thứ Hai 31/08**.
+
+**Việc 1 — trợ lý giờ đã biết làm hình**
+
+Trước đây trợ lý chỉ soạn chữ. Bài nháp nó gửi sẽ không có ảnh bìa, không có sơ đồ, nhìn lệch hẳn so với 22 bài kia. Giờ trong phần việc của nó có thêm hẳn một bước làm hình, dùng đúng bộ khuôn và bảng màu sẵn có.
+
+Bốn điều tôi ràng buộc thêm cho nó, vì đây là thứ chạy tự động không ai ngồi canh:
+
+1. **Cấm tự chế màu mới.** Chỉ được dùng 3 màu đã kiểm định. Đây là chỗ dễ hỏng nhất — máy rất hay "sáng tạo" thêm màu, và chỉ cần một bài lệch màu là cả thư viện mất đồng bộ.
+2. **Sơ đồ phải mang số liệu thật lấy từ chính bài viết**, không phải hình trang trí.
+3. **Nếu làm hình thất bại thì vẫn gửi bài, nhưng phải nói rõ là chưa có hình** — thà thiếu hình còn hơn im lặng để bạn tưởng là đủ.
+4. Thêm một bước **tra trùng nghiên cứu**: trước khi đưa một nghiên cứu vào bài, nó phải tìm xem bài nào đã dùng chưa. Có rồi thì nhắc ngắn và trỏ sang, không trình bày lại từ đầu.
+
+Mọi ràng buộc cũ giữ nguyên: **bài luôn ở dạng nháp, cấm tự đăng, cấm chạy lệnh đẩy lên mạng, cấm bịa nguồn.**
+
+**Việc 2 — gỡ bốn chỗ trùng nghiên cứu**
+
+Rà soát hôm 23/08 phát hiện bốn nghiên cứu bị trình bày đầy đủ ở hai bài khác nhau. Bạn chọn sửa hết.
+
+**Nguyên tắc tôi dùng:** bài nào người đọc gặp trước thì **giữ nguyên phần trình bày đầy đủ**; bài gặp sau **nhắc gọn lại và trỏ sang bài kia**. Không bỏ nghiên cứu nào, không đổi luận điểm nào, không gỡ nguồn nào.
+
+| Nghiên cứu | Bài giữ đầy đủ | Bài rút gọn + trỏ sang |
+| --- | --- | --- |
+| "21 ngày thành thói quen" | *"Nếu… thì…"* (bài 4 trong loạt) | *Năm điều ai cũng nói về nuôi con* (bài 5) |
+| Gắn nhãn "người tốt bụng" | *Vì sao bác hàng xóm hiệu quả hơn danh nhân* (bài 2) | *Tự giác không mọc lên từ lời nhắc* (bài 3) |
+| 1.472 thanh thiếu niên — quy tắc và ép buộc | *Tự giác không mọc lên từ lời nhắc* | *Đi cùng con, không đi thay con* |
+| Phân tích gộp "nuôi con kiểu trực thăng" | *Khi con đã trưởng thành* | *Đi cùng con, không đi thay con* |
+
+Vì hai loạt bài đọc theo thứ tự, cách này hợp tự nhiên: đọc tới bài sau, bạn gặp câu *"bài trước đã nói kỹ điều này"* — nghe như người viết nhớ mình đã nói gì, chứ không phải lặp lại vì quên.
+
+**Một chỗ tôi cố ý KHÔNG sửa:** nghiên cứu Stattin & Kerr (cha mẹ biết chuyện của con chủ yếu vì con tự kể) xuất hiện ở cả bài *Não tuổi teen* lẫn bài *Khi con đã trưởng thành*. Nhưng bài sau đã tự trỏ về bằng câu *"điều đã đúng từ hồi con mười lăm tuổi và vẫn đúng bây giờ"* — đó là nhắc lại có chủ ý, đúng chỗ, nên để nguyên.
+
+**Sửa kèm một sơ đồ**
+
+Bảng "khen thế nào" trong bài *Tự giác* có một dòng trùng verbatim với bài *Bác hàng xóm*. Đã đổi dòng đó, và **đổi luôn sơ đồ đi kèm** cho khớp — nếu không thì bảng nói một đằng, hình vẽ nói một nẻo.
+
+**Ảnh hưởng tới bạn**
+
+- Bốn bài có chữ thay đổi: *Năm điều ai cũng nói…*, *Tự giác không mọc lên…*, *Đi cùng con…*, và một sơ đồ trong bài *Tự giác*.
+- **Thời gian đọc không đổi** (9, 8, 8 phút) — phần rút gọn và phần viết thêm bù nhau.
+- **Không nguồn nào bị gỡ.** Số link trong mỗi bài giữ nguyên.
+- Từ 31/08, bài nháp sáng thứ Hai sẽ có ảnh bìa và sơ đồ.
+
+**Nếu bạn muốn tự làm phần này**
+
+- **Xem trợ lý đang được dặn gì** → nhắn tôi *"cho tôi xem lời dặn của trợ lý"*, tôi in ra đầy đủ. Muốn đổi câu nào cứ nói.
+- **Tự tìm chỗ trùng nghiên cứu** → cách không cần gõ lệnh: mở hai bài cùng một loạt, đọc liền nhau. Chỗ nào bạn thấy *"cái này vừa đọc rồi"* thì đúng là chỗ đó.
+- **Sửa một dòng trong bảng của bài viết** → làm y như Phần C, việc 2. Nhưng nhớ: nếu bảng đó có sơ đồ đi kèm thì phải sửa cả sơ đồ, và sơ đồ thì cần gõ lệnh — nhắn tôi.
+- **Tắt trợ lý** → Phần C, việc 9.
+
+**Có gì cần bạn quyết không?**
+
+Không. Hai việc bạn giao đều đã xong.
+
+Còn lại vẫn là hai việc tôi chưa kiểm tra được (ghi ở mục 23/08): **mở website thật** và **kiểm tra 102 đường link nguồn có còn sống không**. Việc thứ hai nên làm định kỳ khoảng 6 tháng một lần — tức là quãng **tháng 2/2027**. Khi nào bạn nhắn, tôi mở lại từng link một.
 
 ---
 
