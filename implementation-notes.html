@@ -143,10 +143,10 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 
 <header class="masthead">
   <div class="wrap">
-    <span class="badge">Sổ tay vận hành · v1.4.0</span>
+    <span class="badge">Sổ tay vận hành · v1.5.0</span>
     <h1>Sổ tay vận hành dự án</h1>
     <p>Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì</p>
-    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-08-25 · Bản gốc: <code>implementation-notes.md</code></p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-09-03 · Bản gốc: <code>implementation-notes.md</code></p>
   </div>
 </header>
 
@@ -213,7 +213,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <p><strong>Nguyên tắc của sổ tay này:</strong> mỗi lần Claude chạm vào dự án, Claude <strong>bắt buộc</strong> ghi vào Phần F — đã làm gì, vì sao, ảnh hưởng gì tới bạn, và <em>nếu tự làm thì làm thế nào</em>. Bạn không phải nhớ. Bạn chỉ cần đọc.</p>
 <hr />
 <h2 id="phần-a-dự-án-đang-ở-đâu">PHẦN A — Dự án đang ở đâu</h2>
-<p><em>Cập nhật lần cuối: 25/08/2026</em></p>
+<p><em>Cập nhật lần cuối: 03/09/2026</em></p>
 <h3 id="tình-trạng-chung">Tình trạng chung</h3>
 <table>
 <colgroup>
@@ -294,6 +294,10 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <tr class="odd">
 <td>Trợ lý tự soạn bài</td>
 <td>✅ Bật — 8h sáng thứ Hai hằng tuần, chỉ khi tuần đó bạn chưa đăng bài (xem Phần C, việc 9)</td>
+</tr>
+<tr class="even">
+<td>Người soát bài định kỳ</td>
+<td>✅ Bật — 3 tháng một lần, soát nguồn + chuẩn mực + tính cập nhật + tính nhất quán (xem Phần C, việc 10)</td>
 </tr>
 </tbody>
 </table>
@@ -971,6 +975,98 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <p>⚠️ <strong>Một điều kiện quan trọng:</strong> trợ lý đọc mã nguồn <strong>trên GitHub</strong>, không đọc máy bạn. Nên <strong>bài nào bạn chưa Push thì trợ lý không nhìn thấy</strong>. Nếu bạn để dồn nhiều bài chưa push, trợ lý có thể viết trùng nội dung. Cách tránh: cứ duyệt xong thì Push luôn.</p>
 </blockquote>
 <hr />
+<h3 id="việc-10-người-soát-bài-định-kỳ-3-tháng-một-lần">Việc 10 — Người soát bài định kỳ, 3 tháng một lần</h3>
+<p>Từ 03/09/2026, có một tác vụ tự động thứ hai. Nó <strong>không viết bài</strong>. Việc của nó là <strong>đọc lại toàn bộ 22 bài và tìm chỗ sai</strong>.</p>
+<h4 id="vì-sao-cần">Vì sao cần</h4>
+<p>Tháng 8/2026, một lần soát tình cờ đã tìm ra <strong>4 lỗi nặng</strong> trong các bài đã đăng — tất cả do trợ lý AI viết sai ở những phiên trước. Lỗi nặng nhất: một con số đo trên <strong>sinh viên đại học</strong> bị trình bày như số của <strong>trẻ em</strong>, trên một website nuôi con.</p>
+<p>Những lỗi đó chỉ lộ ra vì bạn tình cờ hỏi <em>“có chỗ nào thiếu chính xác không?”</em>. Nếu không hỏi thì chúng vẫn còn trên mạng. <strong>Tác vụ này tồn tại để việc soát không còn phụ thuộc vào sự tình cờ.</strong></p>
+<h4 id="nó-soát-bốn-mặt">Nó soát bốn mặt</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mặt</th>
+<th>Nó tìm gì</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Nguồn có đúng không</strong></td>
+<td>Mở lại <strong>từng đường link</strong> trong mọi bài, đối chiếu từng con số, tên tác giả, năm, câu trích</td>
+</tr>
+<tr class="even">
+<td><strong>2. Có đúng chuẩn mực không</strong></td>
+<td>Có chỗ nào chẩn đoán trẻ, dùng nỗi sợ để thuyết phục, nói suy đoán như kết luận khoa học, hay chỉ nêu một phía của vấn đề còn tranh luận</td>
+</tr>
+<tr class="odd">
+<td><strong>3. Thông tin còn mới không</strong></td>
+<td>WHO, Viện Nhi khoa Hoa Kỳ, CDC, NHS, Bộ Y tế… <strong>có ra khuyến cáo mới hơn không</strong> kể từ ngày bài được viết</td>
+</tr>
+<tr class="even">
+<td><strong>4. Có nhất quán không</strong></td>
+<td>Sơ đồ có khớp với chữ trong bài · bài này có nói ngược bài kia không · bài có đúng như tiêu đề hứa không</td>
+</tr>
+</tbody>
+</table>
+<p>Mặt thứ 3 chính là lý do chọn <strong>3 tháng</strong> thay vì 6. Khuyến cáo y tế đổi khá thường xuyên — hướng dẫn về màn hình của Viện Nhi khoa Hoa Kỳ đổi hồi tháng 1/2026, và bài viết cũ lập tức thành lạc hậu mà không ai hay.</p>
+<h4 id="ba-điều-bảo-đảm">Ba điều bảo đảm</h4>
+<ul>
+<li><strong>Nó không sửa gì cả.</strong> Chỉ đọc và viết báo cáo. Không một chữ nào trên website đổi vì tác vụ này.</li>
+<li><strong>Nó không đụng vào GitHub.</strong> Không push, không tạo gì.</li>
+<li><strong>Nó không được bịa.</strong> Link nào không mở được thì phải ghi rõ <em>“KHÔNG MỞ ĐƯỢC”</em>, không được đoán.</li>
+</ul>
+<h4 id="bạn-nhận-được-gì">Bạn nhận được gì</h4>
+<p>Một file báo cáo gửi vào khung chat, viết bằng tiếng Việt thường. Với mỗi lỗi, báo cáo ghi đủ <strong>năm thứ</strong>:</p>
+<ol type="1">
+<li>Bài nào</li>
+<li><strong>Câu đang sai, chép nguyên văn</strong></li>
+<li>Nguồn <strong>thật sự</strong> nói gì, kèm link để bạn tự mở kiểm tra</li>
+<li><strong>Câu sửa đề xuất, viết sẵn</strong> — chỉ việc thay vào</li>
+<li>Vì sao lỗi đó đáng ngại</li>
+</ol>
+<p>Nếu không tìm thấy lỗi nào, nó phải nói thẳng là không có, <strong>không được bịa lỗi cho có</strong>. Một báo cáo sạch là kết quả tốt.</p>
+<h4 id="đọc-xong-rồi-làm-gì">Đọc xong rồi làm gì</h4>
+<p>Đọc báo cáo. Chỗ nào bạn thấy đúng thì nhắn Claude:</p>
+<blockquote>
+<p><em>“áp dụng bản soát nguồn”</em></p>
+</blockquote>
+<p>Claude sẽ sửa vào file trên máy bạn, rồi <strong>bạn xem lại trong GitHub Desktop</strong> và bấm Commit như mọi lần. Không có gì lên mạng mà bạn chưa nhìn qua.</p>
+<p>Chỗ nào bạn không đồng ý thì cứ bỏ qua — báo cáo là đề xuất, không phải mệnh lệnh.</p>
+<h4 id="muốn-đổi-hoặc-tắt-1">Muốn đổi hoặc tắt</h4>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Muốn gì</th>
+<th>Nhắn thế nào</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tắt hẳn</td>
+<td><em>“Tắt tác vụ soát nội dung định kỳ”</em></td>
+</tr>
+<tr class="even">
+<td>Soát dày hơn</td>
+<td><em>“Cho soát nội dung 1 tháng một lần”</em></td>
+</tr>
+<tr class="odd">
+<td>Soát ngay bây giờ</td>
+<td><em>“Soát lại toàn bộ nội dung website”</em></td>
+</tr>
+<tr class="even">
+<td>Chỉ soát một mặt</td>
+<td><em>“Lần tới chỉ soát xem khuyến cáo y tế có gì mới không”</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
 <h2 id="phần-d-từ-điển-15-từ-bạn-sẽ-gặp">PHẦN D — Từ điển: 15 từ bạn sẽ gặp</h2>
 <p>Giải thích bằng ví dụ đời thường, không dùng từ chuyên môn để giải thích từ chuyên môn.</p>
 <table>
@@ -1115,6 +1211,70 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <blockquote>
 <p>Claude ghi vào đây sau <strong>mỗi</strong> lần chạm vào dự án. Bạn chỉ đọc. Mục mới nhất nằm trên cùng.</p>
 </blockquote>
+<hr />
+<h3 id="bật-người-soát-bài-định-kỳ-3-tháng-một-lần">03/09/2026 — Bật người soát bài định kỳ, 3 tháng một lần</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Tự động hoá</p>
+<p><strong>Đã làm gì</strong></p>
+<p>Bật một tác vụ tự động <strong>thứ hai</strong>, chạy <strong>3 tháng một lần</strong> — lần đầu <strong>9 giờ sáng 01/10/2026</strong>, sau đó là 01/01, 01/04, 01/07…</p>
+<p>Nó <strong>không viết bài</strong>. Việc duy nhất của nó là <strong>đọc lại toàn bộ 22 bài và tìm chỗ sai</strong>, rồi gửi cho bạn một bản báo cáo. Toàn bộ cách nó hoạt động, bốn mặt nó soát, và cách đọc báo cáo — <strong>xem Phần C, việc 10</strong>.</p>
+<p><strong>Vì sao 3 tháng, không phải 6</strong></p>
+<p>Ban đầu tôi đề xuất 6 tháng. Bạn đổi thành 3, và bạn đúng.</p>
+<p>Lý do nằm ở mặt soát thứ ba: <strong>khuyến cáo y tế có còn mới không</strong>. Đây là thứ hỏng theo thời gian mà không ai hay biết — không phải lỗi ai viết sai, mà là thế giới đổi còn bài viết thì đứng yên. Đã có tiền lệ ngay trên chính website này: hướng dẫn về màn hình của Viện Nhi khoa Hoa Kỳ đổi hồi tháng 1/2026, và bài của mình lập tức thành lạc hậu.</p>
+<p>Sáu tháng nghĩa là một khuyến cáo lỗi thời có thể nằm trên mạng nửa năm trước khi ai đó phát hiện. Ba tháng thì không.</p>
+<p><strong>Bạn còn yêu cầu soát rộng hơn “chỉ nguồn”</strong></p>
+<p>Nguyên văn: <em>“rà soát sự chuẩn mực, đúng đắn, chính xác và phù hợp thông tin đúng với yêu cầu”</em>. Nên tác vụ soát <strong>bốn mặt</strong>, không phải một:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Mặt</th>
+<th>Bắt loại lỗi nào</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Nguồn</strong></td>
+<td>Con số sai, gán nhầm nghiên cứu, câu trích không đúng nguyên văn, link chết</td>
+</tr>
+<tr class="even">
+<td><strong>Chuẩn mực</strong></td>
+<td>Chẩn đoán trẻ · dùng nỗi sợ để thuyết phục · nói suy đoán như kết luận khoa học · chỉ nêu một phía</td>
+</tr>
+<tr class="odd">
+<td><strong>Tính cập nhật</strong></td>
+<td>Khuyến cáo của WHO / AAP / CDC / NHS / Bộ Y tế đã có bản mới hơn</td>
+</tr>
+<tr class="even">
+<td><strong>Nhất quán</strong></td>
+<td>Sơ đồ lệch với chữ · bài này nói ngược bài kia · bài không đúng như tiêu đề hứa</td>
+</tr>
+</tbody>
+</table>
+<p>Đợt soát tháng 8 vừa rồi bắt được lỗi ở <strong>cả bốn mặt</strong> — nên cả bốn đều đáng giữ.</p>
+<p><strong>Ba ràng buộc tôi đặt cho nó</strong></p>
+<p>Vì đây là thứ chạy tự động, không ai ngồi canh:</p>
+<ol type="1">
+<li><strong>Nó không được sửa gì cả.</strong> Chỉ đọc, chỉ báo cáo. Không một chữ nào trên website đổi vì tác vụ này. Bạn đọc báo cáo, thấy đúng thì nhắn Claude sửa, rồi vẫn tự duyệt trong GitHub Desktop như mọi lần.</li>
+<li><strong>Nó không được bịa.</strong> Link nào không mở được phải ghi rõ <em>“KHÔNG MỞ ĐƯỢC”</em>, cấm suy đoán. Câu sửa nó đề xuất cũng phải dựa trên nguồn nó đã thật sự mở.</li>
+<li><strong>Nó không được bịa lỗi cho có.</strong> Không tìm thấy gì thì phải nói thẳng là không có. Tôi ghi rõ trong lời dặn: <em>“một báo cáo sạch là kết quả tốt”</em> — nếu không nói câu đó, máy rất dễ moi ra vài lỗi vụn để trông như có làm việc.</li>
+</ol>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<ul>
+<li>Bốn lần mỗi năm bạn nhận một báo cáo. Đọc mất khoảng 10 phút.</li>
+<li><strong>Không có nghĩa vụ nào.</strong> Bỏ qua thì không có gì xảy ra, website vẫn nguyên.</li>
+<li>Website giờ có <strong>hai tác vụ tự động</strong>: một cái <strong>viết thêm</strong> (hằng tuần), một cái <strong>soát lại</strong> (3 tháng). Không cái nào tự đăng được bài.</li>
+</ul>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<ul>
+<li><strong>Xem tác vụ đang được dặn gì</strong> → nhắn <em>“cho tôi xem lời dặn của tác vụ soát nội dung”</em>, tôi in ra đầy đủ.</li>
+<li><strong>Đổi lịch, tắt, hoặc soát ngay</strong> → bảng ở cuối Phần C việc 10, chỉ cần nhắn một câu.</li>
+<li><strong>Tự soát mà không cần ai</strong> → ba câu hỏi bắt được phần lớn lỗi, đã ghi ở mục nhật ký 25/08: <em>“Con số này là của nhóm tuổi nào?”</em> · <em>“Câu trong ngoặc kép có đúng nguyên văn không?”</em> · <em>“Nhóm đối chứng trong nghiên cứu đó làm gì?”</em></li>
+</ul>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Không. Nhưng có một việc <strong>nên làm khi nhận báo cáo đầu tiên ngày 01/10</strong>: đọc xem nó có bắt đúng thứ đáng bắt không. Nếu nó báo toàn chuyện vụn vặt, hoặc bỏ sót thứ bạn thấy quan trọng, cứ nói — tôi chỉnh lại lời dặn cho lần sau.</p>
 <hr />
 <h3 id="soát-lại-toàn-bộ-nguồn-khoa-học-tìm-ra-4-lỗi-nặng-và-20-lỗi-vừa">25/08/2026 — Soát lại toàn bộ nguồn khoa học: tìm ra 4 lỗi nặng và ~20 lỗi vừa</h3>
 <p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Sửa lỗi nội dung — <strong>mục quan trọng nhất trong sổ tay này</strong></p>

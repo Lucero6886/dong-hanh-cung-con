@@ -1,8 +1,8 @@
 ---
 title: "Sổ tay vận hành dự án"
 subtitle: "Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì"
-version: "1.4.0"
-date: "2026-08-25"
+version: "1.5.0"
+date: "2026-09-03"
 ---
 
 # Sổ tay vận hành dự án
@@ -27,7 +27,7 @@ date: "2026-08-25"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 25/08/2026*
+*Cập nhật lần cuối: 03/09/2026*
 
 ### Tình trạng chung
 
@@ -50,6 +50,7 @@ date: "2026-08-25"
 | Hình minh hoạ | **22 ảnh bìa** + **28 sơ đồ** trong bài — mọi bài đều có ảnh bìa và ít nhất một sơ đồ |
 | Tình trạng kỹ thuật | ✅ Chạy tốt, 0 lỗi, 0 cảnh báo |
 | Trợ lý tự soạn bài | ✅ Bật — 8h sáng thứ Hai hằng tuần, chỉ khi tuần đó bạn chưa đăng bài (xem Phần C, việc 9) |
+| Người soát bài định kỳ | ✅ Bật — 3 tháng một lần, soát nguồn + chuẩn mực + tính cập nhật + tính nhất quán (xem Phần C, việc 10) |
 
 ### Hai mươi hai bài viết hiện có
 
@@ -508,6 +509,66 @@ Nhắn cho Claude một câu là được:
 
 ---
 
+### Việc 10 — Người soát bài định kỳ, 3 tháng một lần
+
+Từ 03/09/2026, có một tác vụ tự động thứ hai. Nó **không viết bài**. Việc của nó là **đọc lại toàn bộ 22 bài và tìm chỗ sai**.
+
+#### Vì sao cần
+
+Tháng 8/2026, một lần soát tình cờ đã tìm ra **4 lỗi nặng** trong các bài đã đăng — tất cả do trợ lý AI viết sai ở những phiên trước. Lỗi nặng nhất: một con số đo trên **sinh viên đại học** bị trình bày như số của **trẻ em**, trên một website nuôi con.
+
+Những lỗi đó chỉ lộ ra vì bạn tình cờ hỏi *"có chỗ nào thiếu chính xác không?"*. Nếu không hỏi thì chúng vẫn còn trên mạng. **Tác vụ này tồn tại để việc soát không còn phụ thuộc vào sự tình cờ.**
+
+#### Nó soát bốn mặt
+
+| Mặt | Nó tìm gì |
+| --- | --- |
+| **1. Nguồn có đúng không** | Mở lại **từng đường link** trong mọi bài, đối chiếu từng con số, tên tác giả, năm, câu trích |
+| **2. Có đúng chuẩn mực không** | Có chỗ nào chẩn đoán trẻ, dùng nỗi sợ để thuyết phục, nói suy đoán như kết luận khoa học, hay chỉ nêu một phía của vấn đề còn tranh luận |
+| **3. Thông tin còn mới không** | WHO, Viện Nhi khoa Hoa Kỳ, CDC, NHS, Bộ Y tế… **có ra khuyến cáo mới hơn không** kể từ ngày bài được viết |
+| **4. Có nhất quán không** | Sơ đồ có khớp với chữ trong bài · bài này có nói ngược bài kia không · bài có đúng như tiêu đề hứa không |
+
+Mặt thứ 3 chính là lý do chọn **3 tháng** thay vì 6. Khuyến cáo y tế đổi khá thường xuyên — hướng dẫn về màn hình của Viện Nhi khoa Hoa Kỳ đổi hồi tháng 1/2026, và bài viết cũ lập tức thành lạc hậu mà không ai hay.
+
+#### Ba điều bảo đảm
+
+- **Nó không sửa gì cả.** Chỉ đọc và viết báo cáo. Không một chữ nào trên website đổi vì tác vụ này.
+- **Nó không đụng vào GitHub.** Không push, không tạo gì.
+- **Nó không được bịa.** Link nào không mở được thì phải ghi rõ *"KHÔNG MỞ ĐƯỢC"*, không được đoán.
+
+#### Bạn nhận được gì
+
+Một file báo cáo gửi vào khung chat, viết bằng tiếng Việt thường. Với mỗi lỗi, báo cáo ghi đủ **năm thứ**:
+
+1. Bài nào
+2. **Câu đang sai, chép nguyên văn**
+3. Nguồn **thật sự** nói gì, kèm link để bạn tự mở kiểm tra
+4. **Câu sửa đề xuất, viết sẵn** — chỉ việc thay vào
+5. Vì sao lỗi đó đáng ngại
+
+Nếu không tìm thấy lỗi nào, nó phải nói thẳng là không có, **không được bịa lỗi cho có**. Một báo cáo sạch là kết quả tốt.
+
+#### Đọc xong rồi làm gì
+
+Đọc báo cáo. Chỗ nào bạn thấy đúng thì nhắn Claude:
+
+> *"áp dụng bản soát nguồn"*
+
+Claude sẽ sửa vào file trên máy bạn, rồi **bạn xem lại trong GitHub Desktop** và bấm Commit như mọi lần. Không có gì lên mạng mà bạn chưa nhìn qua.
+
+Chỗ nào bạn không đồng ý thì cứ bỏ qua — báo cáo là đề xuất, không phải mệnh lệnh.
+
+#### Muốn đổi hoặc tắt
+
+| Muốn gì | Nhắn thế nào |
+| --- | --- |
+| Tắt hẳn | *"Tắt tác vụ soát nội dung định kỳ"* |
+| Soát dày hơn | *"Cho soát nội dung 1 tháng một lần"* |
+| Soát ngay bây giờ | *"Soát lại toàn bộ nội dung website"* |
+| Chỉ soát một mặt | *"Lần tới chỉ soát xem khuyến cáo y tế có gì mới không"* |
+
+---
+
 ## PHẦN D — Từ điển: 15 từ bạn sẽ gặp
 
 Giải thích bằng ví dụ đời thường, không dùng từ chuyên môn để giải thích từ chuyên môn.
@@ -623,6 +684,63 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 > Claude ghi vào đây sau **mỗi** lần chạm vào dự án. Bạn chỉ đọc.
 > Mục mới nhất nằm trên cùng.
+
+---
+
+### 03/09/2026 — Bật người soát bài định kỳ, 3 tháng một lần
+
+**Người thực hiện:** Claude · **Loại:** Tự động hoá
+
+**Đã làm gì**
+
+Bật một tác vụ tự động **thứ hai**, chạy **3 tháng một lần** — lần đầu **9 giờ sáng 01/10/2026**, sau đó là 01/01, 01/04, 01/07…
+
+Nó **không viết bài**. Việc duy nhất của nó là **đọc lại toàn bộ 22 bài và tìm chỗ sai**, rồi gửi cho bạn một bản báo cáo. Toàn bộ cách nó hoạt động, bốn mặt nó soát, và cách đọc báo cáo — **xem Phần C, việc 10**.
+
+**Vì sao 3 tháng, không phải 6**
+
+Ban đầu tôi đề xuất 6 tháng. Bạn đổi thành 3, và bạn đúng.
+
+Lý do nằm ở mặt soát thứ ba: **khuyến cáo y tế có còn mới không**. Đây là thứ hỏng theo thời gian mà không ai hay biết — không phải lỗi ai viết sai, mà là thế giới đổi còn bài viết thì đứng yên. Đã có tiền lệ ngay trên chính website này: hướng dẫn về màn hình của Viện Nhi khoa Hoa Kỳ đổi hồi tháng 1/2026, và bài của mình lập tức thành lạc hậu.
+
+Sáu tháng nghĩa là một khuyến cáo lỗi thời có thể nằm trên mạng nửa năm trước khi ai đó phát hiện. Ba tháng thì không.
+
+**Bạn còn yêu cầu soát rộng hơn "chỉ nguồn"**
+
+Nguyên văn: *"rà soát sự chuẩn mực, đúng đắn, chính xác và phù hợp thông tin đúng với yêu cầu"*. Nên tác vụ soát **bốn mặt**, không phải một:
+
+| Mặt | Bắt loại lỗi nào |
+| --- | --- |
+| **Nguồn** | Con số sai, gán nhầm nghiên cứu, câu trích không đúng nguyên văn, link chết |
+| **Chuẩn mực** | Chẩn đoán trẻ · dùng nỗi sợ để thuyết phục · nói suy đoán như kết luận khoa học · chỉ nêu một phía |
+| **Tính cập nhật** | Khuyến cáo của WHO / AAP / CDC / NHS / Bộ Y tế đã có bản mới hơn |
+| **Nhất quán** | Sơ đồ lệch với chữ · bài này nói ngược bài kia · bài không đúng như tiêu đề hứa |
+
+Đợt soát tháng 8 vừa rồi bắt được lỗi ở **cả bốn mặt** — nên cả bốn đều đáng giữ.
+
+**Ba ràng buộc tôi đặt cho nó**
+
+Vì đây là thứ chạy tự động, không ai ngồi canh:
+
+1. **Nó không được sửa gì cả.** Chỉ đọc, chỉ báo cáo. Không một chữ nào trên website đổi vì tác vụ này. Bạn đọc báo cáo, thấy đúng thì nhắn Claude sửa, rồi vẫn tự duyệt trong GitHub Desktop như mọi lần.
+2. **Nó không được bịa.** Link nào không mở được phải ghi rõ *"KHÔNG MỞ ĐƯỢC"*, cấm suy đoán. Câu sửa nó đề xuất cũng phải dựa trên nguồn nó đã thật sự mở.
+3. **Nó không được bịa lỗi cho có.** Không tìm thấy gì thì phải nói thẳng là không có. Tôi ghi rõ trong lời dặn: *"một báo cáo sạch là kết quả tốt"* — nếu không nói câu đó, máy rất dễ moi ra vài lỗi vụn để trông như có làm việc.
+
+**Ảnh hưởng tới bạn**
+
+- Bốn lần mỗi năm bạn nhận một báo cáo. Đọc mất khoảng 10 phút.
+- **Không có nghĩa vụ nào.** Bỏ qua thì không có gì xảy ra, website vẫn nguyên.
+- Website giờ có **hai tác vụ tự động**: một cái **viết thêm** (hằng tuần), một cái **soát lại** (3 tháng). Không cái nào tự đăng được bài.
+
+**Nếu bạn muốn tự làm phần này**
+
+- **Xem tác vụ đang được dặn gì** → nhắn *"cho tôi xem lời dặn của tác vụ soát nội dung"*, tôi in ra đầy đủ.
+- **Đổi lịch, tắt, hoặc soát ngay** → bảng ở cuối Phần C việc 10, chỉ cần nhắn một câu.
+- **Tự soát mà không cần ai** → ba câu hỏi bắt được phần lớn lỗi, đã ghi ở mục nhật ký 25/08: *"Con số này là của nhóm tuổi nào?"* · *"Câu trong ngoặc kép có đúng nguyên văn không?"* · *"Nhóm đối chứng trong nghiên cứu đó làm gì?"*
+
+**Có gì cần bạn quyết không?**
+
+Không. Nhưng có một việc **nên làm khi nhận báo cáo đầu tiên ngày 01/10**: đọc xem nó có bắt đúng thứ đáng bắt không. Nếu nó báo toàn chuyện vụn vặt, hoặc bỏ sót thứ bạn thấy quan trọng, cứ nói — tôi chỉnh lại lời dặn cho lần sau.
 
 ---
 

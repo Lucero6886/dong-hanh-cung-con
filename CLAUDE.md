@@ -107,6 +107,17 @@ Kiểm tra Phần A của `implementation-notes.md` mỗi đầu phiên.
 
 **Tính đến 23/08/2026: không còn việc thiết lập nào chờ chủ dự án.** Toàn bộ đã xong — tài khoản GitHub `Lucero6886`, `DEPLOY.siteUrl` đã điền `https://lucero6886.github.io`, GitHub Desktop đã cài, GitHub Pages đã bật, website chạy thật từ 11/08/2026.
 
+## Hai tác vụ tự động đang chạy
+
+| Tác vụ | Lịch | Làm gì | Ràng buộc |
+| --- | --- | --- | --- |
+| Soạn bài nháp | 8h sáng thứ Hai hằng tuần | Viết một bài nháp kèm ảnh bìa + sơ đồ, **chỉ khi** 7 ngày qua chưa có bài mới | `draft: true` bắt buộc · cấm push · cấm chế màu mới |
+| Soát nội dung | 9h sáng ngày 1, mỗi 3 tháng (1/10, 1/1, 1/4, 1/7) | Soát 4 mặt: nguồn · chuẩn mực biên tập · tính cập nhật của khuyến cáo y tế · tính nhất quán. Gửi báo cáo kèm câu sửa đề xuất | **Chỉ đọc, không sửa file** · cấm push · cấm bịa · cấm bịa lỗi cho có |
+
+Chi tiết cho chủ dự án: `implementation-notes.md` Phần C, việc 9 và việc 10.
+
+Khi chủ dự án nhắn **"áp dụng bản soát nguồn"** → đọc báo cáo gần nhất, sửa vào file, ghi Phần F, rồi chuyển sang máy anh ấy để tự duyệt bằng GitHub Desktop.
+
 ## Cách đưa thay đổi lên mạng
 
 **Claude KHÔNG tự đẩy code lên GitHub.** Quy trình đã thống nhất: Claude ghi file vào thư mục
