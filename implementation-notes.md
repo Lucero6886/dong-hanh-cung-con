@@ -1,8 +1,8 @@
 ---
 title: "Sổ tay vận hành dự án"
 subtitle: "Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì"
-version: "1.5.0"
-date: "2026-09-03"
+version: "1.5.1"
+date: "2026-09-06"
 ---
 
 # Sổ tay vận hành dự án
@@ -27,7 +27,7 @@ date: "2026-09-03"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 03/09/2026*
+*Cập nhật lần cuối: 06/09/2026*
 
 ### Tình trạng chung
 
@@ -63,7 +63,7 @@ Website hiện có **hai loạt bài đọc theo thứ tự**, và mười một
 | 1 | Kể chuyện thế nào thì con thực sự đổi ⭐ | Nhân cách & tấm gương | 7 |
 | 2 | Vì sao bác hàng xóm hiệu quả hơn danh nhân | Nhân cách & tấm gương | 7 |
 | 3 | Tự giác không mọc lên từ lời nhắc | Động lực & thói quen | 8 |
-| 4 | "Nếu… thì…" — câu nói ngắn hiệu quả hơn trăm lời nhắc | Động lực & thói quen | 7 |
+| 4 | "Nếu… thì…" — câu nói ngắn hiệu quả hơn trăm lời nhắc | Động lực & thói quen | 8 |
 | 5 | Năm điều ai cũng nói về nuôi con — mà nghiên cứu không ủng hộ | Góc suy ngẫm của cha mẹ | 9 |
 
 **Loạt 2 — Đi theo từng giai đoạn của con** — xem tại `/journeys/di-theo-tung-giai-doan/`
@@ -687,6 +687,72 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 ---
 
+### 06/09/2026 — Sửa một câu khó hiểu trong bài "Nếu… thì…"
+
+**Người thực hiện:** Claude · **Loại:** Sửa nội dung — do bạn phát hiện
+
+**Bạn chỉ ra chỗ nào**
+
+Dòng phụ đề của bài *"Nếu… thì…"* viết:
+
+> *"Cách xây thói quen có bằng chứng mạnh nhất, và nó **mạnh nhất ở đúng những đứa trẻ khó nhất**"*
+
+Bạn hỏi: **"đứa trẻ khó nhất" là nghĩa gì?**
+
+**Câu trả lời thành thật: nó không có nghĩa rõ ràng nào cả.** Đó là chữ tôi tự nghĩ ra, và nó sai theo ba cách.
+
+**Ba cái sai**
+
+**1. Mơ hồ.** Người đọc không thể biết "khó" là khó thế nào — khó bảo? khó tính? học khó vào? Bạn đọc mà không hiểu thì phụ huynh khác cũng vậy.
+
+**2. Nó dán nhãn cho đứa trẻ.** "Đứa trẻ khó" là một lời phán về **con là ai**, không phải mô tả một việc đang xảy ra. Trớ trêu là chính website này có hẳn một bài nói rằng nhãn dính rất lâu — bài *"Tự giác không mọc lên từ lời nhắc"* viết: *"con là đứa lười", "con lúc nào cũng thế" — những câu ấy ở lại rất lâu trong đầu một đứa trẻ.* Vậy mà phụ đề của bài ngay bên cạnh lại đi dán nhãn.
+
+**3. Nói quá so với nghiên cứu.** Nguồn ghi *"stronger"* (rõ hơn), tôi dịch thành *"mạnh nhất"*. Và phần về trẻ khó tập trung, nguồn có kèm điều kiện *"trong một số phép phân tích"* — tôi bỏ mất.
+
+**Nghiên cứu thật sự nói gì**
+
+Tôi mở lại bản gốc. Nguyên văn kết luận của nhóm tác giả:
+
+> *"Hiệu quả rõ hơn ở các nghiên cứu trên trẻ nhỏ hơn và (trong một số phép phân tích) trẻ có ADHD, cho thấy kế hoạch 'nếu–thì' **đặc biệt hiệu quả khi khả năng tự điều chỉnh của trẻ còn hạn chế**."*
+
+Vế cuối chính là thứ tôi cần viết ngay từ đầu. Nó **không** nói về đứa trẻ khó hay dễ. Nó nói về **một khả năng đang trên đường hình thành**: khả năng tự nhắc mình. Con càng nhỏ thì khả năng ấy càng chưa sẵn sàng — đó là chuyện phát triển bình thường, không phải khuyết điểm của con.
+
+**Đã sửa thành gì**
+
+| Chỗ | Trước | Sau |
+| --- | --- | --- |
+| Phụ đề | "…mạnh nhất ở đúng những đứa trẻ khó nhất" | "…và nó giúp được nhiều nhất **đúng lúc con chưa tự nhắc mình được**" |
+| Mô tả bài | "mạnh nhất ở trẻ nhỏ và trẻ hay mất tập trung" | "**rõ hơn** ở trẻ nhỏ, ở những em còn khó giữ tập trung" |
+| Thân bài | "nghĩa là mạnh nhất ở đúng chỗ cha mẹ thấy bế tắc nhất" | Trích thẳng lời giải thích của nhóm tác giả, rồi diễn giải bằng lời thường |
+
+Đoạn trong thân bài giờ nói rõ cơ chế thay vì để người đọc tự đoán:
+
+> Câu "nếu… thì…" **làm hộ con phần việc mà con chưa tự làm được** — phần tự nhắc mình. Con càng nhỏ, hoặc càng khó giữ tập trung, thì phần ấy càng chưa sẵn sàng, nên chỗ dựa từ bên ngoài càng có ích. Đến khi con tự làm được thì câu nói ấy tự nhiên hết cần.
+
+**Ảnh hưởng tới bạn**
+
+- Một bài có chữ thay đổi. Bài dài thêm chút ít, **thời gian đọc từ 7 lên 8 phút** — đã sửa lại con số trong Phần A.
+- Phụ đề hiện ở đầu bài và trong danh sách bài, nên đây là thay đổi bạn nhìn thấy ngay.
+- Không đụng tới nguồn nào, không đổi luận điểm nào.
+
+**Nếu bạn muốn tự làm phần này**
+
+Sửa phụ đề là việc bạn tự làm được trên web, không cần tôi: vào GitHub, mở file bài viết, sửa dòng bắt đầu bằng `subtitle:` — làm y như Phần C, việc 2. Nhớ giữ nguyên hai dấu nháy kép ở hai đầu.
+
+**Một điều đáng rút ra**
+
+Đây là **lỗi mà cả hai đợt soát tự động đều có thể bỏ sót**, vì nó không sai con số và không sai nguồn — nó chỉ **tối nghĩa**. Máy đọc thấy câu đúng ngữ pháp, có nghiên cứu đứng sau, nên cho qua.
+
+Người đọc thật thì vấp ngay.
+
+Nên tôi đã bổ sung vào lời dặn của tác vụ soát định kỳ một tiêu chí nữa: **tìm những câu mà người đọc bình thường không hiểu được, và những chỗ dán nhãn cho trẻ.**
+
+**Có gì cần bạn quyết không?**
+
+Không. Nhưng cứ tiếp tục chỉ ra những câu bạn thấy khó hiểu như vừa rồi — đó là loại lỗi tôi khó tự bắt nhất.
+
+---
+
 ### 03/09/2026 — Bật người soát bài định kỳ, 3 tháng một lần
 
 **Người thực hiện:** Claude · **Loại:** Tự động hoá
@@ -1135,7 +1201,7 @@ Bạn hỏi có nghiên cứu nào về việc dạy đức tính tốt qua chuy
 | 1 | Kể chuyện thế nào thì con thực sự đổi ⭐ | Truyện răn đe (Pinocchio, cậu bé chăn cừu) **không có tác dụng**. Chuyện cho thấy nói thật thì được gì mới có |
 | 2 | Vì sao bác hàng xóm hiệu quả hơn danh nhân | Tấm gương với tới được hiệu quả hơn tấm gương vĩ đại; kể toàn thành tựu thì phản tác dụng |
 | 3 | Tự giác không mọc lên từ lời nhắc | Ba việc làm với ý tốt mà làm mòn tự giác: thưởng sai, khen sai, gắn nhãn |
-| 4 | "Nếu… thì…" — câu nói ngắn hiệu quả hơn trăm lời nhắc | Cách xây thói quen có bằng chứng mạnh nhất, và mạnh nhất ở trẻ nhỏ và trẻ khó tập trung |
+| 4 | "Nếu… thì…" — câu nói ngắn hiệu quả hơn trăm lời nhắc | Cách xây thói quen có bằng chứng mạnh nhất, và rõ hơn ở trẻ nhỏ và trẻ khó giữ tập trung |
 | 5 | Năm điều ai cũng nói về nuôi con — mà nghiên cứu không ủng hộ | Kẹo dẻo, "nghiên cứu Harvard về việc nhà", 21 ngày, grit, tư duy phát triển |
 
 Kèm theo, hai thay đổi cấu hình:

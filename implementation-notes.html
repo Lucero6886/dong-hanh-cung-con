@@ -143,10 +143,10 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 
 <header class="masthead">
   <div class="wrap">
-    <span class="badge">Sổ tay vận hành · v1.5.0</span>
+    <span class="badge">Sổ tay vận hành · v1.5.1</span>
     <h1>Sổ tay vận hành dự án</h1>
     <p>Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì</p>
-    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-09-03 · Bản gốc: <code>implementation-notes.md</code></p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-09-06 · Bản gốc: <code>implementation-notes.md</code></p>
   </div>
 </header>
 
@@ -213,7 +213,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <p><strong>Nguyên tắc của sổ tay này:</strong> mỗi lần Claude chạm vào dự án, Claude <strong>bắt buộc</strong> ghi vào Phần F — đã làm gì, vì sao, ảnh hưởng gì tới bạn, và <em>nếu tự làm thì làm thế nào</em>. Bạn không phải nhớ. Bạn chỉ cần đọc.</p>
 <hr />
 <h2 id="phần-a-dự-án-đang-ở-đâu">PHẦN A — Dự án đang ở đâu</h2>
-<p><em>Cập nhật lần cuối: 03/09/2026</em></p>
+<p><em>Cập nhật lần cuối: 06/09/2026</em></p>
 <h3 id="tình-trạng-chung">Tình trạng chung</h3>
 <table>
 <colgroup>
@@ -342,7 +342,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <td>4</td>
 <td>“Nếu… thì…” — câu nói ngắn hiệu quả hơn trăm lời nhắc</td>
 <td>Động lực &amp; thói quen</td>
-<td>7</td>
+<td>8</td>
 </tr>
 <tr class="odd">
 <td>5</td>
@@ -1212,6 +1212,76 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <p>Claude ghi vào đây sau <strong>mỗi</strong> lần chạm vào dự án. Bạn chỉ đọc. Mục mới nhất nằm trên cùng.</p>
 </blockquote>
 <hr />
+<h3 id="sửa-một-câu-khó-hiểu-trong-bài-nếu-thì">06/09/2026 — Sửa một câu khó hiểu trong bài “Nếu… thì…”</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Sửa nội dung — do bạn phát hiện</p>
+<p><strong>Bạn chỉ ra chỗ nào</strong></p>
+<p>Dòng phụ đề của bài <em>“Nếu… thì…”</em> viết:</p>
+<blockquote>
+<p><em>“Cách xây thói quen có bằng chứng mạnh nhất, và nó <strong>mạnh nhất ở đúng những đứa trẻ khó nhất</strong>”</em></p>
+</blockquote>
+<p>Bạn hỏi: <strong>“đứa trẻ khó nhất” là nghĩa gì?</strong></p>
+<p><strong>Câu trả lời thành thật: nó không có nghĩa rõ ràng nào cả.</strong> Đó là chữ tôi tự nghĩ ra, và nó sai theo ba cách.</p>
+<p><strong>Ba cái sai</strong></p>
+<p><strong>1. Mơ hồ.</strong> Người đọc không thể biết “khó” là khó thế nào — khó bảo? khó tính? học khó vào? Bạn đọc mà không hiểu thì phụ huynh khác cũng vậy.</p>
+<p><strong>2. Nó dán nhãn cho đứa trẻ.</strong> “Đứa trẻ khó” là một lời phán về <strong>con là ai</strong>, không phải mô tả một việc đang xảy ra. Trớ trêu là chính website này có hẳn một bài nói rằng nhãn dính rất lâu — bài <em>“Tự giác không mọc lên từ lời nhắc”</em> viết: <em>“con là đứa lười”, “con lúc nào cũng thế” — những câu ấy ở lại rất lâu trong đầu một đứa trẻ.</em> Vậy mà phụ đề của bài ngay bên cạnh lại đi dán nhãn.</p>
+<p><strong>3. Nói quá so với nghiên cứu.</strong> Nguồn ghi <em>“stronger”</em> (rõ hơn), tôi dịch thành <em>“mạnh nhất”</em>. Và phần về trẻ khó tập trung, nguồn có kèm điều kiện <em>“trong một số phép phân tích”</em> — tôi bỏ mất.</p>
+<p><strong>Nghiên cứu thật sự nói gì</strong></p>
+<p>Tôi mở lại bản gốc. Nguyên văn kết luận của nhóm tác giả:</p>
+<blockquote>
+<p><em>“Hiệu quả rõ hơn ở các nghiên cứu trên trẻ nhỏ hơn và (trong một số phép phân tích) trẻ có ADHD, cho thấy kế hoạch ‘nếu–thì’ <strong>đặc biệt hiệu quả khi khả năng tự điều chỉnh của trẻ còn hạn chế</strong>.”</em></p>
+</blockquote>
+<p>Vế cuối chính là thứ tôi cần viết ngay từ đầu. Nó <strong>không</strong> nói về đứa trẻ khó hay dễ. Nó nói về <strong>một khả năng đang trên đường hình thành</strong>: khả năng tự nhắc mình. Con càng nhỏ thì khả năng ấy càng chưa sẵn sàng — đó là chuyện phát triển bình thường, không phải khuyết điểm của con.</p>
+<p><strong>Đã sửa thành gì</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Chỗ</th>
+<th>Trước</th>
+<th>Sau</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Phụ đề</td>
+<td>“…mạnh nhất ở đúng những đứa trẻ khó nhất”</td>
+<td>“…và nó giúp được nhiều nhất <strong>đúng lúc con chưa tự nhắc mình được</strong>”</td>
+</tr>
+<tr class="even">
+<td>Mô tả bài</td>
+<td>“mạnh nhất ở trẻ nhỏ và trẻ hay mất tập trung”</td>
+<td>“<strong>rõ hơn</strong> ở trẻ nhỏ, ở những em còn khó giữ tập trung”</td>
+</tr>
+<tr class="odd">
+<td>Thân bài</td>
+<td>“nghĩa là mạnh nhất ở đúng chỗ cha mẹ thấy bế tắc nhất”</td>
+<td>Trích thẳng lời giải thích của nhóm tác giả, rồi diễn giải bằng lời thường</td>
+</tr>
+</tbody>
+</table>
+<p>Đoạn trong thân bài giờ nói rõ cơ chế thay vì để người đọc tự đoán:</p>
+<blockquote>
+<p>Câu “nếu… thì…” <strong>làm hộ con phần việc mà con chưa tự làm được</strong> — phần tự nhắc mình. Con càng nhỏ, hoặc càng khó giữ tập trung, thì phần ấy càng chưa sẵn sàng, nên chỗ dựa từ bên ngoài càng có ích. Đến khi con tự làm được thì câu nói ấy tự nhiên hết cần.</p>
+</blockquote>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<ul>
+<li>Một bài có chữ thay đổi. Bài dài thêm chút ít, <strong>thời gian đọc từ 7 lên 8 phút</strong> — đã sửa lại con số trong Phần A.</li>
+<li>Phụ đề hiện ở đầu bài và trong danh sách bài, nên đây là thay đổi bạn nhìn thấy ngay.</li>
+<li>Không đụng tới nguồn nào, không đổi luận điểm nào.</li>
+</ul>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<p>Sửa phụ đề là việc bạn tự làm được trên web, không cần tôi: vào GitHub, mở file bài viết, sửa dòng bắt đầu bằng <code>subtitle:</code> — làm y như Phần C, việc 2. Nhớ giữ nguyên hai dấu nháy kép ở hai đầu.</p>
+<p><strong>Một điều đáng rút ra</strong></p>
+<p>Đây là <strong>lỗi mà cả hai đợt soát tự động đều có thể bỏ sót</strong>, vì nó không sai con số và không sai nguồn — nó chỉ <strong>tối nghĩa</strong>. Máy đọc thấy câu đúng ngữ pháp, có nghiên cứu đứng sau, nên cho qua.</p>
+<p>Người đọc thật thì vấp ngay.</p>
+<p>Nên tôi đã bổ sung vào lời dặn của tác vụ soát định kỳ một tiêu chí nữa: <strong>tìm những câu mà người đọc bình thường không hiểu được, và những chỗ dán nhãn cho trẻ.</strong></p>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Không. Nhưng cứ tiếp tục chỉ ra những câu bạn thấy khó hiểu như vừa rồi — đó là loại lỗi tôi khó tự bắt nhất.</p>
+<hr />
 <h3 id="bật-người-soát-bài-định-kỳ-3-tháng-một-lần">03/09/2026 — Bật người soát bài định kỳ, 3 tháng một lần</h3>
 <p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Tự động hoá</p>
 <p><strong>Đã làm gì</strong></p>
@@ -1740,7 +1810,7 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <tr class="even">
 <td>4</td>
 <td>“Nếu… thì…” — câu nói ngắn hiệu quả hơn trăm lời nhắc</td>
-<td>Cách xây thói quen có bằng chứng mạnh nhất, và mạnh nhất ở trẻ nhỏ và trẻ khó tập trung</td>
+<td>Cách xây thói quen có bằng chứng mạnh nhất, và rõ hơn ở trẻ nhỏ và trẻ khó giữ tập trung</td>
 </tr>
 <tr class="odd">
 <td>5</td>
