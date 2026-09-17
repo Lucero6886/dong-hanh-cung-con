@@ -1,8 +1,8 @@
 ---
 title: "Sổ tay vận hành dự án"
 subtitle: "Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì"
-version: "1.5.1"
-date: "2026-09-06"
+version: "1.6.0"
+date: "2026-09-17"
 ---
 
 # Sổ tay vận hành dự án
@@ -27,7 +27,7 @@ date: "2026-09-06"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 06/09/2026*
+*Cập nhật lần cuối: 17/09/2026*
 
 ### Tình trạng chung
 
@@ -45,7 +45,7 @@ date: "2026-09-06"
 | Số chủ đề đang dùng | **13 / 13** — đã phủ kín toàn bộ chủ đề |
 | Số hành trình có bài | **9 / 9** — từ 2 đến 10 bài mỗi hành trình |
 | Số thẻ | **18** |
-| Số đường link nguồn | **112** trong 16 bài — đã soát lại toàn bộ ngày 25/08/2026 |
+| Số đường link nguồn | **115** trong 16 bài — đã mở lại toàn bộ ngày 17/09/2026 |
 | Số trang website tự sinh ra | **70** |
 | Hình minh hoạ | **22 ảnh bìa** + **28 sơ đồ** trong bài — mọi bài đều có ảnh bìa và ít nhất một sơ đồ |
 | Tình trạng kỹ thuật | ✅ Chạy tốt, 0 lỗi, 0 cảnh báo |
@@ -60,11 +60,11 @@ Website hiện có **hai loạt bài đọc theo thứ tự**, và mười một
 
 | # | Bài | Chủ đề | Phút đọc |
 | --- | --- | --- | --- |
-| 1 | Kể chuyện thế nào thì con thực sự đổi ⭐ | Nhân cách & tấm gương | 7 |
-| 2 | Vì sao bác hàng xóm hiệu quả hơn danh nhân | Nhân cách & tấm gương | 7 |
-| 3 | Tự giác không mọc lên từ lời nhắc | Động lực & thói quen | 8 |
+| 1 | Kể chuyện thế nào thì con thực sự đổi ⭐ | Nhân cách & tấm gương | 8 |
+| 2 | Vì sao bác hàng xóm hiệu quả hơn danh nhân | Nhân cách & tấm gương | 8 |
+| 3 | Tự giác không mọc lên từ lời nhắc | Động lực & thói quen | 9 |
 | 4 | "Nếu… thì…" — câu nói ngắn hiệu quả hơn trăm lời nhắc | Động lực & thói quen | 8 |
-| 5 | Năm điều ai cũng nói về nuôi con — mà nghiên cứu không ủng hộ | Góc suy ngẫm của cha mẹ | 9 |
+| 5 | Năm điều ai cũng nói về nuôi con — mà nghiên cứu không ủng hộ | Góc suy ngẫm của cha mẹ | 10 |
 
 **Loạt 2 — Đi theo từng giai đoạn của con** — xem tại `/journeys/di-theo-tung-giai-doan/`
 
@@ -74,23 +74,23 @@ Website hiện có **hai loạt bài đọc theo thứ tự**, và mười một
 | 2 | Não của con đang xây theo kiểu nào ⭐ | Não bộ & các giai đoạn phát triển | 8 |
 | 3 | Sáu năm đầu: cái gì thật sự là vàng, cái gì chỉ là mạ | Não bộ & các giai đoạn phát triển | 7 |
 | 4 | Sáu đến mười hai: giai đoạn ít ai nói tới | Não bộ & các giai đoạn phát triển | 7 |
-| 5 | Não tuổi teen: đang xây lại, không phải đang hỏng | Tuổi teen | 9 |
+| 5 | Não tuổi teen: đang xây lại, không phải đang hỏng | Tuổi teen | 10 |
 | 6 | Khi con đã trưởng thành, mình còn là gì của con? | Não bộ & các giai đoạn phát triển | 8 |
 
 **Mười một bài còn lại** — đọc lẻ, không theo thứ tự
 
 | Bài | Chủ đề | Phút đọc |
 | --- | --- | --- |
-| Từ phần thưởng đến động lực bên trong ⭐ | Động lực & thói quen | 11 |
+| Từ phần thưởng đến động lực bên trong ⭐ | Động lực & thói quen | 12 |
 | Đi cùng con, không đi thay con | Đồng hành cùng con | 8 |
-| Mười lăm phút, nhưng là mười lăm phút thật | Đồng hành cùng con | 5 |
-| Màn hình: từ đếm giờ sang thoả thuận | Công nghệ & trẻ em | 6 |
+| Mười lăm phút, nhưng là mười lăm phút thật | Đồng hành cùng con | 6 |
+| Màn hình: từ đếm giờ sang thoả thuận | Công nghệ & trẻ em | 7 |
 | Hỏi con học được gì, thay vì hỏi con được mấy điểm | Giao tiếp cha mẹ – con | 4 |
 | Cấu trúc thay vì nhắc nhở | Tự lập & trách nhiệm | 4 |
 | Khi con nói "con chán học" | Học tập & tự học | 5 |
-| Cơn giận của con, và cơn giận của mình | Cảm xúc & tâm lý | 6 |
-| Kỷ luật không phải là phạt | Kỷ luật tích cực | 6 |
-| Khi con bắt đầu đóng cửa phòng | Tuổi teen | 6 |
+| Cơn giận của con, và cơn giận của mình | Cảm xúc & tâm lý | 7 |
+| Kỷ luật không phải là phạt | Kỷ luật tích cực | 7 |
+| Khi con bắt đầu đóng cửa phòng | Tuổi teen | 7 |
 | Cảm giác có lỗi vì đi làm | Góc suy ngẫm của cha mẹ | 5 |
 
 ⭐ = đang hiện ở khối "Bài viết nổi bật" trang chủ (tối đa 3 bài).
@@ -684,6 +684,100 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 > Claude ghi vào đây sau **mỗi** lần chạm vào dự án. Bạn chỉ đọc.
 > Mục mới nhất nằm trên cùng.
+
+---
+
+### 17/09/2026 — Rà soát toàn dự án: vá một lỗ hổng nguy cấp, sửa 16 chỗ
+
+**Người thực hiện:** Claude · **Loại:** Rà soát định kỳ + sửa lỗi
+
+**Vì sao có mục này**
+
+Bạn nhờ rà soát lại dự án. Lần soát nội dung gần nhất là 25/08, và từ đó tôi đã sửa khoảng 30 chỗ — nên lần này tôi soát hai thứ: **những gì đợt sửa đó để lại**, và **sức khoẻ kỹ thuật** của website.
+
+Đã mở lại **112 đường link** và đọc lại cả 22 bài. Tìm được 16 chỗ cần sửa, trong đó có **một lỗ hổng bảo mật mức nguy cấp** và **hai lỗi do chính tôi gây ra ở đợt sửa tháng 8**.
+
+**VIỆC QUAN TRỌNG NHẤT — lỗ hổng bảo mật mức nguy cấp**
+
+Thư viện dựng website (Astro) có một lỗ hổng được xếp mức **nguy cấp** (critical): kẻ tấn công có thể chạy mã tuỳ ý thông qua phần xử lý ảnh định dạng AVIF. Kèm theo là **bốn lỗ hổng mức cao** ở các thư viện phụ.
+
+Đã vá. Sau khi vá: **0 lỗ hổng**. Website vẫn dựng tốt, 70 trang, 0 lỗi.
+
+**Nói cho đúng mức độ, đừng để bạn lo quá:** website của bạn là **trang tĩnh** — mọi thứ được dựng sẵn rồi mới đưa lên mạng, và không nhận ảnh từ người đọc. Nên nguy cơ thực tế với bạn là **thấp**. Nhưng đây là thứ vá bằng một lệnh, và để lâu thì không có lý do gì. Chỉ có file khai báo phiên bản thay đổi; không một dòng nội dung nào bị ảnh hưởng.
+
+**HAI LỖI DO TÔI GÂY RA HỒI 25/08**
+
+Ghi rõ vì sổ tay phải trung thực.
+
+**1. Tôi tự làm tròn ra hai con số không có trong nghiên cứu.** Bài *"Kể chuyện thế nào thì con thực sự đổi"* ghi tỷ lệ **46,88%** và **56,25%**. Hai con số ấy **không tồn tại trong bài báo gốc**. Bài báo ghi **46,75%** và **58,82%**.
+
+Chuyện xảy ra thế nào: đợt 25/08 tôi phát hiện hai con số 46,75/58,82 là **số gộp** của hai cách kể chuyện, chứ không phải của riêng cách nào. Đúng ra tôi chỉ cần **nói thêm điều đó**. Nhưng tôi lại đi tính ra con số "của riêng truyện" — và tự tạo ra độ chính xác không có thật. Sửa quá tay thành sai.
+
+Đã trả lại con số thật, kèm một câu nói rõ đó là số gộp của cả hai cách kể (nhóm tác giả đo thấy hai cách không khác nhau đáng kể).
+
+**2. Tôi thêm một nguồn trỏ sai tài liệu.** Cũng đợt 25/08, tôi thêm link cho nghiên cứu "hiệu ứng Mozart" và ghi là *"nghiên cứu gốc năm 1993, bản toàn văn"*. Mở ra thì đó là **báo cáo hội thảo năm 1994** của cùng nhóm tác giả — nó *thuật lại* kết quả 1993. Đã sửa nhãn cho đúng, và ghi rõ bản gốc 1993 trên Nature thì có phí.
+
+**MỘT LỖI ĐANG NẰM TRÊN WEBSITE MÀ TÔI CHƯA TỪNG THẤY**
+
+Tiêu đề sơ đồ trong bài *"Năm điều ai cũng nói về nuôi con"* **dài quá khung và bị tràn ra ngoài tấm thẻ** — 696px trên khung 668px. Nó đã như vậy từ đầu.
+
+Tôi chỉ phát hiện vì đã **thêm một chốt an toàn** vào bộ khuôn vẽ hình: từ nay tiêu đề nào quá dài thì máy **báo lỗi ngay lúc vẽ**, thay vì âm thầm tràn. Chốt này vừa bật lên đã bắt được lỗi đó. Đã viết lại tiêu đề cho vừa khung.
+
+Đây là loại lỗi không ai đọc văn bản mà thấy được — phải đo mới ra.
+
+**MƯỜI BA CHỖ CÒN LẠI**
+
+Điểm đáng chú ý: **phần lớn thiệt hại nằm ở chỗ đợt sửa tháng 8 không chạm tới.** Tôi sửa câu trong thân bài nhưng quên đọc lại những thứ đi kèm nó.
+
+| Chỗ bị bỏ quên | Số bài | Ví dụ |
+| --- | --- | --- |
+| **Dòng mô tả bài** (hiện khi chia sẻ link) | 2 | Bài *Màn hình* vẫn viết "đã chuyển trọng tâm khỏi việc đếm giờ" — đúng câu mà thân bài giờ phản bác |
+| **Chú thích và mô tả sơ đồ** | 3 | Số trong sơ đồ không khớp số trong bài |
+| **Ghi chú của mục nguồn** | 3 | Ghi chú trỏ tới con số không còn trong bài |
+| **Khối nguồn** | 2 | Một bài thêm con số nghiên cứu mà quên thêm nguồn; một bài mất mục nguồn cho mốc "17 tuổi" |
+
+Ngoài ra: một bài đếm "bốn câu chuyện" nhưng chỉ liệt kê ba (thiếu *Thỏ và Rùa* — chuyện đối chứng); một danh sách dấu hiệu có hai mục trùng nội dung; một câu trỏ sang bài khác nhưng **mô tả sai** nghiên cứu ở bài đó; một câu nói "loạt trước" trong khi bài đó không thuộc loạt nào; và vài nhãn nguồn gọi sai loại tài liệu (gọi bài xã luận là "tổng quan", gọi thông cáo báo chí là bài báo).
+
+**Cũng đã sửa 11 con số thời gian đọc trong sổ tay** — các bài dài thêm sau đợt sửa nên phút đọc tăng 1 phút.
+
+**Ba link tôi ĐỊNH đổi nhưng quyết định không đổi**
+
+Ba mục nguồn hiện trỏ tới bản lưu trữ hoặc bản tóm tắt thay vì trang chính thức của tạp chí. Tôi đã tìm được link chính thức — nhưng **không mở được để kiểm chứng** (nhà xuất bản chặn truy cập tự động).
+
+Theo quy tắc 5 của dự án, tôi **không đưa vào một link chưa tự mình mở**. Nên tôi giữ link cũ (đã kiểm chứng, mở được) và chỉ **sửa nhãn cho trung thực** — ghi rõ "bản tóm tắt cho báo chí", "trang tổng hợp tóm tắt". Một link mở được kèm nhãn đúng thì tốt hơn một link oai hơn mà tôi chưa xác nhận.
+
+**Những gì kiểm tra và thấy sạch**
+
+- **Không có con số nào lệch nhau giữa các bài.** Đã lập danh sách 15 nghiên cứu được dùng ở nhiều bài và đối chiếu từng con số — khớp hết.
+- **Từ đếm khớp số mục** ở 21/22 bài (bài còn lại là lỗi "bốn câu chuyện" đã sửa).
+- **Ba quy ước kỹ thuật bắt buộc**: không có tên tác giả viết cứng, không có liên kết nội bộ nào quên `withBase()`.
+- **11 câu trỏ chéo giữa các bài** đều dẫn tới bài có thật, và đoạn được trỏ tới vẫn còn.
+- Website dựng tốt: 70 trang, 0 lỗi, 0 cảnh báo.
+
+**Một cái bẫy tôi vừa sa vào, ghi lại để không tái diễn**
+
+Khi vẽ lại hình, tôi phát hiện **cả 22 ảnh bìa đều bị đổi** dù tôi không sửa gì. Nguyên nhân: ảnh bìa dùng font **Inter**, và máy tôi làm việc lần này **không có font đó** — nên nó âm thầm thay bằng font khác. Nhìn bằng mắt thì chữ khác hẳn.
+
+Tôi đã **trả lại toàn bộ 22 ảnh bìa** và chỉ giữ ba sơ đồ thực sự cần đổi. Nếu tôi không kiểm, bạn sẽ nhận 22 ảnh bìa xấu hơn bản đang chạy.
+
+Đã ghi cảnh báo này vào `CLAUDE.md`: **đừng vẽ lại ảnh bìa nếu máy không có font Inter.**
+
+**Ảnh hưởng tới bạn**
+
+- **16 bài có chữ thay đổi**, hầu hết là một hai câu. Không bài nào bị gỡ, không luận điểm nào bị đảo.
+- **Ba sơ đồ** được vẽ lại. 22 ảnh bìa **giữ nguyên**.
+- Một file khai báo phiên bản đổi để vá lỗ hổng.
+- Số nguồn từ 112 lên **115 link**.
+
+**Nếu bạn muốn tự làm phần này**
+
+- **Tự kiểm lỗ hổng bảo mật** — đây là việc bạn nhờ tôi, nhưng nếu muốn biết: nó là một lệnh, `npm audit`. Cứ nhắn *"kiểm tra bảo mật website"* là tôi chạy và báo lại.
+- **Tự sửa dòng mô tả bài** — vào GitHub, mở file bài viết, sửa dòng `description:`. Làm y như Phần C, việc 2.
+- **Bài học chung, áp được cho cả bạn và tôi:** mỗi lần sửa một câu trong thân bài, phải đọc lại **bốn thứ đi kèm** — dòng `description`, dòng `subtitle`, chú thích sơ đồ trong cùng mục, và ghi chú của mục nguồn liên quan. Đợt tháng 8 sai ở đúng bốn chỗ đó.
+
+**Có gì cần bạn quyết không?**
+
+Không. Nhưng có **một việc tôi đã tự làm thêm** và bạn nên biết: tôi bổ sung một tiêu chí vào tác vụ soát định kỳ (chạy 01/10) — *mỗi lần soát, kiểm cả `description`, `subtitle`, chú thích sơ đồ và ghi chú nguồn, không chỉ thân bài.* Đó là chỗ lần này lộ ra nhiều lỗi nhất.
 
 ---
 

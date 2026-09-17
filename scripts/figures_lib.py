@@ -147,9 +147,22 @@ def frame(width, height, title, body, note=None, subtitle=None):
         f'<rect x="0.75" y="0.75" width="{width-1.5}" height="{height-1.5}" rx="13.25" '
         f'fill="none" stroke="{BORDER}" stroke-width="1.5"/>',
     ]
+    # Tiêu đề và dòng nguồn KHÔNG tự ngắt dòng — nên chốt lại ở đây để một tiêu đề
+    # quá dài báo lỗi ngay lúc chạy, thay vì âm thầm tràn ra ngoài tấm thẻ.
+    avail = width - PAD * 2
     if title:
+        tw = text_w(title, T_TITLE, bold=True)
+        if tw > avail:
+            raise ValueError(
+                f"Tiêu đề hình dài {tw:.0f}px, vượt quá {avail:.0f}px dùng được — "
+                f"hãy viết ngắn lại:\n  {title!r}")
         parts.append(tspan(PAD, PAD + T_TITLE * 0.82, title, T_TITLE, INK, "700"))
     if subtitle:
+        sw = text_w(subtitle, T_SMALL)
+        if sw > avail:
+            raise ValueError(
+                f"Dòng nguồn dài {sw:.0f}px, vượt quá {avail:.0f}px dùng được — "
+                f"hãy viết ngắn lại:\n  {subtitle!r}")
         parts.append(tspan(PAD, PAD + T_TITLE * 0.82 + 20, subtitle, T_SMALL, MUTED))
     parts.append(body)
     if note:

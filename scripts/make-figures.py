@@ -261,8 +261,8 @@ def figures():
               "Sách kiến thức về hải ly, không có bài học: 21,9%",
               "Truyện có bài học không hơn sách không có bài học"]),
             ("Tình huống giống đời trẻ", TEAL,
-             ["Truyện một đứa trẻ chia bút trong lớp vẽ: 46,9%",
-              "Sau 2–4 tuần còn tăng tiếp lên 56,3%",
+             ["Truyện một đứa trẻ chia bút trong lớp vẽ: 46,8%",
+              "Sau 2–4 tuần còn tăng tiếp lên 58,8%",
               "Nói thẳng bài học, bỏ hẳn truyện đi: 67,3%"]),
             subtitle="Rottman và cộng sự · Cognition, 2020",
             note="Chính nhóm tác giả kết luận rằng trẻ hiểu được truyện nhưng không bắc cầu được sang "
@@ -342,7 +342,7 @@ def figures():
     # ── Năm điều ai cũng nói ──────────────────────────────────────────────
     F["nam-dieu-ai-cung-noi-ve-nuoi-con"] = [
         ("f1", steps_down(
-            "Thí nghiệm kẹo dẻo: liên hệ còn lại bao nhiêu sau mỗi bước kiểm tra?",
+            "Thí nghiệm kẹo dẻo: liên hệ tan dần qua từng bước kiểm tra",
             [("Nghiên cứu theo dõi gốc, vài chục trẻ ở một trường mẫu giáo", 1.0, "mốc gốc"),
              ("Làm lại trên mẫu lớn hơn, đa dạng hơn", 0.5, "còn một nửa"),
              ("Sau khi tính hoàn cảnh gia đình", 0.33, "còn một phần ba"),

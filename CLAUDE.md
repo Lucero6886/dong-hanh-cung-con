@@ -89,6 +89,17 @@ Ba quy ước dưới đây, vi phạm là website hỏng. Giải thích đầy 
 - **Mọi hình tự mang nền sáng.** Đây là chủ ý cho chế độ tối, không phải lỗi — lý do ghi ở đầu `figures_lib.py`. Đừng "sửa" thành nền trong suốt.
 - **Sơ đồ phải mang thông tin**, không trang trí. Không dùng ảnh chụp trẻ em lấy trên mạng (bản quyền + quyền hình ảnh của trẻ).
 - Bài mới nên có `coverImage` + `coverAlt` trong frontmatter và ít nhất một `<Figure>` trong thân bài. Bài `.md` có `<Figure>` phải đổi đuôi thành `.mdx`.
+- ⚠️ **ĐỪNG vẽ lại ảnh bìa nếu máy không có font Inter.** `FONT_PNG` trong `figures_lib.py` là `"Inter Display, Inter, DejaVu Sans, sans-serif"`. Thiếu Inter thì cairosvg **âm thầm** thay bằng DejaVu và cả 22 ảnh bìa đổi khác hẳn. Kiểm trước bằng `fc-list | grep -i inter`; không có thì sau khi chạy script hãy `git checkout -- public/images/articles/*-cover.png` và chỉ giữ các file `.svg`. (Đã xảy ra 17/09/2026.)
+- Tiêu đề và dòng nguồn của sơ đồ **không tự ngắt dòng**. `frame()` trong `figures_lib.py` giờ báo lỗi nếu chúng vượt khung — đừng bỏ qua lỗi đó, hãy viết tiêu đề ngắn lại.
+
+### Khi sửa một câu trong bài, đọc lại bốn thứ đi kèm
+
+Đợt sửa lớn 25/08/2026 sửa đúng thân bài nhưng để lại lỗi ở **đúng bốn chỗ** này. Mỗi lần sửa nội dung, kiểm lại:
+
+1. `description` trong frontmatter — hiện khi chia sẻ link, rất dễ thành câu mà thân bài vừa phản bác
+2. `subtitle` — hiện ở đầu bài và trong danh sách bài
+3. `alt` và `caption` của mọi `<Figure>` trong cùng mục, **và** dữ liệu sơ đồ trong `figures()` của `make-figures.py`
+4. `note` của mục nguồn liên quan trong khối `references:`
 
 Tự kiểm tra:
 
