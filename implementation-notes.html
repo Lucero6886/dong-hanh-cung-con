@@ -143,10 +143,10 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 
 <header class="masthead">
   <div class="wrap">
-    <span class="badge">Sổ tay vận hành · v1.6.0</span>
+    <span class="badge">Sổ tay vận hành · v1.7.0</span>
     <h1>Sổ tay vận hành dự án</h1>
     <p>Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì</p>
-    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-09-17 · Bản gốc: <code>implementation-notes.md</code></p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-09-29 · Bản gốc: <code>implementation-notes.md</code></p>
   </div>
 </header>
 
@@ -213,7 +213,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <p><strong>Nguyên tắc của sổ tay này:</strong> mỗi lần Claude chạm vào dự án, Claude <strong>bắt buộc</strong> ghi vào Phần F — đã làm gì, vì sao, ảnh hưởng gì tới bạn, và <em>nếu tự làm thì làm thế nào</em>. Bạn không phải nhớ. Bạn chỉ cần đọc.</p>
 <hr />
 <h2 id="phần-a-dự-án-đang-ở-đâu">PHẦN A — Dự án đang ở đâu</h2>
-<p><em>Cập nhật lần cuối: 17/09/2026</em></p>
+<p><em>Cập nhật lần cuối: 29/09/2026</em></p>
 <h3 id="tình-trạng-chung">Tình trạng chung</h3>
 <table>
 <colgroup>
@@ -689,6 +689,89 @@ bằng ngôn ngữ dễ hiểu. Cập nhật phần A của sổ tay vận hành
 <blockquote>
 <p><strong>Muốn huỷ hết thay đổi của Claude?</strong> Bấm chuột phải vào file → <strong><code>Discard changes</code></strong>. File quay về như cũ. Không mất gì.</p>
 </blockquote>
+<hr />
+<h3 id="việc-0c-cách-khác-đăng-bài-bằng-lệnh-trong-wsl-ubuntu">Việc 0c — Cách khác: đăng bài bằng lệnh trong WSL Ubuntu</h3>
+<p>Đây là <strong>cách thay thế</strong> cho việc 0b, không phải cách thay thế bắt buộc. GitHub Desktop vẫn dùng được song song — cả hai làm việc trên cùng một thư mục, không xung đột.</p>
+<blockquote>
+<p><strong>Điều quan trọng nhất, đọc trước khi làm gì khác:</strong></p>
+<p>Thứ bảo vệ bạn lâu nay <strong>không phải cái nút Push</strong>. Nó là việc bạn <strong>nhìn thấy từng chữ thay đổi trước khi đăng</strong>.</p>
+<p>Chuyển sang dòng lệnh mà bỏ bước nhìn ấy thì bạn mất đúng thứ đáng giữ. Nên mọi hướng dẫn dưới đây đều giữ bước xem lại làm trung tâm.</p>
+</blockquote>
+<h4 id="cài-một-lần-duy-nhất">Cài một lần duy nhất</h4>
+<p>Mở <strong>Ubuntu</strong> (WSL), dán từng dòng, mỗi dòng Enter một lần:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">&quot;/mnt/c/Users/admin/Downloads/Note giáo dục trẻ/dong-hanh-cung-con&quot;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config core.filemode false</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Le Van Thuan&quot;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">&quot;thuanlv.dtvt@gmail.com&quot;</span></span></code></pre></div>
+<p>Giải thích ba dòng cuối:</p>
+<ul>
+<li><strong><code>core.filemode false</code></strong> — bắt buộc, đừng bỏ. Windows và Linux ghi “quyền truy cập file” khác nhau. Không tắt cái này thì git trong Ubuntu sẽ báo <strong>cả trăm file đã đổi</strong> dù bạn không sửa gì. Đây chính là sự cố đã ghi ở Phần E, mục 11.</li>
+<li><strong><code>user.name</code> / <code>user.email</code></strong> — tên hiện trong lịch sử công khai trên GitHub. Hiện các lần đăng trước đang mang tên <strong><code>Nam Dinh Van</code></strong> và một địa chỉ email của trường đại học, không phải tên bạn. Đây là dịp sửa nếu bạn muốn.</li>
+</ul>
+<h4 id="bốn-việc-mỗi-lần-đăng-bài">Bốn việc mỗi lần đăng bài</h4>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">&quot;/mnt/c/Users/admin/Downloads/Note giáo dục trẻ/dong-hanh-cung-con&quot;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status              <span class="co"># ① những file nào đã đổi</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add <span class="at">-A</span>              <span class="co"># ② nhận hết vào danh sách chờ — CHƯA đăng gì cả</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span>       <span class="co"># ③ XEM TỪNG CHỮ — bước thay cho màu xanh/đỏ</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;cập nhật bài viết&quot;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push                <span class="co"># ④ đẩy lên mạng</span></span></code></pre></div>
+<blockquote>
+<p>⚠️ <strong>Thứ tự ② trước ③ là có lý do, đừng đảo lại.</strong></p>
+<p><code>git diff</code> (không có <code>--staged</code>) <strong>chỉ so sánh những file git đã biết từ trước</strong>. Một <strong>bài viết mới</strong> — đúng thứ trợ lý tự động tạo mỗi thứ Hai — thì git chưa biết, nên <code>git diff</code> hiện <strong>trắng trơn</strong>: bước ① báo có file mới, bước ③ không cho bạn xem một chữ nào của nó.</p>
+<p>Đó là đúng lúc bạn cần nhìn kỹ nhất. <code>git add -A</code> ở bước ② làm git “nhận” file mới vào, rồi <code>git diff --staged</code> mới hiện toàn bộ nội dung bài mới.</p>
+<p><strong><code>git add</code> không đăng gì lên mạng.</strong> Nó chỉ là xếp hàng chờ. Đổi ý ở bước ③ thì gõ <code>git reset</code> — mọi thứ về đúng như trước, không mất file nào.</p>
+</blockquote>
+<p>Ở bước ③, màn hình sẽ cuộn. Cách điều khiển:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Bấm phím</th>
+<th>Nó làm gì</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>phím cách</strong></td>
+<td>xem trang tiếp</td>
+</tr>
+<tr class="even">
+<td><strong><code>q</code></strong></td>
+<td>thoát ra</td>
+</tr>
+</tbody>
+</table>
+<p>Chữ có dấu <strong><code>+</code></strong> màu xanh = được thêm vào. Chữ có dấu <strong><code>−</code></strong> màu đỏ = bị bỏ đi. Giống hệt GitHub Desktop, chỉ khác là chữ thay vì màu nền.</p>
+<h4 id="cách-gọn-hơn-một-lệnh-duy-nhất">Cách gọn hơn: một lệnh duy nhất</h4>
+<p>Trong thư mục dự án có sẵn file <strong><code>dang-bai.sh</code></strong>. Nó làm đúng ba việc trên <strong>theo đúng thứ tự, và hỏi ý bạn trước khi đẩy lên</strong>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="st">&quot;/mnt/c/Users/admin/Downloads/Note giáo dục trẻ/dong-hanh-cung-con&quot;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./dang-bai.sh</span> <span class="st">&quot;bài mới về tuổi teen&quot;</span></span></code></pre></div>
+<p>Nó sẽ: liệt kê file đã đổi → cho bạn xem từng chữ (<strong>kể cả bài viết mới</strong>, đúng cái bẫy nói ở trên) → <strong>hỏi <code>Đăng những thay đổi này lên mạng?</code></strong> → chỉ khi bạn gõ <code>co</code> thì mới commit và push.</p>
+<p>Gõ bất cứ thứ gì khác (hoặc chỉ Enter) là nó dừng, không đăng gì cả — và tự dọn lại phần xếp hàng chờ, thư mục của bạn về đúng như trước khi chạy. Bấm <code>Ctrl</code> + <code>C</code> giữa đường cũng vậy.</p>
+<p>Lần đầu chạy, nếu báo <em>“Permission denied”</em> thì có hai cách, cách nào cũng được:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x dang-bai.sh        <span class="co"># cho phép chạy, làm một lần là xong</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> dang-bai.sh            <span class="co"># hoặc gọi thẳng như vậy, khỏi cần cho phép</span></span></code></pre></div>
+<blockquote>
+<p><strong>File này không ghi cứng đường dẫn thư mục dự án.</strong> Nó tự lấy đường dẫn của chính nó, nên nếu bạn chuyển thư mục dự án sang ổ khác hay đổi tên nó, file vẫn chạy đúng — miễn là <code>dang-bai.sh</code> còn nằm ngay trong thư mục dự án.</p>
+</blockquote>
+<h4 id="ba-trục-trặc-hay-gặp-và-cách-xử-lý">Ba trục trặc hay gặp, và cách xử lý</h4>
+<p><strong>1. Push báo lỗi đăng nhập</strong> <em>(<code>Authentication failed</code> hoặc hỏi username/password)</em></p>
+<p>Bình thường. GitHub Desktop cất mật khẩu ở kho riêng của Windows, git trong Ubuntu <strong>không nhìn thấy kho đó</strong>.</p>
+<ul>
+<li><strong>Cách chữa nhanh nhất:</strong> lần này cứ mở GitHub Desktop bấm Push. Thay đổi đã được ghi lại rồi nên không mất gì.</li>
+<li><strong>Cách chữa hẳn:</strong> nhắn Claude <em>“cài đăng nhập GitHub cho WSL”</em>. Có hai cách làm, Claude sẽ hỏi bạn chọn cách nào và nói rõ đánh đổi của từng cách.</li>
+</ul>
+<p><strong>2. Báo <code>.git/index.lock</code> đang tồn tại</strong></p>
+<p>Do GitHub Desktop đang mở và đang làm gì đó cùng lúc. <strong>Đóng GitHub Desktop rồi chạy lại.</strong> Nếu vẫn còn, xoá file khoá:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="st">&quot;/mnt/c/Users/admin/Downloads/Note giáo dục trẻ/dong-hanh-cung-con/.git/index.lock&quot;</span></span></code></pre></div>
+<p>Xem thêm Phần E, mục 12.</p>
+<p><strong>3. Lệnh chạy chậm hẳn so với GitHub Desktop</strong></p>
+<p>Bình thường, không phải hỏng. Ubuntu đọc ổ C của Windows qua một lớp trung gian nên chậm hơn. Dự án này nhỏ nên chỉ chậm vài giây.</p>
+<h4 id="đừng-quên-dấu-nháy-kép">Đừng quên dấu nháy kép</h4>
+<p>Đường dẫn của bạn có <strong>khoảng trắng</strong> và <strong>dấu tiếng Việt</strong> (<code>Note giáo dục trẻ</code>). Thiếu dấu nháy kép là lệnh báo <em>“No such file or directory”</em>. Cứ chép nguyên cả dòng có sẵn dấu nháy là an toàn.</p>
 <hr />
 <h3 id="việc-1-xem-website-đang-có-những-bài-gì">Việc 1 — Xem website đang có những bài gì</h3>
 <ol type="1">
@@ -1211,6 +1294,82 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <blockquote>
 <p>Claude ghi vào đây sau <strong>mỗi</strong> lần chạm vào dự án. Bạn chỉ đọc. Mục mới nhất nằm trên cùng.</p>
 </blockquote>
+<hr />
+<h3 id="thêm-cách-đăng-bài-bằng-lệnh-trong-wsl-ubuntu">29/09/2026 — Thêm cách đăng bài bằng lệnh trong WSL Ubuntu</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Thêm công cụ + hướng dẫn</p>
+<p><strong>Bạn yêu cầu gì</strong></p>
+<p>Bạn muốn tự đăng bài <strong>bằng lệnh trong WSL Ubuntu</strong> thay vì bấm nút Push trong GitHub Desktop.</p>
+<p><strong>Đã làm gì</strong></p>
+<p>Viết hướng dẫn đầy đủ vào <strong>Phần C, việc 0c</strong>, và thêm một file <strong><code>dang-bai.sh</code></strong> vào thư mục dự án để gộp mọi thứ thành một lệnh.</p>
+<p>GitHub Desktop <strong>vẫn dùng được song song</strong> — hai cách làm việc trên cùng một thư mục, không xung đột. Đây là thêm lựa chọn, không phải thay thế.</p>
+<p><strong>Điều tôi muốn bạn nhớ nhất</strong></p>
+<p>Thứ bảo vệ bạn lâu nay <strong>không phải cái nút Push</strong>. Nó là việc bạn <strong>nhìn thấy từng chữ thay đổi trước khi đăng</strong>.</p>
+<p>Nên <code>dang-bai.sh</code> không phải một nút “đăng ngay”. Nó <strong>bắt buộc đi qua bước xem lại</strong>: liệt kê file đã đổi → cho bạn xem từng chữ thêm/bớt → <strong>hỏi <code>Đăng những thay đổi này lên mạng?</code></strong> → chỉ khi bạn gõ <code>co</code> mới đẩy lên. Gõ gì khác, hoặc chỉ Enter, là nó dừng.</p>
+<p>Tôi cố ý làm chậm ở đúng chỗ đó.</p>
+<p><strong>MỘT LỖI CỦA CHÍNH TÔI, BẮT ĐƯỢC TRƯỚC KHI GIAO CHO BẠN</strong></p>
+<p>Ghi lại vì sổ tay phải trung thực, và vì lỗi này đúng vào chỗ nguy hiểm nhất.</p>
+<p>Bản đầu tiên tôi viết dùng lệnh <code>git diff</code>. Lệnh đó <strong>chỉ so sánh những file git đã biết từ trước</strong> — một <strong>file mới hoàn toàn</strong> thì nó hiện <strong>trắng trơn</strong>.</p>
+<p>Nghĩa là: trợ lý tự động tạo một bài nháp mới vào thứ Hai → bạn chạy <code>dang-bai.sh</code> → danh sách file báo <em>“có một file mới”</em> → phần xem chữ <strong>không hiện một chữ nào của bài đó</strong> → bạn gõ <code>co</code> → bài lên mạng mà bạn chưa đọc.</p>
+<p>Đó là <strong>đúng cái điều mà file này tồn tại để ngăn</strong>. Và nó sẽ xảy ra ở trường hợp thường gặp nhất, không phải trường hợp hiếm.</p>
+<p>Đã sửa: script <code>git add</code> trước rồi mới so sánh, nên bài mới hiện đủ từng dòng. Nếu bạn trả lời “không”, hoặc bấm <code>Ctrl</code> + <code>C</code> giữa đường, nó tự dọn lại — thư mục về đúng như trước khi chạy. Hướng dẫn ba lệnh thủ công ở việc 0c cũng sửa theo (giờ là <strong>bốn lệnh</strong>, và có giải thích vì sao thứ tự đó quan trọng).</p>
+<p>Đã thử cả bốn tình huống trên một dự án giả: file mới, file sửa, trả lời “không”, và ngắt giữa đường.</p>
+<p><strong>Ba chỗ khác tôi làm chắc thêm cùng lúc</strong></p>
+<ul>
+<li><strong>Bỏ đường dẫn ghi cứng.</strong> Bản đầu ghi thẳng <code>/mnt/c/Users/admin/Downloads/...</code> vào trong file. Hai cái dở: file này nằm trong repo <strong>công khai</strong> trên GitHub, và nếu bạn chuyển thư mục dự án đi đâu thì nó hỏng. Giờ nó tự lấy đường dẫn của chính nó.</li>
+<li><strong>Lỗi push nói rõ hai nguyên nhân</strong>, không chỉ một. Ngoài chuyện chưa đăng nhập, còn trường hợp bạn vừa sửa bài trên web GitHub → trên mạng mới hơn ở máy → script chỉ cho luôn lệnh <code>git pull --rebase</code>.</li>
+<li><strong>Thêm một file <code>.gitattributes</code></strong> (bốn chữ, một dòng lệnh). Windows và Linux đánh dấu “hết dòng” khác nhau, và GitHub Desktop trên Windows <strong>mặc định tự đổi</strong> sang kiểu Windows. Với file chữ thì vô hại, nhưng với <code>dang-bai.sh</code> thì Ubuntu sẽ báo một lỗi rất khó đoán: <code>/usr/bin/env: 'bash\r': No such file or directory</code>. File mới này chặn việc đổi đó cho riêng file <code>.sh</code>. Bạn không cần làm gì với nó.</li>
+</ul>
+<p><strong>Ba cái bẫy riêng của máy bạn — đã xử lý sẵn trong hướng dẫn</strong></p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Bẫy</th>
+<th>Chuyện gì xảy ra</th>
+<th>Cách tránh</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Quyền truy cập file</strong></td>
+<td>Windows và Linux ghi “quyền file” khác nhau. Không tắt thì git trong Ubuntu báo <strong>cả trăm file đã đổi</strong> dù bạn không sửa gì</td>
+<td>Chạy một lần: <code>git config core.filemode false</code></td>
+</tr>
+<tr class="even">
+<td><strong>Đăng nhập</strong></td>
+<td>GitHub Desktop cất mật khẩu ở kho riêng của Windows, git trong Ubuntu <strong>không thấy kho đó</strong> → push báo lỗi</td>
+<td>Lần đầu cứ dùng GitHub Desktop; muốn chữa hẳn thì nhắn tôi</td>
+</tr>
+<tr class="odd">
+<td><strong>Đường dẫn có dấu tiếng Việt và khoảng trắng</strong></td>
+<td><code>Note giáo dục trẻ</code> — thiếu dấu nháy kép là báo <em>“No such file or directory”</em></td>
+<td>Chép nguyên cả dòng có sẵn dấu nháy</td>
+</tr>
+</tbody>
+</table>
+<p>Bẫy thứ nhất là cái đáng nói nhất: nó <strong>không báo lỗi</strong>, chỉ khiến mọi thứ trông như hỏng. Đúng là sự cố đã ghi ở Phần E mục 11, nhưng lần này đến từ hướng khác.</p>
+<p><strong>Một việc tôi phát hiện khi viết phần này</strong></p>
+<p>Các lần đăng trước của bạn đang mang tên <strong><code>Nam Dinh Van</code></strong> và một địa chỉ email của trường đại học — đó là cấu hình sẵn trong GitHub Desktop, không phải tên bạn. Lịch sử này <strong>công khai</strong> trên GitHub.</p>
+<p>Hướng dẫn mới có sẵn hai dòng lệnh để đổi sang tên và email của bạn. Tôi <strong>không tự đổi</strong> vì đây là danh tính của bạn, và có thể bạn cố ý để vậy.</p>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<ul>
+<li>Thêm hai file trong thư mục dự án: <code>dang-bai.sh</code> và <code>.gitattributes</code>. <strong>Cả hai không đụng gì tới website</strong> — không bài viết nào, không trang nào thay đổi.</li>
+<li>Sổ tay có thêm Phần C việc 0c.</li>
+<li><strong>Không bắt buộc đổi cách làm.</strong> GitHub Desktop vẫn chạy tốt như cũ.</li>
+</ul>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<p>Toàn bộ nằm ở Phần C việc 0c — bốn lệnh cho người muốn hiểu từng bước, hoặc một lệnh <code>./dang-bai.sh</code> cho người muốn nhanh.</p>
+<p>Tôi <strong>chưa chạy thử được trên máy bạn</strong> (tôi không với tới WSL của bạn từ đây). Tôi đã chạy thử trên một dự án giả ở máy tôi — file mới, file sửa, trả lời “không”, ngắt giữa đường, và cả đường dẫn có dấu tiếng Việt kèm khoảng trắng — đều đúng. Lần đầu bạn chạy, nếu có gì lạ thì chụp màn hình gửi tôi.</p>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p>Hai việc nhỏ, đều không gấp:</p>
+<ol type="1">
+<li><strong>Có muốn đổi tên hiển thị trong lịch sử đăng bài không?</strong> Hai dòng lệnh đã có sẵn ở việc 0c.</li>
+<li><strong>Có muốn cài đăng nhập cho WSL không?</strong> Có hai cách, đánh đổi khác nhau — một cách dùng lại phần đăng nhập của Windows, một cách lưu mã khoá vào máy dưới dạng chữ thường đọc được. Nhắn <em>“cài đăng nhập GitHub cho WSL”</em> thì tôi giải thích rồi bạn chọn.</li>
+</ol>
 <hr />
 <h3 id="rà-soát-toàn-dự-án-vá-một-lỗ-hổng-nguy-cấp-sửa-16-chỗ">17/09/2026 — Rà soát toàn dự án: vá một lỗ hổng nguy cấp, sửa 16 chỗ</h3>
 <p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Rà soát định kỳ + sửa lỗi</p>
@@ -1793,8 +1952,8 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 </ul>
 <p><strong>Nếu bạn muốn tự làm phần này</strong></p>
 <p>Phần này <strong>cần gõ lệnh</strong>, nên không nằm trong nhóm “tự làm trên web” như Phần C. Nhưng nếu có lúc nào bạn muốn tự tạo lại toàn bộ hình (ví dụ sau khi đổi logo), chỉ có <strong>hai lệnh</strong>, chạy trong thư mục dự án:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> scripts/make-figures.py      <span class="co"># vẽ lại toàn bộ 22 ảnh bìa + 28 sơ đồ</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> scripts/attach-figures.py    <span class="co"># gắn hình vào đúng chỗ trong từng bài</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> scripts/make-figures.py      <span class="co"># vẽ lại toàn bộ 22 ảnh bìa + 28 sơ đồ</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> scripts/attach-figures.py    <span class="co"># gắn hình vào đúng chỗ trong từng bài</span></span></code></pre></div>
 <p>Lệnh thứ hai <strong>chạy lại nhiều lần cũng không sao</strong> — nó tự biết bài nào đã gắn rồi thì bỏ qua, không gắn trùng.</p>
 <p>Ba file mới cần biết, nằm trong thư mục <code>scripts/</code>:</p>
 <table>
@@ -2356,24 +2515,24 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <p>Để bạn thấy rõ: <strong>cái gì cũng được kiểm tra bằng thử nghiệm thật, không phải nói suông.</strong> Khi Claude nói “website chạy tốt”, đó là kết quả chạy thử — nếu có lỗi thì lỗi được ghi lại ở đây, kể cả lỗi do chính Claude gây ra.</p>
 <hr />
 <h3 id="mẫu-cho-các-mục-sau">Mẫu cho các mục sau</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### ngày/tháng/năm — Tên việc</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>**Người thực hiện:** Claude / Bạn · **Loại:** Bài mới / Sửa bài / Sửa lỗi / Đổi cấu hình</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>**Đã làm gì**</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>…</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>**Vì sao**</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>…</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>**Ảnh hưởng tới bạn**</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>…</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>**Nếu bạn muốn tự làm phần này**</span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>…</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>**Có gì cần bạn quyết không?**</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>…</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">### ngày/tháng/năm — Tên việc</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>**Người thực hiện:** Claude / Bạn · **Loại:** Bài mới / Sửa bài / Sửa lỗi / Đổi cấu hình</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>**Đã làm gì**</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>**Vì sao**</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>**Ảnh hưởng tới bạn**</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>**Nếu bạn muốn tự làm phần này**</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>…</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>**Có gì cần bạn quyết không?**</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>…</span></code></pre></div>
 <hr />
 <h2 id="phần-g-bốn-cách-tự-kiểm-tra-claude-làm-đúng">PHẦN G — Bốn cách tự kiểm tra Claude làm đúng</h2>
 <p>Bạn không cần biết code để kiểm chứng. Bốn cách dưới đây ai cũng làm được.</p>

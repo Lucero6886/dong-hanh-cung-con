@@ -1,0 +1,12 @@
+# File này chỉ có một việc: giữ cho file .sh không bị Windows đổi ký tự cuối dòng.
+#
+# GitHub Desktop trên Windows mặc định tự đổi ký tự xuống dòng của Linux (LF)
+# thành kiểu Windows (CRLF). Với file chữ thì vô hại. Nhưng với dang-bai.sh thì
+# Ubuntu sẽ báo một lỗi rất khó hiểu:
+#
+#     /usr/bin/env: 'bash\r': No such file or directory
+#
+# Dòng dưới đây bắt git luôn giữ kiểu LF cho mọi file .sh, nên lỗi đó không xảy ra.
+# Bạn không cần làm gì với file này.
+
+*.sh text eol=lf

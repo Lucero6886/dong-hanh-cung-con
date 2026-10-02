@@ -1,8 +1,8 @@
 ---
 title: "Sổ tay vận hành dự án"
 subtitle: "Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì"
-version: "1.6.0"
-date: "2026-09-17"
+version: "1.7.0"
+date: "2026-09-29"
 ---
 
 # Sổ tay vận hành dự án
@@ -27,7 +27,7 @@ date: "2026-09-17"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 17/09/2026*
+*Cập nhật lần cuối: 29/09/2026*
 
 ### Tình trạng chung
 
@@ -280,6 +280,118 @@ Mỗi lần Claude sửa gì đó trong thư mục dự án, bạn làm ba bư�
 ⏱ Khoảng 2 phút sau website tự cập nhật.
 
 > **Muốn huỷ hết thay đổi của Claude?** Bấm chuột phải vào file → **`Discard changes`**. File quay về như cũ. Không mất gì.
+
+---
+
+### Việc 0c — Cách khác: đăng bài bằng lệnh trong WSL Ubuntu
+
+Đây là **cách thay thế** cho việc 0b, không phải cách thay thế bắt buộc. GitHub Desktop vẫn dùng được song song — cả hai làm việc trên cùng một thư mục, không xung đột.
+
+> **Điều quan trọng nhất, đọc trước khi làm gì khác:**
+>
+> Thứ bảo vệ bạn lâu nay **không phải cái nút Push**. Nó là việc bạn **nhìn thấy từng chữ thay đổi trước khi đăng**.
+>
+> Chuyển sang dòng lệnh mà bỏ bước nhìn ấy thì bạn mất đúng thứ đáng giữ. Nên mọi hướng dẫn dưới đây đều giữ bước xem lại làm trung tâm.
+
+#### Cài một lần duy nhất
+
+Mở **Ubuntu** (WSL), dán từng dòng, mỗi dòng Enter một lần:
+
+```bash
+cd "/mnt/c/Users/admin/Downloads/Note giáo dục trẻ/dong-hanh-cung-con"
+
+git config core.filemode false
+
+git config --global user.name "Le Van Thuan"
+git config --global user.email "thuanlv.dtvt@gmail.com"
+```
+
+Giải thích ba dòng cuối:
+
+- **`core.filemode false`** — bắt buộc, đừng bỏ. Windows và Linux ghi "quyền truy cập file" khác nhau. Không tắt cái này thì git trong Ubuntu sẽ báo **cả trăm file đã đổi** dù bạn không sửa gì. Đây chính là sự cố đã ghi ở Phần E, mục 11.
+- **`user.name` / `user.email`** — tên hiện trong lịch sử công khai trên GitHub. Hiện các lần đăng trước đang mang tên **`Nam Dinh Van`** và một địa chỉ email của trường đại học, không phải tên bạn. Đây là dịp sửa nếu bạn muốn.
+
+#### Bốn việc mỗi lần đăng bài
+
+```bash
+cd "/mnt/c/Users/admin/Downloads/Note giáo dục trẻ/dong-hanh-cung-con"
+
+git status              # ① những file nào đã đổi
+git add -A              # ② nhận hết vào danh sách chờ — CHƯA đăng gì cả
+git diff --staged       # ③ XEM TỪNG CHỮ — bước thay cho màu xanh/đỏ
+
+git commit -m "cập nhật bài viết"
+git push                # ④ đẩy lên mạng
+```
+
+> ⚠️ **Thứ tự ② trước ③ là có lý do, đừng đảo lại.**
+>
+> `git diff` (không có `--staged`) **chỉ so sánh những file git đã biết từ trước**. Một **bài viết mới** — đúng thứ trợ lý tự động tạo mỗi thứ Hai — thì git chưa biết, nên `git diff` hiện **trắng trơn**: bước ① báo có file mới, bước ③ không cho bạn xem một chữ nào của nó.
+>
+> Đó là đúng lúc bạn cần nhìn kỹ nhất. `git add -A` ở bước ② làm git "nhận" file mới vào, rồi `git diff --staged` mới hiện toàn bộ nội dung bài mới.
+>
+> **`git add` không đăng gì lên mạng.** Nó chỉ là xếp hàng chờ. Đổi ý ở bước ③ thì gõ `git reset` — mọi thứ về đúng như trước, không mất file nào.
+
+Ở bước ③, màn hình sẽ cuộn. Cách điều khiển:
+
+| Bấm phím | Nó làm gì |
+| --- | --- |
+| **phím cách** | xem trang tiếp |
+| **`q`** | thoát ra |
+
+Chữ có dấu **`+`** màu xanh = được thêm vào. Chữ có dấu **`−`** màu đỏ = bị bỏ đi. Giống hệt GitHub Desktop, chỉ khác là chữ thay vì màu nền.
+
+#### Cách gọn hơn: một lệnh duy nhất
+
+Trong thư mục dự án có sẵn file **`dang-bai.sh`**. Nó làm đúng ba việc trên **theo đúng thứ tự, và hỏi ý bạn trước khi đẩy lên**:
+
+```bash
+cd "/mnt/c/Users/admin/Downloads/Note giáo dục trẻ/dong-hanh-cung-con"
+./dang-bai.sh "bài mới về tuổi teen"
+```
+
+Nó sẽ: liệt kê file đã đổi → cho bạn xem từng chữ (**kể cả bài viết mới**, đúng cái bẫy nói ở trên) → **hỏi `Đăng những thay đổi này lên mạng?`** → chỉ khi bạn gõ `co` thì mới commit và push.
+
+Gõ bất cứ thứ gì khác (hoặc chỉ Enter) là nó dừng, không đăng gì cả — và tự dọn lại phần xếp hàng chờ, thư mục của bạn về đúng như trước khi chạy. Bấm `Ctrl` + `C` giữa đường cũng vậy.
+
+Lần đầu chạy, nếu báo *"Permission denied"* thì có hai cách, cách nào cũng được:
+
+```bash
+chmod +x dang-bai.sh        # cho phép chạy, làm một lần là xong
+```
+
+```bash
+bash dang-bai.sh            # hoặc gọi thẳng như vậy, khỏi cần cho phép
+```
+
+> **File này không ghi cứng đường dẫn thư mục dự án.** Nó tự lấy đường dẫn của chính nó, nên nếu bạn chuyển thư mục dự án sang ổ khác hay đổi tên nó, file vẫn chạy đúng — miễn là `dang-bai.sh` còn nằm ngay trong thư mục dự án.
+
+#### Ba trục trặc hay gặp, và cách xử lý
+
+**1. Push báo lỗi đăng nhập** *(`Authentication failed` hoặc hỏi username/password)*
+
+Bình thường. GitHub Desktop cất mật khẩu ở kho riêng của Windows, git trong Ubuntu **không nhìn thấy kho đó**.
+
+- **Cách chữa nhanh nhất:** lần này cứ mở GitHub Desktop bấm Push. Thay đổi đã được ghi lại rồi nên không mất gì.
+- **Cách chữa hẳn:** nhắn Claude *"cài đăng nhập GitHub cho WSL"*. Có hai cách làm, Claude sẽ hỏi bạn chọn cách nào và nói rõ đánh đổi của từng cách.
+
+**2. Báo `.git/index.lock` đang tồn tại**
+
+Do GitHub Desktop đang mở và đang làm gì đó cùng lúc. **Đóng GitHub Desktop rồi chạy lại.** Nếu vẫn còn, xoá file khoá:
+
+```bash
+rm "/mnt/c/Users/admin/Downloads/Note giáo dục trẻ/dong-hanh-cung-con/.git/index.lock"
+```
+
+Xem thêm Phần E, mục 12.
+
+**3. Lệnh chạy chậm hẳn so với GitHub Desktop**
+
+Bình thường, không phải hỏng. Ubuntu đọc ổ C của Windows qua một lớp trung gian nên chậm hơn. Dự án này nhỏ nên chỉ chậm vài giây.
+
+#### Đừng quên dấu nháy kép
+
+Đường dẫn của bạn có **khoảng trắng** và **dấu tiếng Việt** (`Note giáo dục trẻ`). Thiếu dấu nháy kép là lệnh báo *"No such file or directory"*. Cứ chép nguyên cả dòng có sẵn dấu nháy là an toàn.
 
 ---
 
@@ -684,6 +796,85 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 > Claude ghi vào đây sau **mỗi** lần chạm vào dự án. Bạn chỉ đọc.
 > Mục mới nhất nằm trên cùng.
+
+---
+
+### 29/09/2026 — Thêm cách đăng bài bằng lệnh trong WSL Ubuntu
+
+**Người thực hiện:** Claude · **Loại:** Thêm công cụ + hướng dẫn
+
+**Bạn yêu cầu gì**
+
+Bạn muốn tự đăng bài **bằng lệnh trong WSL Ubuntu** thay vì bấm nút Push trong GitHub Desktop.
+
+**Đã làm gì**
+
+Viết hướng dẫn đầy đủ vào **Phần C, việc 0c**, và thêm một file **`dang-bai.sh`** vào thư mục dự án để gộp mọi thứ thành một lệnh.
+
+GitHub Desktop **vẫn dùng được song song** — hai cách làm việc trên cùng một thư mục, không xung đột. Đây là thêm lựa chọn, không phải thay thế.
+
+**Điều tôi muốn bạn nhớ nhất**
+
+Thứ bảo vệ bạn lâu nay **không phải cái nút Push**. Nó là việc bạn **nhìn thấy từng chữ thay đổi trước khi đăng**.
+
+Nên `dang-bai.sh` không phải một nút "đăng ngay". Nó **bắt buộc đi qua bước xem lại**: liệt kê file đã đổi → cho bạn xem từng chữ thêm/bớt → **hỏi `Đăng những thay đổi này lên mạng?`** → chỉ khi bạn gõ `co` mới đẩy lên. Gõ gì khác, hoặc chỉ Enter, là nó dừng.
+
+Tôi cố ý làm chậm ở đúng chỗ đó.
+
+**MỘT LỖI CỦA CHÍNH TÔI, BẮT ĐƯỢC TRƯỚC KHI GIAO CHO BẠN**
+
+Ghi lại vì sổ tay phải trung thực, và vì lỗi này đúng vào chỗ nguy hiểm nhất.
+
+Bản đầu tiên tôi viết dùng lệnh `git diff`. Lệnh đó **chỉ so sánh những file git đã biết từ trước** — một **file mới hoàn toàn** thì nó hiện **trắng trơn**.
+
+Nghĩa là: trợ lý tự động tạo một bài nháp mới vào thứ Hai → bạn chạy `dang-bai.sh` → danh sách file báo *"có một file mới"* → phần xem chữ **không hiện một chữ nào của bài đó** → bạn gõ `co` → bài lên mạng mà bạn chưa đọc.
+
+Đó là **đúng cái điều mà file này tồn tại để ngăn**. Và nó sẽ xảy ra ở trường hợp thường gặp nhất, không phải trường hợp hiếm.
+
+Đã sửa: script `git add` trước rồi mới so sánh, nên bài mới hiện đủ từng dòng. Nếu bạn trả lời "không", hoặc bấm `Ctrl` + `C` giữa đường, nó tự dọn lại — thư mục về đúng như trước khi chạy. Hướng dẫn ba lệnh thủ công ở việc 0c cũng sửa theo (giờ là **bốn lệnh**, và có giải thích vì sao thứ tự đó quan trọng).
+
+Đã thử cả bốn tình huống trên một dự án giả: file mới, file sửa, trả lời "không", và ngắt giữa đường.
+
+**Ba chỗ khác tôi làm chắc thêm cùng lúc**
+
+- **Bỏ đường dẫn ghi cứng.** Bản đầu ghi thẳng `/mnt/c/Users/admin/Downloads/...` vào trong file. Hai cái dở: file này nằm trong repo **công khai** trên GitHub, và nếu bạn chuyển thư mục dự án đi đâu thì nó hỏng. Giờ nó tự lấy đường dẫn của chính nó.
+- **Lỗi push nói rõ hai nguyên nhân**, không chỉ một. Ngoài chuyện chưa đăng nhập, còn trường hợp bạn vừa sửa bài trên web GitHub → trên mạng mới hơn ở máy → script chỉ cho luôn lệnh `git pull --rebase`.
+- **Thêm một file `.gitattributes`** (bốn chữ, một dòng lệnh). Windows và Linux đánh dấu "hết dòng" khác nhau, và GitHub Desktop trên Windows **mặc định tự đổi** sang kiểu Windows. Với file chữ thì vô hại, nhưng với `dang-bai.sh` thì Ubuntu sẽ báo một lỗi rất khó đoán: `/usr/bin/env: 'bash\r': No such file or directory`. File mới này chặn việc đổi đó cho riêng file `.sh`. Bạn không cần làm gì với nó.
+
+**Ba cái bẫy riêng của máy bạn — đã xử lý sẵn trong hướng dẫn**
+
+| Bẫy | Chuyện gì xảy ra | Cách tránh |
+| --- | --- | --- |
+| **Quyền truy cập file** | Windows và Linux ghi "quyền file" khác nhau. Không tắt thì git trong Ubuntu báo **cả trăm file đã đổi** dù bạn không sửa gì | Chạy một lần: `git config core.filemode false` |
+| **Đăng nhập** | GitHub Desktop cất mật khẩu ở kho riêng của Windows, git trong Ubuntu **không thấy kho đó** → push báo lỗi | Lần đầu cứ dùng GitHub Desktop; muốn chữa hẳn thì nhắn tôi |
+| **Đường dẫn có dấu tiếng Việt và khoảng trắng** | `Note giáo dục trẻ` — thiếu dấu nháy kép là báo *"No such file or directory"* | Chép nguyên cả dòng có sẵn dấu nháy |
+
+Bẫy thứ nhất là cái đáng nói nhất: nó **không báo lỗi**, chỉ khiến mọi thứ trông như hỏng. Đúng là sự cố đã ghi ở Phần E mục 11, nhưng lần này đến từ hướng khác.
+
+**Một việc tôi phát hiện khi viết phần này**
+
+Các lần đăng trước của bạn đang mang tên **`Nam Dinh Van`** và một địa chỉ email của trường đại học — đó là cấu hình sẵn trong GitHub Desktop, không phải tên bạn. Lịch sử này **công khai** trên GitHub.
+
+Hướng dẫn mới có sẵn hai dòng lệnh để đổi sang tên và email của bạn. Tôi **không tự đổi** vì đây là danh tính của bạn, và có thể bạn cố ý để vậy.
+
+**Ảnh hưởng tới bạn**
+
+- Thêm hai file trong thư mục dự án: `dang-bai.sh` và `.gitattributes`. **Cả hai không đụng gì tới website** — không bài viết nào, không trang nào thay đổi.
+- Sổ tay có thêm Phần C việc 0c.
+- **Không bắt buộc đổi cách làm.** GitHub Desktop vẫn chạy tốt như cũ.
+
+**Nếu bạn muốn tự làm phần này**
+
+Toàn bộ nằm ở Phần C việc 0c — bốn lệnh cho người muốn hiểu từng bước, hoặc một lệnh `./dang-bai.sh` cho người muốn nhanh.
+
+Tôi **chưa chạy thử được trên máy bạn** (tôi không với tới WSL của bạn từ đây). Tôi đã chạy thử trên một dự án giả ở máy tôi — file mới, file sửa, trả lời "không", ngắt giữa đường, và cả đường dẫn có dấu tiếng Việt kèm khoảng trắng — đều đúng. Lần đầu bạn chạy, nếu có gì lạ thì chụp màn hình gửi tôi.
+
+**Có gì cần bạn quyết không?**
+
+Hai việc nhỏ, đều không gấp:
+
+1. **Có muốn đổi tên hiển thị trong lịch sử đăng bài không?** Hai dòng lệnh đã có sẵn ở việc 0c.
+2. **Có muốn cài đăng nhập cho WSL không?** Có hai cách, đánh đổi khác nhau — một cách dùng lại phần đăng nhập của Windows, một cách lưu mã khoá vào máy dưới dạng chữ thường đọc được. Nhắn *"cài đăng nhập GitHub cho WSL"* thì tôi giải thích rồi bạn chọn.
 
 ---
 
