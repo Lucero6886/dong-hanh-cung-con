@@ -143,10 +143,10 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 
 <header class="masthead">
   <div class="wrap">
-    <span class="badge">Sổ tay vận hành · v1.7.0</span>
+    <span class="badge">Sổ tay vận hành · v1.8.0</span>
     <h1>Sổ tay vận hành dự án</h1>
     <p>Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì</p>
-    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-09-29 · Bản gốc: <code>implementation-notes.md</code></p>
+    <p class="meta">Dự án <code>dong-hanh-cung-con</code> · Cập nhật 2026-10-19 · Bản gốc: <code>implementation-notes.md</code></p>
   </div>
 </header>
 
@@ -213,7 +213,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 <p><strong>Nguyên tắc của sổ tay này:</strong> mỗi lần Claude chạm vào dự án, Claude <strong>bắt buộc</strong> ghi vào Phần F — đã làm gì, vì sao, ảnh hưởng gì tới bạn, và <em>nếu tự làm thì làm thế nào</em>. Bạn không phải nhớ. Bạn chỉ cần đọc.</p>
 <hr />
 <h2 id="phần-a-dự-án-đang-ở-đâu">PHẦN A — Dự án đang ở đâu</h2>
-<p><em>Cập nhật lần cuối: 29/09/2026</em></p>
+<p><em>Cập nhật lần cuối: 19/10/2026</em></p>
 <h3 id="tình-trạng-chung">Tình trạng chung</h3>
 <table>
 <colgroup>
@@ -277,7 +277,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 </tr>
 <tr class="odd">
 <td>Số đường link nguồn</td>
-<td><strong>115</strong> trong 16 bài — đã mở lại toàn bộ ngày 17/09/2026</td>
+<td><strong>122</strong> trong 17 bài — đã mở lại toàn bộ ngày 19/10/2026</td>
 </tr>
 <tr class="even">
 <td>Số trang website tự sinh ra</td>
@@ -297,7 +297,7 @@ footer.doc-foot{border-top:1px solid var(--line);margin-top:56px;padding-top:20p
 </tr>
 <tr class="even">
 <td>Người soát bài định kỳ</td>
-<td>✅ Bật — 3 tháng một lần, soát nguồn + chuẩn mực + tính cập nhật + tính nhất quán (xem Phần C, việc 10)</td>
+<td>⚠️ Bật, nhưng báo cáo chưa tới được bạn — xem Phần F mục 19/10/2026 (xem Phần C, việc 10)</td>
 </tr>
 </tbody>
 </table>
@@ -1294,6 +1294,70 @@ Trợ lý mở mã nguồn trên GitHub, xem lần cuối bạn đăng bài là 
 <blockquote>
 <p>Claude ghi vào đây sau <strong>mỗi</strong> lần chạm vào dự án. Bạn chỉ đọc. Mục mới nhất nằm trên cùng.</p>
 </blockquote>
+<hr />
+<h3 id="soát-toàn-bộ-nội-dung-ba-lỗi-liên-quan-tới-an-toàn-và-một-tác-vụ-tự-động-không-tới-được-bạn">19/10/2026 — Soát toàn bộ nội dung: ba lỗi liên quan tới an toàn, và một tác vụ tự động không tới được bạn</h3>
+<p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Rà soát định kỳ + sửa nội dung + vá bảo mật</p>
+<p><strong>Vì sao có mục này</strong></p>
+<p>Bạn hỏi tôi có còn nhớ kế hoạch soát nội dung không. Câu trả lời ngắn: tác vụ tự động <strong>đã chạy đúng hạn 01/10</strong> — nhưng <strong>báo cáo của nó không tới được bạn</strong>, nên việc soát coi như chưa xảy ra. Tôi soát lại từ đầu ngay trong phiên đó.</p>
+<p><strong>MỘT LỖI THIẾT KẾ CỦA TÔI, PHẢI NÓI TRƯỚC</strong></p>
+<p>Tác vụ soát định kỳ chạy lúc 9h08 sáng 01/10, hết 2 tiếng 44 phút, trạng thái thành công. Nó không hỏng.</p>
+<p>Nhưng <strong>mỗi lần một tác vụ định kỳ chạy, nó mở một cuộc trò chuyện riêng.</strong> Báo cáo được gửi vào đó, không vào cuộc trò chuyện bạn đang dùng. Bạn có bật thông báo điện thoại và email, nhưng chúng không tới được chỗ bạn nhìn thấy.</p>
+<p>Nghĩa là: suốt 18 ngày, có một bản soát nội dung đầy đủ nằm ở đâu đó mà bạn không biết. Đó là lỗi của tôi khi dựng tác vụ, không phải của bạn. Mục “cần bạn quyết” ở cuối có ba cách chữa.</p>
+<p><strong>BA LỖI LIÊN QUAN TỚI AN TOÀN NGƯỜI ĐỌC — đều ở bài thai kỳ</strong></p>
+<p>Bài <em>“Chín tháng, và một danh sách ngắn hơn bạn tưởng”</em> là bài <strong>duy nhất</strong> của chuyên mục <em>“Mang thai &amp; năm đầu đời”</em>, và nó có ba vấn đề nặng.</p>
+<p><strong>1. Không có một chữ nào về giấc ngủ an toàn của trẻ sơ sinh.</strong> Chuyên mục hứa “từ khi biết tin đến khi con tròn một tuổi”, nhưng bài dừng ở lúc sinh. Nguy hiểm hơn là chỗ dễ lẫn: <strong>chỗ duy nhất trong bài có chữ “nằm ngửa” lại nói nằm ngửa là nguy hiểm</strong> — đúng với thai phụ từ tuần 28, nhưng <strong>ngược hoàn toàn</strong> với trẻ sau sinh, nơi Viện Nhi khoa Hoa Kỳ nói nguyên văn rằng nằm nghiêng <em>“nguy hiểm ngang với nằm sấp”</em>. Một người mẹ mới sinh nhớ lại bài này và đặt con nằm nghiêng “cho giống lúc mang thai” thì đã làm đúng điều cần tránh nhất. <strong>Đã thêm mục 8</strong> vào danh sách, kèm một khối cảnh báo nói thẳng rằng tư thế của mẹ và tư thế của con là hai chuyện ngược nhau.</p>
+<p><strong>2. Bỏ mất liều acid folic gấp mười lần, cho đúng nhóm cần nó nhất.</strong> Bài viết <em>“Không cần uống nhiều hơn khuyến nghị”</em> ngay sau khi nêu con số 400 mcg. Nhưng người <strong>đã từng mang thai mà con bị dị tật ống thần kinh</strong> được khuyến nghị <strong>4.000 mcg mỗi ngày</strong>. Tức là đúng nhóm người đã mất một đứa con vì dị tật ấy sẽ đọc câu đó và yên tâm uống một phần mười liều mình cần. <strong>Đã thêm đoạn nêu ngoại lệ.</strong></p>
+<p><strong>3. Tuyên bố một danh sách là đầy đủ khi nó không đầy đủ.</strong> Câu <em>“Hết. Đó là danh sách.”</em> cộng với câu kết <em>“Phần còn lại, phần lớn là quảng cáo.”</em> dạy người đọc một quy tắc: <em>không có trong bảy mục này thì không cần.</em> Mà cả bài không nhắc tiêm chủng, sàng lọc tiền sản giật, đái tháo đường thai kỳ hay theo dõi huyết áp. Một thai phụ được hẹn làm nghiệm pháp đường huyết hoàn toàn có thể nhớ lại câu kết và từ chối. <strong>Đã sửa cả hai câu</strong> và nói rõ đây là danh sách về dinh dưỡng và lối sống, không phải toàn bộ danh mục chăm sóc thai kỳ.</p>
+<p><strong>HAI LỖI NẶNG VỀ TOÀN VẸN NGUỒN</strong></p>
+<p><strong>4. Nghiên cứu Rottman bị gán sai ý nghĩa ở cả bốn chỗ.</strong> Bài <em>Kể chuyện thế nào thì con thực sự đổi</em> ghi các tỷ lệ là <em>“trẻ đổi sang cách chia <strong>công bằng</strong>”</em>. Con số đúng, nhãn sai: nghiên cứu đo trẻ có <strong>chuyển giữa hai nguyên tắc chia</strong> theo đúng hướng truyện khuyên hay không — và một nửa số trẻ được thuyết phục sang hướng <em>“ai làm nhiều hơn thì được nhiều hơn”</em>, tức chia <strong>không</strong> đều. Đây là nghiên cứu về <strong>mức dễ bị thuyết phục</strong>, không phải về lòng công bằng.</p>
+<p><strong>5. Bài tấm gương nói chắc ở bốn chỗ nguồn không cho phép.</strong> Bài này hiện là bài yếu nhất về toàn vẹn nguồn: nói nghiên cứu <em>“đối chiếu với hồ sơ các tổ chức”</em> (thật ra là bản tự khai) · nói <em>“cả hai lần tham gia nhiều hơn hẳn”</em> (thí nghiệm 1 không đạt ý nghĩa thống kê) · gán cho hiện tượng <em>do-gooder derogation</em> một cơ chế mà bài báo không nói (nhan đề của nó là về <strong>cảm giác bị phán xét</strong>, không về khoảng cách) · và nói <em>“hai nhóm đọc về phần vật lộn có điểm số tăng lên”</em> khi cả hai đều <strong>không đạt ý nghĩa thống kê</strong>. Chỗ cuối đáng ngại nhất vì <strong>hình vẽ còn phóng to cái phần không có thật</strong>. Kết luận thực hành của bài vẫn đứng — nhưng giờ dựa trên lý do đúng: không phải vì kể vật lộn làm điểm tăng, mà vì chỉ kể thành tựu làm điểm tụt.</p>
+<p><strong>MƯỜI BẢY CHỖ CÒN LẠI</strong></p>
+<p>Đáng chú ý nhất trong số đó: bài <em>“Nếu… thì…”</em> dùng một con số mà <strong>chính nhóm tác giả đã tự hạ xuống</strong> — từ d = 0,65 (2006) còn d = 0,36 rồi 0,15 (2025), và chính họ gọi hiệu ứng là <em>“nhỏ theo thước đo thông thường”</em> — trong khi bài không nêu một chữ phản biện nào. Hai bài về não nói <em>“cắt tỉa mạnh nhất ở tuổi teen”</em> trong khi nguồn chỉ nói <strong>kéo dài tới</strong> giữa tuổi teen. Bài tuổi teen nói <em>“giai đoạn não cần ngủ nhất”</em> ngược với chính con số nó vừa trích (teen cần <strong>ít</strong> giờ ngủ hơn trẻ 6–12). Bài đóng cửa phòng <strong>vẫn còn câu doạ trong <code>description</code></strong> — đúng loại câu đã gỡ khỏi thân bài hồi tháng 8. Bài cơn giận có một đoạn nghe như khoa học mà <strong>không có một mục nguồn nào</strong>, và đã lạc hậu từ tháng 10/2025.</p>
+<p>Cộng thêm: ba chỗ <strong>thiếu chữ</strong> làm câu khó hiểu hoặc đổi nghĩa (một câu ở bài đóng cửa phòng đọc ra thành <strong>ngược hẳn</strong> ý muốn nói), hai ghi chú sơ đồ nói chắc hơn thân bài, và một bảng số liệu chia sai các bước phân tích.</p>
+<p><strong>BẢO MẬT — đã vá</strong></p>
+<p><code>npm audit</code> báo <strong>6 lỗ hổng</strong> (1 trung bình, 5 mức cao). Vá bằng một lệnh, sau đó <strong>0 lỗ hổng</strong>. Website của bạn là trang tĩnh nên nguy cơ thực tế <strong>thấp</strong> — nhưng không có lý do để lâu. Chỉ file khai báo phiên bản đổi.</p>
+<p><strong>MỘT LỖI DO CHÍNH TÔI GÂY RA HÔM NAY</strong></p>
+<p>Khi sửa ghi chú sơ đồ bài kỷ luật, tôi thay nhầm nửa câu và để lại một câu lặp: <em>“Nhưng cột phải Nhiều cha mẹ thấy cột phải nhẹ dần…”</em>. Phát hiện khi đọc lại chữ đã vẽ ra trên ảnh, đã sửa và vẽ lại.</p>
+<p><strong>CÁI BẪY ẢNH BÌA — giờ đã rõ hơn</strong></p>
+<p>Hồi 17/09 tôi quy việc 22 ảnh bìa đổi cho máy thiếu font Inter. Hôm nay máy <strong>có</strong> Inter mà cả 22 ảnh <strong>vẫn</strong> đổi, mỗi ảnh 11.000–22.000 pixel, đúng ở vùng chữ. Nghĩa là nguyên nhân rộng hơn chuyện font. Tôi đã đo từng ảnh để chắc đây không phải chuyện metadata, rồi <strong>trả lại toàn bộ 22 ảnh bìa</strong> và chỉ giữ 11 sơ đồ cần đổi. Đã ghi thành quy tắc cứng trong <code>CLAUDE.md</code>: <strong>đừng bao giờ nhận ảnh bìa mới trừ khi chữ trên bìa thật sự đổi.</strong></p>
+<p><strong>NHỮNG GÌ KIỂM VÀ THẤY SẠCH</strong></p>
+<ul>
+<li><strong>Toàn bộ khuyến cáo y tế vẫn đúng tính tới 19/10/2026.</strong> Đã mở và đối chiếu từng cái: Viện Nhi khoa Hoa Kỳ (màn hình, giấc ngủ), Viện Y học Giấc ngủ Hoa Kỳ, WHO (4 chủ đề), Cochrane (2 tổng quan — <strong>cả hai vẫn ở đúng phiên bản website đang dẫn</strong>, đây là rủi ro lớn nhất vì một tổng quan Cochrane cập nhật thì kết luận có thể đổi hẳn), USPSTF, CDC, NIMH.</li>
+<li><strong>Không có link chết.</strong></li>
+<li>Hai lỗi lịch sử của bài kể chuyện (con số Rottman 46,75/58,82 và việc đếm “bốn câu chuyện”) <strong>vẫn đang đúng</strong>.</li>
+<li>Cú đổi hướng dẫn màn hình của Viện Nhi khoa Hoa Kỳ hồi 01/2026 — thứ từng làm bài này lạc hậu một lần — <strong>đã được xử lý đúng</strong>, dẫn đúng tài liệu, trích đúng nguyên văn.</li>
+<li>Website dựng tốt: 70 trang, 0 lỗi, 0 cảnh báo. Ba quy ước kỹ thuật bắt buộc: sạch.</li>
+</ul>
+<p><strong>BA VIỆC TÔI <em>KHÔNG</em> LÀM</strong></p>
+<ol type="1">
+<li><strong>Không thêm nguồn về văn bản quan điểm của các hiệp hội nhi khoa châu Âu.</strong> Có dấu hiệu tháng 7/2026 họ ra một văn bản <strong>vẫn giữ con số làm trung tâm</strong> — ngược hướng Viện Nhi khoa Hoa Kỳ, và đáng lẽ bài màn hình nên nêu cả hai phía. Nhưng tôi <strong>dùng hết hạn mức tra cứu của phiên</strong> trước khi tự mở được tài liệu đó, và theo quy tắc 5 thì không đưa vào nguồn mình chưa tự mở. <strong>Đây là việc đáng làm nhất ở lần soát sau.</strong></li>
+<li><strong>Không sửa vài khẳng định chưa có nguồn</strong> mà tôi chưa kịp tra (con số “lệch 2 tiếng cuối tuần”; hai mốc “6 tuổi / 11 tuổi”; một câu về tần suất gọi điện). Chúng không sai theo bất cứ nguồn nào tôi mở được — chỉ là chưa có gì đỡ. Để nguyên còn hơn sửa mò.</li>
+<li><strong>Không đăng gì lên mạng.</strong></li>
+</ol>
+<p><strong>Ảnh hưởng tới bạn</strong></p>
+<ul>
+<li><strong>16 bài có chữ thay đổi.</strong> Một bài (thai kỳ) dài thêm hẳn một mục. Không bài nào bị gỡ, không luận điểm nào bị đảo.</li>
+<li><strong>11 sơ đồ</strong> vẽ lại. <strong>22 ảnh bìa giữ nguyên.</strong></li>
+<li>Số nguồn từ 115 lên <strong>122 link</strong>, số bài có nguồn từ 16 lên <strong>17</strong> (bài cơn giận trước đây không có nguồn nào).</li>
+<li>Một file khai báo phiên bản đổi để vá bảo mật.</li>
+<li>Thêm một file <code>bao-cao-soat-2026-10.md</code> — bản báo cáo đầy đủ, bạn đọc được. <strong>File này không ảnh hưởng gì tới website.</strong></li>
+</ul>
+<p><strong>Nếu bạn muốn tự làm phần này</strong></p>
+<ul>
+<li><strong>Tự kiểm bảo mật:</strong> một lệnh, <code>npm audit</code>. Cứ nhắn <em>“kiểm tra bảo mật website”</em> là tôi chạy và báo lại.</li>
+<li><strong>Tự sửa dòng mô tả bài:</strong> vào GitHub, mở file bài viết, sửa dòng <code>description:</code>. Làm y như Phần C, việc 2.</li>
+<li><strong>Tự gọi một đợt soát:</strong> nhắn <em>“soát nội dung”</em>. Đừng chờ tác vụ tự động — nó chạy ở chỗ khác, xem mục dưới.</li>
+<li><strong>Bài học chung của đợt này:</strong> ba trong năm lỗi nặng là lỗi <strong>thiếu</strong>, không phải lỗi <strong>sai</strong> — bài không nói điều gì không đúng, nó chỉ không nói một điều quan trọng. Loại lỗi này không máy nào bắt được bằng cách đối chiếu câu với nguồn; phải hỏi <em>“người đọc làm theo bài này thì còn thiếu gì?”</em>.</li>
+</ul>
+<p><strong>Có gì cần bạn quyết không?</strong></p>
+<p><strong>Có, một việc quan trọng: chữa chỗ báo cáo tự động không tới được bạn.</strong> Ba cách:</p>
+<ol type="1">
+<li><strong>Giữ nguyên, bạn tự đi tìm.</strong> Báo cáo 01/10 vẫn còn trong cuộc trò chuyện riêng của tác vụ, hoặc trong email ngày 01/10.</li>
+<li><strong>Đổi lời nhắc của tác vụ</strong> để nó mở đầu bằng một dòng không thể bỏ sót. Tôi làm được ngay.</li>
+<li><strong>Bỏ tác vụ tự động, thay bằng việc bạn nhắn tôi “soát nội dung” mỗi quý.</strong> Chậm hơn nhưng chắc chắn tới tay bạn — vì nó diễn ra ngay trong cuộc trò chuyện bạn đang dùng.</li>
+</ol>
+<p>Tôi nghiêng về <strong>cách 3 kết hợp cách 2</strong>: giữ tác vụ để nó nhắc, nhưng việc soát thật thì làm ở chỗ bạn nhìn thấy.</p>
+<p>Và hai việc còn tồn từ 29/09, đều không gấp: có đổi tên hiển thị trong lịch sử đăng bài không (lần đăng 02/10 <strong>vẫn mang tên <code>Nam Dinh Van</code></strong>), và có cài đăng nhập GitHub cho WSL không.</p>
 <hr />
 <h3 id="thêm-cách-đăng-bài-bằng-lệnh-trong-wsl-ubuntu">29/09/2026 — Thêm cách đăng bài bằng lệnh trong WSL Ubuntu</h3>
 <p><strong>Người thực hiện:</strong> Claude · <strong>Loại:</strong> Thêm công cụ + hướng dẫn</p>

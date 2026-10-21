@@ -89,7 +89,17 @@ Ba quy ước dưới đây, vi phạm là website hỏng. Giải thích đầy 
 - **Mọi hình tự mang nền sáng.** Đây là chủ ý cho chế độ tối, không phải lỗi — lý do ghi ở đầu `figures_lib.py`. Đừng "sửa" thành nền trong suốt.
 - **Sơ đồ phải mang thông tin**, không trang trí. Không dùng ảnh chụp trẻ em lấy trên mạng (bản quyền + quyền hình ảnh của trẻ).
 - Bài mới nên có `coverImage` + `coverAlt` trong frontmatter và ít nhất một `<Figure>` trong thân bài. Bài `.md` có `<Figure>` phải đổi đuôi thành `.mdx`.
-- ⚠️ **ĐỪNG vẽ lại ảnh bìa nếu máy không có font Inter.** `FONT_PNG` trong `figures_lib.py` là `"Inter Display, Inter, DejaVu Sans, sans-serif"`. Thiếu Inter thì cairosvg **âm thầm** thay bằng DejaVu và cả 22 ảnh bìa đổi khác hẳn. Kiểm trước bằng `fc-list | grep -i inter`; không có thì sau khi chạy script hãy `git checkout -- public/images/articles/*-cover.png` và chỉ giữ các file `.svg`. (Đã xảy ra 17/09/2026.)
+- ⚠️⚠️ **ẢNH BÌA KHÔNG TÁI TẠO ĐƯỢC GIỐNG NHAU GIỮA CÁC MÁY — luôn trả lại.** Sau khi chạy `make-figures.py`, **bắt buộc**:
+
+  ```bash
+  git checkout -- 'public/images/articles/*-cover.png'
+  ```
+
+  Chỉ bỏ qua bước này khi **chữ trên ảnh bìa thật sự đổi** (đổi tiêu đề bài, đổi tên chủ đề, đổi hoạ tiết `MOTIF`).
+
+  Lịch sử: 17/09/2026 cả 22 ảnh bìa đổi vì máy thiếu font Inter — `FONT_PNG` là `"Inter Display, Inter, DejaVu Sans, sans-serif"` nên cairosvg **âm thầm** thay bằng DejaVu. 19/10/2026 máy **có** Inter mà cả 22 ảnh **vẫn** đổi, mỗi ảnh 11.000–22.000 pixel, đúng ở vùng chữ. Nên nguyên nhân rộng hơn chuyện font: phiên bản cairosvg / phiên bản font / ngăn xếp dựng chữ đều đủ để làm lệch. Đừng tin `fc-list | grep -i inter` là đủ.
+
+  Muốn biết chắc pixel có đổi hay chỉ metadata đổi: so bằng `PIL.ImageChops.difference` với bản trong `git show HEAD:<file>`, đừng tin `git status`.
 - Tiêu đề và dòng nguồn của sơ đồ **không tự ngắt dòng**. `frame()` trong `figures_lib.py` giờ báo lỗi nếu chúng vượt khung — đừng bỏ qua lỗi đó, hãy viết tiêu đề ngắn lại.
 
 ### Khi sửa một câu trong bài, đọc lại bốn thứ đi kèm
@@ -123,9 +133,17 @@ Kiểm tra Phần A của `implementation-notes.md` mỗi đầu phiên.
 | Tác vụ | Lịch | Làm gì | Ràng buộc |
 | --- | --- | --- | --- |
 | Soạn bài nháp | 8h sáng thứ Hai hằng tuần | Viết một bài nháp kèm ảnh bìa + sơ đồ, **chỉ khi** 7 ngày qua chưa có bài mới | `draft: true` bắt buộc · cấm push · cấm chế màu mới |
-| Soát nội dung | 9h sáng ngày 1, mỗi 3 tháng (1/10, 1/1, 1/4, 1/7) | Soát 4 mặt: nguồn · chuẩn mực biên tập · tính cập nhật của khuyến cáo y tế · tính nhất quán. Gửi báo cáo kèm câu sửa đề xuất | **Chỉ đọc, không sửa file** · cấm push · cấm bịa · cấm bịa lỗi cho có |
+| Soát nội dung | 9h sáng ngày 1, mỗi 3 tháng (1/10, 1/1, 1/4, 1/7) | Soát 5 mặt: nguồn · chuẩn mực biên tập · câu khó hiểu · tính cập nhật của khuyến cáo y tế · tính nhất quán. Gửi báo cáo kèm câu sửa đề xuất | **Chỉ đọc, không sửa file** · cấm push · cấm bịa · cấm bịa lỗi cho có |
 
 Chi tiết cho chủ dự án: `implementation-notes.md` Phần C, việc 9 và việc 10.
+
+> ⚠️ **Hạn chế đã biết của hai tác vụ này:** mỗi lần chạy, chúng mở **một phiên riêng**, nên báo cáo không vào cuộc trò chuyện chủ dự án đang dùng. Lần 01/10/2026 tác vụ chạy đúng hạn (2 tiếng 44 phút, thành công) nhưng **chủ dự án không thấy báo cáo**. Nếu anh ấy hỏi "có cập nhật gì không", **đừng chỉ trả lời là tác vụ đã chạy** — hãy soát lại ngay trong phiên hiện tại, vì đó là chỗ duy nhất anh ấy đọc được.
+
+### Khi soát nội dung, dùng subagent chạy song song
+
+22 bài và hơn 120 nguồn thì soát tuần tự không kịp. Chia 5 nhóm bài + 1 nhóm riêng cho tính cập nhật của khuyến cáo y tế, chạy song song bằng công cụ Agent. **Nhưng:** báo cáo của subagent là *đề xuất*, không phải sự thật. Trước khi sửa một lỗi nặng nào, Claude **phải tự mở lại nguồn và tự đối chiếu** — đã có tiền lệ subagent đúng, nhưng quy tắc 5 là của Claude, không uỷ quyền được.
+
+Hạn mức WebSearch dùng chung cho cả phiên, kể cả subagent. Soát xong 22 bài thì gần như hết hạn mức — nên **để dành phần tra cứu của chính Claude trước**, đừng tra sau.
 
 Khi chủ dự án nhắn **"áp dụng bản soát nguồn"** → đọc báo cáo gần nhất, sửa vào file, ghi Phần F, rồi chuyển sang máy anh ấy để tự duyệt bằng GitHub Desktop.
 

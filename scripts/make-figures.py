@@ -257,35 +257,37 @@ def figures():
         ("f2", two_col(
             "Bài học phải khớp với tình huống thật thì truyện mới có tác dụng",
             ("Tình huống xa đời trẻ", CLAY,
-             ["Truyện hải ly chia gỗ: 22,9% xử sự công bằng",
-              "Sách kiến thức về hải ly, không có bài học: 21,9%",
-              "Truyện có bài học không hơn sách không có bài học"]),
+             ["Truyện hải ly chia gỗ: 22,9% đổi theo",
+              "Sách kiến thức, không có bài học: 21,9%",
+              "Truyện có bài học không hơn sách không có"]),
             ("Tình huống giống đời trẻ", TEAL,
-             ["Truyện một đứa trẻ chia bút trong lớp vẽ: 46,8%",
-              "Sau 2–4 tuần còn tăng tiếp lên 58,8%",
-              "Nói thẳng bài học, bỏ hẳn truyện đi: 67,3%"]),
+             ["Truyện trẻ chia bút trong lớp vẽ: 46,8%",
+              "Sau 2–4 tuần còn tăng lên 58,8%",
+              "Nói thẳng, không kể truyện: không kém hơn"]),
             subtitle="Rottman và cộng sự · Cognition, 2020",
-            note="Chính nhóm tác giả kết luận rằng trẻ hiểu được truyện nhưng không bắc cầu được sang "
-                 "đời mình — thứ quyết định là bài học, không phải bản thân câu chuyện.")),
+            note="Cách đo là tỷ lệ trẻ chuyển sang đúng nguyên tắc chia mà truyện khuyên, "
+                 "không phải tỷ lệ trẻ “xử sự công bằng”. Thứ quyết định là bài học có khớp "
+                 "đời trẻ hay không, không phải bản thân câu chuyện.")),
     ]
 
     # ── Tấm gương ─────────────────────────────────────────────────────────
     F["tam-guong-gan-hon-danh-nhan"] = [
         ("f1", diverging(
             "Đọc về nhà khoa học: kể phần nào thì điểm số đổi theo hướng nào",
-            [("Đọc về vật lộn trí tuệ — bế tắc, thí nghiệm hỏng", 1.0, "điểm tăng"),
-             ("Đọc về vật lộn đời thường — nghèo, bị phân biệt", 0.9, "điểm tăng"),
+            [("Đọc về vật lộn trí tuệ — bế tắc, thí nghiệm hỏng", 0.15, "điểm giữ nguyên"),
+             ("Đọc về vật lộn đời thường — nghèo, bị phân biệt", 0.1, "điểm giữ nguyên"),
              ("Chỉ đọc về thành tựu (nhóm đối chứng)", -0.7, "điểm GIẢM")],
             label_w=290,
             subtitle="402 học sinh trung học, đo sau 6 tuần · Đại học Columbia",
-            note="Nhóm chỉ đọc về thành tựu không những không tăng, mà điểm còn thấp hơn cả kỳ trước khi "
-                 "nghiên cứu bắt đầu. Hình vẽ theo chiều tác động, không phải theo độ lớn chính xác.")),
+            note="Khoảng cách giữa các nhóm hầu như đến từ việc nhóm chỉ đọc thành tựu TỤT XUỐNG, "
+                 "không phải hai nhóm kia đi lên: mức nhích của hai nhóm vật lộn chưa đạt ý nghĩa "
+                 "thống kê (p = 0,17 và p = 0,51).")),
     ]
 
     # ── Tự giác ───────────────────────────────────────────────────────────
     F["tu-giac-khong-moc-len-tu-loi-nhac"] = [
         ("f1", diverging(
-            "Phần thưởng tác động thế nào tới hứng thú tự nhiên của trẻ",
+            "Phần thưởng tác động thế nào tới hứng thú tự nhiên",
             [("Thưởng vật chất, đã hứa trước", -0.36, "-0,36"),
              ("Thưởng bất ngờ, không hứa trước", 0.01, "0,01"),
              ("Lời khen — số riêng cho trẻ em", 0.11, "+0,11 · không có ý nghĩa TK")],
@@ -303,7 +305,8 @@ def figures():
               "“Con vừa tự dọn bàn. Bố thấy.”",
               "“Con ngồi được đúng hai mươi phút không đứng dậy.”"]),
             note="Trong nghiên cứu kinh điển, 38% trẻ được khen thông minh đã khai man điểm số; ở nhóm "
-                 "được khen chăm chỉ, con số là 13%.")),
+                 "được khen chăm chỉ là 13%, và ở nhóm không được khen gì là 14%. Tức là khen thông "
+                 "minh làm tăng, chứ không phải khen chăm chỉ làm giảm.")),
     ]
 
     # ── Nếu… thì… ─────────────────────────────────────────────────────────
@@ -345,8 +348,8 @@ def figures():
             "Thí nghiệm kẹo dẻo: liên hệ tan dần qua từng bước kiểm tra",
             [("Nghiên cứu theo dõi gốc, vài chục trẻ ở một trường mẫu giáo", 1.0, "mốc gốc"),
              ("Làm lại trên mẫu lớn hơn, đa dạng hơn", 0.5, "còn một nửa"),
-             ("Sau khi tính hoàn cảnh gia đình", 0.33, "còn một phần ba"),
-             ("Sau khi tính năng lực sẵn có của trẻ", 0.21, "không còn ý nghĩa thống kê")],
+             ("Trừ gia đình, nhà ở, năng lực lúc 2–3 tuổi", 0.33, "còn một phần ba"),
+             ("Trừ thêm những gì đo lúc 4 tuổi rưỡi", 0.21, "hết ý nghĩa thống kê")],
             subtitle="Watts, Duncan & Quan · Psychological Science, 2018",
             note="Và gần như toàn bộ phần lợi ích nhỏ còn lại đến từ việc trẻ chờ được 20 giây — "
                  "không phải 15 phút.")),
@@ -365,9 +368,9 @@ def figures():
     F["nao-tuoi-teen-dang-xay-lai"] = [
         ("f1", bar_h(
             "Giấc ngủ tuổi teen: khuyến nghị và thực tế",
-            [("Khuyến nghị cho tuổi 13–18", 9, "8 – 10 tiếng"),
+            [("Mức sàn khuyến nghị, tuổi 13–18", 8, "8 tiếng (khuyến nghị 8 – 10)"),
              ("Một đứa trẻ đi ngủ 11h30, dậy 6h", 6.5, "6,5 tiếng"),
-             ("Thiếu so với mức sàn 8 tiếng", 1.5, "khoảng 1,5 tiếng")],
+             ("Thiếu so với mức sàn", 1.5, "khoảng 1,5 tiếng")],
             emphasis=2, label_w=250, color=CLAY,
             subtitle="Viện Y học Giấc ngủ Hoa Kỳ · lịch học phổ biến ở Việt Nam",
             note="Khi bước vào dậy thì, đồng hồ sinh học của trẻ lùi lại tới hai tiếng — đo được bằng "
@@ -430,7 +433,7 @@ def figures():
               "Tai nghe áp lên bụng bầu — có khuyến cáo KHÔNG nên",
               "DHA làm con thông minh hơn — bằng chứng rất yếu"]),
             note="Giọng của chính bạn truyền nhịp điệu tốt hơn bất kỳ cái loa nào, và miễn phí. "
-                 "Khuyến cáo về tai nghe: không áp trực tiếp lên bụng, tránh âm dưới 250 Hz trên 65 dB.")),
+                 "Bản tổng quan 2023 khuyến cáo không áp tai nghe hay loa trực tiếp lên bụng bầu.")),
     ]
 
     # ── Kỷ luật ───────────────────────────────────────────────────────────
@@ -445,8 +448,8 @@ def figures():
              ["Làm bẩn nhà → cùng lau dọn",
               "Quên bài tập → tự viết lời xin lỗi cô",
               "Quá giờ → hôm sau bớt đúng phần đã dùng quá"]),
-            note="Cột phải mất công hơn, và với người bận rộn đó là một cái giá thật. Nhưng cột phải "
-                 "giảm dần theo thời gian, còn cột trái thì lặp lại mãi.")),
+            note="Cột phải mất công hơn, và với người bận rộn đó là một cái giá thật. Nhiều cha mẹ "
+                 "thấy cột phải nhẹ dần theo thời gian, còn cột trái thì cứ phải làm lại.")),
     ]
 
     # ── Màn hình ──────────────────────────────────────────────────────────
@@ -491,8 +494,8 @@ def figures():
             [("1. Mình trước", "hạ nhịp của chính mình — nói ra thành lời rằng mình đang bực"),
              ("2. Rồi tới con", "gọi tên cảm xúc, không giảng giải, không hỏi lý do"),
              ("3. Nói chuyện sau", "khi cả hai đã nguội, quay lại đúng chuyện đó")],
-            note="Người lớn đang nóng không dạy được gì, và đứa trẻ đang quá tải thì năng lực nghe "
-                 "đã đóng. Hoãn lại không làm mất uy — nhưng phải nhớ quay lại thật.")),
+            note="Khi cả hai đang nóng, lời giảng giải thường không vào được — với người lớn cũng "
+                 "vậy, không riêng gì trẻ. Hoãn lại không làm mất uy, nhưng phải nhớ quay lại thật.")),
     ]
 
     # ── Chán học ──────────────────────────────────────────────────────────
@@ -530,7 +533,7 @@ def figures():
             ("“Hôm nay con được mấy điểm?”", CLAY,
              ["Hướng chú ý RA NGOÀI, về phía kết quả do người khác chấm",
               "Tiện: có ngay một con số, so sánh được",
-              "Dần thành thước đo con dùng để đánh giá chính mình"]),
+              "Có thể dần thành thước đo con dùng để đánh giá chính mình"]),
             ("“Hôm nay con học được gì?”", TEAL,
              ["Hướng chú ý VÀO TRONG, về thứ chính con vừa có thêm",
               "Khó hơn: câu trả lời đầu tiên thường là “con không biết”",

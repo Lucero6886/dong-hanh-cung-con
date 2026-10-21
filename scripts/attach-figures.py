@@ -112,7 +112,7 @@ PLAN = {
  "ky-luat-khong-phai-la-phat": [
   ("f1", "Bảng hai cột về hậu quả: cột trái là những hình phạt không liên quan tới việc con làm; cột phải là những hậu quả gắn trực tiếp với việc con làm.",
    "Điểm khác biệt không nằm ở nặng hay nhẹ, mà ở chỗ hậu quả có liên quan tới việc con làm hay không.",
-   "Nhưng cột bên phải **giảm dần theo thời gian**, còn cột bên trái thì lặp lại mãi."),
+   "Nhiều cha mẹ thấy cột bên phải **nhẹ dần theo thời gian**, còn cột bên trái thì cứ phải làm lại."),
  ],
  "man-hinh-tu-dem-gio-sang-thoa-thuan": [
   ("f1", "Sơ đồ hai bước: câu hỏi cũ là mấy tiếng một ngày là đủ; câu hỏi mới là màn hình có đang lấn vào giấc ngủ, bữa ăn và trò chuyện không.",
