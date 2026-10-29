@@ -164,6 +164,39 @@ PLAN = {
    "Không có công tắc nào chuyển thẳng từ chặng một sang chặng ba.",
    None),
  ],
+ # ── Loạt bài tuổi dậy thì (12–16 tuổi) — thêm 29/10/2026 ──
+ "tuoi-day-thi-con-dang-lon": [
+  ('f1', 'Biểu đồ khoảng tuổi bắt đầu dậy thì: con gái từ 8 đến 13 tuổi, trung bình 11; con trai từ 9 đến 14 tuổi, trung bình 12.',
+   'Khoảng bình thường rộng hơn nhiều cha mẹ nghĩ — và con gái thường bắt đầu sớm hơn con trai.',
+   'Nghĩa là: có những bạn gái mới 8 tuổi — khoảng lớp 2, lớp 3 — đã bắt đầu, và có những bạn trai đã 13 tuổi — khoảng lớp 7, lớp 8 — chưa có dấu hiệu gì. Cả hai đều nằm trong khoảng bình thường.'),
+  ('f2', 'Biểu đồ hai cột: 21,7% vị thành niên 10–17 tuổi có vấn đề sức khoẻ tâm thần trong 12 tháng qua; 5,1% cha mẹ cho rằng con cần được giúp đỡ.',
+   'Khoảng cách giữa hai con số không phải để trách ai — lo âu thường khó nhìn thấy từ bên ngoài.',
+   'Và một con số nữa trong cùng báo cáo: chỉ **5,1%** cha mẹ cho rằng con mình cần được giúp đỡ về cảm xúc hay hành vi trong năm qua.'),
+ ],
+ "khi-con-noi-doi-va-giau-giem": [
+  ('f1', 'Biểu đồ cột ngang: với những chuyện con coi là riêng nhưng cha mẹ coi là chuyện an toàn hay nề nếp, khi kể với mẹ, 31% kể hết, 23% kể nhưng bỏ bớt chi tiết, 37% né không nhắc tới, 10% nói dối.',
+   'Phần lớn những gì con không kể là những khoảng im lặng, không phải lời nói dối.',
+   'Kết quả: **nói dối là cách các em ít dùng nhất** — chỉ chiếm 4–10% số việc, tuỳ loại chuyện. Hay gặp hơn nhiều là **né**, và **kể thiếu**.'),
+  ('f2', 'Bảng hai cột: chuyện của riêng con như nhắn gì với bạn thân, thích nhạc gì, mặc gì; chuyện cần cho bố mẹ biết như đang ở đâu khi trời tối, đi với ai khi đi xa, có ai làm con sợ không.',
+   'Các ví dụ chỉ để minh hoạ — ranh giới cụ thể nên được bàn với con.',
+   'Từ cách nhìn ấy, có thể vạch một ranh giới cùng con: đâu là chuyện của riêng con, đâu là chuyện bố mẹ cần biết. Ranh giới này nên được bàn với con, không phải áp xuống.'),
+ ],
+ "con-choi-game-luc-nao-can-lo": [
+  ('f1', 'Bảng hai cột phân biệt chơi nhiều với rối loạn chơi game theo WHO: chơi nhiều nhưng vẫn ngủ đủ, đi học, dừng được; rối loạn là không dừng được, game lấn các việc khác, vẫn chơi dù thấy hậu quả, và ảnh hưởng rõ tới cuộc sống.',
+   'Điều phân biệt hai cột không phải là số giờ, mà là mất kiểm soát và mức ảnh hưởng.',
+   'WHO cũng nói rõ: các nghiên cứu cho thấy rối loạn chơi game **chỉ gặp ở một tỷ lệ nhỏ** những người chơi game.'),
+  ('f2', 'Biểu đồ cột ngang: tỷ lệ rối loạn chơi game ở mọi lứa tuổi là 3,3% và 3,05% trong hai phân tích gộp; trong phân tích 61 nghiên cứu, còn 2,4% khi chỉ tính mẫu đại diện và 1,4% sau khi hiệu chỉnh thiên lệch công bố.',
+   'Con số chung khoảng 3% — và thấp hơn nữa khi cách đo chặt chẽ hơn.',
+   'Nhưng điều đáng chú ý nhất là con số ấy **tụt dần khi cách đo chặt hơn**. Trong phân tích gom 61 nghiên cứu, chỉ tính các mẫu đại diện cho dân số thì còn khoảng 2,4%. Sau khi hiệu chỉnh *thiên lệch công bố* — tức chuyện nghiên cứu ra kết quả "đẹp" thì dễ được đăng hơn nghiên cứu ra kết quả bình thường — thì còn khoảng 1,4%.'),
+ ],
+ "khi-con-co-tinh-cam-voi-mot-ban": [
+  ('f1', 'Biểu đồ cột ngang: 36% trẻ 13 tuổi, 53% trẻ 15 tuổi và 70% trẻ 17 tuổi ở Mỹ có một mối quan hệ tình cảm trong 18 tháng trước đó.',
+   'Càng lớn, chuyện có tình cảm càng phổ biến — nhưng không có cũng hoàn toàn bình thường.',
+   'Theo số liệu khảo sát ở Mỹ mà bài ấy dẫn, khoảng **36% trẻ 13 tuổi**, **53% trẻ 15 tuổi** và **70% trẻ 17 tuổi** cho biết mình từng có một mối quan hệ tình cảm "đặc biệt" trong 18 tháng trước đó. Đây là số liệu Mỹ và đã khá cũ, nên chỉ nên dùng để thấy một điều: **càng lớn, chuyện này càng phổ biến**.'),
+  ('f2', 'Bảng hai cột: mối quan hệ lành mạnh là tôn trọng nhau, tin nhau, mỗi người vẫn có bạn bè riêng, bất đồng thì nói chuyện; dấu hiệu đáng để ý là quyết định thay, đòi mật khẩu và kiểm tra liên tục, ghen vô lý và tách khỏi bạn bè, doạ dẫm.',
+   'Quan tâm và kiểm soát có lúc trông giống nhau — nói trước với con để con phân biệt được.',
+   'Và những dấu hiệu không lành mạnh: một người **quyết định thay** người kia — mặc gì, chơi với ai; **ghen tuông vô lý**, cố tách người kia khỏi bạn bè và gia đình; khiến người kia **sợ**; hay cảm thấy *"không sống nổi"* nếu thiếu người kia, thậm chí **doạ làm điều dại dột** nếu chia tay.'),
+ ],
 }
 
 

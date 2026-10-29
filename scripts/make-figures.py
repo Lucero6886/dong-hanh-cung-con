@@ -579,6 +579,119 @@ def figures():
                  "không có gì đáng ngại; chỗ cần thận trọng là hứa thưởng cho việc con vốn đã thích.")),
     ]
 
+    # ══ LOẠT BÀI TUỔI DẬY THÌ (12–16 tuổi) — thêm 29/10/2026 ══════════════════
+    # Mọi con số dưới đây đã được đối chiếu với nguồn gốc; nguồn ghi ở khối
+    # `references:` của từng bài. Sửa số ở đây thì sửa cả chữ trong bài.
+
+    # ── 1. Tuổi dậy thì (bài mở đầu) ──────────────────────────────────────
+    F["tuoi-day-thi-con-dang-lon"] = [
+        ("f1", range_bar(
+            "Dậy thì có thể bắt đầu ở bất cứ lúc nào trong khoảng này",
+            [("Con gái", 8, 11, 13, TEAL, "8 – 13 tuổi"),
+             ("Con trai", 9, 12, 14, BLUE, "9 – 14 tuổi")],
+            6, 16, [6, 8, 10, 12, 14, 16],
+            xlabel="tuổi",
+            subtitle="Cơ quan Y tế Ireland (HSE) · chấm giữa là tuổi trung bình",
+            note="Dấu hiệu xuất hiện trước 8 tuổi (gái) hoặc 9 tuổi (trai), hay con gái 13 tuổi "
+                 "chưa phát triển ngực, con trai 14 tuổi chưa bắt đầu dậy thì: nên hỏi bác sĩ.")),
+        ("f2", bar_h(
+            "Hai con số trong cùng một cuộc điều tra",
+            [("Vị thành niên có vấn đề sức khoẻ tâm thần", 21.7, "21,7%"),
+             ("Cha mẹ cho rằng con cần được giúp", 5.1, "5,1%")],
+            label_w=340, color=BLUE,
+            subtitle="V-NAMHS · 5.996 gia đình, con 10–17 tuổi, cuối năm 2021",
+            note="“Có vấn đề” là có ít nhất một nửa số triệu chứng của một rối loạn — chưa phải "
+                 "mắc rối loạn (3,3%). Lo âu là vấn đề hay gặp nhất.")),
+    ]
+
+    # ── 2. Nói dối và giấu giếm ───────────────────────────────────────────
+    F["khi-con-noi-doi-va-giau-giem"] = [
+        ("f1", bar_h(
+            "Teen kể với mẹ đến đâu?",
+            [("Kể hết", 31, "31%"),
+             ("Kể nhưng bỏ bớt chi tiết quan trọng", 23, "23%"),
+             ("Né, không nhắc tới", 37, "37%"),
+             ("Nói dối", 10, "10%")],
+            label_w=290, emphasis=2,
+            subtitle="108 học sinh Mỹ lớp 7 và lớp 10 · Rote và cộng sự, 2012",
+            note="Số liệu cho loại chuyện con coi là của riêng mình nhưng cha mẹ coi là chuyện an toàn "
+                 "hay nề nếp — như đi chơi với ai, ở đâu. Ở cả ba loại chuyện được hỏi, nói dối luôn "
+                 "là cách ít dùng nhất (4–10%).")),
+        ("f2", two_col(
+            "Chuyện của riêng con, và chuyện cần cho bố mẹ biết",
+            ("Chuyện của riêng con", BLUE,
+             ["Nhắn gì với bạn thân",
+              "Thích nghe nhạc gì, xem phim gì",
+              "Mặc gì, để tóc thế nào",
+              "Viết gì trong nhật ký"]),
+            ("Chuyện cần cho bố mẹ biết", TEAL,
+             ["Đang ở đâu khi trời đã tối",
+              "Đi với ai khi đi xa nhà",
+              "Có ai làm con sợ hay ép con làm gì không",
+              "Chuyện ảnh hưởng tới sức khoẻ, an toàn"]),
+            note="Chính teen cũng thấy mình có nghĩa vụ kể nhiều nhất về chuyện an toàn. "
+                 "Các ví dụ ở đây chỉ để minh hoạ — ranh giới nên được bàn với con.")),
+    ]
+
+    # ── 3. Chơi game ──────────────────────────────────────────────────────
+    F["con-choi-game-luc-nao-can-lo"] = [
+        ("f1", two_col(
+            "Chơi nhiều chưa phải là rối loạn chơi game",
+            ("Chơi nhiều", TEAL,
+             ["Chơi lâu nhưng vẫn ngủ đủ, ăn uống đều",
+              "Vẫn đi học, làm bài, gặp bạn ngoài đời",
+              "Bảo dừng thì khó chịu — nhưng dừng được",
+              "Vẫn còn những niềm vui khác ngoài game"]),
+            ("Rối loạn chơi game theo WHO", CLAY,
+             ["Muốn dừng mà không dừng được",
+              "Game lấn dần các việc và niềm vui khác",
+              "Vẫn chơi, thậm chí nhiều hơn, dù thấy hậu quả",
+              "Ảnh hưởng rõ tới học tập, gia đình — thường kéo dài cả năm"]),
+            note="Định nghĩa của WHO không có ngưỡng số giờ chơi nào. Điều đáng canh là game đang "
+                 "lấn vào chỗ của cái gì: giấc ngủ, bài vở, bữa cơm, bạn bè.")),
+        ("f2", bar_h(
+            "Đo càng chặt, tỷ lệ rối loạn chơi game càng thấp",
+            # Bỏ con số 1,96% (Stevens, chỉ tính mẫu chặt): khoảng tin cậy 0,19–17,12%
+            # quá rộng để đỡ tiêu đề này, và nó thuộc phân tích khác với hai cột dưới.
+            [("Gộp 61 nghiên cứu, 29 nước", 3.3, "3,3%"),
+             ("Gộp 53 nghiên cứu, 17 nước", 3.05, "3,05%"),
+             ("Chỉ tính các mẫu đại diện", 2.4, "2,4%"),
+             ("Sau khi hiệu chỉnh thiên lệch công bố", 1.4, "1,4%")],
+            label_w=300, emphasis=3,
+            subtitle="Hai phân tích gộp toàn cầu · mọi lứa tuổi, không riêng trẻ em",
+            note="Hai cột dưới cùng thuộc phân tích 61 nghiên cứu. Ở các mẫu toàn teen, tỷ lệ "
+                 "thường cao hơn. Riêng việc dùng bảng hỏi nào đã chiếm 77% sự chênh lệch "
+                 "giữa các nghiên cứu.")),
+    ]
+
+    # ── 4. Tình cảm tuổi teen ─────────────────────────────────────────────
+    F["khi-con-co-tinh-cam-voi-mot-ban"] = [
+        ("f1", bar_h(
+            "Có một mối quan hệ tình cảm trong 18 tháng qua",
+            [("13 tuổi", 36, "36%"),
+             ("15 tuổi", 53, "53%"),
+             ("17 tuổi", 70, "70%")],
+            label_w=110, color=BLUE,
+            subtitle="Thiếu niên Mỹ · theo Collins, Welsh & Furman, 2009",
+            note="Số liệu Mỹ và đã khá cũ — chỉ để thấy xu hướng tăng theo tuổi, không phải để so với "
+                 "con bạn. Không có người yêu ở tuổi này cũng hoàn toàn bình thường.")),
+        ("f2", two_col(
+            "Quan tâm hay kiểm soát?",
+            ("Mối quan hệ lành mạnh", TEAL,
+             ["Tôn trọng ý kiến và giới hạn của nhau",
+              "Tin nhau, không cần kiểm tra nhau",
+              "Mỗi người vẫn có bạn bè, sở thích riêng",
+              "Bất đồng thì nói chuyện, không xúc phạm"]),
+            ("Dấu hiệu đáng để ý", CLAY,
+             ["Quyết định thay: mặc gì, chơi với ai",
+              "Đòi mật khẩu, đọc tin nhắn, kiểm tra liên tục",
+              "Ghen vô lý, tách khỏi bạn bè và gia đình",
+              "Doạ dẫm — kể cả doạ làm điều dại dột nếu chia tay"]),
+            subtitle="Theo youth.gov và Pew, 2015",
+            note="Trong số teen Mỹ từng hẹn hò, 31% từng bị người yêu kiểm tra nhiều lần mỗi ngày "
+                 "và 13% từng bị đòi mật khẩu (Pew, 2015).")),
+    ]
+
     return F
 
 

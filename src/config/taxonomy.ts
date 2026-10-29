@@ -186,6 +186,15 @@ export const JOURNEYS: Journey[] = [
     categories: ['Tuổi teen'],
   },
   {
+    slug: 'dong-hanh-tuoi-day-thi',
+    title: 'Đồng hành tuổi dậy thì',
+    description:
+      'Bốn bài đọc theo thứ tự cho cha mẹ có con 12–16 tuổi: điều gì đang đổi ở tuổi dậy thì, khi con nói dối và giấu giếm, khi con chơi game, và khi con có tình cảm với một bạn.',
+    // Chỉ khớp theo thẻ 'dậy thì' — thẻ này CHỈ dành cho đúng bốn bài của loạt.
+    // Thứ tự đọc do `stageOrder: 1–4` trong từng bài quyết định.
+    tags: ['dậy thì'],
+  },
+  {
     slug: 'khi-con-gap-that-bai',
     title: 'Khi con gặp thất bại',
     description:

@@ -1,8 +1,8 @@
 ---
 title: "Sổ tay vận hành dự án"
 subtitle: "Đọc file này là biết dự án đang ở đâu, vừa thay đổi gì, và bạn tự làm được những gì"
-version: "1.8.0"
-date: "2026-10-19"
+version: "1.9.0"
+date: "2026-10-29"
 ---
 
 # Sổ tay vận hành dự án
@@ -27,7 +27,7 @@ date: "2026-10-19"
 
 ## PHẦN A — Dự án đang ở đâu
 
-*Cập nhật lần cuối: 19/10/2026*
+*Cập nhật lần cuối: 29/10/2026*
 
 ### Tình trạng chung
 
@@ -41,13 +41,13 @@ date: "2026-10-19"
 | Mã nguồn trên mạng | <https://github.com/Lucero6886/dong-hanh-cung-con> (công khai ✓) |
 | Nhánh đang dùng | `master` |
 | Nơi lưu mã nguồn | Máy bạn: `Downloads\Note giáo dục trẻ\dong-hanh-cung-con\` |
-| Số bài viết | **22** bài, đã xuất bản cả 22, không có bài nháp |
+| Số bài viết | **26** file bài: **22** đã xuất bản · **4** bản nháp đang chờ bạn đọc (loạt tuổi dậy thì, xem dưới) |
 | Số chủ đề đang dùng | **13 / 13** — đã phủ kín toàn bộ chủ đề |
-| Số hành trình có bài | **9 / 9** — từ 2 đến 10 bài mỗi hành trình |
-| Số thẻ | **18** |
-| Số đường link nguồn | **122** trong 17 bài — đã mở lại toàn bộ ngày 19/10/2026 |
-| Số trang website tự sinh ra | **70** |
-| Hình minh hoạ | **22 ảnh bìa** + **28 sơ đồ** trong bài — mọi bài đều có ảnh bìa và ít nhất một sơ đồ |
+| Số hành trình có bài | **9 / 10** — từ 2 đến 10 bài mỗi hành trình. Hành trình thứ 10, *Đồng hành tuổi dậy thì*, đang tự ẩn vì cả 4 bài của nó còn là nháp |
+| Số thẻ | **18** trên website · bản nháp thêm thẻ thứ 19 là `dậy thì` |
+| Số đường link nguồn | **122** trong 17 bài đã đăng — đã mở lại toàn bộ ngày 19/10/2026 · cộng **47** trong 4 bản nháp, kiểm ngày 29/10/2026 |
+| Số trang website tự sinh ra | **70** · thành **76** khi đăng cả 4 bản nháp |
+| Hình minh hoạ | **26 ảnh bìa** + **36 sơ đồ** (trong đó 4 ảnh bìa + 8 sơ đồ thuộc 4 bản nháp) — mọi bài đều có ảnh bìa và ít nhất một sơ đồ |
 | Tình trạng kỹ thuật | ✅ Chạy tốt, 0 lỗi, 0 cảnh báo |
 | Trợ lý tự soạn bài | ✅ Bật — 8h sáng thứ Hai hằng tuần, chỉ khi tuần đó bạn chưa đăng bài (xem Phần C, việc 9) |
 | Người soát bài định kỳ | ⚠️ Bật, nhưng báo cáo chưa tới được bạn — xem Phần F mục 19/10/2026 (xem Phần C, việc 10) |
@@ -95,9 +95,22 @@ Website hiện có **hai loạt bài đọc theo thứ tự**, và mười một
 
 ⭐ = đang hiện ở khối "Bài viết nổi bật" trang chủ (tối đa 3 bài).
 
+### Bốn bài nháp đang chờ bạn đọc — Loạt 3: Đồng hành tuổi dậy thì
+
+Viết ngày 29/10/2026, đều đang `draft: true`. Khi đăng, chúng thành loạt đọc theo thứ tự thứ ba, tại `/journeys/dong-hanh-tuoi-day-thi/`. Chi tiết ở Phần F, mục 29/10/2026.
+
+| # | Bài | Chủ đề | Phút đọc |
+| --- | --- | --- | --- |
+| 1 | Tuổi dậy thì: con đang lớn, và cách nói chuyện cũng phải lớn theo | Tuổi teen | 11 |
+| 2 | Khi con nói dối — nhắn tin bảo đi học mà lại đi chơi | Giao tiếp cha mẹ – con | 12 |
+| 3 | Con chơi game: lúc nào là sở thích, lúc nào cần lo | Công nghệ & trẻ em | 13 |
+| 4 | Khi con có tình cảm với một bạn | Tuổi teen | 11 |
+
 ### Mười tám thẻ đang dùng
 
 `bận rộn` · `cha mẹ` · `công nghệ` · `cảm xúc` · `giai đoạn phát triển` · `giao tiếp` · `giáo dục` · `kỷ luật` · `nhân cách` · `não bộ` · `phần thưởng` · `thai kỳ` · `thói quen` · `trách nhiệm` · `tuổi teen` · `tự giác` · `tự học` · `động lực`
+
+Bốn bản nháp thêm thẻ thứ 19: `dậy thì`. Thẻ này **chỉ dành cho loạt tuổi dậy thì** — gắn vào bài khác thì bài đó sẽ chui vào loạt.
 
 ### ✅ Toàn bộ phần thiết lập đã xong — không còn việc nào chờ bạn
 
@@ -623,7 +636,7 @@ Nhắn cho Claude một câu là được:
 
 ### Việc 10 — Người soát bài định kỳ, 3 tháng một lần
 
-Từ 03/09/2026, có một tác vụ tự động thứ hai. Nó **không viết bài**. Việc của nó là **đọc lại toàn bộ 22 bài và tìm chỗ sai**.
+Từ 03/09/2026, có một tác vụ tự động thứ hai. Nó **không viết bài**. Việc của nó là **đọc lại toàn bộ các bài đã có và tìm chỗ sai**.
 
 #### Vì sao cần
 
@@ -796,6 +809,114 @@ Hoặc đơn giản hơn: nhắn Claude *"báo lỗi lock file"*, Claude dọn h
 
 > Claude ghi vào đây sau **mỗi** lần chạm vào dự án. Bạn chỉ đọc.
 > Mục mới nhất nằm trên cùng.
+
+---
+
+### 29/10/2026 — Bốn bài nháp mới: loạt "Đồng hành tuổi dậy thì" cho cha mẹ có con 12–16 tuổi
+
+**Người thực hiện:** Claude · **Loại:** Thêm bài (bản nháp) + hình minh hoạ + hành trình mới + vá bảo mật
+
+**Bạn yêu cầu gì**
+
+Một nhóm bài giúp cha mẹ có con 12–16 tuổi đi qua tuổi dậy thì — cụ thể là khi con nhắn tin nói dối, giấu giếm, chơi game, có tình cảm mà không chia sẻ. Viết dễ hiểu, dễ gần, có số liệu, tác động tích cực tới phụ huynh. Bạn chọn: **4 bài đọc theo thứ tự**, phạm vi **"cảm xúc, giao tiếp và an toàn"** — thay đổi cơ thể chỉ nói ở mức cha mẹ cần biết, **không đi vào chi tiết giới tính**.
+
+**Đã làm gì**
+
+| # | Bài | Trả lời câu hỏi gì | Phút đọc |
+| --- | --- | --- | --- |
+| 1 | Tuổi dậy thì: con đang lớn, và cách nói chuyện cũng phải lớn theo | Điều gì đang đổi ở tuổi này, điều gì là bình thường. Mốc tuổi dậy thì, cảm xúc dịu dần, vì sao cãi nhau nhiều hơn, "tuổi nổi loạn" bị phóng đại thế nào, và số liệu về teen Việt Nam | 11 |
+| 2 | Khi con nói dối — nhắn tin bảo đi học mà lại đi chơi | Vì sao tuổi này hay giấu, điều gì đi cùng việc con tự kể, theo dõi điện thoại có giúp không, và 5 bước khi phát hiện con nói dối | 12 |
+| 3 | Con chơi game: lúc nào là sở thích, lúc nào cần lo | WHO định nghĩa rối loạn chơi game thế nào (không có ngưỡng số giờ), tỷ lệ ước tính là bao nhiêu, hộp quà ngẫu nhiên trong game, quy định của Việt Nam, và khi nào nên tìm người giúp | 13 |
+| 4 | Khi con có tình cảm với một bạn | Chuyện này bình thường tới mức nào, điều giúp con còn kể, phân biệt quan tâm với kiểm soát, khi con chia tay, và an toàn trên mạng khi bị đe doạ bằng ảnh | 11 |
+
+Kèm theo: **4 ảnh bìa + 8 sơ đồ**, **47 đường link nguồn** mới, và một **hành trình mới** "Đồng hành tuổi dậy thì" để bốn bài hiện thành một loạt đọc theo thứ tự.
+
+Vài con số mà tôi nghĩ cha mẹ sẽ nhớ lâu nhất:
+
+- Trong một nghiên cứu về cách teen kể chuyện với mẹ, **nói dối là cách ít dùng nhất** (4–10%) — hay gặp hơn nhiều là *né* và *kể thiếu*.
+- Ở Việt Nam, cuộc điều tra V-NAMHS năm 2021 thấy **21,7%** trẻ 10–17 tuổi có vấn đề về sức khoẻ tâm thần, nhưng chỉ **5,1%** cha mẹ cho rằng con cần được giúp.
+- Theo hai phân tích gộp quốc tế, tỷ lệ rối loạn chơi game vào khoảng **3%**, và chỉ còn khoảng **1,4%** khi đo chặt chẽ hơn.
+- Ở Mỹ, khoảng **một nửa** số em bị đe doạ bằng ảnh nhạy cảm **không hề cố ý chia sẻ** tấm ảnh đó — nên lời dặn "đừng gửi ảnh" là cần, nhưng chưa đủ.
+
+**Cả bốn bài đang là bản nháp (`draft: true`)** — chưa hiện ở bất cứ đâu trên website.
+
+**Cách tôi làm, để bạn biết các con số đáng tin tới đâu**
+
+1. Bốn trợ lý tra cứu chạy song song, mỗi trợ lý lo một bài, tìm nguồn gốc.
+2. Trước khi viết, tôi **tự mở lại** mọi con số sẽ in đậm hoặc vẽ thành sơ đồ.
+3. Viết xong, một trợ lý **độc lập** đọc soát cả bốn bài theo năm mặt (nguồn · chuẩn mực biên tập · câu khó hiểu · tính nhất quán · giọng viết), có mở lại 10 nguồn gốc.
+4. Trước khi sửa theo bản soát, tôi lại **tự mở 12 nguồn** — kể cả 5 chi tiết mà trợ lý soát chưa kịp kiểm. Cả 5 đều đúng.
+
+**BA LỖI NẶNG — đều do tôi viết, trợ lý soát bắt được**
+
+1. **Bài game, câu tổng kết nói ngược số liệu ngay phía trên.** Tôi viết *"gắn bó và thoả thuận thì đi cùng kết quả tốt; canh chừng và đòn roi thì không"*. Nhưng chính nghiên cứu ở Hà Nội, hai đoạn trên, thấy trẻ **không được giám sát** có tỷ lệ rối loạn chơi game **cao hơn hẳn**. Và bài tổng quan tôi dẫn viết rằng *cần sự giám sát và tham gia rộng hơn của cha mẹ* — không hề nói "gắn bó thay cho giám sát". Đã sửa: gắn bó, có giám sát và có thoả thuận đi cùng kết quả tốt hơn; đòn roi, hay buông hẳn, đi cùng kết quả xấu hơn.
+2. **Bài game, ngưỡng tìm chuyên gia quá cao.** Tôi viết "khi bạn thấy **cả ba** dấu hiệu của WHO cùng lúc" — tức bắt cha mẹ tự đối chiếu đủ tiêu chuẩn chẩn đoán rồi mới được đi hỏi. Website không chẩn đoán trẻ, càng không bắt cha mẹ tự chẩn đoán. Đã sửa: *không cần đợi đủ cả ba, bạn lo thì cứ hỏi sớm.*
+3. **Bài nói dối: *"Cách hỏi mới quyết định con trả lời thật hay không."*** Đúng loại câu dồn hết trách nhiệm lên cha mẹ mà website đã chọn tránh. Nghiên cứu được dẫn chỉ khảo sát một thời điểm và chỉ thấy hai điều **đi cùng nhau** — không đỡ nổi chữ "quyết định". Đã sửa thành *"Điều đáng để ý hơn là hỏi theo cách nào"*, và câu kết bài sửa theo cùng hướng.
+
+**Những chỗ vừa đáng kể** (tổng cộng gần 50 chỗ vừa và nhỏ đã sửa)
+
+- **Bài mở đầu ghép hai nguồn không khớp nhau bằng một chữ "cũng".** Một phân tích gộp nói cãi nhau *nhiều lần nhất ở đầu tuổi teen*; Viện Nhi khoa Hoa Kỳ và một nghiên cứu Hà Lan lại thấy *nhiều hơn ở giữa tuổi teen*. Giờ bài nói thẳng là các nguồn chưa khớp nhau, và chỉ giữ điểm chúng cùng đồng ý.
+- **Kể sai thiết kế nghiên cứu Hà Lan.** Tôi viết như theo dõi một nhóm từ 12 đến 20 tuổi "suốt 5 năm" — điều không thể. Thực ra là hai nhóm. Tôi cũng chỉ nêu 2 trong 4 kiểu quan hệ cha mẹ–con, bỏ đúng kiểu tiêu cực thứ hai (21%) — làm bức tranh sáng hơn số liệu, ngay ở đoạn đang lập luận rằng "tuổi nổi loạn" bị phóng đại. Đã nêu đủ cả bốn.
+- **Ví dụ "bạn gái lớp 3, bạn trai lớp 8"** chạm đúng mốc "nên hỏi bác sĩ" ở đoạn ngay dưới (lớp 8 có bạn đã 14 tuổi). Đổi sang tuổi cụ thể.
+- **Đoạn về tống tiền bằng ảnh:** tôi viết "ảnh bị chụp lén" — thật ra cách phổ biến nhất là chụp màn hình hay ghi hình mà không được đồng ý; và chữ "rào cản **lớn nhất**" là tôi tự thêm, báo cáo gốc không xếp hạng.
+- **Sơ đồ tỷ lệ chơi game trộn cột của hai nghiên cứu khác nhau**, trong đó một cột có khoảng sai số từ 0,19% tới 17,12% — rộng tới mức không nói được gì. Đã bỏ cột đó.
+- **Một câu nói năm 2014** ("các mốc giới hạn đang được khuyến nghị có rất ít căn cứ khoa học") sẽ bị đọc như đang nói về khuyến nghị năm 2026. Đã ghi rõ "vào thời điểm đó (năm 2014)".
+- **Khảo sát ở hai trường cấp 3** bị tôi nâng thành *"Ở Việt Nam, xung đột thường không ồn ào"*. Đã nói rõ giới hạn.
+- **Hai lời khuyên "nên nói trước khi…"** có thể làm cha mẹ có con đã lớn thấy mình muộn. Thêm câu: *bắt đầu lúc nào cũng vẫn có ích.*
+
+**Hai chỗ tôi tự phát hiện khi tự mở lại nguồn**
+
+- Trang của Cơ quan Y tế Ireland chỉ khuyên "nói với bác sĩ" ở phần **dậy thì sớm**; phần **dậy thì muộn** là định nghĩa. Bài cũ viết gộp cả hai là "mốc nên đưa con đi khám". Đã viết lại cho đúng, sửa cả ghi chú trên sơ đồ.
+- Nghiên cứu về cảm xúc tuổi teen: **tất cả** các em đến từ gia đình thu nhập trung bình đến cao, không phải "phần lớn" như tôi viết.
+
+**Một tác dụng phụ cần biết: thứ tự bài trong hai hành trình cũ sẽ đổi khi bạn đăng**
+
+Số thứ tự đọc (`stageOrder`) của một bài có hiệu lực ở **mọi** hành trình bài đó thuộc về. Tôi đã dựng thử website với cả bốn bài được đăng. Kết quả:
+
+- *"Khi con bước vào tuổi teen"*: bốn bài mới đứng đầu (1 → 4), rồi tới *"Não tuổi teen"*, cuối cùng *"Khi con bắt đầu đóng cửa phòng"*.
+- *"Khi cha mẹ và con khó giao tiếp"*: bài nói dối đứng **thứ 2**, ngay sau *"Kể chuyện thế nào thì con thực sự đổi"* — vì bài nói dối mang thẻ `giao tiếp`.
+
+Tôi thấy chấp nhận được, vì đó đều là những bài hợp chỗ. Nếu không ưng, nhắn tôi.
+
+**Hành trình mới chỉ nhận đúng bốn bài này** — nó khớp theo thẻ `dậy thì`, và thẻ đó dành riêng cho loạt. Gắn thẻ `dậy thì` vào bài khác thì bài đó sẽ chui vào loạt. Hành trình tự ẩn khi chưa có bài nào được đăng.
+
+**Bảo mật — đã vá**
+
+`npm audit` báo **3 lỗ hổng** mới phát hiện kể từ lần vá ngày 19/10 (1 trung bình, 2 mức cao). Vá bằng một lệnh, còn **0**. Chỉ file `package-lock.json` đổi.
+
+**Bốn việc tôi *KHÔNG* làm**
+
+1. **Không đổi tiêu đề bài mở đầu**, dù trợ lý soát gợi ý: tiêu đề có chữ *"…cũng **phải** lớn theo"*, mà website chọn tránh chữ "phải". Gợi ý thay: *"Tuổi dậy thì: con đang lớn, và cách trò chuyện cũng lớn theo"*. Đổi tiêu đề thì phải vẽ lại ảnh bìa — nên để bạn quyết.
+2. **Không đưa dịch vụ Take It Down** (giúp gỡ ảnh nhạy cảm của người dưới 18 tuổi khỏi internet) vào thân bài, vì tôi chưa xác nhận được nó dùng được từ Việt Nam. Nó vẫn được nhắc trong mục nguồn.
+3. **Không sửa câu *"lần sau sẽ không có lần sau"* ở bài cũ "Não tuổi teen"** — cùng kiểu với lỗi nặng thứ 3 ở trên, nhưng nằm ngoài việc lần này.
+4. **Không đăng gì lên mạng.**
+
+**Ảnh hưởng tới bạn**
+
+- **Website hiện tại không đổi gì** — vẫn 70 trang, vì bốn bài đang là nháp. Đăng cả bốn thì thành **76 trang** (thêm 4 bài, 1 trang hành trình, 1 trang thẻ `dậy thì`). Tôi đã dựng thử cả hai trường hợp: 0 lỗi.
+- **File mới:** 4 bài trong `src/content/articles/`, 4 ảnh bìa và 8 sơ đồ trong `public/images/articles/`.
+- **File sửa:** `scripts/make-figures.py` (dữ liệu 8 sơ đồ), `scripts/attach-figures.py` (vị trí gắn hình), `src/config/taxonomy.ts` (hành trình mới), `package-lock.json` (vá bảo mật), `CLAUDE.md` (ghi chú về thẻ `dậy thì`), và sổ tay này.
+- **22 ảnh bìa và 28 sơ đồ cũ giữ nguyên** — tôi đã trả lại chúng sau khi chạy lệnh vẽ hình, đúng quy tắc ghi trong `CLAUDE.md`.
+- Ảnh bìa và sơ đồ chép sang máy bạn được công cụ chuyển file tự gắn thêm một **nhãn nguồn gốc ẩn** (theo chuẩn C2PA, ghi rằng file do Claude cung cấp). Hình nhìn y hệt — tôi đã so từng điểm ảnh — và website không bị ảnh hưởng gì.
+- ⚠️ Mã nguồn của bạn để **công khai** trên GitHub, nên sau khi bạn bấm Push, ai mở mã nguồn cũng đọc được bản nháp — chỉ là nó không hiện trên website. Trước giờ các bài nháp của trợ lý hằng tuần cũng vậy.
+
+**Nếu bạn muốn tự làm phần này**
+
+- **Đọc bài nháp:** mở file `.mdx` trong `dong-hanh-cung-con\src\content\articles\` bằng Notepad. Hoặc xem ngay trong GitHub Desktop, phần chữ xanh.
+- **Đăng một bài:** mở file bài đó bằng Notepad, đổi `draft: true` thành `draft: false`, lưu lại, rồi Commit + Push (hoặc `./dang-bai.sh`). Giống hệt **Phần C, việc 9**, bước 4–5 — chỉ khác là file đã nằm sẵn đúng chỗ, ảnh cũng vậy.
+- **Đăng muộn:** nên đổi luôn dòng `date: 2026-10-29` thành ngày đăng, để bài không hiện như bài cũ.
+- **Đổi thứ tự đọc:** sửa số ở dòng `stageOrder:` của từng bài (số nhỏ đọc trước).
+- **Trước khi đăng bài game:** tìm trên mạng *"sửa đổi Nghị định 147 trò chơi điện tử"*. Tôi tra lại ngày 29/10/2026 vẫn chưa thấy tin ban hành. Nếu đã ban hành, nhắn tôi sửa đoạn đó — bài đang ghi là dự thảo.
+- **Bài học chung của đợt này:** cả ba lỗi nặng đều **không nằm ở con số** — số liệu đúng hết. Chúng nằm ở **câu tổng kết và lời khuyên**, chỗ người viết "gói ý lại" và gói mạnh hơn số liệu cho phép. Khi bạn tự đọc bài, những câu kiểu *"X mới quyết định Y"*, *"chỉ khi…"*, *"luôn…"* là chỗ đáng nghi nhất.
+
+**Có gì cần bạn quyết không?**
+
+**Có, bốn việc:**
+
+1. **Đọc và quyết đăng bài nào, lúc nào.** Tôi gợi ý đăng **cả bốn cùng lúc**, vì bài mở đầu giới thiệu ba bài sau.
+2. **Tiêu đề bài mở đầu:** giữ nguyên, hay đổi thành *"…cách trò chuyện cũng lớn theo"*?
+3. **Câu *"lần sau sẽ không có lần sau"* ở bài "Não tuổi teen":** có sửa luôn không?
+4. **Ba việc còn treo từ 19/10:** chữa chỗ báo cáo soát tự động không tới được bạn (ba cách ở mục 19/10 ngay dưới) · tên `Nam Dinh Van` trong lịch sử đăng bài · đăng nhập GitHub cho WSL. Không việc nào gấp.
 
 ---
 

@@ -100,6 +100,7 @@ Ba quy ước dưới đây, vi phạm là website hỏng. Giải thích đầy 
   Lịch sử: 17/09/2026 cả 22 ảnh bìa đổi vì máy thiếu font Inter — `FONT_PNG` là `"Inter Display, Inter, DejaVu Sans, sans-serif"` nên cairosvg **âm thầm** thay bằng DejaVu. 19/10/2026 máy **có** Inter mà cả 22 ảnh **vẫn** đổi, mỗi ảnh 11.000–22.000 pixel, đúng ở vùng chữ. Nên nguyên nhân rộng hơn chuyện font: phiên bản cairosvg / phiên bản font / ngăn xếp dựng chữ đều đủ để làm lệch. Đừng tin `fc-list | grep -i inter` là đủ.
 
   Muốn biết chắc pixel có đổi hay chỉ metadata đổi: so bằng `PIL.ImageChops.difference` với bản trong `git show HEAD:<file>`, đừng tin `git status`.
+- File hình ghi sang máy chủ dự án bằng `device_commit_files` được **tự gắn nhãn nguồn gốc C2PA** ("Claude provided this file"): SVG thêm khối `<metadata>` và thuộc tính `xmlns:c2pa`; PNG thêm một chunk `caBX`. Vô hại, không cần gỡ. Khi kiểm bản trên máy có khớp bản gốc không: với SVG, bỏ hai phần đó rồi so; với PNG, so pixel.
 - Tiêu đề và dòng nguồn của sơ đồ **không tự ngắt dòng**. `frame()` trong `figures_lib.py` giờ báo lỗi nếu chúng vượt khung — đừng bỏ qua lỗi đó, hãy viết tiêu đề ngắn lại.
 
 ### Khi sửa một câu trong bài, đọc lại bốn thứ đi kèm
@@ -119,6 +120,12 @@ npm run check                                          # phải 0 errors, 0 warn
 grep -rn "Mr. Lucero" src/ --include=*.astro           # phải rỗng
 grep -rn 'href="/' src/ --include=*.astro              # chỉ được có link ngoài
 ```
+
+### Hành trình và thứ tự đọc
+
+- `stageOrder` có hiệu lực ở **mọi** hành trình mà bài thuộc về (khớp theo thẻ hoặc chủ đề), không chỉ hành trình của loạt. Gán `stageOrder` cho bài mới thì dựng thử với `draft: false` ở một bản sao và xem lại thứ tự của các hành trình khác.
+- Thẻ `dậy thì` **chỉ dành cho 4 bài** của loạt "Đồng hành tuổi dậy thì" — hành trình `dong-hanh-tuoi-day-thi` chỉ khớp theo thẻ này. Gắn vào bài khác là bài đó chui vào loạt.
+- Không thêm thẻ `cha mẹ` vào bất kỳ hành trình nào (gần như bài nào cũng mang thẻ này — xem ghi chú trong `taxonomy.ts`).
 
 ---
 
